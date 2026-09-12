@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
-  "releaseTag": "v2026.9.13.1-beta.1",
-  "releaseChannel": "beta",
-  "upstreamRef": "master",
-  "runtimeProfile": "community-json",
+  "releaseTag": "v2026.9.13.1",
+  "releaseChannel": "stable",
+  "upstreamRef": "v2026.831.1",
+  "runtimeProfile": "pinned-en-ru",
   "upstreamRepository": "https://github.com/paperclipai/paperclip",
-  "upstreamCommit": "04e364236bd2f9787e4a5c581751e0b8c6c16383",
+  "upstreamCommit": "65ec059bde30d98c92165b24a30a540800dd1f6f",
   "localizationSourceRepository": "https://github.com/DrMaks22/paperclip",
-  "localizationSourceCommit": "9cf846bbf6f174d0d394c4faf08c18d77f54bd38",
-  "integrationCommit": "2bc5fb6a52005d5deae1a615e3ce69d0278e18a3",
-  "integrationTree": "55d33f76665c4d18b1deba8e64861f9037f8f6bf",
-  "foundationSha256": "50ccc489b019403b3bdd72858f34b270609ed5709b02fd7242b8e2e6981454fd",
-  "foundationFiles": 785,
-  "provenance": "The inherited localization commit is public; the integration commit is a local provenance identifier. The complete integration is distributable and reproducible from the public pinned upstream revision and patches/foundation.patch; no local commit object is required to build."
+  "localizationSourceCommit": "e87bba5efb8bd70c2da62a005a10386f7910e059",
+  "integrationCommit": "a7fea14ddbacef7997db81e85cbd75c83f89cc62",
+  "integrationTree": "bf5d49f9cf5a7da5c5988b60b5ab3838a751db40",
+  "foundationSha256": "3e8000df5fd0ed42750dcf7ec5a154e526b52c4ce0d3776aae09c5c1212938f5",
+  "foundationFiles": 646,
+  "provenance": "Both the inherited localization e87bba5efb8bd70c2da62a005a10386f7910e059 and final integration a7fea14ddbacef7997db81e85cbd75c83f89cc62 are public in DrMaks22/paperclip. This package preserves the reviewed stable ru4 application bytes from 2026-09-08. The complete integration is reproducible from the official pinned stable revision and patches/foundation.patch; no local commit object is required to build."
 }
