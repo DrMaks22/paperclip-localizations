@@ -1,6 +1,6 @@
 {
   "name": "paperclip-localizations",
-  "version": "2026.9.12-1",
+  "version": "2026.9.13-beta.1",
   "private": true,
   "description": "Community localization catalogs and safe version-pinned UI patches for Paperclip",
   "type": "module",
@@ -11,6 +11,7 @@
     "validate": "node scripts/catalogs.mjs",
     "build": "node scripts/build.mjs",
     "verify": "node scripts/verify.mjs",
-    "check:upstream": "node scripts/check-upstream.mjs"
+    "check:upstream": "node scripts/check-upstream.mjs",
+    "check:release": "node scripts/check-release.mjs"
   }
 }

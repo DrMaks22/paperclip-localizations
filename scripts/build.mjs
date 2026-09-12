@@ -1,9 +1,54 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { loadCatalogs } from "./catalogs.mjs";
+import { assertSafePath, loadCatalogs } from "./catalogs.mjs";
 import { prepareLocales } from "./prepare-locales.mjs";
 import { ROOT, requireNode, readLock, parseUpstreamArgument, createScratchCheckout, git, hash, json, permitted, checksumText } from "./artifacts.mjs";
+
+/** Preserve the committed two-language runtime; replace only its catalog bytes. */
+export async function preparePinnedLocales({ target, root = ROOT }) {
+  if (typeof target !== "string" || !path.isAbsolute(target) || typeof root !== "string" || !path.isAbsolute(root)) {
+    throw new Error("Pinned locale paths must be absolute.");
+  }
+  target = path.resolve(target);
+  root = path.resolve(root);
+  if (target === root || target === path.parse(target).root || root.startsWith(target + path.sep)) {
+    throw new Error("Target must be a separate disposable checkout.");
+  }
+  await assertSafePath(target, { directory: true });
+  const catalogs = await loadCatalogs(root);
+  if (catalogs.length !== 2 || catalogs[0].locale !== "en" || catalogs[1].locale !== "ru") {
+    throw new Error("The pinned-en-ru runtimeProfile requires exactly the en and ru catalogs.");
+  }
+  const writes = [];
+  for (const { locale } of catalogs) {
+    const relative = `ui/src/i18n/locales/${locale}.json`;
+    const destination = path.join(target, relative);
+    await assertSafePath(destination, { writable: true });
+    const stat = fs.lstatSync(destination);
+    writes.push({ relative, destination, stat, bytes: fs.readFileSync(path.join(root, "locales", `${locale}.json`)) });
+  }
+  const opened = [];
+  try {
+    // Open every existing file without truncation, then verify its identity before
+    // any write. No directories, runtime overlays, tests, or new files are created.
+    for (const entry of writes) {
+      const fd = fs.openSync(entry.destination, fs.constants.O_WRONLY | fs.constants.O_NOFOLLOW);
+      opened.push({ ...entry, fd });
+      const stat = fs.fstatSync(fd);
+      if (!stat.isFile() || stat.nlink !== 1 || stat.dev !== entry.stat.dev || stat.ino !== entry.stat.ino) {
+        throw new Error(`Unsafe pinned locale target: ${entry.relative}`);
+      }
+    }
+    for (const { fd, bytes } of opened) {
+      fs.ftruncateSync(fd, 0);
+      fs.writeFileSync(fd, bytes);
+    }
+  } finally {
+    for (const { fd } of opened) fs.closeSync(fd);
+  }
+  return { locales: catalogs.map(({ locale }) => locale), paths: writes.map(({ relative }) => relative) };
+}
 
 export async function buildArtifact({ upstream, check = false }) {
   requireNode();
@@ -22,7 +67,8 @@ export async function buildArtifact({ upstream, check = false }) {
     if (new Set(foundationPaths).size !== foundationPaths.length || !foundationPaths.length) throw new Error("Invalid foundation path list.");
     git(checkout, ["apply", "--check", "--whitespace=nowarn", foundationFile]);
     git(checkout, ["apply", "--whitespace=nowarn", foundationFile]);
-    await prepareLocales({ target: checkout, root: ROOT });
+    if (lock.runtimeProfile === "pinned-en-ru") await preparePinnedLocales({ target: checkout, root: ROOT });
+    else await prepareLocales({ target: checkout, root: ROOT });
     git(checkout, ["add", "--all"]);
     const paths = git(checkout, ["diff", "--cached", "--no-renames", "--name-only", "-z", lock.upstreamCommit]).toString().split("\0").filter(Boolean);
     if (!paths.length || paths.some((name) => !permitted(name))) throw new Error("Generated diff escaped localization scope.");
@@ -40,6 +86,7 @@ export async function buildArtifact({ upstream, check = false }) {
     const count = (value) => typeof value === "string" ? 1 : Object.values(value).reduce((n, child) => n + count(child), 0);
     const manifest = {
       schemaVersion: 1, ready: true, kitVersion: lock.releaseTag,
+      releaseChannel: lock.releaseChannel, upstreamRef: lock.upstreamRef, runtimeProfile: lock.runtimeProfile,
       baseCommit: lock.upstreamCommit, sourceCommit: lock.localizationSourceCommit,
       patchFile: "paperclip-localizations.patch", patchSha256: hash(patch),
       allowedPaths: paths, afterFiles,

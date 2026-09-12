@@ -1,7 +1,10 @@
 {
   "schemaVersion": 1,
   "ready": true,
-  "kitVersion": "v2026.9.12.1",
+  "kitVersion": "v2026.9.13.1-beta.1",
+  "releaseChannel": "beta",
+  "upstreamRef": "master",
+  "runtimeProfile": "community-json",
   "baseCommit": "04e364236bd2f9787e4a5c581751e0b8c6c16383",
   "sourceCommit": "9cf846bbf6f174d0d394c4faf08c18d77f54bd38",
   "patchFile": "paperclip-localizations.patch",
@@ -3941,7 +3944,7 @@
     }
   },
   "resultTree": "22488a252594c6ac56082efd523c0dbdc17e4646",
-  "sourceLockSha256": "6ef73ec7e5a3e783beeee3aa641029f64e37e8e11748915067fa372aaafe575b",
+  "sourceLockSha256": "bb2e65c47f136031b46539c863160ad6e7c35624fb3e108e30f9692f875c0526",
   "foundationSha256": "50ccc489b019403b3bdd72858f34b270609ed5709b02fd7242b8e2e6981454fd",
   "locales": [
     {

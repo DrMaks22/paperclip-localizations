@@ -1,7 +1,7 @@
 name: Localization checks
 on:
   push:
-    branches: [main]
+    branches: [main, 'release/stable-*']
   pull_request:
   workflow_dispatch:
 permissions:

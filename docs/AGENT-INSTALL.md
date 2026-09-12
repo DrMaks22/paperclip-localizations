@@ -8,13 +8,14 @@ This document is a portable task specification for a coding agent with local Git
 
 ## Agent procedure
 
+0. Resolve the requested channel from [RELEASES.md](RELEASES.md) and `channels.json`. Stable targets an official stable Paperclip tag; beta targets one exact master snapshot. Inspect the selected tag's `manifest.releaseChannel`, `upstreamRef`, and `baseCommit`. Do not use `main`, choose beta because its code is newer, or mix files from different releases. If the user's installed version is incompatible, report the mismatch rather than changing channels or downgrading it. The legacy `v2026.9.12.1` release is a master beta despite its original unsuffixed tag; its new replacement has an explicit `-beta.1` suffix.
 1. Read the user's request, applicable repository instructions, and this release's [installation guide](INSTALL.en.md). Resolve the actual source repository and installation type. If only a global npm package or prebuilt container is available, explain that a compatible source build is needed; do not patch package-manager files or a running container.
 2. Obtain the user's selected release of `DrMaks22/paperclip-localizations` outside Paperclip. Review `manifest.json`, `apply.mjs`, `paperclip-localizations.patch`, and `SHA256SUMS`. Check the checksums and Node.js 24. Do not execute a remote download piped into a shell.
 3. Treat `manifest.baseCommit` as the compatibility boundary. Create a fresh disposable Git worktree at that exact commit. Preserve the original checkout and local changes. Never reset, downgrade, or rewrite a production checkout to meet the manifest.
 4. Run `node apply.mjs --repo /absolute/path/to/worktree --check`, then the same command with `--apply`. The installer performs offline source changes only. A compatibility or integrity refusal is a reason to inspect the mismatch; do not force, fuzz, or partially apply the patch.
 5. Follow the pinned upstream documentation for dependency installation and verification. Complete relevant tests, type checking, and a production build, and inspect the main screens with synthetic data. These steps are separate from the offline installer. State exactly which checks passed and which remain incomplete.
 6. For an existing deployment, account for a backup and a separate build before any deployment work. Use the user's existing deployment procedure only when deployment is within the user's authorization. Do not infer permission to change a database, restart a service, or update a running instance from permission to prepare a localized source build.
-7. Report the localization tag, actual Paperclip commit, worktree path, patch result, build and interface checks, and the next deployment step. Explain any unresolved incompatibility plainly. Do not report installation success if patching or required verification failed.
+7. Report the channel, localization tag, upstream tag or master snapshot, actual Paperclip commit, worktree path, patch result, build and interface checks, and the next deployment step. Explain any unresolved incompatibility plainly. Do not report installation success if patching or required verification failed.
 
 ## Repeated runs and updates
 

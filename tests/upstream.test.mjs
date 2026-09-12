@@ -1,8 +1,19 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { summarizeComparison, checkUpstream } from "../scripts/check-upstream.mjs";
+import { summarizeComparison, summarizeStable, checkUpstream } from "../scripts/check-upstream.mjs";
 const base = "a".repeat(40);
 const head = "b".repeat(40);
+
+test("stable monitoring detects new releases and retargeted tags independently of master", () => {
+  const selected = { upstreamRef: "v2026.831.1", baseCommit: base };
+  const release = { tag_name: selected.upstreamRef, prerelease: false, draft: false };
+  assert.equal(summarizeStable(selected, release, { sha: base }).changed, false);
+  assert.equal(summarizeStable(selected, release, { sha: head }).changed, true);
+  assert.equal(summarizeStable(selected, { ...release, tag_name: "v2026.901.0" }, { sha: head }).changed, true);
+  assert.throws(() => summarizeStable(selected, { ...release, prerelease: true }, { sha: head }));
+  assert.throws(() => summarizeStable(selected, { ...release, draft: true }, { sha: head }));
+  assert.throws(() => summarizeStable(selected, release, { sha: "master" }));
+});
 
 test("unchanged snapshot requires no action", () => {
   assert.equal(summarizeComparison(base, base, { status: "identical", files: [] }).action, "none");

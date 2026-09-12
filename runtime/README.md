@@ -1,5 +1,11 @@
 # Community runtime integration
 
+This integration runs only with `runtimeProfile: community-json`. The current
+stable release uses `pinned-en-ru`: it preserves the previously reviewed EN/RU
+runtime and copies only its two canonical catalogs. The overlays and synthetic
+third-language fixture below are not applied to, or evidence for, that stable
+profile. See [release channels](../docs/RELEASES.md).
+
 Contributors add complete, reviewed `locales/<canonical-BCP47>.json` files. The
 builder generates explicit imports for those files. It does not discover or
 enable Paperclip's preexisting scaffold catalogs. Language names use

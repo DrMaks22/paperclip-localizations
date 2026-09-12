@@ -6,10 +6,10 @@ The patch applies to the source of one specific Paperclip revision. The selected
 
 ## Obtain and review the release
 
-Clone the localization repository **outside** the original Paperclip repository. This example pins release `v2026.9.12.1`:
+First choose [stable or beta](RELEASES.md). Clone the localization repository **outside** the original Paperclip repository. This example pins stable `v2026.9.13.1` for Paperclip `v2026.831.1`. For beta, replace the tag with `v2026.9.13.1-beta.1` and use its separate `manifest.json`:
 
 ```bash
-git clone --branch v2026.9.12.1 --depth 1 https://github.com/DrMaks22/paperclip-localizations.git
+git clone --branch v2026.9.13.1 --depth 1 https://github.com/DrMaks22/paperclip-localizations.git
 cd paperclip-localizations
 node --version
 shasum -a 256 -c SHA256SUMS

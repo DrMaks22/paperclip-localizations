@@ -8,6 +8,8 @@
 
 Read [AGENTS.md](AGENTS.md) and the relevant release's `manifest.json`. English is the source catalog. Localize visible interface text while preserving the meaning, severity, and ownership of each action. Keep product names, identifiers, paths, URLs, protocol values, and user or agent content intact.
 
+New languages target `main` (beta development). The current stable channel preserves a separately reviewed EN/RU runtime and needs an explicit backport to enable additional languages. State the channel and supported upstream revision in compatibility fixes; do not mix stable and master integrations. See [release channels](docs/RELEASES.md).
+
 Keep pull requests focused: a translation correction, a new language, or a compatibility update should be understandable on its own. Report existing unrelated problems separately.
 
 ## Correct an existing translation

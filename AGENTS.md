@@ -9,6 +9,7 @@ This is an independent community localization distribution, not the Paperclip se
 - The installer must be offline, opt-in, version-pinned, fail-closed, and reversible. Never use a forced patch, fuzzy merge, `git reset --hard`, a destructive checkout, or automatic dependency installation.
 - Reject unsupported revisions and dirty or partially patched trees. Never restart or deploy a user's instance automatically.
 - Generate release artifacts only from explicit reviewed Git object IDs, validated catalogs, and audited runtime overlays. A clean patch application is not proof of translation coverage or runtime correctness.
+- Keep stable (official non-prerelease upstream tag) separate from beta (pinned master snapshot). Read `channels.json` and `docs/RELEASES.md`. Never promote master to stable by relabeling it. Beta must have a `-beta.N` tag, GitHub prerelease status and no `Latest` flag; published tags/assets stay immutable.
 - Do not upload local paths, private logs, tokens, account data, or test fixtures from a real deployment.
 
 ## Collaboration

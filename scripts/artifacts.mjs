@@ -4,6 +4,7 @@ import path from "node:path";
 import { createHash } from "node:crypto";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import { validateReleaseChannel } from "./release-channel.mjs";
 
 export const ROOT = fs.realpathSync(fileURLToPath(new URL("../", import.meta.url)));
 export const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
@@ -48,14 +49,22 @@ export function requireNode() {
   if (process.versions.node.split(".")[0] !== "24") throw new Error("Node.js 24.x is required.");
 }
 
-export function readLock() {
-  const lock = JSON.parse(fs.readFileSync(path.join(ROOT, "source-lock.json"), "utf8"));
-  if (lock.schemaVersion !== 1 || !/^[0-9a-f]{40}$/.test(lock.upstreamCommit ?? "") ||
-      !/^[0-9a-f]{40}$/.test(lock.localizationSourceCommit ?? "") || !/^[0-9a-f]{64}$/.test(lock.foundationSha256 ?? "") ||
-      !/^v\d{4}\.\d{1,2}\.\d{1,2}\.\d+$/.test(lock.releaseTag ?? "")) {
-    throw new Error("Invalid source-lock.json. Explicit reviewed revisions, release tag and foundation hash are required.");
+export function validateSourceLock(lock) {
+  validateReleaseChannel(lock);
+  const isHex = (value, length) => typeof value === "string" && value.length === length && /^[0-9a-f]+$/.test(value);
+  if (lock.schemaVersion !== 1 ||
+      !["upstreamCommit", "localizationSourceCommit", "integrationCommit", "integrationTree"].every((field) => Object.hasOwn(lock, field) && isHex(lock[field], 40)) ||
+      !isHex(lock.foundationSha256, 64) || !Number.isSafeInteger(lock.foundationFiles) || lock.foundationFiles < 1 ||
+      lock.upstreamRepository !== "https://github.com/paperclipai/paperclip" ||
+      lock.localizationSourceRepository !== "https://github.com/DrMaks22/paperclip" ||
+      typeof lock.provenance !== "string" || !lock.provenance.trim() || /[\u0000-\u001f\u007f]/.test(lock.provenance)) {
+    throw new Error("Invalid source-lock.json. Explicit reviewed revisions, source repositories, foundation metadata and provenance are required.");
   }
   return lock;
+}
+
+export function readLock() {
+  return validateSourceLock(JSON.parse(fs.readFileSync(path.join(ROOT, "source-lock.json"), "utf8")));
 }
 
 export function permitted(name) {

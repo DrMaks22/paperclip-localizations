@@ -1,6 +1,9 @@
 {
   "schemaVersion": 1,
-  "releaseTag": "v2026.9.12.1",
+  "releaseTag": "v2026.9.13.1-beta.1",
+  "releaseChannel": "beta",
+  "upstreamRef": "master",
+  "runtimeProfile": "community-json",
   "upstreamRepository": "https://github.com/paperclipai/paperclip",
   "upstreamCommit": "04e364236bd2f9787e4a5c581751e0b8c6c16383",
   "localizationSourceRepository": "https://github.com/DrMaks22/paperclip",

@@ -1,7 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { ROOT, readLock, json } from "./artifacts.mjs";
+import { json } from "./artifacts.mjs";
+import { readChannels } from "./channels.mjs";
 
 const UPSTREAM = "paperclipai/paperclip";
 const DESTINATION = "DrMaks22/paperclip-localizations";
@@ -47,20 +48,40 @@ async function findOwnedIssue() {
   throw new Error("Issue lookup pagination limit reached; refusing to create a possible duplicate.");
 }
 
+export function summarizeStable(selected, release, commit) {
+  if (release.prerelease !== false || release.draft !== false ||
+      !/^v\d+\.\d+\.\d+$/.test(release.tag_name ?? "") || !/^[0-9a-f]{40}$/.test(commit.sha ?? "")) {
+    throw new Error("GitHub did not return a valid official stable release and exact commit.");
+  }
+  return { supportedTag: selected.upstreamRef, latestTag: release.tag_name, base: selected.baseCommit, head: commit.sha,
+    changed: selected.upstreamRef !== release.tag_name || selected.baseCommit !== commit.sha,
+    releaseUrl: `https://github.com/${UPSTREAM}/releases/tag/${encodeURIComponent(release.tag_name)}` };
+}
+
 export async function checkUpstream({ issue = false } = {}) {
   if (issue && (process.env.GITHUB_REPOSITORY !== DESTINATION || process.env.GITHUB_REF !== "refs/heads/main" || !["schedule", "workflow_dispatch"].includes(process.env.GITHUB_EVENT_NAME))) {
     throw new Error("Issue updates are restricted to the canonical repository's scheduled/manual workflow.");
   }
-  const lock = readLock();
-  const headResponse = await api(`repos/${UPSTREAM}/commits/master`);
+  const channels = readChannels();
+  const [headResponse, latestStable] = await Promise.all([
+    api(`repos/${UPSTREAM}/commits/master`), api(`repos/${UPSTREAM}/releases/latest`),
+  ]);
   if (!/^[0-9a-f]{40}$/.test(headResponse.sha ?? "")) throw new Error("GitHub did not return an exact commit ID.");
-  const comparison = headResponse.sha === lock.upstreamCommit ? { status: "identical", files: [], ahead_by: 0 } :
-    await api(`repos/${UPSTREAM}/compare/${lock.upstreamCommit}...${headResponse.sha}?per_page=1`);
-  const report = summarizeComparison(lock.upstreamCommit, headResponse.sha, comparison);
+  if (typeof latestStable.tag_name !== "string") throw new Error("GitHub stable release has no tag.");
+  const [comparison, stableCommit] = await Promise.all([
+    headResponse.sha === channels.beta.baseCommit ? { status: "identical", files: [], ahead_by: 0 } :
+      api(`repos/${UPSTREAM}/compare/${channels.beta.baseCommit}...${headResponse.sha}?per_page=1`),
+    api(`repos/${UPSTREAM}/commits/${encodeURIComponent(latestStable.tag_name)}`),
+  ]);
+  const report = summarizeComparison(channels.beta.baseCommit, headResponse.sha, comparison);
+  report.betaChanged = report.changed;
+  report.stable = summarizeStable(channels.stable, latestStable, stableCommit);
+  report.changed = report.betaChanged || report.stable.changed;
+  report.action = report.changed ? "review-required" : "none";
   if (issue) {
     const existing = await findOwnedIssue();
     if (report.changed) {
-      const body = `${MARKER}\n\nPaperclip master has changed since the locked localization base. This is a review queue, not a failed translation test or permission to force a patch.\n\n- Locked base: \`${report.base}\`\n- Current master: \`${report.head}\`\n- [Compare changes](${report.compareUrl})\n- File list may be truncated: ${report.fileListMayBeTruncated}\n\n@DrMaks22: follow [the maintenance procedure](https://github.com/${DESTINATION}/blob/main/docs/MAINTENANCE.md), inspect new UI/runtime text and dependencies, prepare isolated updates, and run the release gates. The released patch remains pinned; no code or deployment was changed by this monitor.\n`;
+      const body = `${MARKER}\n\nPaperclip has changes awaiting channel-specific review. This is a review queue, not a failed translation test or permission to force a patch.\n\n## Stable\n- Supported: \`${report.stable.supportedTag}\` at \`${report.stable.base}\`\n- [Latest official stable](${report.stable.releaseUrl}): \`${report.stable.latestTag}\` at \`${report.stable.head}\`\n- Review required: ${report.stable.changed}\n\n## Beta / master\n- Locked snapshot: \`${report.base}\`\n- Current master: \`${report.head}\`\n- Review required: ${report.betaChanged}\n- [Compare changes](${report.compareUrl})\n- File list may be truncated: ${report.fileListMayBeTruncated}\n\n@DrMaks22: follow [the maintenance procedure](https://github.com/${DESTINATION}/blob/main/docs/MAINTENANCE.md), inspect new UI/runtime text and dependencies, prepare separate stable/beta branches, and run the release gates. Never promote master to stable by relabeling it. Released patches remain pinned; no code or deployment was changed by this monitor.\n`;
       if (!existing) await api(`repos/${DESTINATION}/issues`, { method: "POST", body: { title: TITLE, body } });
       else if (existing.body !== body) await api(`repos/${DESTINATION}/issues/${existing.number}`, { method: "PATCH", body: { body } });
     } else if (existing) await api(`repos/${DESTINATION}/issues/${existing.number}`, { method: "PATCH", body: { state: "closed", state_reason: "completed" } });
@@ -74,6 +95,6 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     if (args.length > 1 || (args.length === 1 && args[0] !== "--issue")) throw new Error("Usage: node scripts/check-upstream.mjs [--issue]");
     const report = await checkUpstream({ issue: args[0] === "--issue" });
     console.log(json(report));
-    if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `## Upstream localization review\n\n${report.changed ? "Review required; compatibility has not been advanced." : "The locked revision matches upstream master."}\n\n[Compare](${report.compareUrl})\n`);
+    if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `## Upstream localization review\n\nStable review required: ${report.stable.changed}. Beta review required: ${report.betaChanged}. Compatibility has not been advanced.\n\n[Master comparison](${report.compareUrl}) · [Official stable](${report.stable.releaseUrl})\n`);
   } catch (error) { console.error(error.message); process.exitCode = 1; }
 }
