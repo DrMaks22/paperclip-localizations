@@ -1,0 +1,5 @@
+* text=auto eol=lf
+*.png -text
+*.jpg -text
+# Unified patches contain intentional single-space context lines.
+*.patch linguist-generated=true whitespace=-blank-at-eol

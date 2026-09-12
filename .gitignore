@@ -1,0 +1,11 @@
+.DS_Store
+node_modules/
+.env
+.env.*
+!.env.example
+tmp/
+coverage/
+*.log
+*.zip
+*.tgz
+.ru-localization-state/

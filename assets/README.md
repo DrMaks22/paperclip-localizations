@@ -1,0 +1,7 @@
+# Cover artwork
+
+`cover.png` is original AI-generated raster artwork for this independent community repository, produced with the built-in image generation tool on 2026-09-12. It is not an official Paperclip or GitHub logo. It is distributed under this repository's MIT license; no exclusive trademark or copyright claim is made about generated elements.
+
+## Generation prompt
+
+Use case: ads-marketing. Asset type: polished wide GitHub README cover for an independent community project named Paperclip Localizations. Create an original editorial software-project illustration, landscape approximately 2:1, generous safe margins. A sculptural paperclip joining two clean paper language cards labeled EN and RU, with a subtle bidirectional connection motif; suggest extensibility with a small unlabelled additional card, not flags or claimed supported languages. Restrained off-white paper, dark graphite typography, one deep blue accent; tactile soft shadows, crisp professional design, attractive at GitHub README width and as a small preview. Include these exact, highly legible texts only: large title "Paperclip Localizations", secondary line "English ↔ Русский", small line "Community language packs". No official Paperclip logo, no GitHub logo, no robots, no flags, no fake UI screenshots, no marketing statistics, no watermark. The composition must communicate translation packs and language switching clearly, without implying official affiliation. Deliver a finished raster cover.

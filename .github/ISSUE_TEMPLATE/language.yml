@@ -1,0 +1,30 @@
+name: New language / Новый язык
+description: Propose a language and coordinate translation and interface review.
+title: "[language] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Reports in English or Russian are welcome. Можно писать по-русски.
+        New languages use a raw nested `locales/<BCP47>.json` catalog. English scaffolds are not published as finished translations.
+  - type: input
+    id: language
+    attributes:
+      label: Language and BCP 47 tag / Язык и тег BCP 47
+      placeholder: Português (Brasil), pt-BR
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed contribution / Предлагаемый вклад
+      description: Describe existing translation work, terminology needs, and any known source ambiguities.
+    validations:
+      required: true
+  - type: textarea
+    id: review
+    attributes:
+      label: Review plan / План проверки
+      description: Explain how native fluency, bilingual accuracy, and main screens will be reviewed. Identify agent-assisted work. For RTL languages, include a separate layout audit.
+    validations:
+      required: true

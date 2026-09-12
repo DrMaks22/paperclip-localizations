@@ -1,0 +1,50 @@
+name: Localization checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: localization-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  toolkit:
+    name: Catalogs and installer (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 24
+      - run: npm run validate
+      - run: npm test
+  artifact:
+    name: Reproducible patch and rollback
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 24
+      - name: Read locked upstream revision
+        id: source
+        run: node -e 'const s=require("./source-lock.json").upstreamCommit; if(!/^[0-9a-f]{40}$/.test(s))process.exit(1); require("fs").appendFileSync(process.env.GITHUB_OUTPUT, "commit="+s+"\n")'
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          repository: paperclipai/paperclip
+          ref: ${{ steps.source.outputs.commit }}
+          path: tmp/upstream
+          persist-credentials: false
+      - run: npm run verify -- --upstream "$GITHUB_WORKSPACE/tmp/upstream"

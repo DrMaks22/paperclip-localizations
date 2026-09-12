@@ -1,0 +1,56 @@
+name: Installation / Установка
+description: Report a compatibility, installer, build, or removal problem.
+title: "[installation] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Reports in English or Russian are welcome. Можно писать по-русски.
+        Forward checks intentionally refuse an already patched tree. Use the same release's `--reverse --check` to verify that state.
+        Redact local user names, private paths, credentials, and deployment data from output.
+  - type: input
+    id: release
+    attributes:
+      label: Localization release / Релиз локализации
+    validations:
+      required: true
+  - type: input
+    id: commit
+    attributes:
+      label: Actual Paperclip commit / Фактический коммит Paperclip
+      description: Output of git rev-parse HEAD in the target worktree.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: OS, Node.js, and Git versions / Версии ОС, Node.js и Git
+    validations:
+      required: true
+  - type: dropdown
+    id: installation
+    attributes:
+      label: Paperclip installation / Способ установки Paperclip
+      options:
+        - Separate Git worktree / Отдельный Git worktree
+        - Existing source checkout / Рабочий каталог исходников
+        - Global npm package / Глобальный npm-пакет
+        - Docker image / Docker-образ
+        - Other / Другой
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: Command and error / Команда и ошибка
+      description: Include the exact flags and redacted output. Do not paste full private logs.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: state
+    attributes:
+      label: Checkout state and previous steps / Состояние checkout и предыдущие действия
+      description: Include redacted git status --short, checksum results, and whether a patch was previously applied or removed.
+    validations:
+      required: true

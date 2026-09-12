@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "releaseTag": "v2026.9.12.1",
+  "upstreamRepository": "https://github.com/paperclipai/paperclip",
+  "upstreamCommit": "04e364236bd2f9787e4a5c581751e0b8c6c16383",
+  "localizationSourceRepository": "https://github.com/DrMaks22/paperclip",
+  "localizationSourceCommit": "9cf846bbf6f174d0d394c4faf08c18d77f54bd38",
+  "integrationCommit": "2bc5fb6a52005d5deae1a615e3ce69d0278e18a3",
+  "integrationTree": "55d33f76665c4d18b1deba8e64861f9037f8f6bf",
+  "foundationSha256": "50ccc489b019403b3bdd72858f34b270609ed5709b02fd7242b8e2e6981454fd",
+  "foundationFiles": 785,
+  "provenance": "The inherited localization commit is public; the integration commit is a local provenance identifier. The complete integration is distributable and reproducible from the public pinned upstream revision and patches/foundation.patch; no local commit object is required to build."
+}

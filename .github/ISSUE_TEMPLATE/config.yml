@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Installation guides / Инструкции по установке
+    url: https://github.com/DrMaks22/paperclip-localizations/blob/main/README.en.md#documentation
+    about: Read the pinned release's installation guide before reporting a compatibility refusal.
+  - name: Paperclip upstream
+    url: https://github.com/paperclipai/paperclip
+    about: Original Paperclip project. This localization distribution is independent.

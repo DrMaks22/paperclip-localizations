@@ -1,0 +1,42 @@
+name: Translation / Перевод
+description: Report an incorrect, missing, or clipped interface translation.
+title: "[translation] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Reports in English or Russian are welcome. Можно писать по-русски.
+        Use synthetic or redacted screenshots; omit credentials and private content.
+  - type: input
+    id: locale
+    attributes:
+      label: Language / Язык
+      placeholder: ru
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Localization release and Paperclip commit / Релиз локализации и коммит Paperclip
+      description: Use the actual checkout commit, not only the manifest's expected value.
+    validations:
+      required: true
+  - type: textarea
+    id: location
+    attributes:
+      label: Screen, steps, and string key / Экран, действия и ключ строки
+      description: Include the route or interface location. A string key is helpful if known.
+    validations:
+      required: true
+  - type: textarea
+    id: wording
+    attributes:
+      label: Current and proposed text / Текущий и предлагаемый текст
+      description: Explain the meaning or layout problem; include the English source if available.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Context or redacted screenshot / Контекст или обезличенный снимок экрана
+      description: For clipping or wrapping, include the viewport size and browser.
