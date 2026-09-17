@@ -6,12 +6,14 @@ This independent distribution follows Paperclip upstream while keeping compatibi
 
 ## Release channels and naming
 
-- **Stable:** an exact official non-prerelease Paperclip tag, currently `v2026.831.1`. Localization tags use `vYYYY.M.D.N`, for example `v2026.9.13.1`. Publish with `--prerelease=false --latest`. Keep stable maintenance on `release/stable-<upstream version>`; never merge master wholesale into it.
+- **Stable:** an exact official non-prerelease Paperclip tag. Localization [v2026.9.17.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.17.1) targets `v2026.916.0`, commit `dffc2b3ca1b9e88fa21cb17493083e682dffd1ca`, on `release/stable-2026.916.0`. Localization tags use `vYYYY.M.D.N`. After completing the release gate, publish with `--prerelease=false --latest`. Keep stable maintenance on `release/stable-<upstream version>`; never merge master wholesale into it.
 - **Beta:** an explicitly reviewed commit from Paperclip master. Localization tags use `vYYYY.M.D.N-beta.N`, for example `v2026.9.13.1-beta.1`. Publish with `--prerelease --latest=false`. `main` is the beta development branch. A green CI run does not turn a master snapshot into a stable Paperclip release.
 
 `source-lock.json` requires `releaseChannel`, `upstreamRef`, and `runtimeProfile`; the builder copies these into `manifest.json` and rejects inconsistent channel/tag/ref metadata. `channels.json` records the selected release in each channel. It is an index, not permission to widen compatibility. The prepublication check resolves the official stable tag to the locked Git commit and refuses upstream prereleases. Tag suffixes, GitHub prerelease flags, titles, README instructions and manifest metadata must agree.
 
 `community-json` applies the audited community runtime integration and supports additional reviewed JSON catalogs. `pinned-en-ru` preserves the historical stable runtime and accepts exactly the English and Russian catalogs. Do not silently attach modern runtime overlays to an older stable patch. Porting new-language registration to stable is separate implementation and verification work.
+
+The immutable [stable `v2026.9.13.1`](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1) remains tied to Paperclip `v2026.831.1` at `65ec059bde30d98c92165b24a30a540800dd1f6f`. The [v2026.9.17.1 report](https://github.com/DrMaks22/paperclip-localizations/blob/v2026.9.17.1/verification/v2026.9.17.1.md) records results and limitations for the new base separately from historical evidence. Beta remains `v2026.9.13.1-beta.1` on `04e364236bd2f9787e4a5c581751e0b8c6c16383`.
 
 The legacy `v2026.9.12.1` tag was published before channel naming was explicit. Its GitHub release is reclassified as beta, with a prominent correction and successor link. Preserve its tag, assets and checksums. All newly published beta tags must include the beta suffix. Never reuse or move a published tag; fix artifacts in a new release. Editing explanatory release metadata does not authorize replacing download bytes.
 

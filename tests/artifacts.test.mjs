@@ -82,6 +82,23 @@ test("disposable clone checks out exact commit and leaves source files and Git m
   } finally { fs.rmSync(scratch, { recursive: true, force: false }); }
 });
 
+test("artifact Git commands cannot trigger configured automatic maintenance", (t) => {
+  const f = fixture(t);
+  for (const [key, value] of Object.entries({
+    "maintenance.auto": "true", "maintenance.autoDetach": "false",
+    "maintenance.gc.enabled": "false", "maintenance.commit-graph.enabled": "true",
+    "maintenance.commit-graph.auto": "-1",
+  })) git(f.upstream, ["config", key, value]);
+  const info = path.join(f.upstream, ".git/objects/info"), before = snapshot(info);
+  const config = fs.readFileSync(path.join(f.upstream, ".git/config"));
+  // Force maintenance to run synchronously on every commit if not suppressed.
+  // This exposes the metadata mutation without racing a background lock file.
+  git(f.upstream, ["-c", "user.name=Synthetic Artifact Test", "-c", "user.email=test@example.invalid",
+    "commit", "--allow-empty", "-m", "Synthetic maintenance trigger"]);
+  assert.deepEqual(snapshot(info), before, "automatic maintenance must not write a commit graph");
+  assert.deepEqual(fs.readFileSync(path.join(f.upstream, ".git/config")), config);
+});
+
 test("disposable clone does not inherit source executable filters or hooks", (t) => {
   const f = fixture(t), marker = path.join(f.root, "helper-ran.txt");
   const script = path.join(f.root, "helper.mjs");

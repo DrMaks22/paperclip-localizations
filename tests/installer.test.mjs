@@ -16,7 +16,7 @@ const gitEnv = { ...cleanEnv, GIT_CONFIG_NOSYSTEM: '1', GIT_CONFIG_GLOBAL: os.de
   GIT_COMMITTER_NAME: 'Synthetic Test', GIT_COMMITTER_EMAIL: 'test@example.invalid',
   GIT_AUTHOR_DATE: '2026-09-07T00:00:00Z', GIT_COMMITTER_DATE: '2026-09-07T00:00:00Z' };
 function git(repo, ...args) {
-  const result = spawnSync('git', ['-C', repo, ...args], { env: gitEnv, encoding: 'utf8' });
+  const result = spawnSync('git', ['-c', 'maintenance.auto=false', '-c', 'gc.auto=0', '-C', repo, ...args], { env: gitEnv, encoding: 'utf8' });
   assert.equal(result.status, 0, result.stderr); return result.stdout;
 }
 function write(root, relative, content) { const file = path.join(root, relative); fs.mkdirSync(path.dirname(file), { recursive: true }); fs.writeFileSync(file, content); }
