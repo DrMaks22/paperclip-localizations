@@ -19,7 +19,9 @@
 
 Новый коммит master не становится поддерживаемым только потому, что появился на GitHub. Установщик принимает только исходники на коммите `baseCommit`, указанном в `manifest.json` выбранного релиза. Если текущий экземпляр новее или отличается от этой базы, не понижайте его версию ради локализации. Подготовьте совместимый выпуск или дождитесь его. Переход между каналами — отдельное обновление приложения с учётом базы данных, а не обычное переключение языка.
 
-В каждом архиве находятся собственные manifest, патч, установщик, каталоги и контрольные суммы. Не смешивайте файлы stable и beta. `channels.json` помогает выбрать релиз, но совместимость проверяется по manifest именно скачанного релиза. `main` — ветка разработки beta, `release/stable-2026.916.0` — ветка сопровождения стабильной версии. Ветки меняются со временем; для установки используйте закреплённый тег.
+В каждом архиве находятся собственные manifest, патч, установщик, каталоги и контрольные суммы. Не смешивайте файлы stable и beta. `channels.json` помогает выбрать релиз, но совместимость проверяется по manifest именно скачанного релиза. `main` — ветка разработки beta; исходники текущего stable сохранены в неизменяемом теге `v2026.9.17.1`. Завершённую релизную ветку можно удалить после проверки тега и опубликованных файлов. Для следующих исправлений её восстанавливают из этого тега, не объединяя stable с beta. Для установки используйте закреплённый тег, а не рабочую ветку.
+
+Жёлтая плашка GitHub **Compare & pull request** означает лишь, что в ветку недавно отправили изменения. Это не ошибка и не обязательный шаг выпуска. Релизную ветку stable не нужно сливать с `main` только ради удаления этой плашки; порядок безопасного завершения работы описан в [регламенте сопровождения](MAINTENANCE.md#after-publication-close-completed-branches).
 
 Перевод относится к строкам интерфейса, включённым в патч. Полный перевод каждого динамического экрана не гарантируется. Пользовательский контент, ответы агентов, журналы и исходные диагностические сообщения провайдеров сохраняются на языке источника.
 
@@ -65,7 +67,9 @@ Choose stable `v2026.9.17.1` for Paperclip `v2026.916.0`. The previous immutable
 
 The installer accepts only its own `manifest.baseCommit`. Never downgrade a running instance to fit a patch. Switching channels is an application upgrade decision, including database compatibility; it is not merely changing the UI language. Each archive contains its own manifest, patch, installer, catalogs and checksums. Do not mix channel files. `channels.json` is a release-selection index, not an override of the downloaded manifest.
 
-`main` tracks beta development; `release/stable-2026.916.0` maintains the stable base. Install immutable release tags, not either moving branch.
+`main` tracks beta development; the current stable source is preserved by immutable tag `v2026.9.17.1`. A completed release branch may be deleted after verifying its tag and published assets. Recreate it from that tag for subsequent fixes without merging stable into beta. Install immutable release tags, not working branches.
+
+GitHub's yellow **Compare & pull request** banner only signals a recent branch push. It is neither an error nor a required release step. Do not merge a stable release branch into `main` merely to remove it; follow the [post-publication cleanup procedure](MAINTENANCE.md#after-publication-close-completed-branches).
 
 Translation covers the interface strings included in the patch; it does not guarantee complete translation of every dynamic screen. User content, agent responses, logs, and raw provider diagnostics remain in their source language.
 
