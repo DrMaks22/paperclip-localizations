@@ -28,10 +28,12 @@ export function command(executable, args, cwd, input) {
 }
 
 export function git(cwd, args) {
+  // Do not let automatic background work race metadata snapshots or cleanup.
   return command("git", [
     "-c", `core.hooksPath=${os.devNull}`, "-c", "core.fsmonitor=false",
     "-c", "core.autocrlf=false", "-c", "color.ui=false", "-c", "core.quotePath=true",
     "-c", `core.attributesFile=${os.devNull}`, "-c", "diff.algorithm=myers",
+    "-c", "maintenance.auto=false", "-c", "gc.auto=0",
     "-C", cwd, ...args,
   ], ROOT);
 }

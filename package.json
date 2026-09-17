@@ -1,6 +1,6 @@
 {
   "name": "paperclip-localizations",
-  "version": "2026.9.13-beta.1",
+  "version": "2026.9.17",
   "private": true,
   "description": "Community localization catalogs and safe version-pinned UI patches for Paperclip",
   "type": "module",

@@ -2,7 +2,7 @@
 
 **Русский** · [English](README.en.md)
 
-[![Проверки](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml/badge.svg)](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml) · [Stable](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1) · [Beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1-beta.1) · [Каналы и проверки](docs/RELEASES.md)
+[![Проверки](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml/badge.svg)](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml) · [Stable](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.17.1) · [Beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1-beta.1) · [Каналы и проверки](docs/RELEASES.md)
 
 ![Paperclip Localizations — переводы интерфейса Paperclip](assets/cover.png)
 
@@ -12,10 +12,12 @@
 
 | Канал локализации | Совместимая версия Paperclip | Когда выбирать |
 | --- | --- | --- |
-| [Stable — v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1) | Официальный стабильный выпуск **v2026.831.1**, коммит `65ec059` | Основной вариант для этой стабильной версии. Английский и русский интерфейс. |
+| [Stable — v2026.9.17.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.17.1) | Официальный стабильный выпуск **v2026.916.0**, коммит `dffc2b3` | Для этой стабильной версии. Английский и русский интерфейс. |
 | [Beta — v2026.9.13.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1-beta.1) | Проверенный снимок **master**, коммит `04e3642` | Для отдельной тестовой сборки на указанном коммите master и проверки новых языковых каталогов. |
 
 **Stable и beta — разные патчи для разных исходников.** Beta не подходит к стабильному выпуску и не обновляется автоматически вместе с master. `Latest` в GitHub Releases относится только к stable. Номер релиза локализации не совпадает с номером Paperclip.
+
+Для Paperclip `v2026.831.1` остаётся доступен прежний неизменяемый [stable v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1). Результаты и ограничения проверок новой базы приведены в [отчёте v2026.9.17.1](https://github.com/DrMaks22/paperclip-localizations/blob/v2026.9.17.1/verification/v2026.9.17.1.md).
 
 В ветке `main` ведётся разработка beta. Для установки скачивайте выбранный **релиз**, а не текущую ветку. Полные коммиты, различия и результаты проверок приведены в [описании каналов](docs/RELEASES.md); сведения о каналах в формате JSON доступны в [`channels.json`](channels.json).
 
@@ -25,10 +27,10 @@
 
 ```text
 Установи локализацию Paperclip из DrMaks22/paperclip-localizations,
-стабильный релиз v2026.9.13.1 для Paperclip v2026.831.1.
+стабильный релиз v2026.9.17.1 для Paperclip v2026.916.0.
 Мой исходный Git-репозиторий Paperclip находится в
 /absolute/path/to/paperclip. Прочитай и выполни инструкции этого релиза:
-https://github.com/DrMaks22/paperclip-localizations/blob/v2026.9.13.1/docs/AGENT-INSTALL.md
+https://github.com/DrMaks22/paperclip-localizations/blob/v2026.9.17.1/docs/AGENT-INSTALL.md
 Сначала проверь исходники, manifest.json, контрольные суммы и совместимость.
 Подготовь отдельный worktree на manifest.baseCommit, проверь и примени патч,
 выполни необходимые проверки сборки и сообщи результат.
@@ -60,7 +62,7 @@ node apply.mjs --repo /absolute/path/to/paperclip-localized --apply
 
 ## Добавить язык или исправить перевод
 
-Исправления и новые языки принимаются через пул-реквесты в `main`. Для нового языка создайте файл `locales/<BCP47>.json`, например `locales/de.json`, на основе [`locales/en.json`](locales/en.json) и добавьте перевод, сохранив вложенную структуру. В beta название языка на его собственном языке определяется средствами проекта; вручную менять переключатель языка не нужно. Текущий stable сохраняет ранее проверенную интеграцию EN/RU; перенос новых языков в stable требует отдельного проверенного выпуска.
+Исправления и новые языки принимаются через пул-реквесты в `main`. Для нового языка создайте файл `locales/<BCP47>.json`, например `locales/de.json`, на основе [`locales/en.json`](locales/en.json) и добавьте перевод, сохранив вложенную структуру. В beta название языка на его собственном языке определяется средствами проекта; вручную менять переключатель языка не нужно. Stable использует профиль `pinned-en-ru` с английским и русским языками; перенос новых языков в stable требует отдельного проверенного выпуска.
 
 Перед слиянием проверьте ключи, подстановки, формы множественного числа и разметку. Отдельно проверьте естественность перевода и его точность по отношению к английскому тексту, а также просмотрите основные экраны. Для языков с письмом справа налево требуется отдельная визуальная проверка. Полный порядок — в [CONTRIBUTING.md](CONTRIBUTING.md).
 
