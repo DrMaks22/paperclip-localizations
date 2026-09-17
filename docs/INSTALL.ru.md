@@ -6,10 +6,10 @@
 
 ## Получить и проверить релиз
 
-Сначала выберите [stable или beta](RELEASES.md). Клонируйте локализацию **за пределами** исходного репозитория Paperclip. В примере закреплён stable `v2026.9.13.1` для Paperclip `v2026.831.1`. Для beta замените тег на `v2026.9.13.1-beta.1` и используйте её отдельный `manifest.json`:
+Сначала выберите [stable или beta](RELEASES.md). Клонируйте локализацию **за пределами** исходного репозитория Paperclip. В примере закреплён stable [v2026.9.17.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.17.1) для Paperclip `v2026.916.0`. Для Paperclip `v2026.831.1` используйте прежний неизменяемый [v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1) и его инструкцию. Для beta замените тег на `v2026.9.13.1-beta.1` и используйте её отдельный `manifest.json`:
 
 ```bash
-git clone --branch v2026.9.13.1 --depth 1 https://github.com/DrMaks22/paperclip-localizations.git
+git clone --branch v2026.9.17.1 --depth 1 https://github.com/DrMaks22/paperclip-localizations.git
 cd paperclip-localizations
 node --version
 shasum -a 256 -c SHA256SUMS
