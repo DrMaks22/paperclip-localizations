@@ -1,4 +1,4 @@
-/** Audited presentation and test adaptations of source commit 9cf846bbf6f174d0d394c4faf08c18d77f54bd38.
+/** Audited presentation and test adaptations of the integration recorded in source-lock.json.
  * Exact source hashes and replacement counts deliberately fail on drift.
  * Canonical data, prompts, user text, routes and the i18n provider are untouched.
  */
@@ -8,52 +8,46 @@ export const TEMPLATE_TARGETS = [
   { template: "locales.ts.template", path: "ui/src/i18n/locales.ts", sha256: "a20d86d14a6b584e0415631a9cde23e4a5df881a1525c8082dd58ce66c4b5400" },
   { template: "LocaleSwitcher.tsx", path: "ui/src/components/LocaleSwitcher.tsx", sha256: "76be368ee80382776c6ed2b0fc720bf0cfc93ebcc7028465a23ee6086ffb6a57" },
 ];
-const RUSSIAN_GATE = '!i18n.resolvedLanguage?.startsWith("ru")';
-const ENGLISH_GATE = '(i18n.resolvedLanguage ?? "en").split("-")[0] === "en"';
-const RUSSIAN_CONDITION = 'i18n.resolvedLanguage?.startsWith("ru")';
-const NON_ENGLISH_CONDITION = '(i18n.resolvedLanguage ?? "en").split("-")[0] !== "en"';
-
+// The reviewed source now includes the seven presentation adaptations. Keep
+// their hashes as preflight guards, with no repeated text transformations.
 export const EXACT_EDITS = [
   {
     path: "ui/src/components/task-chat/task-chat-display.ts",
-    sha256: "896b003e3dfb672edb1bb70332bfe4bc41837f27d7d78637224dd34a7ebd7b75",
-    replacements: [{ before: RUSSIAN_GATE, after: ENGLISH_GATE, count: 3 }],
-    reason: "Use selected-locale time, token and duration formatting; preserve exact English upstream fallback.",
+    sha256: "17eecd8890b1f915b85b7d695056aef7aa0e4428d0771fb1d88f1f18864eb48c",
+    replacements: [],
+    reason: "Preserve the source's selected-locale time, token and duration formatting, exact English fallback, and new AI-account marker labels.",
   },
   {
     path: "ui/src/components/task-chat/task-chat-phase-summary-display.ts",
-    sha256: "4202fbf69142d1a3cd6bc3c94b946133ff87a30ed67dcad19544cb99f7f606fe",
-    replacements: [
-      { before: RUSSIAN_GATE, after: ENGLISH_GATE, count: 1 },
-      { before: 'translated.push(index === 0 ? label : label.replace(/^[А-ЯЁ]/, (letter) => letter.toLowerCase()));', after: 'translated.push(index === 0 || !i18n.resolvedLanguage?.startsWith("ru") ? label : label.replace(/^[А-ЯЁ]/, (letter) => letter.toLowerCase()));', count: 1 },
-    ],
-    reason: "Translate only the existing finite generated grammar in all non-English languages; retain Russian-specific casing only for Russian.",
+    sha256: "0df9efe3fbe4d821423fed3d30dc81171e32da4812491fdf505f51b4e60fe503",
+    replacements: [],
+    reason: "The source already translates generated grammar in all non-English languages. Its remaining Russian condition protects phrase casing and must not be replaced.",
   },
   ...[
-    ["ui/src/components/CodexSubscriptionPanel.tsx", "63d818ebb628ca780778aba9b551a2a01d9971df45265c076c5c374aecb76576"],
-    ["ui/src/components/ClaudeSubscriptionPanel.tsx", "876f0a0001cf555a0164a7e66eadd9c517e9674f5afcaa717febac7e95e5f232"],
+    ["ui/src/components/CodexSubscriptionPanel.tsx", "46be2e6d474b0e865f6997b735184e40d94e1818c84d6e5262a70257a8ff8727"],
+    ["ui/src/components/ClaudeSubscriptionPanel.tsx", "6fe04085c069637d3e682b65e9169cbc66738e70127805380f422b66cb1ca150"],
   ].map(([path, sha256]) => ({
     path, sha256,
-    replacements: [{ before: RUSSIAN_CONDITION, after: NON_ENGLISH_CONDITION, count: 1 }],
-    reason: "Format quota percentages using the selected language while retaining English numeric display.",
+    replacements: [],
+    reason: "Preserve the source's selected-language quota formatting and English numeric display.",
   })),
   {
     path: "ui/src/lib/attention.ts",
-    sha256: "32349d8c789cb7c522bc2a5eec23c2791a91fd59c74e9dc7b2306dabb48ad21f",
-    replacements: [{ before: `const number = (value: number | string) => ${RUSSIAN_CONDITION}`, after: `const number = (value: number | string) => ${NON_ENGLISH_CONDITION}`, count: 1 }],
-    reason: "Use selected-locale budget numbers; Russian quotation conventions remain Russian-specific.",
+    sha256: "674429ed083dcd66b216c0243939497aab055d1b92f1cff789cc05a83181c225",
+    replacements: [],
+    reason: "Preserve the source's selected-locale budget numbers and Russian-specific quotation conventions.",
   },
   {
     path: "ui/src/lib/pipeline-breakdown.ts",
-    sha256: "49489f41d6614e1099a1a646d7a8360ee9ab5916c1ec8ed41fe1f0cc9235df71",
-    replacements: [{ before: RUSSIAN_CONDITION, after: NON_ENGLISH_CONDITION, count: 1 }],
-    reason: "Append English plural s only in English; preserve custom user nouns in other languages.",
+    sha256: "8182a892b3edde95d2437ba0ac7dde67167a917488612e5f8c73626e1dadc0a9",
+    replacements: [],
+    reason: "Preserve the source's English-only plural suffix and unchanged custom nouns in other languages.",
   },
   {
     path: "ui/src/pages/apps/connection-owner.tsx",
-    sha256: "f165a5afc485aa2913bac5ae442d5d80561cd6f3d236f6f824008fb26bf0ea85",
-    replacements: [{ before: 'i18n.resolvedLanguage === "ru"', after: NON_ENGLISH_CONDITION, count: 1 }],
-    reason: "Add English possessive punctuation only in English; translators receive the unmodified given name elsewhere.",
+    sha256: "3f70e53d8b4ad8d0f0f9a5b4fceadc39fe3a2daf7dd3629a3f611a2fd6d9f58d",
+    replacements: [],
+    reason: "Preserve the source's English-only possessive punctuation and unmodified given names in other languages.",
   },
   {
     path: "ui/src/i18n/locale-sync.test.ts",

@@ -1,5 +1,7 @@
 # Maintenance and releases
 
+This maintenance branch prepares unpublished beta candidate `v2026.9.28.1-beta.1`, pinned to `cbc5132e6c3925683c5fd720edf47c56b2998faf`. Its channel-index change is a proposal. The published stable and beta described below remain unchanged until separately approved publication. Stable `v2026.916.1` is handled independently in PR #3; never copy that payload into beta or promote this master snapshot to stable.
+
 [Русская главная страница](../README.md) · [English overview](../README.en.md) · [Contributing](../CONTRIBUTING.md)
 
 This independent distribution follows Paperclip upstream while keeping compatibility explicit. `manifest.json` is the source of truth for each release; changing it alone cannot make a patch compatible.

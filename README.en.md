@@ -2,6 +2,10 @@
 
 [Русский](README.md) · **English**
 
+> **Beta preparation branch, not a published release.** This branch prepares `v2026.9.28.1-beta.1` for the exact master snapshot `cbc5132e6c3925683c5fd720edf47c56b2998faf`. Its beta entry in `channels.json` is proposed metadata, not an available download. Links and commands below still describe the previous published releases; they do not support this new base. Stable for Paperclip `v2026.916.1` is prepared separately in [PR #3](https://github.com/DrMaks22/paperclip-localizations/pull/3). Merging, publication and deployment require separate owner approval.
+
+[New beta candidate verification and limitations](verification/v2026.9.28.1-beta.1.md).
+
 [![Checks](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml/badge.svg)](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml) · [Stable](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.17.1) · [Beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1-beta.1) · [Channels and verification](docs/RELEASES.md)
 
 ![Paperclip Localizations — community translations for Paperclip](assets/cover.png)

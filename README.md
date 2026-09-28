@@ -2,6 +2,10 @@
 
 **Русский** · [English](README.en.md)
 
+> **Ветка подготовки beta, не опубликованный релиз.** Здесь готовится `v2026.9.28.1-beta.1` для точного снимка master `cbc5132e6c3925683c5fd720edf47c56b2998faf`. Запись beta в `channels.json` — кандидат, а не доступный для скачивания выпуск. Ссылки и команды ниже относятся к прежним опубликованным релизам; они не подходят к новой базе. Stable для Paperclip `v2026.916.1` готовится отдельно в [PR #3](https://github.com/DrMaks22/paperclip-localizations/pull/3). Слияние, публикация и развёртывание требуют отдельного одобрения владельца.
+
+[Проверки и ограничения нового кандидата beta](verification/v2026.9.28.1-beta.1.md).
+
 [![Проверки](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml/badge.svg)](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml) · [Stable](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.17.1) · [Beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1-beta.1) · [Каналы и проверки](docs/RELEASES.md)
 
 ![Paperclip Localizations — переводы интерфейса Paperclip](assets/cover.png)
