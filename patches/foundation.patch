@@ -19332,7 +19332,7 @@ index 0c1ca68b76d56647ad386adbb9264c260e00a0cd..406db18ddf0ced5d69913b1810e7701d
          {links.map((link) => (
            <Link
 diff --git a/ui/src/components/IssueChatThread.test.tsx b/ui/src/components/IssueChatThread.test.tsx
-index 8226818170824c36fe9fae0a0cb600c6b2bfc843..7d5204be937a0185f44b82eaf3280c0fceb7b6e4 100644
+index 8226818170824c36fe9fae0a0cb600c6b2bfc843..a22972661773081fcdbb20da258418e3899405d5 100644
 --- a/ui/src/components/IssueChatThread.test.tsx
 +++ b/ui/src/components/IssueChatThread.test.tsx
 @@ -12,6 +12,9 @@ import { flushSync } from "react-dom";
@@ -19438,7 +19438,74 @@ index 8226818170824c36fe9fae0a0cb600c6b2bfc843..7d5204be937a0185f44b82eaf3280c0f
    it("falls back to execCommand for comment copy actions in insecure contexts", async () => {
      const clipboardWrite = vi.fn(async () => {
        throw new Error("Clipboard API blocked");
-@@ -4451,6 +4520,46 @@ describe("IssueChatThread", () => {
+@@ -3350,6 +3419,66 @@ describe("IssueChatThread", () => {
+     });
+   });
+ 
++  it.each([
++    { locale: "en", scope: "leaf" },
++    { locale: "ru", scope: "leaf" },
++    { locale: "en", scope: "subtree" },
++    { locale: "ru", scope: "subtree" },
++  ] as const)("preserves the composer draft across pause-check failure, late $scope pause and locale switching ($locale)", async ({ locale, scope }) => {
++    const root = createRoot(container);
++    const draftKey = "tree-control-locale-draft";
++    const draft = "Original user draft — не переводить";
++    const onAdd = vi.fn(async () => {});
++    const onResume = vi.fn();
++    const otherLocale = locale === "en" ? "ru" : "en";
++    const editor = () => container.querySelector<HTMLTextAreaElement>('textarea[aria-label="Issue chat editor"]');
++    const render = async (state: "ready" | "error" | "paused") => {
++      await act(async () => root.render(<MemoryRouter><IssueChatThread
++        comments={[]} linkedRuns={[]} timelineEvents={[]} liveRuns={[]}
++        onAdd={onAdd} draftKey={draftKey} enableLiveTranscriptPolling={false}
++        composerDisabledReason={state === "error" ? i18n.t("sep12Screens.couldNotCheckPause") : null}
++        composerPause={state === "paused" ? { scope, onResume } : null}
++      /></MemoryRouter>));
++    };
++    try {
++      await i18n.changeLanguage(locale);
++      localStorage.setItem(draftKey, draft);
++      await render("ready");
++      expect(editor()?.value).toBe(draft);
++      await act(async () => { await i18n.changeLanguage(otherLocale); });
++      expect(editor()?.value).toBe(draft);
++      expect(editor()?.placeholder).toBe(otherLocale === "ru" ? "Ответить" : "Reply");
++
++      await render("error");
++      expect(editor()).toBeNull();
++      expect(container.textContent).toContain(i18n.t("sep12Screens.couldNotCheckPause"));
++      expect(localStorage.getItem(draftKey)).toBe(draft);
++
++      await render("paused");
++      expect(editor()).toBeNull();
++      expect(container.textContent).toContain(otherLocale === "ru" ? "Черновик сохранён." : "Your draft is saved.");
++      await act(async () => { await i18n.changeLanguage(locale); });
++      const label = locale === "ru"
++        ? scope === "leaf" ? "Возобновить задачу" : "Возобновить выполнение дерева задач"
++        : scope === "leaf" ? "Resume task" : "Resume subtree";
++      const resumeButton = [...container.querySelectorAll("button")].find((button) => button.textContent === label);
++      expect(resumeButton).toBeTruthy();
++      await act(async () => resumeButton!.click());
++      expect(onResume).toHaveBeenCalledOnce();
++      expect(onAdd).not.toHaveBeenCalled();
++      expect(localStorage.getItem(draftKey)).toBe(draft);
++
++      await render("ready");
++      expect(editor()?.value).toBe(draft);
++      expect(editor()?.placeholder).toBe(locale === "ru" ? "Ответить" : "Reply");
++      expect(localStorage.getItem(draftKey)).toBe(draft);
++      expect(container.querySelector('[data-testid="paused-composer-takeover"]')).toBeNull();
++      expect([...container.querySelectorAll("button")].some((button) => button.textContent === (locale === "ru" ? "Отправить" : "Send"))).toBe(true);
++    } finally {
++      await act(async () => { root.unmount(); await i18n.changeLanguage("en"); });
++    }
++  });
++
+   it("keeps the composer floating with a capped editor height", () => {
+     const root = createRoot(container);
+ 
+@@ -4451,6 +4580,46 @@ describe("IssueChatThread", () => {
      });
    });
  
@@ -19485,7 +19552,7 @@ index 8226818170824c36fe9fae0a0cb600c6b2bfc843..7d5204be937a0185f44b82eaf3280c0f
    it("keeps a running chain-of-thought in the Working state between commands", () => {
      const root = createRoot(container);
  
-@@ -4636,6 +4745,49 @@ describe("IssueChatThread", () => {
+@@ -4636,6 +4805,49 @@ describe("IssueChatThread", () => {
        avatarUrl: "/avatars/alice.png",
      });
    });
@@ -59661,7 +59728,7 @@ index c655bb299ec708a14ecf98183f688d077194922c..92d6e57ac9f1220509b22143988efd7e
        </InteractionShell>
      );
 diff --git a/ui/src/components/task-chat/TaskChatComposer.test.tsx b/ui/src/components/task-chat/TaskChatComposer.test.tsx
-index c056e35a9f0fc2e90dba0f9d16e4debd8398461a..9c1ad690f88c7ddf5068f6ebb76168a525d17c87 100644
+index c056e35a9f0fc2e90dba0f9d16e4debd8398461a..1c2d59b435237ba6fcd6f343d6f9b9c0de94519c 100644
 --- a/ui/src/components/task-chat/TaskChatComposer.test.tsx
 +++ b/ui/src/components/task-chat/TaskChatComposer.test.tsx
 @@ -4,6 +4,7 @@ import { act, StrictMode, useState, type ReactElement } from "react";
@@ -59672,7 +59739,94 @@ index c056e35a9f0fc2e90dba0f9d16e4debd8398461a..9c1ad690f88c7ddf5068f6ebb76168a5
  import {
    buildAgentMentionHref,
    buildSkillMentionHref,
-@@ -1808,6 +1809,54 @@ describe("TaskChatComposer", () => {
+@@ -59,11 +60,13 @@ vi.mock("@mdxeditor/editor", async () => {
+       onChange,
+       readOnly,
+       contentEditableClassName,
++      placeholder,
+     }: {
+       markdown: string;
+       onChange?: (value: string) => void;
+       readOnly?: boolean;
+       contentEditableClassName?: string;
++      placeholder?: string;
+     },
+     forwardedRef: React.ForwardedRef<MockHandle | null>,
+   ) {
+@@ -107,6 +110,7 @@ vi.mock("@mdxeditor/editor", async () => {
+         ref={editableRef}
+         data-testid="mdx-editor"
+         data-content-class-name={contentEditableClassName}
++        data-placeholder={placeholder}
+         contentEditable={!readOnly}
+         suppressContentEditableWarning
+         onInput={(e) => {
+@@ -807,6 +811,64 @@ describe("TaskChatComposer", () => {
+     );
+   });
+ 
++  describe.each(["standard", "ask", "planning"] as const)("localized %s placeholder", (workMode) => {
++    it.each([
++      { mobile: false, assigned: false },
++      { mobile: true, assigned: false },
++      { mobile: false, assigned: true },
++      { mobile: true, assigned: true },
++    ])("preserves raw names and drafts on language changes (mobile=$mobile, assigned=$assigned)", async ({ mobile, assigned }) => {
++      const rawName = "Ada {{agent}} /RAW_NAME";
++      const options = [{ id: "agent:original-id", label: rawName }];
++      const originalOptions = JSON.stringify(options);
++      const onAdd = vi.fn();
++      const onPendingAssigneeChange = vi.fn();
++      const onWorkModeChange = vi.fn();
++      const expected = {
++        en: {
++          standard: (name: string) => mobile ? `Message ${name}…` : `Message ${name} — describe what you want done…`,
++          ask: (name: string) => mobile ? `Ask ${name}…` : `Ask ${name} a question — read-only, nothing runs…`,
++          planning: (name: string) => mobile ? `Plan with ${name}…` : `Plan with ${name} — shapes the plan doc, no code changes…`,
++        },
++        ru: {
++          standard: (name: string) => mobile ? `Написать: ${name}…` : `${name} — опишите, что нужно сделать…`,
++          ask: (name: string) => mobile ? `Задать вопрос: ${name}…` : `${name} — задайте вопрос. Только чтение, без запуска действий…`,
++          planning: (name: string) => mobile ? `Составить план: ${name}…` : `${name} — подготовка документа с планом. Без изменений кода…`,
++        },
++      };
++      try {
++        await i18n.changeLanguage("en");
++        render(<TaskChatComposer
++          onAdd={onAdd} workMode={workMode} mobile={mobile} draftKey="placeholder-locale-draft"
++          currentAssigneeValue={assigned ? options[0].id : undefined}
++          reassignOptions={options} onPendingAssigneeChange={onPendingAssigneeChange}
++          onWorkModeChange={onWorkModeChange}
++        />);
++        typeText("Original user draft /RAW_PATH {{agent}}");
++        const originalEditor = editable();
++        onPendingAssigneeChange.mockClear();
++        for (const locale of ["en", "ru", "en"] as const) {
++          await act(async () => { await i18n.changeLanguage(locale); });
++          const name = assigned ? rawName : locale === "ru" ? "агент" : "the agent";
++          const placeholder = editable().dataset.placeholder;
++          expect(placeholder).toBe(expected[locale][workMode](name));
++          if (locale === "ru" && !mobile) {
++            // A standalone name avoids imposing Russian case on arbitrary labels.
++            expect(placeholder?.startsWith(`${name} — `)).toBe(true);
++          }
++          expect(editable()).toBe(originalEditor);
++          expect(editable().textContent).toBe("Original user draft /RAW_PATH {{agent}}");
++          expect(JSON.stringify(options)).toBe(originalOptions);
++          expect(onAdd).not.toHaveBeenCalled();
++          expect(onPendingAssigneeChange).not.toHaveBeenCalled();
++          expect(onWorkModeChange).not.toHaveBeenCalled();
++        }
++      } finally {
++        await act(async () => { await i18n.changeLanguage("en"); });
++      }
++    });
++  });
++
+   it("uses a compact mobile editor that can grow with the message", () => {
+     render(<TaskChatComposer onAdd={vi.fn()} workMode="standard" mobile />);
+ 
+@@ -1808,6 +1870,54 @@ describe("TaskChatComposer", () => {
    });
  
    describe("paused task takeover", () => {
@@ -59727,7 +59881,7 @@ index c056e35a9f0fc2e90dba0f9d16e4debd8398461a..9c1ad690f88c7ddf5068f6ebb76168a5
      it("allows only standalone /new to resume a paused conversation through the normal composer", async () => {
        const onAdd = vi.fn().mockResolvedValue(undefined);
        render(<TaskChatComposer onAdd={onAdd} conversationMode workMode="standard" pause={{ scope: "leaf" }} />);
-@@ -2344,6 +2393,24 @@ describe("TaskChatComposer", () => {
+@@ -2344,6 +2454,24 @@ describe("TaskChatComposer", () => {
          expect(container.textContent).toContain("2 of 3");
        });
  
@@ -59752,7 +59906,7 @@ index c056e35a9f0fc2e90dba0f9d16e4debd8398461a..9c1ad690f88c7ddf5068f6ebb76168a5
        it.each(["navigation", "custom answer", "disabled", "unmount"])("cancels the pending advance on %s", (reason) => {
          render(form());
          click('[role="radio"]');
-@@ -2686,6 +2753,29 @@ describe("TaskChatComposer", () => {
+@@ -2686,6 +2814,29 @@ describe("TaskChatComposer", () => {
  describe("composer Stop", () => {
    function stopButton() { return container.querySelector<HTMLButtonElement>('[data-testid="task-chat-composer-stop"]'); }
  
@@ -59782,7 +59936,7 @@ index c056e35a9f0fc2e90dba0f9d16e4debd8398461a..9c1ad690f88c7ddf5068f6ebb76168a5
    it("switches Stop to Send with text, whitespace back to Stop, without interrupting on keyboard submit", async () => {
      const onStop = vi.fn(async () => {});
      const onAdd = vi.fn(async () => {});
-@@ -2733,6 +2823,32 @@ describe("composer Stop", () => {
+@@ -2733,6 +2884,32 @@ describe("composer Stop", () => {
      expect(container.querySelector('[role="alert"]')).toBeNull();
    });
  
@@ -87586,7 +87740,7 @@ index de0aba03a22585522d8a09e60bf575c50c7a41c6..c1caf6460bb1fff27fcb4eba6bdc2371
    }
  }
 diff --git a/ui/src/i18n/locales/ru.json b/ui/src/i18n/locales/ru.json
-index f9c6e1f0793e12b8c350d3db1757e53787e96290..52ddcccddbe4c82252cc61642a9a82c8fd1fbab4 100644
+index f9c6e1f0793e12b8c350d3db1757e53787e96290..37de98fdd5c2f465fb3a8bae551804352bd136e0 100644
 --- a/ui/src/i18n/locales/ru.json
 +++ b/ui/src/i18n/locales/ru.json
 @@ -1,9 +1,17724 @@
@@ -98582,9 +98736,9 @@ index f9c6e1f0793e12b8c350d3db1757e53787e96290..52ddcccddbe4c82252cc61642a9a82c8
 +    "ui_Root_blocker_1atxc6f": "Первопричина блокировки",
 +    "ui_Ultimately_blocked_by_1yrvflq": "В итоге блокирует",
 +    "ui_Still_waiting_on_live_work_ezc8hg": "Всё ещё ожидает завершения текущей работы",
-+    "composerPlanning": "План с {{agent}} — подготовка документа плана, без изменений кода…",
-+    "composerAsk": "Вопрос для {{agent}} — только чтение, без запуска действий…",
-+    "composerStandard": "Сообщение для {{agent}} — опишите, что нужно сделать…",
++    "composerPlanning": "{{agent}} — подготовка документа с планом. Без изменений кода…",
++    "composerAsk": "{{agent}} — задайте вопрос. Только чтение, без запуска действий…",
++    "composerStandard": "{{agent}} — опишите, что нужно сделать…",
 +    "dismissRequest": "Закрыть: {{label}}",
 +    "removeAttachment": "Удалить {{name}}",
 +    "valid_number": "Введите корректное число.",
@@ -132828,10 +132982,10 @@ index 3c58263375ac40d2c6383cd336686da5b802da71..4434b44cba080ac6f15a947338c46689
            </div>
            <GoalTree goals={goals} goalLink={(goal) => `/goals/${goal.id}`} />
 diff --git a/ui/src/pages/Inbox.test.tsx b/ui/src/pages/Inbox.test.tsx
-index f14a659fa428840507f283488b9f7b101e0eab1b..dcae8df51b68fd7d9fa325972d503c4f2cbcd9ec 100644
+index 2cd0a36adaf9261becfb20b02cf25964c9915704..58113c02aeae5a3713ad39832ec296037fe417c8 100644
 --- a/ui/src/pages/Inbox.test.tsx
 +++ b/ui/src/pages/Inbox.test.tsx
-@@ -806,25 +806,31 @@ describe("Inbox toolbar", () => {
+@@ -806,28 +806,31 @@ describe("Inbox toolbar", () => {
      });
      const root = createRoot(container);
  
@@ -132842,7 +132996,10 @@ index f14a659fa428840507f283488b9f7b101e0eab1b..dcae8df51b68fd7d9fa325972d503c4f
 -        </QueryClientProvider>,
 -      );
 -    });
--    await vi.waitFor(() => expect(container.textContent).toContain("Workspace-aware task"));
+-    // Workspace metadata resolves independently of the task list.
+-    await vi.waitFor(() => {
+-      expect(container.querySelector('[data-slot="task-row"]')?.textContent).toContain("Workspace Aurora");
+-    });
 -
 -    const taskRow = container.querySelector('[data-slot="task-row"]');
 -    const identifier = taskRow?.querySelector('[data-slot="task-row-identifier"]');
@@ -132860,7 +133017,7 @@ index f14a659fa428840507f283488b9f7b101e0eab1b..dcae8df51b68fd7d9fa325972d503c4f
 +          </QueryClientProvider>,
 +        );
 +      });
-+      await vi.waitFor(() => expect(container.textContent).toContain("Workspace-aware task"));
++      // Workspace metadata resolves independently of the task list.
 +      await vi.waitFor(() => {
 +        expect(container.querySelector('[data-slot="task-row"]')?.textContent).toContain("Workspace Aurora");
 +      });
@@ -135871,8 +136028,103 @@ index 4835a004174984668eec1be424c974134710cf16..ea5cf5de389287d34d1c93dfad9049da
                    </Button>
                  )}
                </div>
+diff --git a/ui/src/pages/IssueDetail.test.tsx b/ui/src/pages/IssueDetail.test.tsx
+index 3e5a8f8e217f9817d43b60c660d4a84aee612ca5..b584a7aac832a18da51bcc374c02dcc3a5dad233 100644
+--- a/ui/src/pages/IssueDetail.test.tsx
++++ b/ui/src/pages/IssueDetail.test.tsx
+@@ -42,6 +42,7 @@ import {
+ import { getRecentTasksStorageKey, readRecentTasks } from "../lib/recent-tasks";
+ import { ApiError } from "../api/client";
+ import type { issuesApi } from "../api/issues";
++import { i18n } from "@/i18n";
+ 
+ const mockIssuesApi = vi.hoisted(() => ({
+   get: vi.fn(),
+@@ -5291,15 +5292,30 @@ describe("IssueDetail", () => {
+     localStorage.removeItem("paperclip:issue-comment-draft:issue-1");
+   });
+ 
+-  describe.each([false, true])("composer tree control (mobile=%s)", (isMobile) => {
++  describe.each([
++    { isMobile: false, locale: "en" },
++    { isMobile: true, locale: "en" },
++    { isMobile: false, locale: "ru" },
++    { isMobile: true, locale: "ru" },
++  ] as const)("composer tree control (mobile=$isMobile, locale=$locale)", ({ isMobile, locale }) => {
+     const treeControlKey = ["issues", "tree-control-state", "PAP-1"];
++    const otherLocale = locale === "en" ? "ru" : "en";
++    const pauseCheckError = {
++      en: "Couldn’t check whether this task is paused. Refresh to try again.",
++      ru: "Не удалось проверить, приостановлена ли задача. Обновите страницу и повторите попытку.",
++    };
+     const composerProps = () => mockIssueChatThreadRender.mock.calls.at(-1)?.[0] as {
+       composerDisabledReason: string | null;
+       composerPause: TaskComposerPause | null;
+       onAdd: (body: string) => Promise<void>;
+     };
+ 
++    afterEach(async () => {
++      await act(async () => { await i18n.changeLanguage("en"); });
++    });
++
+     async function renderWithPendingTreeControl() {
++      await i18n.changeLanguage(locale);
+       mockSidebarState.isMobile = isMobile;
+       mockIssuesApi.get.mockResolvedValue(createIssue());
+       let resolve!: (value: Awaited<ReturnType<typeof issuesApi.getTreeControlState>>) => void;
+@@ -5331,12 +5347,16 @@ describe("IssueDetail", () => {
+       const response = await renderWithPendingTreeControl();
+       expect(composerProps().composerDisabledReason).toBeNull();
+       expect(composerProps().composerPause).toBeNull();
++      await act(async () => { await i18n.changeLanguage(otherLocale); });
++      expect(composerProps().composerDisabledReason).toBeNull();
++      expect(mockIssuesApi.addComment).not.toHaveBeenCalled();
+       await act(async () => {
+         await composerProps().onAdd("Keep working");
+       });
+       expect(mockIssuesApi.addComment).toHaveBeenCalledWith(
+         "PAP-1", "Keep working", undefined, undefined, undefined, expect.any(String),
+       );
++      expect(mockIssuesApi.addComment).toHaveBeenCalledOnce();
+       expect(queryClient.getQueryState(treeControlKey)?.status).toBe("pending");
+ 
+       response.resolve({ activePauseHold: null });
+@@ -5352,10 +5372,12 @@ describe("IssueDetail", () => {
+       response.reject(new Error("tree control unavailable"));
+       await waitForAssertion(() => {
+         expect(queryClient.getQueryState(treeControlKey)?.status).toBe("error");
+-        expect(composerProps().composerDisabledReason).toBe(
+-          "Couldn’t check whether this task is paused. Refresh to try again.",
+-        );
++        expect(composerProps().composerDisabledReason).toBe(pauseCheckError[locale]);
+       });
++      const requestCount = mockIssuesApi.getTreeControlState.mock.calls.length;
++      await act(async () => { await i18n.changeLanguage(otherLocale); });
++      expect(composerProps().composerDisabledReason).toBe(pauseCheckError[otherLocale]);
++      expect(mockIssuesApi.getTreeControlState).toHaveBeenCalledTimes(requestCount);
+     });
+ 
+     it.each([true, false])("applies a late pause response (root=%s)", async (isRoot) => {
+@@ -5375,6 +5397,17 @@ describe("IssueDetail", () => {
+         expect(composerProps().composerPause?.scope).toBe(isRoot ? "leaf" : "subtree");
+         expect(container.querySelector('[data-testid="paused-composer-takeover"]')).not.toBeNull();
+       });
++      for (const language of [locale, otherLocale]) {
++        await act(async () => { await i18n.changeLanguage(language); });
++        const takeover = container.querySelector('[data-testid="paused-composer-takeover"]');
++        expect(takeover?.textContent).toContain(language === "ru"
++          ? isRoot ? "Задача приостановлена." : "Выполнение дерева задач приостановлено."
++          : isRoot ? "Task is paused." : "Subtree is paused.");
++        expect(takeover?.textContent).toContain(language === "ru"
++          ? isRoot ? "Возобновить задачу" : "Возобновить выполнение дерева задач"
++          : isRoot ? "Resume task" : "Resume subtree");
++        if (!isRoot) expect(composerProps().composerPause?.resumeHref).toBe("/issues/parent-1");
++      }
+     });
+   });
+ 
 diff --git a/ui/src/pages/IssueDetail.tsx b/ui/src/pages/IssueDetail.tsx
-index f4c3bb53bbbd3691be268a47405df822a1593aa8..104e7b12ed14f226f82346fd46e9edc81a0caa38 100644
+index 9d3e9619ad153d401d66f126edf031c1ed221b37..5a8fac4d7dc8a6bcbc3672a8a64197ee977f5c6e 100644
 --- a/ui/src/pages/IssueDetail.tsx
 +++ b/ui/src/pages/IssueDetail.tsx
 @@ -9,6 +9,10 @@ import { TaskDetailTasksPanel } from "@/components/task-detail/TaskDetailTasksPa
@@ -137741,8 +137993,8 @@ index f4c3bb53bbbd3691be268a47405df822a1593aa8..104e7b12ed14f226f82346fd46e9edc8
                      } : undefined,
                      resumeHref: !activePauseHold.isRoot ? createIssueDetailPath(activePauseHoldRoot?.identifier ?? activePauseHold.rootIssueId) : undefined,
                    } : null}
--                  composerDisabledReason={issue.conversationAgentId && !instanceExperimentalSettings?.enableAgentChat ? "Agent Chat is disabled in Experimental settings." : issueId && treeControlStatePending ? "Checking task status…" : treeControlStateError ? "Couldn’t check whether this task is paused. Refresh to try again." : null}
-+                  composerDisabledReason={issue.conversationAgentId && !instanceExperimentalSettings?.enableAgentChat ? t("sep12Screens.agentChatDisabledComposer") : issueId && treeControlStatePending ? t("sep12Screens.checkingTaskStatus") : treeControlStateError ? t("sep12Screens.couldNotCheckPause") : null}
+-                  composerDisabledReason={issue.conversationAgentId && !instanceExperimentalSettings?.enableAgentChat ? "Agent Chat is disabled in Experimental settings." : treeControlStateError ? "Couldn’t check whether this task is paused. Refresh to try again." : null}
++                  composerDisabledReason={issue.conversationAgentId && !instanceExperimentalSettings?.enableAgentChat ? t("sep12Screens.agentChatDisabledComposer") : treeControlStateError ? t("sep12Screens.couldNotCheckPause") : null}
                    composerHint={composerHint}
                    queuedCommentReason={queuedCommentReason}
                    onVote={handleCommentVote}

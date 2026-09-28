@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
-  "releaseTag": "v2026.9.17.1",
+  "releaseTag": "v2026.9.28.1",
   "releaseChannel": "stable",
-  "upstreamRef": "v2026.916.0",
+  "upstreamRef": "v2026.916.1",
   "runtimeProfile": "pinned-en-ru",
   "upstreamRepository": "https://github.com/paperclipai/paperclip",
-  "upstreamCommit": "dffc2b3ca1b9e88fa21cb17493083e682dffd1ca",
+  "upstreamCommit": "d554c4789ed3930f8a53ac9fdf6503b3187097da",
   "localizationSourceRepository": "https://github.com/DrMaks22/paperclip",
   "localizationSourceCommit": "9cf846bbf6f174d0d394c4faf08c18d77f54bd38",
-  "integrationCommit": "364e448fa6bbd19c6012c42feaa55c306179be7c",
-  "integrationTree": "dae14e85dabf726716edf6a0aac94dd31dca368c",
-  "foundationSha256": "12b685301d5cd8b6bf878bb2597dc39a6221ee23661f7dda5122851e72ba4acf",
-  "foundationFiles": 829,
+  "integrationCommit": "fcb45e7fd67ab9af76247ccabb2b26fb7dbe49f0",
+  "integrationTree": "dfb51855404f420f608cc6c1166c5ff9d619ef8d",
+  "foundationSha256": "06acc7dd602f5a912a8503768474b29f74e436276b6817fe438395dd38e37eb2",
+  "foundationFiles": 830,
   "provenance": "The inherited localization commit is public; the integration commit is a local provenance identifier. The complete integration is distributable and reproducible from the public pinned upstream revision and patches/foundation.patch; no local commit object is required to build."
 }

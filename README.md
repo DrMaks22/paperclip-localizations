@@ -2,7 +2,9 @@
 
 **Русский** · [English](README.en.md)
 
-[![Проверки](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml/badge.svg)](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml) · [Stable](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.17.1) · [Beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1-beta.1) · [Каналы и проверки](docs/RELEASES.md)
+> **Кандидат на выпуск, не опубликован.** Эта ветка готовит `v2026.9.28.1` для Paperclip `v2026.916.1`. Ссылки на новый тег и команды его скачивания ниже начнут работать только после одобрения и публикации. Не применяйте опубликованный патч `v2026.9.17.1` к новой версии Paperclip. Проверки кандидата: [отчёт](verification/v2026.9.28.1.md). Слияние, выпуск и развёртывание требуют отдельного одобрения владельца.
+
+[![Проверки](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml/badge.svg)](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml) · [Stable](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.28.1) · [Beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1-beta.1) · [Каналы и проверки](docs/RELEASES.md)
 
 ![Paperclip Localizations — переводы интерфейса Paperclip](assets/cover.png)
 
@@ -12,12 +14,12 @@
 
 | Канал локализации | Совместимая версия Paperclip | Когда выбирать |
 | --- | --- | --- |
-| [Stable — v2026.9.17.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.17.1) | Официальный стабильный выпуск **v2026.916.0**, коммит `dffc2b3` | Для этой стабильной версии. Английский и русский интерфейс. |
+| [Stable — v2026.9.28.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.28.1) | Официальный стабильный выпуск **v2026.916.1**, коммит `d554c47` | Для этой стабильной версии. Английский и русский интерфейс. |
 | [Beta — v2026.9.13.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1-beta.1) | Проверенный снимок **master**, коммит `04e3642` | Для отдельной тестовой сборки на указанном коммите master и проверки новых языковых каталогов. |
 
 **Stable и beta — разные патчи для разных исходников.** Beta не подходит к стабильному выпуску и не обновляется автоматически вместе с master. `Latest` в GitHub Releases относится только к stable. Номер релиза локализации не совпадает с номером Paperclip.
 
-Для Paperclip `v2026.831.1` остаётся доступен прежний неизменяемый [stable v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1). Результаты и ограничения проверок новой базы приведены в [отчёте v2026.9.17.1](https://github.com/DrMaks22/paperclip-localizations/blob/v2026.9.17.1/verification/v2026.9.17.1.md).
+Опубликованный [stable v2026.9.17.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.17.1) остаётся доступен для Paperclip `v2026.916.0`, а [stable v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1) — для `v2026.831.1`. Их теги и файлы неизменны. Результаты и ограничения проверок нового кандидата приведены в [отчёте v2026.9.28.1](verification/v2026.9.28.1.md).
 
 В ветке `main` ведётся разработка beta. Для установки скачивайте выбранный **релиз**, а не текущую ветку. Полные коммиты, различия и результаты проверок приведены в [описании каналов](docs/RELEASES.md); сведения о каналах в формате JSON доступны в [`channels.json`](channels.json).
 
@@ -27,10 +29,10 @@
 
 ```text
 Установи локализацию Paperclip из DrMaks22/paperclip-localizations,
-стабильный релиз v2026.9.17.1 для Paperclip v2026.916.0.
+стабильный релиз v2026.9.28.1 для Paperclip v2026.916.1.
 Мой исходный Git-репозиторий Paperclip находится в
 /absolute/path/to/paperclip. Прочитай и выполни инструкции этого релиза:
-https://github.com/DrMaks22/paperclip-localizations/blob/v2026.9.17.1/docs/AGENT-INSTALL.md
+https://github.com/DrMaks22/paperclip-localizations/blob/v2026.9.28.1/docs/AGENT-INSTALL.md
 Сначала проверь исходники, manifest.json, контрольные суммы и совместимость.
 Подготовь отдельный worktree на manifest.baseCommit, проверь и примени патч,
 выполни необходимые проверки сборки и сообщи результат.
