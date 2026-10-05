@@ -1,6 +1,6 @@
 # Installation
 
-> This branch contains unpublished candidate `v2026.9.28.1`. The tag-download command below is for use after approval and publication; that tag does not exist yet. Do not substitute an older release targeting different Paperclip source. See [candidate checks and limitations](../verification/v2026.9.28.1.md).
+> This branch contains unpublished candidate `v2026.10.5.1`. The tag-download command below is for use after approval and publication; that tag does not exist yet. Do not substitute an older release targeting different Paperclip source. See [candidate checks and limitations](../verification/v2026.10.5.1.md).
 
 [Overview](../README.en.md) · [Русский](INSTALL.ru.md) · [Install with an agent](AGENT-INSTALL.md)
 
@@ -8,10 +8,10 @@ The patch applies to the source of one specific Paperclip revision. The selected
 
 ## Obtain and review the release
 
-First choose [stable or beta](RELEASES.md). Clone the localization repository **outside** the original Paperclip repository. This example pins stable [v2026.9.28.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.28.1) for Paperclip `v2026.916.1`. For Paperclip `v2026.831.1`, use the previous immutable [v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1) and its instructions. For beta, replace the tag with `v2026.9.13.1-beta.1` and use its separate `manifest.json`:
+First choose [stable or beta](RELEASES.md). Clone the localization repository **outside** the original Paperclip repository. This example pins stable [v2026.10.5.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.5.1) for Paperclip `v2026.1001.0`. For Paperclip `v2026.831.1`, use the previous immutable [v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1) and its instructions. For beta, replace the tag with `v2026.9.13.1-beta.1` and use its separate `manifest.json`:
 
 ```bash
-git clone --branch v2026.9.28.1 --depth 1 https://github.com/DrMaks22/paperclip-localizations.git
+git clone --branch v2026.10.5.1 --depth 1 https://github.com/DrMaks22/paperclip-localizations.git
 cd paperclip-localizations
 node --version
 shasum -a 256 -c SHA256SUMS
