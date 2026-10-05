@@ -9,9 +9,9 @@
   },
   "beta": {
     "releaseChannel": "beta",
-    "releaseTag": "v2026.9.28.1-beta.1",
+    "releaseTag": "v2026.10.5.1-beta.1",
     "upstreamRef": "master",
-    "baseCommit": "cbc5132e6c3925683c5fd720edf47c56b2998faf",
+    "baseCommit": "1c07b5903b1b11139b1e1ce052a3cd4885865d90",
     "runtimeProfile": "community-json"
   }
 }

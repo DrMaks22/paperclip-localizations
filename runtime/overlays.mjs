@@ -13,9 +13,9 @@ export const TEMPLATE_TARGETS = [
 export const EXACT_EDITS = [
   {
     path: "ui/src/components/task-chat/task-chat-display.ts",
-    sha256: "17eecd8890b1f915b85b7d695056aef7aa0e4428d0771fb1d88f1f18864eb48c",
+    sha256: "e20a6db44b477c7310e0620540083263401edd846e97e95adc7415ad6268a894",
     replacements: [],
-    reason: "Preserve the source's selected-locale time, token and duration formatting, exact English fallback, and new AI-account marker labels.",
+    reason: "Preserve selected-locale formatting, exact English fallback and AI-account markers. October 5 adds only exact built-in Naming the task / Named the task display mappings; canonical models and all formatting logic are unchanged.",
   },
   {
     path: "ui/src/components/task-chat/task-chat-phase-summary-display.ts",

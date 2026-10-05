@@ -2,15 +2,15 @@
 
 [Русская главная](../README.md) · [English overview](../README.en.md)
 
-## Кандидат beta / Beta candidate — 2026-09-28
+## Кандидат beta / Beta candidate — 2026-10-05
 
-Эта ветка готовит **неопубликованный** `v2026.9.28.1-beta.1`: master `cbc5132e6c3925683c5fd720edf47c56b2998faf`, профиль `community-json`. Она не меняет опубликованные теги и файлы. `channels.json` в этой ветке содержит предлагаемую запись beta; таблицы и команды ниже описывают действующие опубликованные выпуски. Не применяйте их старые патчи к новой базе. Кандидат stable для официального `v2026.916.1` находится в отдельном [PR #3](https://github.com/DrMaks22/paperclip-localizations/pull/3), не в этом пакете.
+Эта ветка готовит **неопубликованный** `v2026.10.5.1-beta.1`: master `1c07b5903b1b11139b1e1ce052a3cd4885865d90`, профиль `community-json`. Она не меняет опубликованные теги и файлы. `channels.json` в этой ветке содержит предлагаемую запись beta; таблицы и команды ниже описывают действующие опубликованные выпуски. Не применяйте их старые патчи к новой базе. Кандидат stable для официального `v2026.1001.0` находится в отдельном [PR #3](https://github.com/DrMaks22/paperclip-localizations/pull/3), не в этом пакете.
 
-This branch prepares **unpublished** `v2026.9.28.1-beta.1`, pinned to master `cbc5132e6c3925683c5fd720edf47c56b2998faf` with `community-json`. Its proposed beta index does not publish a release or modify existing tags/assets. The tables and installation commands below describe the still-published releases, whose old patches must not be applied to this new base. The official `v2026.916.1` stable update is separate in [PR #3](https://github.com/DrMaks22/paperclip-localizations/pull/3).
+This branch prepares **unpublished** `v2026.10.5.1-beta.1`, pinned to master `1c07b5903b1b11139b1e1ce052a3cd4885865d90` with `community-json`. Its proposed beta index does not publish a release or modify existing tags/assets. The tables and installation commands below describe the still-published releases, whose old patches must not be applied to this new base. The official `v2026.1001.0` stable update is separate in [PR #3](https://github.com/DrMaks22/paperclip-localizations/pull/3).
 
 After completing the remaining release gate and obtaining approval, a beta release must use `-beta.N`, `prerelease: true`, and `Latest: false`. No release or deployment is authorized by this branch.
 
-[Проверки кандидата и ограничения / Candidate verification and limitations](../verification/v2026.9.28.1-beta.1.md).
+[Проверки кандидата и ограничения / Candidate verification and limitations](../verification/v2026.10.5.1-beta.1.md).
 
 ## Русский
 
