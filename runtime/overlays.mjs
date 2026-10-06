@@ -13,9 +13,9 @@ export const TEMPLATE_TARGETS = [
 export const EXACT_EDITS = [
   {
     path: "ui/src/components/task-chat/task-chat-display.ts",
-    sha256: "e20a6db44b477c7310e0620540083263401edd846e97e95adc7415ad6268a894",
+    sha256: "cc6259ab809692f01735820851703f29b49f24068b087b7eed59df96366d9838",
     replacements: [],
-    reason: "Preserve selected-locale formatting, exact English fallback and AI-account markers. October 5 adds only exact built-in Naming the task / Named the task display mappings; canonical models and all formatting logic are unchanged.",
+    reason: "Preserve selected-locale formatting, exact English fallback and AI-account markers. October 7 adds exact generated model/connection notices, first-party feedback-tool captions gated by canonical operation identity, and full-match marker guards. Provider error prefixes, canonical models and unknown diagnostics remain raw.",
   },
   {
     path: "ui/src/components/task-chat/task-chat-phase-summary-display.ts",
@@ -45,9 +45,9 @@ export const EXACT_EDITS = [
   },
   {
     path: "ui/src/pages/apps/connection-owner.tsx",
-    sha256: "3f70e53d8b4ad8d0f0f9a5b4fceadc39fe3a2daf7dd3629a3f611a2fd6d9f58d",
+    sha256: "64f3bbd9065285770ba79943285a4ecc08ee1c5eed52c73b78b8fe72f20001d8",
     replacements: [],
-    reason: "Preserve the source's English-only possessive punctuation and unmodified given names in other languages.",
+    reason: "Preserve the source's English-only possessive punctuation and unmodified given names in other languages. October 7 separates canonical application identity from its translated display name; customized names, provider email addresses and tenant hostnames remain intact.",
   },
   {
     path: "ui/src/i18n/locale-sync.test.ts",
