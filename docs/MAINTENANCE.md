@@ -1,19 +1,21 @@
 # Maintenance and releases
 
+This branch carries the stable `v2026.10.7.1` package for Paperclip `v2026.1005.0`. Do not merge this stable payload into beta's `main`. The existing isolated `release/stable-2026.916.1` review base is retained to avoid duplicate maintenance pull requests. After approved publication, update only the stable channel index, installation links and report on `main`.
+
 [Русская главная страница](../README.md) · [English overview](../README.en.md) · [Contributing](../CONTRIBUTING.md)
 
 This independent distribution follows Paperclip upstream while keeping compatibility explicit. `manifest.json` is the source of truth for each release; changing it alone cannot make a patch compatible.
 
 ## Release channels and naming
 
-- **Stable:** an exact official non-prerelease Paperclip tag. Localization [v2026.9.17.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.17.1) targets `v2026.916.0`, commit `dffc2b3ca1b9e88fa21cb17493083e682dffd1ca`, on `release/stable-2026.916.0`. Localization tags use `vYYYY.M.D.N`. After completing the release gate, publish with `--prerelease=false --latest`. Keep stable maintenance on `release/stable-<upstream version>`; never merge master wholesale into it.
+- **Stable:** an exact official non-prerelease Paperclip tag. Localization [v2026.10.7.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.1) targets `v2026.1005.0`, commit `467125fafb47a8520856504fecc48d6e32055db1`, on `release/stable-2026.916.1`. Localization tags use `vYYYY.M.D.N`. After completing the release gate, publish with `--prerelease=false --latest`. Keep stable maintenance on `release/stable-<upstream version>`; never merge master wholesale into it.
 - **Beta:** an explicitly reviewed commit from Paperclip master. Localization tags use `vYYYY.M.D.N-beta.N`, for example `v2026.9.13.1-beta.1`. Publish with `--prerelease --latest=false`. `main` is the beta development branch. A green CI run does not turn a master snapshot into a stable Paperclip release.
 
 `source-lock.json` requires `releaseChannel`, `upstreamRef`, and `runtimeProfile`; the builder copies these into `manifest.json` and rejects inconsistent channel/tag/ref metadata. `channels.json` records the selected release in each channel. It is an index, not permission to widen compatibility. The prepublication check resolves the official stable tag to the locked Git commit and refuses upstream prereleases. Tag suffixes, GitHub prerelease flags, titles, README instructions and manifest metadata must agree.
 
 `community-json` applies the audited community runtime integration and supports additional reviewed JSON catalogs. `pinned-en-ru` preserves the historical stable runtime and accepts exactly the English and Russian catalogs. Do not silently attach modern runtime overlays to an older stable patch. Porting new-language registration to stable is separate implementation and verification work.
 
-The immutable [stable `v2026.9.13.1`](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1) remains tied to Paperclip `v2026.831.1` at `65ec059bde30d98c92165b24a30a540800dd1f6f`. The [v2026.9.17.1 report](https://github.com/DrMaks22/paperclip-localizations/blob/v2026.9.17.1/verification/v2026.9.17.1.md) records results and limitations for the new base separately from historical evidence. Beta remains `v2026.9.13.1-beta.1` on `04e364236bd2f9787e4a5c581751e0b8c6c16383`.
+The immutable [stable `v2026.9.13.1`](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1) remains tied to Paperclip `v2026.831.1` at `65ec059bde30d98c92165b24a30a540800dd1f6f`. The [v2026.10.7.1 report](https://github.com/DrMaks22/paperclip-localizations/blob/v2026.10.7.1/verification/v2026.10.7.1.md) records results and limitations for the new base separately from historical evidence. Beta remains `v2026.9.13.1-beta.1` on `04e364236bd2f9787e4a5c581751e0b8c6c16383`.
 
 The legacy `v2026.9.12.1` tag was published before channel naming was explicit. Its GitHub release is reclassified as beta, with a prominent correction and successor link. Preserve its tag, assets and checksums. All newly published beta tags must include the beta suffix. Never reuse or move a published tag; fix artifacts in a new release. Editing explanatory release metadata does not authorize replacing download bytes.
 
@@ -39,6 +41,17 @@ Prepare changes in an isolated checkout. Select explicit upstream object IDs, re
 5. For runtime changes, run targeted upstream tests, type checking, a production build, and browser checks in the isolated patched checkout. A clean patch application alone is not evidence of correct runtime behavior or translation coverage.
 6. Review the release documentation, pinned example tag, compatibility statement, provenance, license notices, and contributor credit. Release notes must state the supported base, changes, checks performed, limitations, and upgrade path. Report skipped checks explicitly; do not label an incompletely reviewed language ready.
 7. Run `npm run check:release` with network access before publication. This read-only gate checks the channel index, local manifest/lock alignment, upstream release metadata and exact Git ref. Run it again with `-- --published` after publication to verify the GitHub prerelease flag and that beta is not `Latest`. Publish only through the maintainer's authorized release process. Keep the tag, generated artifacts, checksums, and release notes aligned. A release does not automatically deploy to any user's instance.
+
+## After publication: close completed branches
+
+With the maintainer's approval, remove completed remote working branches without changing a published release:
+
+1. Verify the published tag resolves to the exact release branch tip, the release assets and checksums are available, and no open pull request or unpublished work depends on that branch. If the branch contains later commits, preserve and review them instead of deleting it.
+2. Confirm that `main` contains the current channel index, installation links and verification report. A stable payload stays on its release tag; do not merge it into beta merely to clear GitHub's **Compare & pull request** suggestion.
+3. Remove only the verified remote release branch. A documentation/index branch may also be removed after its pull request is merged and all its commits are reachable from `main`. Use an exact expected-head check when deleting remote refs so a concurrent push cannot be lost. Keep tags, release assets and local worktrees unchanged.
+4. Verify the remote refs and release again. The immutable tag preserves the complete source history; a stable maintenance branch can be recreated from it for a later fix, which must pass the release gate and receive a new tag.
+
+This cleanup is part of an explicitly approved release task, not something the weekly checks perform automatically. Release branches are isolated working branches, not missing pull requests into `main`. This policy is retained from the later `main` documentation update; the historical published stable tag remains unchanged.
 
 ## Reproduce a release or rebuild catalog changes
 
