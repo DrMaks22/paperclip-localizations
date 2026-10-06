@@ -6,7 +6,7 @@
 
 [New beta candidate verification and limitations](verification/v2026.10.5.1-beta.1.md).
 
-[![Checks](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml/badge.svg)](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml) · [Stable](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.17.1) · [Beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1-beta.1) · [Channels and verification](docs/RELEASES.md)
+[![Checks](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml/badge.svg)](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml) · [Stable](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.1) · [Beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1-beta.1) · [Channels and verification](docs/RELEASES.md)
 
 ![Paperclip Localizations — community translations for Paperclip](assets/cover.png)
 
@@ -16,12 +16,12 @@ An independent community project for translating the [Paperclip](https://github.
 
 | Localization channel | Compatible Paperclip version | Intended use |
 | --- | --- | --- |
-| [Stable — v2026.9.17.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.17.1) | Official stable release **v2026.916.0**, commit `dffc2b3` | For that stable version. English and Russian UI. |
+| [Stable — v2026.10.7.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.1) | Official stable release **v2026.1005.0**, commit `467125f` | For that stable version. English and Russian UI. |
 | [Beta — v2026.9.13.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1-beta.1) | Reviewed **master snapshot**, commit `04e3642` | Prerelease for testing development code and new language catalogs. |
 
 **Stable and beta are different patches for different source revisions.** Beta does not target the stable release and does not automatically follow master. GitHub Releases reserves `Latest` for stable. Localization version numbers are separate from Paperclip's version numbers.
 
-The previous immutable [stable v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1) remains available for Paperclip `v2026.831.1`. See the [v2026.9.17.1 report](https://github.com/DrMaks22/paperclip-localizations/blob/v2026.9.17.1/verification/v2026.9.17.1.md) for verification results and limitations on the new base.
+Published [stable v2026.9.17.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.17.1) remains available for Paperclip `v2026.916.0`, and [stable v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1) for `v2026.831.1`. Their tags and assets are unchanged. See the [v2026.10.7.1 report](verification/v2026.10.7.1.md) for the new package's verification results and limitations.
 
 The `main` branch contains beta development. Install a selected **release**, not the moving branch. See the [channel guide](docs/RELEASES.md) for full commits, differences, and verification; [`channels.json`](channels.json) is the machine-readable index.
 
@@ -31,10 +31,10 @@ Copy this task into **Codex, Claude Code, or OpenCode**. Replace the path with y
 
 ```text
 Install the Paperclip localization from DrMaks22/paperclip-localizations,
-stable release v2026.9.17.1 for Paperclip v2026.916.0.
+stable release v2026.10.7.1 for Paperclip v2026.1005.0.
 My original Paperclip Git repository is at
 /absolute/path/to/paperclip. Read and follow this release's instructions:
-https://github.com/DrMaks22/paperclip-localizations/blob/v2026.9.17.1/docs/AGENT-INSTALL.md
+https://github.com/DrMaks22/paperclip-localizations/blob/v2026.10.7.1/docs/AGENT-INSTALL.md
 First review the source, manifest.json, checksums, and compatibility.
 Prepare a separate worktree at manifest.baseCommit, check and apply the patch,
 run the necessary build checks, and report the result.
