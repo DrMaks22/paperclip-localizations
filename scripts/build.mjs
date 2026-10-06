@@ -67,6 +67,12 @@ export async function buildArtifact({ upstream, check = false }) {
     if (new Set(foundationPaths).size !== foundationPaths.length || !foundationPaths.length) throw new Error("Invalid foundation path list.");
     git(checkout, ["apply", "--check", "--whitespace=nowarn", foundationFile]);
     git(checkout, ["apply", "--whitespace=nowarn", foundationFile]);
+    // Verify the exported integration before catalogs or runtime overlays can
+    // legitimately change its tree. Hash syntax alone does not prove provenance.
+    git(checkout, ["add", "--all"]);
+    const foundationChanges = git(checkout, ["diff", "--cached", "--no-renames", "--name-only", "-z", lock.upstreamCommit]).toString().split("\0").filter(Boolean);
+    if (foundationChanges.length !== lock.foundationFiles) throw new Error("Foundation changed file count does not match source-lock.");
+    if (git(checkout, ["write-tree"]).toString().trim() !== lock.integrationTree) throw new Error("Foundation integration tree does not match source-lock.");
     if (lock.runtimeProfile === "pinned-en-ru") await preparePinnedLocales({ target: checkout, root: ROOT });
     else await prepareLocales({ target: checkout, root: ROOT });
     git(checkout, ["add", "--all"]);
