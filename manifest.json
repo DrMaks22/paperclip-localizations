@@ -8,7 +8,7 @@
   "baseCommit": "c365a16e346dd7bee27709a3be92b965c3dd054d",
   "sourceCommit": "9cf846bbf6f174d0d394c4faf08c18d77f54bd38",
   "patchFile": "paperclip-localizations.patch",
-  "patchSha256": "b9e44743823101175f01b96f7c507bd08edcd7ff3e7074cb40eb6ec2f7c11b7f",
+  "patchSha256": "62da446743314de5846d708a50d65101972376d8e592382b666781015e580584",
   "allowedPaths": [
     "scripts/locale-changes.d.mts",
     "scripts/locale-changes.mjs",
@@ -392,6 +392,7 @@
     "ui/src/components/ai-connections/AiConnectionPoolConnector.tsx",
     "ui/src/components/ai-connections/AiConnectionPoolRunDetails.tsx",
     "ui/src/components/ai-connections/AiConnectionSelect.tsx",
+    "ui/src/components/ai-connections/AiConnectionUsagePanel.test.tsx",
     "ui/src/components/ai-connections/AiConnectionUsagePanel.tsx",
     "ui/src/components/ai-connections/AiProviderSetup.tsx",
     "ui/src/components/ai-connections/ManagedAiConnectionDetails.tsx",
@@ -403,6 +404,7 @@
     "ui/src/components/artifacts/ArtifactGroupCard.tsx",
     "ui/src/components/artifacts/ArtifactLocalization.test.tsx",
     "ui/src/components/artifacts/IssueArtifactCard.tsx",
+    "ui/src/components/artifacts/IssueArtifactFile.test.tsx",
     "ui/src/components/artifacts/MediaArtifactCard.tsx",
     "ui/src/components/artifacts/RichArtifactCards.tsx",
     "ui/src/components/chat/AgentChannelsPanel.tsx",
@@ -2495,8 +2497,12 @@
       "sha256": "2de1ec6833201a705f2704c3a016b8f12829d527306c8e834ba3c181e0997786",
       "mode": "100644"
     },
+    "ui/src/components/ai-connections/AiConnectionUsagePanel.test.tsx": {
+      "sha256": "ce9bd1fcbdb74079f1980997ebb4e5ac0c6e769a966809958635854f6529a996",
+      "mode": "100644"
+    },
     "ui/src/components/ai-connections/AiConnectionUsagePanel.tsx": {
-      "sha256": "b4bc03aff957dd75fb49160bc9cc4050900654e61ccab7a7c278e90cc17df5d5",
+      "sha256": "179ee39c405fe8b4388393a81b1c5ae7a68730575264a3cda88f12f0ddac067d",
       "mode": "100644"
     },
     "ui/src/components/ai-connections/AiProviderSetup.tsx": {
@@ -2539,12 +2545,16 @@
       "sha256": "b54d9e94b69d1a81bd7f322db2a842bbe18efac32585af3825240f40943e1481",
       "mode": "100644"
     },
+    "ui/src/components/artifacts/IssueArtifactFile.test.tsx": {
+      "sha256": "5465b86a30c106272ed9c843e396e06ffe61c6e4fab6c7e3132831619e09fcb9",
+      "mode": "100644"
+    },
     "ui/src/components/artifacts/MediaArtifactCard.tsx": {
       "sha256": "acd216e33cc21bdf321e39d5ae9453094592f88751f951624dce0c6bd48a469a",
       "mode": "100644"
     },
     "ui/src/components/artifacts/RichArtifactCards.tsx": {
-      "sha256": "0bb93f0ffeb52c8466952408d3f92a8b2e4721c561da7a99e84686e5852c57ec",
+      "sha256": "5aa3dcfa0ed7d7933745ce74c494bd68ab4ad9d0ee4d4a3342312aa477a7d966",
       "mode": "100644"
     },
     "ui/src/components/chat/AgentChannelsPanel.tsx": {
@@ -2648,7 +2658,7 @@
       "mode": "100644"
     },
     "ui/src/components/issue-properties/IssuePropertiesMarkdownWorkProduct.test.tsx": {
-      "sha256": "d9db731c66a58509518bbb2590652a79b53a4816eb725fc39e3d4e44c22867ae",
+      "sha256": "a1d302697bc6bd8637455ee71b08573e8603cdb07439896a2f54238a09095222",
       "mode": "100644"
     },
     "ui/src/components/issue-properties/IssuePropertiesPlansTab.tsx": {
@@ -4788,9 +4798,9 @@
       "mode": "100644"
     }
   },
-  "resultTree": "b058f4b1e06fa87efe65022eb635c53f4a855ac4",
-  "sourceLockSha256": "55b38136ba261b4ea37bf18647631d2948409357495e9afe2f889da12200c0e1",
-  "foundationSha256": "53a82acd6b5398859b4b67d6b5ac0058aa9fdedb033d3314c5452f7f44df21e1",
+  "resultTree": "11cc5e7eba054af194cc578d6493bd33d70c0523",
+  "sourceLockSha256": "af197093fa8cb78103eb9bed9f45ff481a8cbf1bd5131efac784f23ebf274bf3",
+  "foundationSha256": "7250ee9e4d7cc52ac1b6aadca4bbdd3717edffa82047a1bf4e7338c11b12634d",
   "locales": [
     {
       "locale": "en",

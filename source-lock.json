@@ -8,9 +8,9 @@
   "upstreamCommit": "c365a16e346dd7bee27709a3be92b965c3dd054d",
   "localizationSourceRepository": "https://github.com/DrMaks22/paperclip",
   "localizationSourceCommit": "9cf846bbf6f174d0d394c4faf08c18d77f54bd38",
-  "integrationCommit": "ada530b59f6ccad96a7026098433fbe90848b452",
-  "integrationTree": "dab21a1ff433299a5ff1b67a5d485ed5aff3b53d",
-  "foundationSha256": "53a82acd6b5398859b4b67d6b5ac0058aa9fdedb033d3314c5452f7f44df21e1",
-  "foundationFiles": 954,
+  "integrationCommit": "cfe87f3cff71aaf1543c0781eab81721c22c70ea",
+  "integrationTree": "5b0c72cf8a20f9eb07ba9d73386ad9ba722a79df",
+  "foundationSha256": "7250ee9e4d7cc52ac1b6aadca4bbdd3717edffa82047a1bf4e7338c11b12634d",
+  "foundationFiles": 956,
   "provenance": "The inherited localization commit is public; the integration commit is a local provenance identifier. The complete integration is distributable and reproducible from the public pinned upstream revision and patches/foundation.patch; no local commit object is required to build."
 }

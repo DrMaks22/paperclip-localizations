@@ -49677,8 +49677,86 @@ index bb5fbbe04ecb1d8881cb2524b94de1c784f6d030..57b394ba5e0b81d51be1c0f1e65a0a7e
          </p>
        ) : selected && aiConnectionProblem(selected) ? (
          <p role="alert" className="text-sm text-destructive">
+diff --git a/ui/src/components/ai-connections/AiConnectionUsagePanel.test.tsx b/ui/src/components/ai-connections/AiConnectionUsagePanel.test.tsx
+index 2693f17d3e84a6e4dee98f8622f3cbdc9b15adeb..20c837225b328a04173bb3693fbfd5849ea6d625 100644
+--- a/ui/src/components/ai-connections/AiConnectionUsagePanel.test.tsx
++++ b/ui/src/components/ai-connections/AiConnectionUsagePanel.test.tsx
+@@ -4,6 +4,7 @@ import { createRoot } from "react-dom/client";
+ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+ import { afterEach, beforeEach, expect, it, vi } from "vitest";
+ import type { AiManagedConnectionSummary, AiConnectionUsage } from "@paperclipai/shared";
++import { i18n } from "@/i18n";
+ import { AiConnectionUsagePanel } from "./AiConnectionUsagePanel";
+ 
+ const api = vi.hoisted(() => ({ probeUsage: vi.fn() }));
+@@ -12,12 +13,13 @@ const account: AiManagedConnectionSummary = { id: "connection", grantId: "grant"
+ let root: ReturnType<typeof createRoot>;
+ let host: HTMLDivElement;
+ let client: QueryClient;
+-beforeEach(() => {
++beforeEach(async () => {
++  await i18n.changeLanguage("en");
+   vi.resetAllMocks();
+   client = new QueryClient({ defaultOptions: { mutations: { retry: false } } });
+   host = document.createElement("div"); document.body.append(host); root = createRoot(host);
+ });
+-afterEach(() => { flushSync(() => root.unmount()); client.clear(); host.remove(); });
++afterEach(async () => { flushSync(() => root.unmount()); client.clear(); host.remove(); await i18n.changeLanguage("en"); });
+ function render(value = account) {
+   flushSync(() => root.render(<QueryClientProvider client={client}><AiConnectionUsagePanel key={value.id} account={value} /></QueryClientProvider>));
+ }
+@@ -105,3 +107,49 @@ it("shows cached pool observations without offering or making a provider call",
+   expect(host.querySelector("button")).toBeNull();
+   expect(api.probeUsage).not.toHaveBeenCalled();
+ });
++
++const weeklyLabels = [
++  ["Weekly limit", "Weekly", "За неделю"],
++  ["Sonnet weekly limit", "Sonnet Weekly", "Sonnet за неделю"],
++  ["Opus weekly limit", "Opus Weekly", "Opus за неделю"],
++  ["OAuth apps weekly limit", "OAuth apps Weekly", "Недельный лимит использования через OAuth-приложения"],
++] as const;
++const labelCases = [
++  ...weeklyLabels.flatMap(([label, en, ru]) => [null, 604800].map((duration) => ({ label, duration, en, ru }))),
++  ...[null, 18000].map((duration) => ({ label: "5 hour limit", duration, en: "5h", ru: "5 ч" })),
++  ...[["Primary", "Основной"], ["Secondary", "Дополнительный"]].flatMap(([part, translated]) => [
++    { label: `Plan usage · ${part}`, duration: null, en: `Plan usage · ${part}`, ru: `Plan usage · ${translated}` },
++    { label: `Plan usage · ${part}`, duration: 18000, en: `Plan usage · ${part} · 5h`, ru: `Plan usage · ${translated} · 5 ч` },
++    { label: `Plan usage · ${part}`, duration: 604800, en: `Plan usage · ${part} · Weekly`, ru: `Plan usage · ${translated} · За неделю` },
++  ]),
++  { label: "Weekly limit · Sonnet customer scope {{RAW}}", duration: 604800, en: "Weekly · Sonnet customer scope {{RAW}}", ru: "За неделю · Sonnet customer scope {{RAW}}" },
++  { label: "Acme allowance {{RAW}}", duration: null, en: "Acme allowance {{RAW}}", ru: "Acme allowance {{RAW}}" },
++  { label: "Acme allowance {{RAW}}", duration: 18000, en: "Acme allowance {{RAW}} · 5h", ru: "Acme allowance {{RAW}} · 5 ч" },
++  { label: "0.5 hour limit", duration: 1800, en: "0.5h", ru: "0,5 ч" },
++];
++
++it.each(labelCases)("normalizes $label ($duration seconds) before translating EN/RU/EN", async ({ label, duration, en, ru }) => {
++  const observation: AiConnectionUsage = {
++    connectionId: account.id, grantId: account.grantId, provider: account.provider, method: account.method,
++    status: "ok", checkedAt: "2026-10-02T12:00:00Z", source: "anthropic_oauth", planType: "Provider plan {{RAW}}", overage: null,
++    limits: [{ id: "provider-window", label, scope: "provider-scope", windowDurationSeconds: duration, resetsAt: null,
++      usedPercent: 12.5, remainingPercent: 87.5, used: 0.00000123456789, limit: 2.5, remaining: null,
++      unit: "provider-unit", limitReached: false, allowed: null }],
++  };
++  const canonical = JSON.stringify({ account, observation });
++  flushSync(() => root.render(<QueryClientProvider client={client}><AiConnectionUsagePanel account={account} observation={observation} cachedOnly /></QueryClientProvider>));
++  const progress = host.querySelector('[role="progressbar"]');
++  for (const [locale, expected] of [["en", en], ["ru", ru], ["en", en]]) {
++    flushSync(() => { void i18n.changeLanguage(locale); });
++    await vi.waitFor(() => expect(progress?.getAttribute("aria-label")).toBe(`${expected}: 13%`));
++    expect(host.querySelector('[role="progressbar"]')).toBe(progress);
++    expect(progress?.getAttribute("aria-valuenow")).toBe("13");
++    expect((progress as HTMLElement).style.width).toBe("12.5%");
++    expect(Array.from(host.querySelectorAll("span")).some((span) => span.textContent === expected)).toBe(true);
++    const number = new Intl.NumberFormat(locale, { maximumFractionDigits: 20 }).format(observation.limits[0].used!);
++    expect(host.textContent).toContain(`${number} provider-unit`);
++    expect(host.textContent).toContain("Provider plan {{RAW}}");
++    expect(JSON.stringify({ account, observation })).toBe(canonical);
++    expect(api.probeUsage).not.toHaveBeenCalled();
++  }
++});
 diff --git a/ui/src/components/ai-connections/AiConnectionUsagePanel.tsx b/ui/src/components/ai-connections/AiConnectionUsagePanel.tsx
-index d0e7d9a5bb7d75157800656bb566c80a21d4fe09..9c68e4a0585d92808af4c9b54bd56faecb1ed9c9 100644
+index d0e7d9a5bb7d75157800656bb566c80a21d4fe09..8cdfef5df55e370d313a5f2665b1c042675e3646 100644
 --- a/ui/src/components/ai-connections/AiConnectionUsagePanel.tsx
 +++ b/ui/src/components/ai-connections/AiConnectionUsagePanel.tsx
 @@ -1,3 +1,4 @@
@@ -49686,7 +49764,7 @@ index d0e7d9a5bb7d75157800656bb566c80a21d4fe09..9c68e4a0585d92808af4c9b54bd56fae
  import { useMutation } from "@tanstack/react-query";
  import type { AiConnectionUsage, AiConnectionUsageLimit, AiManagedConnectionSummary } from "@paperclipai/shared";
  import { supportsAiConnectionUsage } from "@paperclipai/shared";
-@@ -9,90 +10,111 @@ import { formatDateTime, formatNumber } from "@/lib/utils";
+@@ -9,90 +10,112 @@ import { formatDateTime, formatNumber } from "@/lib/utils";
  const usageNumber = (value: number) => formatNumber(value, { maximumFractionDigits: 20 });
  const amount = (value: number, unit: string | null) => unit === "USD"
    ? formatNumber(value, { style: "currency", currency: "USD", minimumFractionDigits: 0, maximumFractionDigits: 20 })
@@ -49714,19 +49792,19 @@ index d0e7d9a5bb7d75157800656bb566c80a21d4fe09..9c68e4a0585d92808af4c9b54bd56fae
 +}
  
  function limitLabel(window: AiConnectionUsageLimit) {
--  const label = window.label.replace(/\b(\d+(?:\.\d+)?) hour limit\b/i, "$1h").replace(/\bweekly limit\b/i, "Weekly");
++  // Normalize and deduplicate canonical periods before translating the final label.
+   const label = window.label.replace(/\b(\d+(?:\.\d+)?) hour limit\b/i, "$1h").replace(/\bweekly limit\b/i, "Weekly");
 -  if (window.windowDurationSeconds == null) return label;
-+  const label = window.label.replace(/\b(\d+(?:\.\d+)?) hour limit\b/i, "$1h").replace(/\bweekly limit\b/i, t("oct5Apps.usageLabels.weekly"));
 +  if (window.windowDurationSeconds == null) return usageLabel(label);
    const hours = window.windowDurationSeconds / 3600;
 -  const period = hours === 168 ? "Weekly" : `${usageNumber(hours)}h`;
 -  if (/\b(?:Primary|Secondary)$/.test(label)) return `${label} · ${period}`;
 -  if ((hours === 168 && /weekly/i.test(label)) || label.split(/[\s·()]+/).includes(period)) return label;
 -  return `${label} · ${period}`;
-+  const period = hours === 168 ? t("oct5Apps.usageLabels.weekly") : `${hours}h`;
-+  if (/\b(?:Primary|Secondary)$/.test(label)) return `${usageLabel(label)} · ${usageLabel(period)}`;
++  const period = hours === 168 ? "Weekly" : `${hours}h`;
++  if (/\b(?:Primary|Secondary)$/.test(label)) return usageLabel(`${label} · ${period}`);
 +  if ((hours === 168 && /weekly/i.test(label)) || label.split(/[\s·()]+/).includes(period)) return usageLabel(label);
-+  return `${usageLabel(label)} · ${usageLabel(period)}`;
++  return usageLabel(`${label} · ${period}`);
  }
  
  function limitValue(window: AiConnectionUsageLimit) {
@@ -49838,7 +49916,7 @@ index d0e7d9a5bb7d75157800656bb566c80a21d4fe09..9c68e4a0585d92808af4c9b54bd56fae
            {usage.limits.map((window) => {
              const details = limitDetails(window);
              return <div key={window.id} className="space-y-1.5">
-@@ -105,10 +127,10 @@ export function AiConnectionUsagePanel({ account, observation, cachedOnly = fals
+@@ -105,10 +128,10 @@ export function AiConnectionUsagePanel({ account, observation, cachedOnly = fals
              </div>;
            })}
            {usage.overage && <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
@@ -50874,6 +50952,65 @@ index 6e7c06872f6e0cf9e996ceab4c52a760ead2aad8..57f3b38ea7ace8faae32a1eda7d7fa64
        ) : chip ? (
          <Badge variant="outline">{chip.label}</Badge>
        ) : undefined,
+diff --git a/ui/src/components/artifacts/IssueArtifactFile.test.tsx b/ui/src/components/artifacts/IssueArtifactFile.test.tsx
+index 55feaef9e4aa97cc833eb2eb88b796683683a8c3..47b3f98d65cf85a36a290d7b0ce8720fd90d5dcd 100644
+--- a/ui/src/components/artifacts/IssueArtifactFile.test.tsx
++++ b/ui/src/components/artifacts/IssueArtifactFile.test.tsx
+@@ -3,9 +3,12 @@ import { act } from "react";
+ import { createRoot } from "react-dom/client";
+ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+ import { describe, expect, it, vi } from "vitest";
++import { within } from "storybook/test";
+ import { IssueArtifactFile } from "./IssueArtifactCard";
++import { FileCard } from "./RichArtifactCards";
+ import { loadArtifactCsv } from "@/lib/artifact-card-data";
+ import { TextAttachmentContext } from "@/context/TextAttachmentContext";
++import { i18n } from "@/i18n";
+ 
+ vi.mock("@/lib/artifact-card-data", async (importOriginal) => ({
+   ...(await importOriginal<typeof import("@/lib/artifact-card-data")>()),
+@@ -86,3 +89,41 @@ describe("CSV preview consent", () => {
+     }
+   });
+ });
++
++it.each([
++  "/api/attachments/file-1/content?download=1",
++  "https://files.example/report.txt?signature=abc&expires=123",
++])("keeps the visible download label as its accessible name in EN/RU/EN: %s", async (downloadUrl) => {
++  const props = {
++    title: "Delivered notes {{RAW}}", summary: "Original summary {{RAW}}", author: "Original author",
++    updatedAt: "Original date", filename: "Заметки {{RAW}}.txt", contentType: "text/plain", fileSize: "123 B",
++    entries: ["Original entry {{RAW}}"], downloadUrl,
++  };
++  const canonical = JSON.stringify(props);
++  const container = document.createElement("div");
++  document.body.appendChild(container);
++  const root = createRoot(container);
++  try {
++    await act(async () => {
++      await i18n.changeLanguage("en");
++      root.render(<FileCard {...props} />);
++    });
++    const download = container.querySelector<HTMLAnchorElement>("a[download]")!;
++    download.focus();
++    for (const [locale, label] of [["en", "Download file"], ["ru", "Скачать файл"], ["en", "Download file"]]) {
++      await act(async () => { await i18n.changeLanguage(locale); });
++      expect(within(container).getByRole("link", { name: label })).toBe(download);
++      expect(download.textContent).toBe(label);
++      expect(download.getAttribute("href")).toBe(downloadUrl);
++      expect(download.getAttribute("download")).toBe(props.filename);
++      expect(document.activeElement).toBe(download);
++      for (const raw of [props.title, props.summary, props.author, props.filename, props.entries[0]]) {
++        expect(container.textContent).toContain(raw);
++      }
++      expect(JSON.stringify(props)).toBe(canonical);
++    }
++  } finally {
++    await act(async () => { root.unmount(); await i18n.changeLanguage("en"); });
++    container.remove();
++  }
++});
 diff --git a/ui/src/components/artifacts/MediaArtifactCard.tsx b/ui/src/components/artifacts/MediaArtifactCard.tsx
 index 9407ab929425749e603eec222cfc5a453f3923b5..f98ffa006ef3536e6b2228a1beeee004395f8ec5 100644
 --- a/ui/src/components/artifacts/MediaArtifactCard.tsx
@@ -50913,7 +51050,7 @@ index 9407ab929425749e603eec222cfc5a453f3923b5..f98ffa006ef3536e6b2228a1beeee004
            </span>
          </span>
 diff --git a/ui/src/components/artifacts/RichArtifactCards.tsx b/ui/src/components/artifacts/RichArtifactCards.tsx
-index f26a761c607ac9cd350c7c39a3aab1944cc3d285..22ebf43e322adc003188bbbd9dc878b5bcf9ec1d 100644
+index f26a761c607ac9cd350c7c39a3aab1944cc3d285..379a2b52bb6d6bfd469c27ce50e1178f11c3de84 100644
 --- a/ui/src/components/artifacts/RichArtifactCards.tsx
 +++ b/ui/src/components/artifacts/RichArtifactCards.tsx
 @@ -1,3 +1,4 @@
@@ -51306,9 +51443,8 @@ index f26a761c607ac9cd350c7c39a3aab1944cc3d285..22ebf43e322adc003188bbbd9dc878b5
              )}
              {props.downloadUrl ? (
                <Button asChild size="sm" variant="outline">
--                <a href={props.downloadUrl} download={props.filename}>
+                 <a href={props.downloadUrl} download={props.filename}>
 -                  Download file
-+                <a href={props.downloadUrl} download={props.filename} aria-label={t("oct5Core.downloadTitle", { title: props.title })}>
 +                  {t("oct5Core.s0211")}
                  </a>
                </Button>
@@ -56548,10 +56684,10 @@ index 411b0e46ef2f2761a5191dac409c4550404d2e87..8122f1d20497580449a22532849363b8
                  <time
                    className="shrink-0 text-(length:--text-micro) text-muted-foreground"
 diff --git a/ui/src/components/issue-properties/IssuePropertiesMarkdownWorkProduct.test.tsx b/ui/src/components/issue-properties/IssuePropertiesMarkdownWorkProduct.test.tsx
-index a633cc80de957414fd1e4454f508c68d9ddfeb64..83b1235f3e49789ff8dc6aa9017799ca7a567363 100644
+index a633cc80de957414fd1e4454f508c68d9ddfeb64..d1dc5c4fbfce0c0e858d494daaa1037ddbdaa0e9 100644
 --- a/ui/src/components/issue-properties/IssuePropertiesMarkdownWorkProduct.test.tsx
 +++ b/ui/src/components/issue-properties/IssuePropertiesMarkdownWorkProduct.test.tsx
-@@ -1,6 +1,7 @@
+@@ -1,9 +1,11 @@
  // @vitest-environment jsdom
  
  import { flushSync } from "react-dom";
@@ -56559,7 +56695,11 @@ index a633cc80de957414fd1e4454f508c68d9ddfeb64..83b1235f3e49789ff8dc6aa9017799ca
  import { createRoot, type Root } from "react-dom/client";
  import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
  import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-@@ -373,8 +374,7 @@ describe("markdown work product review row", () => {
++import { within } from "storybook/test";
+ import type { Issue, IssueAttachment, IssueDocument, IssueWorkProduct } from "@paperclipai/shared";
+ import { artifactReviewDocumentKey } from "@paperclipai/shared";
+ import { IssuePropertiesArtifactsTab } from "./IssuePropertiesArtifactsTab";
+@@ -373,8 +375,7 @@ describe("markdown work product review row", () => {
  
    it("keeps non-markdown work products on the download row", async () => {
      const contentPath = `/api/attachments/${ATTACHMENT_ID}/content`;
@@ -56569,7 +56709,7 @@ index a633cc80de957414fd1e4454f508c68d9ddfeb64..83b1235f3e49789ff8dc6aa9017799ca
          metadata: {
            attachmentId: ATTACHMENT_ID,
            contentType: "application/pdf",
-@@ -384,8 +384,8 @@ describe("markdown work product review row", () => {
+@@ -384,8 +385,8 @@ describe("markdown work product review row", () => {
            downloadPath: `${contentPath}?download=1`,
            originalFilename: "report.pdf",
          },
@@ -56580,7 +56720,7 @@ index a633cc80de957414fd1e4454f508c68d9ddfeb64..83b1235f3e49789ff8dc6aa9017799ca
      await renderTab();
  
      await waitForAssertion(() => {
-@@ -396,6 +396,23 @@ describe("markdown work product review row", () => {
+@@ -396,6 +397,23 @@ describe("markdown work product review row", () => {
        expect(link?.getAttribute("href")).toBe(`${contentPath}?download=1`);
      });
      expect(container.querySelector("button[aria-expanded]")).toBeNull();
@@ -56594,7 +56734,7 @@ index a633cc80de957414fd1e4454f508c68d9ddfeb64..83b1235f3e49789ff8dc6aa9017799ca
 +        await act(async () => { await i18n.changeLanguage(language); });
 +        expect(container.querySelector("article")).toBe(row);
 +        expect(row?.querySelector("a[download]")).toBe(link);
-+        expect(link?.getAttribute("aria-label")).toBe(`${language === "ru" ? "Скачать" : "Download"}: Verification report`);
++        expect(within(row!).getByRole("link", { name: language === "ru" ? "Скачать файл" : "Download file" })).toBe(link);
 +        expect(link?.getAttribute("href")).toBe(`${contentPath}?download=1`);
 +        expect(JSON.stringify(workProduct)).toBe(source);
 +      }
