@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "ready": true,
-  "kitVersion": "v2026.10.7.1",
+  "kitVersion": "v2026.10.7.2",
   "releaseChannel": "stable",
   "upstreamRef": "v2026.1005.0",
   "runtimeProfile": "pinned-en-ru",
   "baseCommit": "467125fafb47a8520856504fecc48d6e32055db1",
   "sourceCommit": "9cf846bbf6f174d0d394c4faf08c18d77f54bd38",
   "patchFile": "paperclip-localizations.patch",
-  "patchSha256": "faf8292be65a83b52cb00e3c08ee12d8e151b122e8233f77a46edc9079c7b197",
+  "patchSha256": "7e62cd33d5b1a8aea1d272201e498cd7840e4d651d7c7073ce135ca557c87037",
   "allowedPaths": [
     "scripts/locale-changes.d.mts",
     "scripts/locale-changes.mjs",
@@ -393,6 +393,7 @@
     "ui/src/components/artifacts/ArtifactGroupCard.tsx",
     "ui/src/components/artifacts/ArtifactLocalization.test.tsx",
     "ui/src/components/artifacts/IssueArtifactCard.tsx",
+    "ui/src/components/artifacts/IssueArtifactFile.test.tsx",
     "ui/src/components/artifacts/MediaArtifactCard.tsx",
     "ui/src/components/artifacts/RichArtifactCards.tsx",
     "ui/src/components/chat/AgentChannelsPanel.tsx",
@@ -2456,12 +2457,16 @@
       "sha256": "b54d9e94b69d1a81bd7f322db2a842bbe18efac32585af3825240f40943e1481",
       "mode": "100644"
     },
+    "ui/src/components/artifacts/IssueArtifactFile.test.tsx": {
+      "sha256": "5465b86a30c106272ed9c843e396e06ffe61c6e4fab6c7e3132831619e09fcb9",
+      "mode": "100644"
+    },
     "ui/src/components/artifacts/MediaArtifactCard.tsx": {
       "sha256": "acd216e33cc21bdf321e39d5ae9453094592f88751f951624dce0c6bd48a469a",
       "mode": "100644"
     },
     "ui/src/components/artifacts/RichArtifactCards.tsx": {
-      "sha256": "0bb93f0ffeb52c8466952408d3f92a8b2e4721c561da7a99e84686e5852c57ec",
+      "sha256": "5aa3dcfa0ed7d7933745ce74c494bd68ab4ad9d0ee4d4a3342312aa477a7d966",
       "mode": "100644"
     },
     "ui/src/components/chat/AgentChannelsPanel.tsx": {
@@ -2561,7 +2566,7 @@
       "mode": "100644"
     },
     "ui/src/components/issue-properties/IssuePropertiesMarkdownWorkProduct.test.tsx": {
-      "sha256": "d9db731c66a58509518bbb2590652a79b53a4816eb725fc39e3d4e44c22867ae",
+      "sha256": "a1d302697bc6bd8637455ee71b08573e8603cdb07439896a2f54238a09095222",
       "mode": "100644"
     },
     "ui/src/components/issue-properties/IssuePropertiesPlansTab.tsx": {
@@ -4573,9 +4578,9 @@
       "mode": "100644"
     }
   },
-  "resultTree": "a7e6b53242deba20819fa6511d7adaf6d8e19c07",
-  "sourceLockSha256": "7f773f23012d823ff54469e1af431ff5757cfc570e937686de3778c21e876849",
-  "foundationSha256": "faf8292be65a83b52cb00e3c08ee12d8e151b122e8233f77a46edc9079c7b197",
+  "resultTree": "d294431440211375504c544c46dce5c43fb29ba0",
+  "sourceLockSha256": "0f8f416e46fedd67c37576fb87414207ecb8429121b6b2f35839c5caaadb952c",
+  "foundationSha256": "7e62cd33d5b1a8aea1d272201e498cd7840e4d651d7c7073ce135ca557c87037",
   "locales": [
     {
       "locale": "en",
