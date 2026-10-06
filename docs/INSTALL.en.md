@@ -1,15 +1,17 @@
 # Installation
 
+> Use the finalized `v2026.10.7.1` package only for Paperclip `v2026.1005.0`. Verify the exact commit and checksums first. See [checks and limitations](../verification/v2026.10.7.1.md).
+
 [Overview](../README.en.md) · [Русский](INSTALL.ru.md) · [Install with an agent](AGENT-INSTALL.md)
 
 The patch applies to the source of one specific Paperclip revision. The selected release's `manifest.json` identifies the supported commit. The installer requires Node.js 24 and Git; use that Paperclip revision's documentation for build requirements.
 
 ## Obtain and review the release
 
-First choose [stable or beta](RELEASES.md). Clone the localization repository **outside** the original Paperclip repository. This example pins stable [v2026.9.17.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.17.1) for Paperclip `v2026.916.0`. For Paperclip `v2026.831.1`, use the previous immutable [v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1) and its instructions. For beta, replace the tag with `v2026.9.13.1-beta.1` and use its separate `manifest.json`:
+First choose [stable or beta](RELEASES.md). Clone the localization repository **outside** the original Paperclip repository. This example pins stable [v2026.10.7.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.1) for Paperclip `v2026.1005.0`. For Paperclip `v2026.831.1`, use the previous immutable [v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1) and its instructions. For beta, replace the tag with `v2026.9.13.1-beta.1` and use its separate `manifest.json`:
 
 ```bash
-git clone --branch v2026.9.17.1 --depth 1 https://github.com/DrMaks22/paperclip-localizations.git
+git clone --branch v2026.10.7.1 --depth 1 https://github.com/DrMaks22/paperclip-localizations.git
 cd paperclip-localizations
 node --version
 shasum -a 256 -c SHA256SUMS
