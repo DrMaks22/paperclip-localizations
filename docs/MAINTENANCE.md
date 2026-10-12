@@ -2,6 +2,8 @@
 
 This maintenance branch prepares unpublished beta candidate `v2026.10.7.1-beta.1`, pinned to `c365a16e346dd7bee27709a3be92b965c3dd054d`. Its channel-index change is a proposal. Stable `v2026.10.7.2` for official Paperclip `v2026.1005.0` is already published; the published beta remains `v2026.9.13.1-beta.1` until separately approved publication. Never copy the stable payload into beta or promote this master snapshot to stable.
 
+**October 12 review:** stable still matches the latest official stable release. Master has advanced to `1b4c803816e82b0265c8422e1a804327a7ed8c54`; the existing beta candidate does **not** support it. Read the [drift audit, 87 source conflicts and outstanding integration checks](../verification/2026-10-12-upstream-review.md). This review does not advance any compatibility pin or publish a new patch.
+
 [Русская главная страница](../README.md) · [English overview](../README.en.md) · [Contributing](../CONTRIBUTING.md)
 
 This independent distribution follows Paperclip upstream while keeping compatibility explicit. `manifest.json` is the source of truth for each release; changing it alone cannot make a patch compatible.
