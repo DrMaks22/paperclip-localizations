@@ -2,7 +2,9 @@
 
 [Русский](README.md) · **English**
 
-> **Exact compatibility:** package `v2026.10.7.2` targets Paperclip `v2026.1005.0` at `467125fafb47a8520856504fecc48d6e32055db1`. Download the finalized package from its pinned tag, not a working branch. Do not apply an older patch to newer Paperclip source. See [checks and limitations](verification/v2026.10.7.2.md). Applying the patch does not deploy the application.
+> **Beta preparation branch, not a published release.** This branch prepares `v2026.10.7.1-beta.1` for the exact master snapshot `c365a16e346dd7bee27709a3be92b965c3dd054d`. Its beta entry in `channels.json` is proposed metadata, not an available download. Stable `v2026.10.7.2` for Paperclip `v2026.1005.0` is published; the stable links and installation commands below are available. The published beta remains `v2026.9.13.1-beta.1`. Neither patch supports the new beta base. Merging, publication and deployment require separate owner approval.
+
+[New beta candidate verification and limitations](verification/v2026.10.7.1-beta.1.md).
 
 [![Checks](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml/badge.svg)](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml) · [Stable](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.2) · [Beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1-beta.1) · [Channels and verification](docs/RELEASES.md)
 

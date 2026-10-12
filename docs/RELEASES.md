@@ -2,7 +2,17 @@
 
 [Русская главная](../README.md) · [English overview](../README.en.md)
 
-> Пакет / Package: `v2026.10.7.2` для / for Paperclip `v2026.1005.0`. [Проверки и ограничения / Checks and limitations](../verification/v2026.10.7.2.md).
+## Кандидат beta / Beta candidate — 2026-10-07
+
+Эта ветка готовит **неопубликованный** `v2026.10.7.1-beta.1`: master `c365a16e346dd7bee27709a3be92b965c3dd054d`, профиль `community-json`. Она не меняет опубликованные теги и файлы. `channels.json` в этой ветке содержит предлагаемую запись beta; таблицы и команды ниже описывают действующие опубликованные выпуски. Не применяйте эти патчи к новой beta-базе. Stable `v2026.10.7.2` для официального `v2026.1005.0` опубликован отдельно и доступен для установки; опубликованная beta остаётся `v2026.9.13.1-beta.1`.
+
+This branch prepares **unpublished** `v2026.10.7.1-beta.1`, pinned to master `c365a16e346dd7bee27709a3be92b965c3dd054d` with `community-json`. Its proposed beta index does not publish a release or modify existing tags/assets. The tables and installation commands below describe the still-published releases, whose patches must not be applied to this new beta base. Stable `v2026.10.7.2` for official `v2026.1005.0` is separately published and available to install; the published beta remains `v2026.9.13.1-beta.1`.
+
+After completing the remaining release gate and obtaining approval, a beta release must use `-beta.N`, `prerelease: true`, and `Latest: false`. No release or deployment is authorized by this branch.
+
+[Проверки кандидата и ограничения / Candidate verification and limitations](../verification/v2026.10.7.1-beta.1.md).
+
+> Опубликованный stable / Published stable: `v2026.10.7.2` для / for Paperclip `v2026.1005.0`. [Проверки и ограничения / Checks and limitations](../verification/v2026.10.7.2.md).
 
 Опубликованные теги и файлы, включая [v2026.9.17.1 для Paperclip v2026.916.0](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.17.1), сохраняются неизменными. Published tags and assets, including that previous stable, remain immutable. Рабочая ветка не заменяет релиз; её можно удалить только после разрешённой публикации и [проверки сохранности результата](MAINTENANCE.md#after-publication-close-completed-branches). A working branch is not a release; remove it only after an approved publication and those preservation checks.
 
@@ -12,7 +22,7 @@
 
 `v2026.10.7.2` — исправление доступного имени ссылки «Скачать файл» на той же официальной базе, что и `v2026.10.7.1`. Предыдущий тег и архив сохранены без изменений. Каталоги переводов не изменены; исправление не меняет адрес, имя или содержимое скачиваемого файла. Патчи не накладываются друг на друга: для обновления используйте свежую сборку или сначала корректно удалите прежний патч по его инструкции.
 
-У локализации два независимых канала. Номер нашего релиза обозначает выпуск пакета перевода, а не версию самого Paperclip. Stable `v2026.10.7.2` предназначен для официального выпуска Paperclip `v2026.1005.0`. Beta остаётся без изменений.
+У локализации два независимых канала. Номер нашего релиза обозначает выпуск пакета перевода, а не версию самого Paperclip. Stable `v2026.10.7.2` предназначен для официального выпуска Paperclip `v2026.1005.0`. Опубликованная beta остаётся без изменений.
 
 | | Stable | Beta |
 | --- | --- | --- |
@@ -66,7 +76,7 @@ Stable обновляется для официальных стабильных
 
 `v2026.10.7.2` corrects the “Download file” link's accessible name on the same official base as `v2026.10.7.1`. The previous tag and archive remain immutable. Catalogs are unchanged; the fix does not change download URLs, filenames or contents. Do not stack patches: use a fresh build or first remove the old patch following its own instructions.
 
-The two channels target different Paperclip source revisions. Our release number identifies the localization package, not the Paperclip version. Stable `v2026.10.7.2` targets the official Paperclip `v2026.1005.0` release. Beta is unchanged.
+The two channels target different Paperclip source revisions. Our release number identifies the localization package, not the Paperclip version. Stable `v2026.10.7.2` targets the official Paperclip `v2026.1005.0` release. The published beta is unchanged.
 
 - **[Stable `v2026.10.7.2`](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.2):** official Paperclip [`v2026.1005.0`](https://github.com/paperclipai/paperclip/releases/tag/v2026.1005.0), exact commit `467125fafb47a8520856504fecc48d6e32055db1`. GitHub `Latest`, not a prerelease. English/Russian UI with the `pinned-en-ru` profile. [Stable verification results and limitations](https://github.com/DrMaks22/paperclip-localizations/blob/v2026.10.7.2/verification/v2026.10.7.2.md).
 - **Beta `v2026.9.13.1-beta.1`:** master snapshot `04e364236bd2f9787e4a5c581751e0b8c6c16383`, reviewed on 2026-09-12. GitHub `Pre-release`, never `Latest`. English/Russian UI and registration of additional reviewed JSON catalogs. [Beta verification](https://github.com/DrMaks22/paperclip-localizations/blob/v2026.9.13.1-beta.1/verification/v2026.9.13.1-beta.1.md).

@@ -37,7 +37,8 @@ if (args.length !== 2 || args[0] !== "--source" || !path.isAbsolute(args[1])) {
     const files = [
       ...TEMPLATE_TARGETS.map(({ path }) => path), ...EXACT_EDITS.map(({ path }) => path),
       "ui/src/i18n/index.ts", "ui/src/i18n/locale-validation.ts", "ui/src/i18n/locale-structure.ts",
-      "ui/src/lib/utils.ts", "ui/vitest.config.ts", "ui/vitest.setup.ts", "ui/package.json",
+      "ui/src/lib/utils.ts", "ui/src/lib/workspace-restore-marker.ts",
+      "ui/vitest.config.ts", "ui/vitest.setup.ts", "ui/package.json",
     ];
     for (const file of files) {
       const destination = path.join(checkout, file);

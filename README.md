@@ -2,7 +2,9 @@
 
 **Русский** · [English](README.en.md)
 
-> **Точная совместимость:** пакет `v2026.10.7.2` предназначен для Paperclip `v2026.1005.0` на коммите `467125fafb47a8520856504fecc48d6e32055db1`. Скачивайте готовый пакет по закреплённому тегу, а не рабочую ветку. Не применяйте старый патч к новой версии Paperclip. [Проверки и ограничения](verification/v2026.10.7.2.md). Установка патча не развёртывает приложение автоматически.
+> **Ветка подготовки beta, не опубликованный релиз.** Здесь готовится `v2026.10.7.1-beta.1` для точного снимка master `c365a16e346dd7bee27709a3be92b965c3dd054d`. Запись beta в `channels.json` — кандидат, а не доступный для скачивания выпуск. Stable `v2026.10.7.2` для Paperclip `v2026.1005.0` уже опубликован; ссылки и команды stable ниже доступны для установки. Опубликованная beta остаётся `v2026.9.13.1-beta.1`. Ни один из этих патчей не подходит к новой beta-базе. Слияние, публикация и развёртывание требуют отдельного одобрения владельца.
+
+[Проверки и ограничения нового кандидата beta](verification/v2026.10.7.1-beta.1.md).
 
 [![Проверки](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml/badge.svg)](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml) · [Stable](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.2) · [Beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1-beta.1) · [Каналы и проверки](docs/RELEASES.md)
 
