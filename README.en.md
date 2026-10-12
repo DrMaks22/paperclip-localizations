@@ -1,5 +1,11 @@
 # Paperclip Localizations
 
+> This working branch contains **unpublished candidate** `v2026.10.13.1`
+> for Paperclip `v2026.1012.0` (`bba6a45f0d364cfd962ac59b3bdf2426a8222adb`).
+> The public-release information below and in `channels.json` is unchanged.
+> Do not apply the previous published patch to the new application version.
+> Candidate verification: [report](verification/v2026.10.13.1.md).
+
 [Русский](README.md) · **English**
 
 > **Exact compatibility:** package `v2026.10.7.2` targets Paperclip `v2026.1005.0` at `467125fafb47a8520856504fecc48d6e32055db1`. Download the finalized package from its pinned tag, not a working branch. Do not apply an older patch to newer Paperclip source. See [checks and limitations](verification/v2026.10.7.2.md). Applying the patch does not deploy the application.
