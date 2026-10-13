@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "ready": true,
-  "kitVersion": "v2026.10.7.2",
+  "kitVersion": "v2026.10.13.1",
   "releaseChannel": "stable",
-  "upstreamRef": "v2026.1005.0",
+  "upstreamRef": "v2026.1012.0",
   "runtimeProfile": "pinned-en-ru",
-  "baseCommit": "467125fafb47a8520856504fecc48d6e32055db1",
+  "baseCommit": "bba6a45f0d364cfd962ac59b3bdf2426a8222adb",
   "sourceCommit": "9cf846bbf6f174d0d394c4faf08c18d77f54bd38",
   "patchFile": "paperclip-localizations.patch",
-  "patchSha256": "7e62cd33d5b1a8aea1d272201e498cd7840e4d651d7c7073ce135ca557c87037",
+  "patchSha256": "ffdde170f9610f12135a9dea0de638ea4ec13d2305e3c683f5c8ea659add0c11",
   "allowedPaths": [
     "scripts/locale-changes.d.mts",
     "scripts/locale-changes.mjs",
@@ -46,6 +46,7 @@
     "ui/src/components/ActivityTailLocalization.test.tsx",
     "ui/src/components/AdapterLoginChrome.localization.test.tsx",
     "ui/src/components/AdapterLoginChrome.tsx",
+    "ui/src/components/AgentActionButtons.test.tsx",
     "ui/src/components/AgentActionButtons.tsx",
     "ui/src/components/AgentAvatar.tsx",
     "ui/src/components/AgentBubbleActionRow.test.tsx",
@@ -65,6 +66,7 @@
     "ui/src/components/AgentMultiSelect.tsx",
     "ui/src/components/AgentProperties.tsx",
     "ui/src/components/AgentSecretAccessEditor.tsx",
+    "ui/src/components/AgentSetupPrompt.tsx",
     "ui/src/components/AnimatedPaperclipIcon.test.tsx",
     "ui/src/components/AnimatedPaperclipIcon.tsx",
     "ui/src/components/AnnouncementCard.test.tsx",
@@ -107,6 +109,7 @@
     "ui/src/components/CaseRevisionRail.tsx",
     "ui/src/components/ChatComposer.test.tsx",
     "ui/src/components/ChatComposer.tsx",
+    "ui/src/components/ChatConnectorsExperimentalGate.tsx",
     "ui/src/components/ClaudeSubscriptionPanel.tsx",
     "ui/src/components/CloudAccessGate.tsx",
     "ui/src/components/CloudSignIn.tsx",
@@ -183,6 +186,7 @@
     "ui/src/components/InteractionAudienceLine.tsx",
     "ui/src/components/InteractionAudienceLocalization.test.tsx",
     "ui/src/components/InteractionGovernancePanel.tsx",
+    "ui/src/components/InteractionPreparationNotice.tsx",
     "ui/src/components/IssueAssignedBacklogNotice.tsx",
     "ui/src/components/IssueAttachmentsSection.test.tsx",
     "ui/src/components/IssueAttachmentsSection.tsx",
@@ -297,6 +301,8 @@
     "ui/src/components/RunChatSurface.tsx",
     "ui/src/components/RunIdentityHistory.localization.test.tsx",
     "ui/src/components/RunIdentityHistory.tsx",
+    "ui/src/components/RunRetryDetails.test.tsx",
+    "ui/src/components/RunRetryDetails.tsx",
     "ui/src/components/RunWorkspaceRecoverySurface.tsx",
     "ui/src/components/RunnerInspector.test.tsx",
     "ui/src/components/RunnerInspector.tsx",
@@ -353,6 +359,7 @@
     "ui/src/components/TaskChatThread.test.tsx",
     "ui/src/components/TaskChatThread.tsx",
     "ui/src/components/TaskTreeControls.tsx",
+    "ui/src/components/TaskViewsMenu.tsx",
     "ui/src/components/ThemeToggle.tsx",
     "ui/src/components/ToastViewport.tsx",
     "ui/src/components/TranscriptChromeLocalization.test.tsx",
@@ -384,6 +391,11 @@
     "ui/src/components/ai-connections/AiConnectionManagement.tsx",
     "ui/src/components/ai-connections/AiConnectionPicker.localization.test.tsx",
     "ui/src/components/ai-connections/AiConnectionPicker.tsx",
+    "ui/src/components/ai-connections/AiConnectionPoolConnector.localization.test.tsx",
+    "ui/src/components/ai-connections/AiConnectionPoolConnector.tsx",
+    "ui/src/components/ai-connections/AiConnectionPoolRunDetails.tsx",
+    "ui/src/components/ai-connections/AiConnectionUsagePanel.test.tsx",
+    "ui/src/components/ai-connections/AiConnectionUsagePanel.tsx",
     "ui/src/components/ai-connections/ManagedAiConnectionDetails.tsx",
     "ui/src/components/ai-connections/model.test.ts",
     "ui/src/components/ai-connections/model.ts",
@@ -397,6 +409,7 @@
     "ui/src/components/artifacts/MediaArtifactCard.tsx",
     "ui/src/components/artifacts/RichArtifactCards.tsx",
     "ui/src/components/chat/AgentChannelsPanel.tsx",
+    "ui/src/components/chat/AgentWorkPanels.tsx",
     "ui/src/components/chat/ChatDetailSidebar.test.tsx",
     "ui/src/components/chat/ChatDetailSidebar.tsx",
     "ui/src/components/chat/ChatSetupNavigation.tsx",
@@ -461,6 +474,8 @@
     "ui/src/components/side-panel/SidePanelFrame.tsx",
     "ui/src/components/side-panel/SidePanelLauncher.test.tsx",
     "ui/src/components/side-panel/SidePanelLauncher.tsx",
+    "ui/src/components/side-panel/SidePanelMobileTabs.test.tsx",
+    "ui/src/components/side-panel/SidePanelMobileTabs.tsx",
     "ui/src/components/side-panel/SidePanelTab.tsx",
     "ui/src/components/side-panel/SidePanelTabs.test.tsx",
     "ui/src/components/skill-studio/AgentsUsingSkillDialog.test.tsx",
@@ -470,9 +485,12 @@
     "ui/src/components/skill-studio/SkillPolicySurfaces.tsx",
     "ui/src/components/skill-studio/SkillProvenance.test.tsx",
     "ui/src/components/skill-studio/SkillProvenance.tsx",
+    "ui/src/components/task-chat/ComposerAddMenu.localization.test.tsx",
     "ui/src/components/task-chat/ComposerAddMenu.tsx",
     "ui/src/components/task-chat/ComposerRunSettingsPicker.test.tsx",
     "ui/src/components/task-chat/ComposerRunSettingsPicker.tsx",
+    "ui/src/components/task-chat/ComposerWorktreePicker.localization.test.tsx",
+    "ui/src/components/task-chat/ComposerWorktreePicker.tsx",
     "ui/src/components/task-chat/McpIcon.tsx",
     "ui/src/components/task-chat/QuestionForm.tsx",
     "ui/src/components/task-chat/RichWorkProductCard.tsx",
@@ -499,6 +517,7 @@
     "ui/src/components/task-chat/TaskChatPlanView.tsx",
     "ui/src/components/task-chat/TaskChatProjectCreatedCard.tsx",
     "ui/src/components/task-chat/TaskChatProtocolActivityRow.tsx",
+    "ui/src/components/task-chat/TaskChatProtocolCard.test.tsx",
     "ui/src/components/task-chat/TaskChatProtocolCard.tsx",
     "ui/src/components/task-chat/TaskChatQueuedMessages.test.tsx",
     "ui/src/components/task-chat/TaskChatQueuedMessages.tsx",
@@ -528,6 +547,7 @@
     "ui/src/components/task-chat/task-chat-adapter.test.ts",
     "ui/src/components/task-chat/task-chat-adapter.ts",
     "ui/src/components/task-chat/task-chat-attachments.ts",
+    "ui/src/components/task-chat/task-chat-display.sep28.test.ts",
     "ui/src/components/task-chat/task-chat-display.stable916.test.ts",
     "ui/src/components/task-chat/task-chat-display.ts",
     "ui/src/components/task-chat/task-chat-model.ts",
@@ -559,9 +579,17 @@
     "ui/src/context/LiveUpdatesProvider.localization.test.ts",
     "ui/src/context/LiveUpdatesProvider.tsx",
     "ui/src/context/ToastContext.tsx",
+    "ui/src/features/connections/AgentMailApiKeyField.tsx",
+    "ui/src/features/connections/AgentMailCredentialField.tsx",
+    "ui/src/features/connections/AgentMailIntentSetup.tsx",
+    "ui/src/features/connections/ApiKeyCredentialField.tsx",
+    "ui/src/features/connections/ConnectionChoiceList.tsx",
+    "ui/src/features/connections/ConnectionInstructions.tsx",
     "ui/src/features/connections/ConnectionIntentInteractionBody.test.tsx",
     "ui/src/features/connections/ConnectionIntentInteractionBody.tsx",
     "ui/src/features/connections/ConnectionSetupFlow.tsx",
+    "ui/src/features/connections/ConnectionSetupHeader.tsx",
+    "ui/src/features/connections/HonchoWorkspaceSettings.tsx",
     "ui/src/features/connections/remote-mcp/RemoteMcpAccountChoice.tsx",
     "ui/src/features/connections/remote-mcp/RemoteMcpConnectionSetup.tsx",
     "ui/src/features/connections/remote-mcp/RemoteMcpDesignExample.tsx",
@@ -569,6 +597,7 @@
     "ui/src/features/connections/remote-mcp/RemoteMcpProductionSetup.tsx",
     "ui/src/features/connections/remote-mcp/providers.ts",
     "ui/src/features/connections/remote-mcp/types.ts",
+    "ui/src/features/connections/useEmailAddressCheck.ts",
     "ui/src/hooks/useBrowserViewport.ts",
     "ui/src/hooks/useDateRange.ts",
     "ui/src/hooks/useDocumentAnnotationMutations.ts",
@@ -656,8 +685,11 @@
     "ui/src/lib/system-notice-comment.test.ts",
     "ui/src/lib/system-notice-comment.ts",
     "ui/src/lib/system-notice-humanizer.ts",
+    "ui/src/lib/task-date-groups.test.ts",
+    "ui/src/lib/task-date-groups.ts",
     "ui/src/lib/task-side-panel-state.test.ts",
     "ui/src/lib/task-side-panel-state.ts",
+    "ui/src/lib/task-views.ts",
     "ui/src/lib/timeAgo.ts",
     "ui/src/lib/timeline/layout.ts",
     "ui/src/lib/tool-installs.ts",
@@ -679,6 +711,7 @@
     "ui/src/pages/AgentChats.tsx",
     "ui/src/pages/AgentDetail.production.tsx",
     "ui/src/pages/AgentDetail.tsx",
+    "ui/src/pages/AgentOverview.test.tsx",
     "ui/src/pages/AgentToolsTab.test.tsx",
     "ui/src/pages/AgentToolsTab.tsx",
     "ui/src/pages/Agents.production.tsx",
@@ -704,6 +737,7 @@
     "ui/src/pages/CompanyExport.tsx",
     "ui/src/pages/CompanyImport.tsx",
     "ui/src/pages/CompanySettings.tsx",
+    "ui/src/pages/CompanySettingsArchive.test.tsx",
     "ui/src/pages/CompanySettingsPluginPage.tsx",
     "ui/src/pages/CompanySettingsRenameHint.test.tsx",
     "ui/src/pages/CompanySkills.production.tsx",
@@ -712,6 +746,7 @@
     "ui/src/pages/Costs.production.tsx",
     "ui/src/pages/Costs.test.tsx",
     "ui/src/pages/Costs.tsx",
+    "ui/src/pages/Dashboard.localization.test.tsx",
     "ui/src/pages/Dashboard.tsx",
     "ui/src/pages/DashboardLive.tsx",
     "ui/src/pages/DecisionQueuePage.tsx",
@@ -734,6 +769,7 @@
     "ui/src/pages/Issues.tsx",
     "ui/src/pages/JoinRequestQueue.tsx",
     "ui/src/pages/LegacyInbox.tsx",
+    "ui/src/pages/McpConnect.tsx",
     "ui/src/pages/MyIssues.test.tsx",
     "ui/src/pages/MyIssues.tsx",
     "ui/src/pages/NewAgent.tsx",
@@ -793,6 +829,8 @@
     "ui/src/pages/agent-skills/AgentSkillsTab.tsx",
     "ui/src/pages/agent-skills/agent-skill-source.test.ts",
     "ui/src/pages/agent-skills/agent-skill-source.ts",
+    "ui/src/pages/apps/AggregatorAppManager.tsx",
+    "ui/src/pages/apps/AggregatorConnectDialog.tsx",
     "ui/src/pages/apps/AppDetail.test.tsx",
     "ui/src/pages/apps/AppDetail.tsx",
     "ui/src/pages/apps/AppLogo.tsx",
@@ -800,32 +838,43 @@
     "ui/src/pages/apps/AppsConnect.test.tsx",
     "ui/src/pages/apps/AppsConnect.tsx",
     "ui/src/pages/apps/AppsReview.tsx",
+    "ui/src/pages/apps/ArcadeDiscoverySetup.tsx",
+    "ui/src/pages/apps/AssistantConnection.test.tsx",
+    "ui/src/pages/apps/AssistantConnection.tsx",
     "ui/src/pages/apps/Browse.test.tsx",
     "ui/src/pages/apps/Browse.tsx",
+    "ui/src/pages/apps/CatalogSourceFilters.tsx",
+    "ui/src/pages/apps/ComposioAppManager.tsx",
+    "ui/src/pages/apps/ComposioAppSetup.tsx",
     "ui/src/pages/apps/ConnectionProvenanceChip.tsx",
     "ui/src/pages/apps/Connections.test.tsx",
     "ui/src/pages/apps/Connections.tsx",
+    "ui/src/pages/apps/ExecutorManagementSetup.tsx",
     "ui/src/pages/apps/PaperclipCloudOAuthHandoff.test.tsx",
     "ui/src/pages/apps/PaperclipCloudOAuthHandoff.tsx",
     "ui/src/pages/apps/ReviewQueueCard.tsx",
     "ui/src/pages/apps/UnverifiedServerBadge.tsx",
     "ui/src/pages/apps/agent-selector-contract.test.ts",
+    "ui/src/pages/apps/aggregator-discovery-display.ts",
     "ui/src/pages/apps/app-definition-copy.ts",
     "ui/src/pages/apps/app-definition-custom-copy.test.ts",
     "ui/src/pages/apps/app-definition-display.test.ts",
     "ui/src/pages/apps/app-definition-display.ts",
     "ui/src/pages/apps/app-definition-metadata-coverage.test.ts",
+    "ui/src/pages/apps/app-detail/ActionTestDialog.tsx",
     "ui/src/pages/apps/app-detail/ActivityPanel.tsx",
     "ui/src/pages/apps/app-detail/AdvancedPanel.tsx",
+    "ui/src/pages/apps/app-detail/AgentConnectionAccess.tsx",
     "ui/src/pages/apps/app-detail/BrowserUseSettingsPanel.tsx",
+    "ui/src/pages/apps/app-detail/ConnectedAggregatorApps.tsx",
     "ui/src/pages/apps/app-detail/IdentitiesSection.tsx",
     "ui/src/pages/apps/app-detail/PermissionsPanel.tsx",
     "ui/src/pages/apps/app-detail/RailwayAccessPanel.tsx",
     "ui/src/pages/apps/app-detail/ReviewPanel.tsx",
     "ui/src/pages/apps/app-detail/SetupPanel.tsx",
-    "ui/src/pages/apps/app-detail/TestPanel.tsx",
     "ui/src/pages/apps/app-detail/action-permission-summary.ts",
     "ui/src/pages/apps/app-tabs.ts",
+    "ui/src/pages/apps/assistant-setup-display.ts",
     "ui/src/pages/apps/chat/ChatCommunicationInstructions.tsx",
     "ui/src/pages/apps/chat/ChatEndpoint.clipboard.test.tsx",
     "ui/src/pages/apps/chat/ChatEndpointDetail.tsx",
@@ -835,12 +884,13 @@
     "ui/src/pages/apps/chat/GitHubBotConfiguration.tsx",
     "ui/src/pages/apps/chat/GitHubBotManagement.tsx",
     "ui/src/pages/apps/chat/GitHubChatSetup.tsx",
+    "ui/src/pages/apps/chat/GitHubSetupPrompt.tsx",
     "ui/src/pages/apps/chat/Photon.localization.test.tsx",
     "ui/src/pages/apps/chat/PhotonConnectStep.tsx",
-    "ui/src/pages/apps/chat/SetupPrompt.tsx",
     "ui/src/pages/apps/chat/SlackAvatarStep.tsx",
     "ui/src/pages/apps/chat/SlackIdentityStep.tsx",
     "ui/src/pages/apps/chat/SlackSetupPrompt.test.tsx",
+    "ui/src/pages/apps/chat/SlackSetupPrompt.tsx",
     "ui/src/pages/apps/chat/SlackToolSettings.tsx",
     "ui/src/pages/apps/chat/chat-activity-copy.test.ts",
     "ui/src/pages/apps/chat/chat-activity-copy.ts",
@@ -849,6 +899,7 @@
     "ui/src/pages/apps/chat/chat-copy.ts",
     "ui/src/pages/apps/chat/chat-ui-contract.test.ts",
     "ui/src/pages/apps/chat/github-private-key-file.ts",
+    "ui/src/pages/apps/chat/manifest-protocol.test.ts",
     "ui/src/pages/apps/chat/photon-copy.ts",
     "ui/src/pages/apps/connection-identity.ts",
     "ui/src/pages/apps/connection-owner.tsx",
@@ -869,6 +920,7 @@
     "ui/src/pages/apps/gateways/panels/OverviewPanel.tsx",
     "ui/src/pages/apps/gateways/panels/TokensPanel.tsx",
     "ui/src/pages/apps/generic-mcp-connect.ts",
+    "ui/src/pages/apps/setup-display.test.ts",
     "ui/src/pages/audit/AuditFeed.production.tsx",
     "ui/src/pages/audit/AuditFeed.test.tsx",
     "ui/src/pages/audit/AuditFeed.tsx",
@@ -938,7 +990,7 @@
       "mode": "100644"
     },
     "ui/src/App.tsx": {
-      "sha256": "3a24d3ada944788ccba0abd0c93cd00b95c201a31ebcae32e48ef392dcbc4372",
+      "sha256": "bb34f67a3c7f222aee699cc546c01c63ba9c3d094e1c0eb778fff5fbc9a286ff",
       "mode": "100644"
     },
     "ui/src/adapters/adapter-display-registry.ts": {
@@ -954,11 +1006,11 @@
       "mode": "100644"
     },
     "ui/src/adapters/codex-local/config-fields.test.tsx": {
-      "sha256": "dc0fa3510ef1ec64cb22ecec132855269b8b1ead4791545af8926ea4a440ad47",
+      "sha256": "af62641cbdb7153677a9b9235dc431f5fcaf1f35858d18e037917f9853058cb4",
       "mode": "100644"
     },
     "ui/src/adapters/codex-local/config-fields.tsx": {
-      "sha256": "ec72f71fe2b7b34bcb3f33dc7d7ca66573f3a967193fefeda6cce5359d9fb7b3",
+      "sha256": "21580c052aed403b04591127b690e255647c95aa9709c0f842bd86a693728262",
       "mode": "100644"
     },
     "ui/src/adapters/cursor/config-fields.tsx": {
@@ -1026,11 +1078,11 @@
       "mode": "100644"
     },
     "ui/src/components/ActiveAgentsPanel.test.tsx": {
-      "sha256": "6205be0a41187b4c6dbeab6971e46fd57d993588ba73e8c8130cd194cb744374",
+      "sha256": "c4ed41452eba2bf54bc1a0cf3d433e9151f44961e5fd347663c4d1592874ba98",
       "mode": "100644"
     },
     "ui/src/components/ActiveAgentsPanel.tsx": {
-      "sha256": "58b93b9bfff691be1ecd760e8c880092233e3cad367b626853ccf0736e934eae",
+      "sha256": "5567768035ecdf17f33173b2e079663284ccc4e9ffe61980511b01124c8277c4",
       "mode": "100644"
     },
     "ui/src/components/ActivityCharts.test.tsx": {
@@ -1067,6 +1119,10 @@
     },
     "ui/src/components/AdapterLoginChrome.tsx": {
       "sha256": "4846f29298d84600b01e94d4990d5e78c8f836283608050c090bc536038abe08",
+      "mode": "100644"
+    },
+    "ui/src/components/AgentActionButtons.test.tsx": {
+      "sha256": "928a3ad9557ffae77b0136b2ec416f6356f65bb84305c11de93088d00eb9e915",
       "mode": "100644"
     },
     "ui/src/components/AgentActionButtons.tsx": {
@@ -1106,11 +1162,11 @@
       "mode": "100644"
     },
     "ui/src/components/AgentConfigForm.tsx": {
-      "sha256": "b061305a7c8709efece4298168e869a2357f9bbed45a8118291e0562378af72b",
+      "sha256": "5622f0a4dbc9bb8124c174e2963ae6e7c09efbad53c035f81ee6ef575e482b34",
       "mode": "100644"
     },
     "ui/src/components/AgentContextualSidebar.tsx": {
-      "sha256": "b169921571ecf41301cf4218c25dc384ee230519da44ffc69af7737d9a8cf61b",
+      "sha256": "1ffdc831a44af077983fb3d41f33efd58b5681e28ea339983c6109d3fdb3077c",
       "mode": "100644"
     },
     "ui/src/components/AgentConversationSidebar.localization.test.tsx": {
@@ -1118,7 +1174,7 @@
       "mode": "100644"
     },
     "ui/src/components/AgentConversationSidebar.tsx": {
-      "sha256": "2050779500648a77d478bf272dfbcbea879e5705eeceaa581f865ffbb47d3576",
+      "sha256": "b2647c1da6a5d3d25e7f0b6362adbc2a489f9c3cf73a7e9eb2221b2c78196bca",
       "mode": "100644"
     },
     "ui/src/components/AgentIconPicker.tsx": {
@@ -1130,11 +1186,11 @@
       "mode": "100644"
     },
     "ui/src/components/AgentMultiSelect.test.tsx": {
-      "sha256": "e4e1862eef323e55fd5e0400589a2845437765f30b96cfa8ee219b27ac760cc3",
+      "sha256": "d6ac75dcec03aa714773a6b289543607ad0a119432db38b1650a2c46b034c98d",
       "mode": "100644"
     },
     "ui/src/components/AgentMultiSelect.tsx": {
-      "sha256": "65207c3ed8b72903dd1e15d83e42de1f0490c57cad122a08f571905f74467c36",
+      "sha256": "8b0eaaaaf1e8c302d9d7b7b902d357232c476135657d9c1761d78d020a232166",
       "mode": "100644"
     },
     "ui/src/components/AgentProperties.tsx": {
@@ -1143,6 +1199,10 @@
     },
     "ui/src/components/AgentSecretAccessEditor.tsx": {
       "sha256": "82773a577897b4a2e8afecf80dbb513ac104dcfb0d59bff1282d58f2b7a2637b",
+      "mode": "100644"
+    },
+    "ui/src/components/AgentSetupPrompt.tsx": {
+      "sha256": "e2ce738fd258838d0e818dc99e4c6cf0b34b4afe0d8acb283bff77c442ce12fd",
       "mode": "100644"
     },
     "ui/src/components/AnimatedPaperclipIcon.test.tsx": {
@@ -1174,7 +1234,7 @@
       "mode": "100644"
     },
     "ui/src/components/AppConnectionSidebar.tsx": {
-      "sha256": "25e6b34fe7d08318f3cd863d45243bfbcc89a61f169a9edc2a7bf81595f43f9e",
+      "sha256": "ffc02520b7d45ed0c7d1f9e849fc7210b98010b89a432d7de53c6037ca011f9e",
       "mode": "100644"
     },
     "ui/src/components/AppErrorBoundary.tsx": {
@@ -1206,7 +1266,7 @@
       "mode": "100644"
     },
     "ui/src/components/AttentionInteractionResolver.tsx": {
-      "sha256": "8e5662565eaac5626052b87f89fdd56260a1291339b3a4b2eb47725cdc5e3617",
+      "sha256": "4c8100086d6b665350ff9f9e5a2d0ff8cfc8f5c43cbd77078d01d356f49f25f7",
       "mode": "100644"
     },
     "ui/src/components/AttentionLocalization.test.tsx": {
@@ -1242,11 +1302,11 @@
       "mode": "100644"
     },
     "ui/src/components/BreadcrumbBar.test.tsx": {
-      "sha256": "92a5cc25480d3966007e89675f9e3e0735bd72e32cdf5a48d263439d0fc56ca7",
+      "sha256": "c85a2582728405d787f000b167fdc917df22fb20d6e5205aab374b20273d1fb8",
       "mode": "100644"
     },
     "ui/src/components/BreadcrumbBar.tsx": {
-      "sha256": "d9b3aa873aa044767587d71ff851e355039cf9e4e407cb6416726f24f39e7c25",
+      "sha256": "c30ca621aa5c4ba23b3b9554b5d26018e506c1f57ed8979815ac0b408ee64d33",
       "mode": "100644"
     },
     "ui/src/components/BudgetIncidentCard.tsx": {
@@ -1313,6 +1373,10 @@
       "sha256": "b77937caf7ae13f1213aa046c3860d73b9f31ee39e43d4018610eb944a0fe144",
       "mode": "100644"
     },
+    "ui/src/components/ChatConnectorsExperimentalGate.tsx": {
+      "sha256": "5c77b571954a564ae7c3d5c5317d61c27899b192674013ea6b2ca21cac0a3d91",
+      "mode": "100644"
+    },
     "ui/src/components/ClaudeSubscriptionPanel.tsx": {
       "sha256": "6fe04085c069637d3e682b65e9169cbc66738e70127805380f422b66cb1ca150",
       "mode": "100644"
@@ -1334,7 +1398,7 @@
       "mode": "100644"
     },
     "ui/src/components/CommandPalette.tsx": {
-      "sha256": "3a2478e13a41fbd4d3c6873854c3cd64383032f1357cd7dab0b62e0eb7c32121",
+      "sha256": "00d5fa5f42ffb7d242d209dc077a13a0b65abae9f6b3798034bcf6dffbf3d9ec",
       "mode": "100644"
     },
     "ui/src/components/CommentAttributionChip.test.tsx": {
@@ -1378,7 +1442,7 @@
       "mode": "100644"
     },
     "ui/src/components/ConfigureBuiltInAgentModal.tsx": {
-      "sha256": "612c58bd3312a6d017af31b97fd9e53370f5f616052c17934f5f6eab9c734870",
+      "sha256": "d86642587639c00e41aca76a7f63658deb1e36b0bfaa08761ad22a86a2e0f7bd",
       "mode": "100644"
     },
     "ui/src/components/ContextualSidebarFrame.tsx": {
@@ -1430,11 +1494,11 @@
       "mode": "100644"
     },
     "ui/src/components/DispositionRecoveryNotice.test.tsx": {
-      "sha256": "cbb0738fe085227007920036a2b592d4e9da7c6e9421655e3afa437927c66a29",
+      "sha256": "26289ac9941eb777baa601d6987448aa98db39aa7471979546d3ed013a5daba9",
       "mode": "100644"
     },
     "ui/src/components/DispositionRecoveryNotice.tsx": {
-      "sha256": "37f1453883947f5ed6b1942e2bc5bf8c85b827afe023b658ebf9024321acd52c",
+      "sha256": "febb3f611e8d1cd87032597828482a5d7417a8d488fa0435e16b9a5edcecbc70",
       "mode": "100644"
     },
     "ui/src/components/DocumentAnnotationLayer.tsx": {
@@ -1466,11 +1530,11 @@
       "mode": "100644"
     },
     "ui/src/components/EmailLocalization.test.tsx": {
-      "sha256": "9868a6911903e8643df948e07c9cff326f9017acd6541eec76a8a71d0ec66fdd",
+      "sha256": "7e329e648b8c964f6bbcb8a6b8888ecedd8968978dc0e9e1301e38519143c4e6",
       "mode": "100644"
     },
     "ui/src/components/EmailMessageCard.tsx": {
-      "sha256": "d4c54c19123d3c02d1b4b3bb0edc025afcb1563df296b681ef3d7889077042a3",
+      "sha256": "259d6e9fe1fb221093a19cbc6512b43e7548aa66da1f7c3d82f76c38a35fecf2",
       "mode": "100644"
     },
     "ui/src/components/EmailSafetyNotice.tsx": {
@@ -1478,7 +1542,7 @@
       "mode": "100644"
     },
     "ui/src/components/EmailTaskActivity.tsx": {
-      "sha256": "304d5e5f07a9e7b51f9c1ee6b39c567ccc8ce2c6c36480721d0b999749ee086c",
+      "sha256": "f15e45dc3120de84a82199093a234ab4948c0b86e2dbbd49eb3add2ec35d9494",
       "mode": "100644"
     },
     "ui/src/components/EnforcementBanner.tsx": {
@@ -1486,11 +1550,11 @@
       "mode": "100644"
     },
     "ui/src/components/ExecutionBlockerNotice.test.tsx": {
-      "sha256": "15749981dd5c10ca4803c625b8d2f0b7edacd1e76c28f6e109ef8fa48d083118",
+      "sha256": "0cc1ae09b2d413e1813f350ca4e55aeb7aa6568705d6aa4dd5ead0ad2feab401",
       "mode": "100644"
     },
     "ui/src/components/ExecutionBlockerNotice.tsx": {
-      "sha256": "3a8f928b06e7cff40049f29f7bebddd884b00e133a053709376f7ca67bf2e97b",
+      "sha256": "445a0aeaf30804f4a9cd98e48365666fc7e3439097d22c5301af71603c410112",
       "mode": "100644"
     },
     "ui/src/components/ExecutionParticipantPicker.tsx": {
@@ -1526,11 +1590,11 @@
       "mode": "100644"
     },
     "ui/src/components/FileTree.test.tsx": {
-      "sha256": "790ba594a0ad3208e74130fdab12c8ba00e534cce5b2bf4b0e5a1e4fa5b75baf",
+      "sha256": "dc61441a3a575e0aaafbec700edb126789dcc6e31b88d8e67ec38229ead10b44",
       "mode": "100644"
     },
     "ui/src/components/FileTree.tsx": {
-      "sha256": "978987390ffafc172fbdfb859da820cdb53e7f129638b1a226a260bb8ba25f61",
+      "sha256": "82a04292525d289ed17e7ac5357a071d11b8a02c1fb01dc204c90cb78b8f441f",
       "mode": "100644"
     },
     "ui/src/components/FileViewerSheet.tsx": {
@@ -1598,7 +1662,7 @@
       "mode": "100644"
     },
     "ui/src/components/InlineEntitySelector.tsx": {
-      "sha256": "06bf74bcbc0508953cf4ff037c8f62ed746937aa852b0fead924e06eb012cdd4",
+      "sha256": "be4f20a0c6f3c3b4b6a842870a93d7e87ad5f548dd7a6c381ff6782d885bab3f",
       "mode": "100644"
     },
     "ui/src/components/InstructionHistory.tsx": {
@@ -1615,6 +1679,10 @@
     },
     "ui/src/components/InteractionGovernancePanel.tsx": {
       "sha256": "5a7a8bb7bb783ac66cb252d119c1ac67915828d1b1d4f0a92c06bb798882ac69",
+      "mode": "100644"
+    },
+    "ui/src/components/InteractionPreparationNotice.tsx": {
+      "sha256": "fc5c6d22060e81fbff5500e4f082ee19e42b413fd1460312435a6bc3377b9dcd",
       "mode": "100644"
     },
     "ui/src/components/IssueAssignedBacklogNotice.tsx": {
@@ -1646,11 +1714,11 @@
       "mode": "100644"
     },
     "ui/src/components/IssueChatThread.test.tsx": {
-      "sha256": "24f8ace64f1b69c12e18922d30f6a98ccb3ebf2ad4da622705f56d4d0a664ab0",
+      "sha256": "00726dcfccb2cbbb56898595aebd6e8ce035488742a57564e61711ada756f9b2",
       "mode": "100644"
     },
     "ui/src/components/IssueChatThread.tsx": {
-      "sha256": "d78e7cdd96feaac385692753bf70145437e84a9c0d683cb424c2f33e532acee7",
+      "sha256": "34fd44040d4cc24a11ddaefad0a5c7e8be67d0a585649c2756b62739351b22ee",
       "mode": "100644"
     },
     "ui/src/components/IssueChatThreadSystemNotice.test.tsx": {
@@ -1658,7 +1726,7 @@
       "mode": "100644"
     },
     "ui/src/components/IssueChromeLocalization.test.tsx": {
-      "sha256": "9174a983414fcb34c6439ac2e1f9a2f9f37a872004b5a3066843ba1741322a36",
+      "sha256": "f32723eb0477535ca22a046d31e0af7e820fcefc3c9f5ecf7759c297ed57a1ee",
       "mode": "100644"
     },
     "ui/src/components/IssueColumns.tsx": {
@@ -1666,7 +1734,7 @@
       "mode": "100644"
     },
     "ui/src/components/IssueContinuationHandoff.tsx": {
-      "sha256": "6ed5dbb13a2ed3c8179ef73cb80a75d92a624b6239edd169f1800c84b127578d",
+      "sha256": "1bc27186edb3010b43e423e17992e16a3299c88fb0fa771a88662596f16bdef9",
       "mode": "100644"
     },
     "ui/src/components/IssueDetailLocalizationRuntime.test.tsx": {
@@ -1706,11 +1774,11 @@
       "mode": "100644"
     },
     "ui/src/components/IssueMonitorBanner.test.tsx": {
-      "sha256": "f1ce7549dce91e84fdc9b9b5dc031f7bc70b3d35f8edf5be3dfb5e907f680021",
+      "sha256": "3f42d00a7bdbca29b2adaeed41935516a2e58190a034d034920146cae7efd0e2",
       "mode": "100644"
     },
     "ui/src/components/IssueMonitorBanner.tsx": {
-      "sha256": "42c482790cb5f2624471b192c9beaa930717dc7281da48d1140f581fc270b5bb",
+      "sha256": "8e5ba5ffe721cde108122ef8466811fc3bc8473b96565a20345645f0e8045803",
       "mode": "100644"
     },
     "ui/src/components/IssuePanelsLocalization.test.tsx": {
@@ -1722,7 +1790,7 @@
       "mode": "100644"
     },
     "ui/src/components/IssueProperties.test.tsx": {
-      "sha256": "f7335e484b6ff9ab18af815bd287298fdce0e398c77f78c4eb9858fa18fee919",
+      "sha256": "a7e96edc5eac4ed98db864142b3ab5c561776f6bdc089cdb77c84815ae47eb54",
       "mode": "100644"
     },
     "ui/src/components/IssueRecoveryActionCard.tsx": {
@@ -1750,11 +1818,11 @@
       "mode": "100644"
     },
     "ui/src/components/IssueScheduledRetryCard.test.tsx": {
-      "sha256": "80e6efb8086e4ed0791f25f10b429bd2d0dc1d9452b0538294f02bb048c49d77",
+      "sha256": "155fac6d500c48e8b59df8f0276a1ce69a80bb56f4137085791c260f4bf8e0c1",
       "mode": "100644"
     },
     "ui/src/components/IssueScheduledRetryCard.tsx": {
-      "sha256": "7d60b54d067355d91a0e4d220049174d55842b8ef0da4543cc9c7e137fa94c43",
+      "sha256": "0ddb2a82e6d46548ebe8585ec9fa30646395f886bd8adaf0bbbde244124742df",
       "mode": "100644"
     },
     "ui/src/components/IssueSiblingNavigation.tsx": {
@@ -1762,7 +1830,7 @@
       "mode": "100644"
     },
     "ui/src/components/IssueThreadInteractionCard.tsx": {
-      "sha256": "25d3245cbe0b55514e6cfa1358ece6e54310d031ffc5b568341973c69e6950df",
+      "sha256": "823c5f824ea1f038cdc8e203054dcf3039db55df35220b9dc3887af8c893bcfd",
       "mode": "100644"
     },
     "ui/src/components/IssueWorkspaceCard.tsx": {
@@ -1774,11 +1842,11 @@
       "mode": "100644"
     },
     "ui/src/components/IssuesList.test.tsx": {
-      "sha256": "d6fb1b3bf6a83359a8e6f6c3b70b1ed6ce1810ed9820ab9b2ebef797c231bde9",
+      "sha256": "4c67f844ebcacbbc5c3bbfc568d323ea95b4135774570bbaf288d7510c492ca4",
       "mode": "100644"
     },
     "ui/src/components/IssuesList.tsx": {
-      "sha256": "0f09c8e9069208d1d6ea895827cf2b85d5b6ad42cec2b60b8da8efb0cd60e34b",
+      "sha256": "322ccdd75dab50a0bf3de1e862633818420d2e915ca4650e528f907c9e637a34",
       "mode": "100644"
     },
     "ui/src/components/JsonSchemaForm.localization.test.tsx": {
@@ -1802,11 +1870,11 @@
       "mode": "100644"
     },
     "ui/src/components/Layout.production.tsx": {
-      "sha256": "34d92b448d1f722e14568ae31382517294ab9b85239aebe2636ac4cfadd30b1b",
+      "sha256": "2ca922f79c7bd2400ceb8f9dee371780febdc924aa959b0603c2beabb64b35a8",
       "mode": "100644"
     },
     "ui/src/components/Layout.tsx": {
-      "sha256": "81722725b6cefa106a5692cd43f3485cc7a6c57940bc1e6bfd856eea8611892f",
+      "sha256": "97e204d0d420c0bd3f83b4169f7035d8079b51af98f7fd06be93559cd7a5d00f",
       "mode": "100644"
     },
     "ui/src/components/LegacyIssuesList.tsx": {
@@ -1838,15 +1906,15 @@
       "mode": "100644"
     },
     "ui/src/components/MarkdownBody.tsx": {
-      "sha256": "54274ce0a04488bb3f3433b48434c2e01a66d6e52f0a2d4270f8086e12f58181",
+      "sha256": "b33ac4b6fc8926e72c003b43f7739a746106484bfae1f4f3e890853f35b70d9b",
       "mode": "100644"
     },
     "ui/src/components/MarkdownEditor.test.tsx": {
-      "sha256": "55cb5884b5eb6c12a5c0c2391921e231f0aeb88c27d49e5bafcf0b80c3c87211",
+      "sha256": "a24c89a2c2b23f40c6f47c5da30c466f78227a9eca187b84633dfb5c4455fe7e",
       "mode": "100644"
     },
     "ui/src/components/MarkdownEditor.tsx": {
-      "sha256": "03581f63ac9813751dedb5bdfe89f91fdf436ad89629f586b42187b7a91ed393",
+      "sha256": "26fdd0e3c486a388e52d98bce63318fbf940c76afc2f9138ca59e542487a744d",
       "mode": "100644"
     },
     "ui/src/components/MemberMultiSelect.test.tsx": {
@@ -1870,7 +1938,7 @@
       "mode": "100644"
     },
     "ui/src/components/MobileBottomNav.tsx": {
-      "sha256": "93b224f3e541ef5d7a5a72ff0758ecb77ae3c947b9585ca1177c1822a77afb48",
+      "sha256": "67d0c6477ac6b43ce7ea92c0c9c9a9ae98fbdd6de60bb9460c41dc6656a3a83c",
       "mode": "100644"
     },
     "ui/src/components/NewGoalDialog.tsx": {
@@ -1878,15 +1946,15 @@
       "mode": "100644"
     },
     "ui/src/components/NewIssueDialog.test.tsx": {
-      "sha256": "798d214c0e9b70fa3fe8116d53c4ed882513ec4505d3f3e79090e7984ddd73c9",
+      "sha256": "30c747ea31a4c00c60f6c32056ddcf91ba4cb335108836053bfcff8ca1c88c31",
       "mode": "100644"
     },
     "ui/src/components/NewIssueDialog.tsx": {
-      "sha256": "e4caf3bcb13635eb7724a25f8de7b92a2b7578c7041cdba701edf5d41ab0bd96",
+      "sha256": "365459e28610a5a5e1178bf38e05b5edd2e4645950f3a6c4c1c6766f677e186a",
       "mode": "100644"
     },
     "ui/src/components/NewProjectDialog.tsx": {
-      "sha256": "d9cf5947b0ec4fe136d50d5ecb4c97640de541a929fd6e7112220a508da1e23f",
+      "sha256": "7210ae14697505e03617c5fa75ad23edbe20decc5eb6989b41318beac59288e7",
       "mode": "100644"
     },
     "ui/src/components/OnboardingChat.tsx": {
@@ -2073,6 +2141,14 @@
       "sha256": "da36758915d7f0f256eecbef634ebd96599f695c6a1ffef22e30359819c4fd8f",
       "mode": "100644"
     },
+    "ui/src/components/RunRetryDetails.test.tsx": {
+      "sha256": "552c2aeccea6ddfa805e3f3ab188d74045b029018d3f33cf01d6510d113b235f",
+      "mode": "100644"
+    },
+    "ui/src/components/RunRetryDetails.tsx": {
+      "sha256": "dd67c460526d704fc03903d9230a6984ba0b20acecd98f1f5b8380e718f124b6",
+      "mode": "100644"
+    },
     "ui/src/components/RunWorkspaceRecoverySurface.tsx": {
       "sha256": "c84d8524d7a4f6eafa12a9c678dc42f3867f39a8b6f070b3ad1ccb860ef4b99f",
       "mode": "100644"
@@ -2102,7 +2178,7 @@
       "mode": "100644"
     },
     "ui/src/components/SearchableSelect.tsx": {
-      "sha256": "7de65914b3a3ea9a6a9f668cf1eda2e475e77628d58e5404cf153726bd42bad0",
+      "sha256": "6a62cded50f790509fc149fcc5937b932c156491c5143d0c1e4620c325b2cc0b",
       "mode": "100644"
     },
     "ui/src/components/SecretBindingPicker.tsx": {
@@ -2118,7 +2194,7 @@
       "mode": "100644"
     },
     "ui/src/components/Sidebar.tsx": {
-      "sha256": "8c8513e0057a8b9780d70b0d1cd064d365277b31a8a157ea397f19a026afc4bc",
+      "sha256": "944323302d44b8847c174eccb4b8fda61c72dde690ef8d9e569f82ef227245e9",
       "mode": "100644"
     },
     "ui/src/components/SidebarAccountMenu.production.tsx": {
@@ -2286,15 +2362,19 @@
       "mode": "100644"
     },
     "ui/src/components/TaskChatThread.test.tsx": {
-      "sha256": "1e06be465c8516681ee59345ef3f2c0d62f4f8d9defe91dcda4d12a3fd7e0e9c",
+      "sha256": "8d395d83183d2e96e12c4b579b9950a83dcf33d7785ff2568e8d79e76675b7ed",
       "mode": "100644"
     },
     "ui/src/components/TaskChatThread.tsx": {
-      "sha256": "f8256997b8110d463cfbf2e135d9be0b93979bf372e364c68e193bc3b940aa7f",
+      "sha256": "c9301c5304ce55e0c7e1fb590b5fd97680acdf570609b3bc6fd67198544f0cc3",
       "mode": "100644"
     },
     "ui/src/components/TaskTreeControls.tsx": {
       "sha256": "26345d92bafafc935d660414f4b56145964d36070e4e9eddcba438f0294389db",
+      "mode": "100644"
+    },
+    "ui/src/components/TaskViewsMenu.tsx": {
+      "sha256": "e3a8f360b664da1784081cf1b96b5fdf75db7ffd2415069b3a7ae31b1698c3b9",
       "mode": "100644"
     },
     "ui/src/components/ThemeToggle.tsx": {
@@ -2378,7 +2458,7 @@
       "mode": "100644"
     },
     "ui/src/components/ai-connections/AiConnectionAccountControls.tsx": {
-      "sha256": "1aaad7ac8755cc311b70f3ed8bcbc3e2313516d65023051eb191878a3ee33e07",
+      "sha256": "67196d4977b57a3f10bcd4e597cd74ecba26dfc01653be84ed374566b7eae5cb",
       "mode": "100644"
     },
     "ui/src/components/ai-connections/AiConnectionAuth.test.tsx": {
@@ -2394,7 +2474,7 @@
       "mode": "100644"
     },
     "ui/src/components/ai-connections/AiConnectionCredentialStep.tsx": {
-      "sha256": "5edb772179026ccc33a0a54bf8c18285a724957fca69ac219551e5fc864bb1bc",
+      "sha256": "774130fbbd47067b7b6c50fc47a3c39e702f630bd482c85be6917a2265cb4310",
       "mode": "100644"
     },
     "ui/src/components/ai-connections/AiConnectionDesignExamples.tsx": {
@@ -2402,7 +2482,7 @@
       "mode": "100644"
     },
     "ui/src/components/ai-connections/AiConnectionField.tsx": {
-      "sha256": "5bdb6b9865b5a408e2be241f5687d2caef994b958f7da77f3eea7a235223833e",
+      "sha256": "61cd779b8d810ff6bafe1c6d96b4c1283daa381d7776e0747dfdc26a1772de8d",
       "mode": "100644"
     },
     "ui/src/components/ai-connections/AiConnectionIdentity.tsx": {
@@ -2414,15 +2494,35 @@
       "mode": "100644"
     },
     "ui/src/components/ai-connections/AiConnectionPicker.localization.test.tsx": {
-      "sha256": "56c96cb6e81473cc0cf1f02055549d099dce833385c43a0c0ae2a91edbe5b509",
+      "sha256": "56c16bca2f06df16eba7065dfef826912323ad20c45729fab5b02078b228f0aa",
       "mode": "100644"
     },
     "ui/src/components/ai-connections/AiConnectionPicker.tsx": {
-      "sha256": "4e4f74dd2435bcb9ad0f3884dcd551ce1487f8c5254537772dadb48b97e51bce",
+      "sha256": "48cad31d437dda191ee603988189c3eda1d6baadc76232db884645555d8f1e1b",
+      "mode": "100644"
+    },
+    "ui/src/components/ai-connections/AiConnectionPoolConnector.localization.test.tsx": {
+      "sha256": "88d7caa452b7e09d192431b9b1149dac817b874ca57e81f5a331b2fdb38c945c",
+      "mode": "100644"
+    },
+    "ui/src/components/ai-connections/AiConnectionPoolConnector.tsx": {
+      "sha256": "b277148e1f22b61885619d47dab0a3862c1b7687c3663d35952a442b8ec51f76",
+      "mode": "100644"
+    },
+    "ui/src/components/ai-connections/AiConnectionPoolRunDetails.tsx": {
+      "sha256": "6f059cb22fac4b2a9d7ba7491a6469463062aa94cbb2114a4fe8f35d5a4f644b",
+      "mode": "100644"
+    },
+    "ui/src/components/ai-connections/AiConnectionUsagePanel.test.tsx": {
+      "sha256": "ce9bd1fcbdb74079f1980997ebb4e5ac0c6e769a966809958635854f6529a996",
+      "mode": "100644"
+    },
+    "ui/src/components/ai-connections/AiConnectionUsagePanel.tsx": {
+      "sha256": "179ee39c405fe8b4388393a81b1c5ae7a68730575264a3cda88f12f0ddac067d",
       "mode": "100644"
     },
     "ui/src/components/ai-connections/ManagedAiConnectionDetails.tsx": {
-      "sha256": "bafdc5b1d86174f059b28317da3e3f52d72607204884f77cfc34faa6ad18815b",
+      "sha256": "d4dd533d604bee1566069a7193d85fe2e9ac184a637de6700294a30a458e441d",
       "mode": "100644"
     },
     "ui/src/components/ai-connections/model.test.ts": {
@@ -2470,7 +2570,11 @@
       "mode": "100644"
     },
     "ui/src/components/chat/AgentChannelsPanel.tsx": {
-      "sha256": "7fc0ff31e443b36965b1f67cf50b9e6dd3622c1045c2db5636599d66a263ee16",
+      "sha256": "4a8f1bc07c33fd0fcb81667030efb27035bed9e3b543af1366ae494b19067172",
+      "mode": "100644"
+    },
+    "ui/src/components/chat/AgentWorkPanels.tsx": {
+      "sha256": "b055adb70ec3eda24511a9a7f9531769bc237af366cc7dae79131800492bd7ee",
       "mode": "100644"
     },
     "ui/src/components/chat/ChatDetailSidebar.test.tsx": {
@@ -2558,7 +2662,7 @@
       "mode": "100644"
     },
     "ui/src/components/issue-properties/IssueProperties.tsx": {
-      "sha256": "715069df0eb02132eed14c707fd65bcde47d335b79b57fbf694be74fa70e70c2",
+      "sha256": "f4a42a60c2a8de69566017e8ab6b3624d3899a27b5e036a092e1a03bab6f395f",
       "mode": "100644"
     },
     "ui/src/components/issue-properties/IssuePropertiesArtifactsTab.tsx": {
@@ -2590,15 +2694,15 @@
       "mode": "100644"
     },
     "ui/src/components/new-agent/AgentProviderConnection.test.tsx": {
-      "sha256": "2e5ac3518e6aad62ecba60f53396caae704e1afdce9e800d4a71526b0337981a",
+      "sha256": "0cb2c09e1f3c636b41661d35275c2e4048bb09b59da9895c49c6c1b18df9559d",
       "mode": "100644"
     },
     "ui/src/components/new-agent/AgentProviderConnection.tsx": {
-      "sha256": "e43ee07c74569c4592342d2c23170c3c922cd0bb9f784aa4b2e6834d16312dc4",
+      "sha256": "68a23108180dfe28fc5d4220f5c9aade48b4000c90efa19e06e20f71059af4d7",
       "mode": "100644"
     },
     "ui/src/components/new-agent/ExternalAgentInviteDialog.tsx": {
-      "sha256": "85d9a362b78236fe50fb0466a6e5648563269f565f4efd3574291a6e9588b300",
+      "sha256": "a0f33fe6f59ecf2c7872b4bbca4f337ae6f17826eb5d4cc399fb90e12d32a3f8",
       "mode": "100644"
     },
     "ui/src/components/new-agent/NewAgentSetup.localization.test.tsx": {
@@ -2606,7 +2710,7 @@
       "mode": "100644"
     },
     "ui/src/components/new-agent/NewAgentSetup.tsx": {
-      "sha256": "d56282ca4a250a0c980bb8eec93f538a8d8cffd899782e1e439a308d9e63ebc0",
+      "sha256": "f3dc7bc82c1eec9dcecfb890f3e0461d290808e01c860d6cc8fe590c823a9625",
       "mode": "100644"
     },
     "ui/src/components/onboarding/ConnectModelPreview.test.tsx": {
@@ -2670,7 +2774,7 @@
       "mode": "100644"
     },
     "ui/src/components/routine-triggers/WebhookFields.tsx": {
-      "sha256": "a1eb64dac72ca267766919b635c9d7f1d721fd86bb5da4b23659c602db4a5f70",
+      "sha256": "f4dea2d5d774c19e960832bac8dfd8a61f689271bfc5d190159e1588ddf8453d",
       "mode": "100644"
     },
     "ui/src/components/routine-triggers/WebhookUrlWarning.tsx": {
@@ -2729,6 +2833,14 @@
       "sha256": "dbefebf14ce9f67ab444547d4d27614bbd1cbc84ef319404c85d614ec3b2ac94",
       "mode": "100644"
     },
+    "ui/src/components/side-panel/SidePanelMobileTabs.test.tsx": {
+      "sha256": "2b984d0f6f028b9eb3ee2a44e914efbd0c10e0195cd1b475b115c18e9b36592f",
+      "mode": "100644"
+    },
+    "ui/src/components/side-panel/SidePanelMobileTabs.tsx": {
+      "sha256": "6bd064b52ca72a8d16c2bfe226979af2f0000be91d736bdced220da773eaff90",
+      "mode": "100644"
+    },
     "ui/src/components/side-panel/SidePanelTab.tsx": {
       "sha256": "1bdb1cd56623a3cba57ab693d6c35b447a1d3e1f6e8ac8bfbf5ac0ec842c81d0",
       "mode": "100644"
@@ -2765,16 +2877,28 @@
       "sha256": "45a2c55e068fb10c1b743327066f48c4488de77fad91ab387e05c545d1c03db0",
       "mode": "100644"
     },
+    "ui/src/components/task-chat/ComposerAddMenu.localization.test.tsx": {
+      "sha256": "3524c2ca45fa2eddc802af475d4eb5829e61c218d74a0ad0df29fc7800aa20b0",
+      "mode": "100644"
+    },
     "ui/src/components/task-chat/ComposerAddMenu.tsx": {
-      "sha256": "6da0e9de70894122a8dd562b01298488987d938eca742732ee20bd10874571c8",
+      "sha256": "2ffdec3b59536f5252db8cae10f724a909258a1924a0ab1ac881020ebfe4c45d",
       "mode": "100644"
     },
     "ui/src/components/task-chat/ComposerRunSettingsPicker.test.tsx": {
-      "sha256": "2c3f4956d2dfaf716e625067835e32ce93c62a7d7c66416b9fbecd92b2c429b4",
+      "sha256": "91ede8a3865acf694b3e515fca5827f0b3220dff5788a46215d6628cf2ec35dd",
       "mode": "100644"
     },
     "ui/src/components/task-chat/ComposerRunSettingsPicker.tsx": {
-      "sha256": "b8553f0dc88fcc86da6505b3f130f04560862fddaa477a416e8d6e2de2c27feb",
+      "sha256": "a035b09d3ee680ddd95f828359e1dd78c19e5c568626fa53ed3b128259d52762",
+      "mode": "100644"
+    },
+    "ui/src/components/task-chat/ComposerWorktreePicker.localization.test.tsx": {
+      "sha256": "b5656f1e24bfc213890361341a07462607b62d612a4ffdb80e22d142202fa62f",
+      "mode": "100644"
+    },
+    "ui/src/components/task-chat/ComposerWorktreePicker.tsx": {
+      "sha256": "be8c9ccdee5613898f52c538594680e73625f3555858a6cae105726c37029771",
       "mode": "100644"
     },
     "ui/src/components/task-chat/McpIcon.tsx": {
@@ -2786,7 +2910,7 @@
       "mode": "100644"
     },
     "ui/src/components/task-chat/RichWorkProductCard.tsx": {
-      "sha256": "44f5275900b6f1777127aad2d290a87cde7eeb1a25c82056231d2213e13732b2",
+      "sha256": "65246d006e42e2238a4af202623b745766b3897221443cd43a0faf078d6d8475",
       "mode": "100644"
     },
     "ui/src/components/task-chat/RunnerGoalWidget.test.tsx": {
@@ -2818,15 +2942,15 @@
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatCompactInteractionCard.tsx": {
-      "sha256": "0d7507c50d0e1fdc4eeef79b280e64d05e4c6788d896d8ab93b4abd7bbdd342d",
+      "sha256": "2c108c832eadbc3ee7adee6bbf677e93b3372aea3cb98827c90a328a74f20528",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatComposer.test.tsx": {
-      "sha256": "54f17928826f0b7ba530fb38e752578463ff701a7db228624081809d419575c9",
+      "sha256": "d24255d44480c510329c3379575eb29efbb6f3c25582733114c0d90b0186c728",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatComposer.tsx": {
-      "sha256": "8160efc83a4c44734795dda3141c10ec8537e0beba7a8393e022cb789ad78157",
+      "sha256": "6fca584f434cf29defd01724f611ab7ed67f72b010199c16112190058df80a1e",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatDescriptionBubble.tsx": {
@@ -2881,16 +3005,20 @@
       "sha256": "dc224a558c4da9b6092e0e1d56fb3ee4a4ee52df9eb0ec177070b8c3654dda06",
       "mode": "100644"
     },
+    "ui/src/components/task-chat/TaskChatProtocolCard.test.tsx": {
+      "sha256": "b845f341ed51664cfabce6c66c84d16e2fb80324844c29603e11db5e86347e75",
+      "mode": "100644"
+    },
     "ui/src/components/task-chat/TaskChatProtocolCard.tsx": {
       "sha256": "ad7f61be80cfee54dd3f226ef485e30f408555771a04743166978c5447c1315e",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatQueuedMessages.test.tsx": {
-      "sha256": "5e29a19ab9d5e6df86c8080b3e8b75fdb27053612f584966131f5311edba4208",
+      "sha256": "4d8cac9ba092e4344d739029fe33e84bb8a458daee7d692ed6494d7a3bd94505",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatQueuedMessages.tsx": {
-      "sha256": "a00314629fbebff2119b39303a3c586afe55f7b8f3f937326eb1814300604a51",
+      "sha256": "ddd1512d2692a1d3b33f07bdc7a3b84895797af2deaeff5efdb00412c0c59879",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatRichInput.tsx": {
@@ -2942,7 +3070,7 @@
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatTurn.tsx": {
-      "sha256": "0067ef2291e96de28c5cad56a769aea8d75ad02534fc96929dd50496501b8c11",
+      "sha256": "1f0b5a0cd4991b5714922a35f9f0ce27ba887fde2a7c845074a949ce7f1af081",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatTurnStatusIsland.tsx": {
@@ -2974,7 +3102,7 @@
       "mode": "100644"
     },
     "ui/src/components/task-chat/composer-run-settings.ts": {
-      "sha256": "561266117e96165935b9516f9adeb9badfe6acedfe43ad11284d69a0e360a207",
+      "sha256": "1f2bc35de8f20bed596e57a58e080866414dc582e7d74d56fb4ef72fb580981e",
       "mode": "100644"
     },
     "ui/src/components/task-chat/presentation-mode.tsx": {
@@ -2997,16 +3125,20 @@
       "sha256": "5e120d5b72f42ef8198ab1c484265bff67e79660f10ef6bc5efe1a1b464cf286",
       "mode": "100644"
     },
+    "ui/src/components/task-chat/task-chat-display.sep28.test.ts": {
+      "sha256": "041cbcc1ec90db7f03846ba70f8bc02e6f0c572776de664c33a643f16e4e813a",
+      "mode": "100644"
+    },
     "ui/src/components/task-chat/task-chat-display.stable916.test.ts": {
-      "sha256": "3397747ca2511ac13568d5c68bbfc2ff70e5c25623c2eb019e182fe50bd5df84",
+      "sha256": "0b80de4b6a6157d538e0ef008cc37e2b41ab8ed85225f4fed013f3829a391934",
       "mode": "100644"
     },
     "ui/src/components/task-chat/task-chat-display.ts": {
-      "sha256": "a870c0a79f554f4f6f186a19e2edeb38ddf9b6376bec6aeb5e6ddcc3f2369e76",
+      "sha256": "8c0c0714114e429144aeaad6ddb65d17dc377b8399cc4fea574605e2e16f27de",
       "mode": "100644"
     },
     "ui/src/components/task-chat/task-chat-model.ts": {
-      "sha256": "7b57422404d8869c34402134e73bba19a3c2339961f18a3ae50626fee5742180",
+      "sha256": "f1c537a0098f30077a919a20b184ad08cc486f0541a871d851e384137a07f306",
       "mode": "100644"
     },
     "ui/src/components/task-chat/task-chat-phase-summary-display.ts": {
@@ -3038,7 +3170,7 @@
       "mode": "100644"
     },
     "ui/src/components/task-side-panel/TaskAttachmentPanel.tsx": {
-      "sha256": "ef3238a6df1b595dcb196e96c95b6a5295baf1ecce5232f9dcacfa611374e56f",
+      "sha256": "61ae2c7331d1db114040f5f129d375fe15663c9e91ed06c7a5b0331d0529fff8",
       "mode": "100644"
     },
     "ui/src/components/task-side-panel/TaskBrowserActivity.tsx": {
@@ -3058,11 +3190,11 @@
       "mode": "100644"
     },
     "ui/src/components/task-side-panel/TaskSidePanel.test.tsx": {
-      "sha256": "80172d9a723cebf84196364e2cb1627caaac63974f8e25460a73a6ee2ca90ec2",
+      "sha256": "51727e35b01d7eaaa60946bfafeca3604515d0de99de96b158c5b38067c9b368",
       "mode": "100644"
     },
     "ui/src/components/task-side-panel/TaskSidePanel.tsx": {
-      "sha256": "8cd8cb422eb17de678c4116ba52f03e94928c4303e580b5762a492d2ae2ca0c6",
+      "sha256": "0578a9907a9ba40dc6f200e86b614aecd1116738f5c6328d26bb64e62fe4b0d2",
       "mode": "100644"
     },
     "ui/src/components/task-side-panel/TaskSkillPanel.test.tsx": {
@@ -3121,16 +3253,48 @@
       "sha256": "0c19e6eecad2d99198d5921626d687bfcc4770763f3c417d5663b5f7582a335e",
       "mode": "100644"
     },
+    "ui/src/features/connections/AgentMailApiKeyField.tsx": {
+      "sha256": "46852b7cda5fda539f52e448d6c30a11316cd7f398605c33ffb081a80dd93e29",
+      "mode": "100644"
+    },
+    "ui/src/features/connections/AgentMailCredentialField.tsx": {
+      "sha256": "d68ed35ca0c34e0d5896945153499ace0a30409bab75ecd7262c87fbbf40b2c7",
+      "mode": "100644"
+    },
+    "ui/src/features/connections/AgentMailIntentSetup.tsx": {
+      "sha256": "eb059720b6708684b4649eeaad216644a16f0bcdca0cd0e82eb713304086090e",
+      "mode": "100644"
+    },
+    "ui/src/features/connections/ApiKeyCredentialField.tsx": {
+      "sha256": "f6bed370b2b9a87300a409e2e8b148a1295c6d95ef010301e2fda9730958ca20",
+      "mode": "100644"
+    },
+    "ui/src/features/connections/ConnectionChoiceList.tsx": {
+      "sha256": "26fef0b087f64fa0f5b1f6daf3480980e789e0d38d390c65fa132b3c275fbe67",
+      "mode": "100644"
+    },
+    "ui/src/features/connections/ConnectionInstructions.tsx": {
+      "sha256": "ae4da2c8277f45b4993ffd1b16625444c75dcc48ea39067d475c414dda449bdb",
+      "mode": "100644"
+    },
     "ui/src/features/connections/ConnectionIntentInteractionBody.test.tsx": {
-      "sha256": "671c59cea2a08f40c4695ee51e3f565c8fb49cb6f65951c7baf81d206e77af09",
+      "sha256": "bab462c6ac18f4e38110067099527e326b16922a15fedec5fcf5ebf514301fc5",
       "mode": "100644"
     },
     "ui/src/features/connections/ConnectionIntentInteractionBody.tsx": {
-      "sha256": "53f5c54d5c16f24052b53436d95bc5b4cb3efc597b1a24b51794d0c202c06193",
+      "sha256": "80812026a7e4f541727cbd6be101be88c1e9422d4d275b63f39dfaf9d05a9b6e",
       "mode": "100644"
     },
     "ui/src/features/connections/ConnectionSetupFlow.tsx": {
-      "sha256": "97827dd26d73419ee5ccb6278c3fb89c843a97d6904b3acef362c6e7bba95c3e",
+      "sha256": "2278d28024899b40a20b5d268d20df3f5a9d6de7c142678928e0c1d3995d2598",
+      "mode": "100644"
+    },
+    "ui/src/features/connections/ConnectionSetupHeader.tsx": {
+      "sha256": "70ad054f1d5c43d74ae999ea009a87bcf208bcfed1edc9f3c35839e4f580697a",
+      "mode": "100644"
+    },
+    "ui/src/features/connections/HonchoWorkspaceSettings.tsx": {
+      "sha256": "5481bc740985e1cf02ff17042c304bfbcd9034b2c6684487c3ef5ebd3d3ffb62",
       "mode": "100644"
     },
     "ui/src/features/connections/remote-mcp/RemoteMcpAccountChoice.tsx": {
@@ -3138,7 +3302,7 @@
       "mode": "100644"
     },
     "ui/src/features/connections/remote-mcp/RemoteMcpConnectionSetup.tsx": {
-      "sha256": "9e7b3344458110dfe18b2ca65abb76ee6bf882342ecc2c0f86ecd9ad306078d1",
+      "sha256": "ed7f3af8b6915e151e6ee1a228709d24e36c8a95df263be21d77662f76b4b206",
       "mode": "100644"
     },
     "ui/src/features/connections/remote-mcp/RemoteMcpDesignExample.tsx": {
@@ -3150,15 +3314,19 @@
       "mode": "100644"
     },
     "ui/src/features/connections/remote-mcp/RemoteMcpProductionSetup.tsx": {
-      "sha256": "5de117b42e38b1aee33cf0c38c0e3348451d95bcb4d4813bd4e8bdd395a29d1c",
+      "sha256": "2e074b3e0b237519292690f320a9ff2131d25fb73fff81aa6b71d59b47ee0e0c",
       "mode": "100644"
     },
     "ui/src/features/connections/remote-mcp/providers.ts": {
-      "sha256": "1d2c9bda374fec47d32c62769a4ed8523e4603fc5f10954accacc37b38ddb060",
+      "sha256": "4a4e52bb18cd27350a745803614fc6b8d0c6b9c4d22c878411b5f19cf1cb6c9c",
       "mode": "100644"
     },
     "ui/src/features/connections/remote-mcp/types.ts": {
-      "sha256": "9ae585b15107020bf2126846c591992d96f05f4b304718b48815472904da663c",
+      "sha256": "144abedb92c56d693a820c5de9bb8903ca6978ce252fe0421f17da1d6007b55a",
+      "mode": "100644"
+    },
+    "ui/src/features/connections/useEmailAddressCheck.ts": {
+      "sha256": "21773ef3cd9c306a36b56776b6fce411bfea2b7d726e26162a2814dcd760af2f",
       "mode": "100644"
     },
     "ui/src/hooks/useBrowserViewport.ts": {
@@ -3218,11 +3386,11 @@
       "mode": "100644"
     },
     "ui/src/i18n/locales/en.json": {
-      "sha256": "f2a46f69da73ae15c541e4fdc763d1237dfde7b678bf1901967854024b242bde",
+      "sha256": "bc3a559e938b1655d1535be5a5a7e9cec52b47c8e1cb624b7493212d57ea2c39",
       "mode": "100644"
     },
     "ui/src/i18n/locales/ru.json": {
-      "sha256": "02b4e3bf73d3150fe3af004d213dee660b322a642ee0666c9de2dd229d96e0b5",
+      "sha256": "5fbad0861d271cab068c8c56b19cd712925e0bb3b340ae074bef5e062798a481",
       "mode": "100644"
     },
     "ui/src/i18n/ui-source-changes.test.ts": {
@@ -3242,7 +3410,7 @@
       "mode": "100644"
     },
     "ui/src/lib/activity-format.ts": {
-      "sha256": "6842c6534f519923422c33c194ce201feaddb453ebf04512323b168ed84fd515",
+      "sha256": "0c2311ce6fbf5d0096f13adc9392410af98ba48bcffd3a7659b20df25434868b",
       "mode": "100644"
     },
     "ui/src/lib/adapter-environment-check-display.test.ts": {
@@ -3266,7 +3434,7 @@
       "mode": "100644"
     },
     "ui/src/lib/app-gallery-copy.ts": {
-      "sha256": "9b6f48550bb1d1b3d7633668d8634bd292fb3cb8594998173ea4e5bcef8c3210",
+      "sha256": "078aef4b4213b9b20206d5bf4f7a12e6c33f4738557081092f9a882bef5e47a0",
       "mode": "100644"
     },
     "ui/src/lib/artifact-card-data.ts": {
@@ -3362,7 +3530,7 @@
       "mode": "100644"
     },
     "ui/src/lib/issue-chat-messages.ts": {
-      "sha256": "5b839a48c2ce30c283577d185de8056bf5b297d0586a010771bceb5007a41004",
+      "sha256": "55764ece5773c654e3308eda34fe1067037a6910badd6cc9ef2e44c32de24d85",
       "mode": "100644"
     },
     "ui/src/lib/issue-filters.ts": {
@@ -3374,7 +3542,7 @@
       "mode": "100644"
     },
     "ui/src/lib/issue-thread-interactions.ts": {
-      "sha256": "ddb32ad54700e7210782a708be2027727bef155a572cda7926c351d8df936d7a",
+      "sha256": "9783679c50ce08a518ea31919736b6d4cb705f4b994db15191e713f130f6ac1d",
       "mode": "100644"
     },
     "ui/src/lib/issue-timeline-events.ts": {
@@ -3386,7 +3554,7 @@
       "mode": "100644"
     },
     "ui/src/lib/issueDetailBreadcrumb.ts": {
-      "sha256": "f1b4fb53599970c5428c257629f965a727130dfac7f3e169cdcf71b6a8650525",
+      "sha256": "8b2e42f09a297b1d1ddac165a1b6977070d829a3bf633c35db798d897569f852",
       "mode": "100644"
     },
     "ui/src/lib/managed-sandbox-environment.ts": {
@@ -3422,7 +3590,7 @@
       "mode": "100644"
     },
     "ui/src/lib/queued-message-display.ts": {
-      "sha256": "49552c6d32a884dfb126a11fb71c82bbd6b0efaf3c266ef94f468c0567efbf0a",
+      "sha256": "c385b6bd2bbb1d25809577e67b6fb220a726c6defdf271e1d1dc10923549b4b8",
       "mode": "100644"
     },
     "ui/src/lib/recovery-display.ts": {
@@ -3454,7 +3622,7 @@
       "mode": "100644"
     },
     "ui/src/lib/runRetryState.ts": {
-      "sha256": "e0dbc36138bfc53d6357f0d8538e5a3ca0f22e8d8e46a3e608fcb984b4459e2d",
+      "sha256": "622d0c14cef85b6bb2aefae0f81ca12975768467a9d33c25b20c230563a3faf4",
       "mode": "100644"
     },
     "ui/src/lib/saved-provider-credentials.test.ts": {
@@ -3509,12 +3677,24 @@
       "sha256": "e03af95ae7e6f9b545d036344253ec0c504a81d480369f9c9ca02aa36c3d5635",
       "mode": "100644"
     },
+    "ui/src/lib/task-date-groups.test.ts": {
+      "sha256": "d75798488a99d3d071c2d6d19dfa11e756935e6fcb92f932f705a099106ad666",
+      "mode": "100644"
+    },
+    "ui/src/lib/task-date-groups.ts": {
+      "sha256": "3d6e896e8fc8de69034867e51b37476297bc57ee52d6afd0c26d8f45b1c26155",
+      "mode": "100644"
+    },
     "ui/src/lib/task-side-panel-state.test.ts": {
       "sha256": "5c6f36fee94d5deae8c00382e8ebc4b21764fe108f89efd99d5b64ccb12a8ecc",
       "mode": "100644"
     },
     "ui/src/lib/task-side-panel-state.ts": {
-      "sha256": "544605c6c74dc8c77b2dbf79b61d40f59d1036807eeca134d95d1b71f0f679ec",
+      "sha256": "3ca5cd5bfa90c25a76ff306044464424c8e593164f6d1a113e0275424c8c93e0",
+      "mode": "100644"
+    },
+    "ui/src/lib/task-views.ts": {
+      "sha256": "a37622ccfcc8f2f7950982d2165121e53e89d3263d4b4d11e888d3d20096b9ac",
       "mode": "100644"
     },
     "ui/src/lib/timeAgo.ts": {
@@ -3550,7 +3730,7 @@
       "mode": "100644"
     },
     "ui/src/lib/utils.ts": {
-      "sha256": "cf0bfb59b7278c13dc753b34625e51ebd8bdc7545cc5c6ae958fbf99137424bc",
+      "sha256": "a4aa68bd64fca60e55e9d8aff8291bd25a14f172372005f816e36e73985eb97c",
       "mode": "100644"
     },
     "ui/src/lib/work-mode-meta.ts": {
@@ -3582,15 +3762,15 @@
       "mode": "100644"
     },
     "ui/src/pages/AgentChat.tsx": {
-      "sha256": "fb46f1708fb1df26ec6dee75e4fa4c3b261590175fede68cbb1ada634e34be6c",
+      "sha256": "3d2eb687b547fd889f59ac01a6f958bb6e8499ab4f468c5c975f5ba2ebd4340d",
       "mode": "100644"
     },
     "ui/src/pages/AgentChats.localization.test.tsx": {
-      "sha256": "8ca38e6aee3827969b04689362e6f877c3fdb7d95f006393a98c05d7bc2bfca1",
+      "sha256": "2b31eb7dfbd17e166bfb25229797555d2fdab72bdf150cca33b5b1637317771f",
       "mode": "100644"
     },
     "ui/src/pages/AgentChats.tsx": {
-      "sha256": "8ea8f3b7ecb84e4cadec53ab751c91f5ea9ba3e953425e6a32d6f512f5580b48",
+      "sha256": "877330c31f01bcdc4c7a85845b5410e01edf72078c7c6a5e4c04ac91ec0d7258",
       "mode": "100644"
     },
     "ui/src/pages/AgentDetail.production.tsx": {
@@ -3598,7 +3778,11 @@
       "mode": "100644"
     },
     "ui/src/pages/AgentDetail.tsx": {
-      "sha256": "f286eb9867bfbfdb9379c5e6213ee28fe27bace14db9ce5dc455ae30f8fd8d72",
+      "sha256": "9a2ad24dc1c2bf9fe56689605a8730736fbc21e71f6200c5aaeb4eac364aa2a9",
+      "mode": "100644"
+    },
+    "ui/src/pages/AgentOverview.test.tsx": {
+      "sha256": "fe707e4e1ce83c3a62ccfa5125493ceaa3a1415ea82ead0fafa3ee91baf2d58d",
       "mode": "100644"
     },
     "ui/src/pages/AgentToolsTab.test.tsx": {
@@ -3698,7 +3882,11 @@
       "mode": "100644"
     },
     "ui/src/pages/CompanySettings.tsx": {
-      "sha256": "0b69e47aaad15e19ea9a547d75852a1d82330238b7d07072c956ec080f96e5b0",
+      "sha256": "ae45631283498c6f54f899a014af58f035864fb46062a70865cf3fb5eed2bc5c",
+      "mode": "100644"
+    },
+    "ui/src/pages/CompanySettingsArchive.test.tsx": {
+      "sha256": "b786d98a4644b026974059f4a3e40f2a695d0d4ab76c0e228a9d79319a3e0c6d",
       "mode": "100644"
     },
     "ui/src/pages/CompanySettingsPluginPage.tsx": {
@@ -3733,8 +3921,12 @@
       "sha256": "928a9b84bcf37f68ac1d963bc3158c6acbbd8994cd109c3e77e9878053ecec97",
       "mode": "100644"
     },
+    "ui/src/pages/Dashboard.localization.test.tsx": {
+      "sha256": "e6f7be6f2ee2c779de5c6770d49d5e8b213be15d897aff5fcb5c48628b48c45f",
+      "mode": "100644"
+    },
     "ui/src/pages/Dashboard.tsx": {
-      "sha256": "53b3417bdaddbe7299930dc3c830a5106d600876699969c2bcee339dd82caba0",
+      "sha256": "fb11bc176dfefa797bcf8ef2a71eb8732118e1ac874bf1172fe0980ffe48fc53",
       "mode": "100644"
     },
     "ui/src/pages/DashboardLive.tsx": {
@@ -3746,7 +3938,7 @@
       "mode": "100644"
     },
     "ui/src/pages/DesignGuide.tsx": {
-      "sha256": "e5334a35915334eae69cd941443b4ff77b2b8bea5524652d77dd96d7d5e9dde4",
+      "sha256": "7cd9ac4c26ebea93a9e2bf6140a36ad54af6b8ae6d9ad6966667868cbf0bffab",
       "mode": "100644"
     },
     "ui/src/pages/ExecutionWorkspaceDetail.tsx": {
@@ -3766,7 +3958,7 @@
       "mode": "100644"
     },
     "ui/src/pages/Inbox.tsx": {
-      "sha256": "10ddb6161f12b3153edc33695a8d15eab3feb154726c58531aecc0426b091d8a",
+      "sha256": "2566e5ae82b9afe1c9a00e014540aeb984fbd0943a50aad63d169e9ceda14985",
       "mode": "100644"
     },
     "ui/src/pages/InstanceAccess.test.tsx": {
@@ -3778,11 +3970,11 @@
       "mode": "100644"
     },
     "ui/src/pages/InstanceExperimentalSettings.test.tsx": {
-      "sha256": "a8c53ca5f48e75b21426529536c035a2649480953fe6005cf948572dcdbaedb3",
+      "sha256": "56a68f7c321f235f68d97c8297832a0a9198bdd2d0da5d643094fcd8d075bc6b",
       "mode": "100644"
     },
     "ui/src/pages/InstanceExperimentalSettings.tsx": {
-      "sha256": "23112a975358ed426aa7dc4ee47e63c88968fe5c1dfa7d20927c719dc8b0f328",
+      "sha256": "88827aee7a4af70400e22ece58cde186e57821f7c3f226434d48ba8c13ebe66d",
       "mode": "100644"
     },
     "ui/src/pages/InstanceGeneralSettings.tsx": {
@@ -3798,19 +3990,19 @@
       "mode": "100644"
     },
     "ui/src/pages/IssueDetail.test.tsx": {
-      "sha256": "3de750376c9fdb3b384c9fabd57e1f8800b631cac5d9b67aeb5e4b9b64b0ad65",
+      "sha256": "3df83b7a9dc9ca85062014860b411b67a5a2248015a4946b82db06d75bc30241",
       "mode": "100644"
     },
     "ui/src/pages/IssueDetail.tsx": {
-      "sha256": "e871d16ff6ec951a9e56ea0bf228733dab49628978a13cc744b2412693e63450",
+      "sha256": "ddb4c286b7b8bcedca369126f16d8bc6c6796152a246a91a305ebc5fade703e8",
       "mode": "100644"
     },
     "ui/src/pages/Issues.localization.test.tsx": {
-      "sha256": "20af659f8a1ac5852eb7814572d17542b366730180a2dc13597dd65c9d9ea1d6",
+      "sha256": "b34c707594274a7f4f288b1192e4e6cb1b887f710989dc5c9415421fbc07bae3",
       "mode": "100644"
     },
     "ui/src/pages/Issues.tsx": {
-      "sha256": "46ca866e848d50226780c59af980f36a867369befc1fc077f95cee2f0c83a63d",
+      "sha256": "df635188d2873d251f68f04738044c615941f665d530e79db61438c4305be13f",
       "mode": "100644"
     },
     "ui/src/pages/JoinRequestQueue.tsx": {
@@ -3819,6 +4011,10 @@
     },
     "ui/src/pages/LegacyInbox.tsx": {
       "sha256": "c6e24dfde0027e16e64caaf6101335f58336f1c1947568474d95c54292b04228",
+      "mode": "100644"
+    },
+    "ui/src/pages/McpConnect.tsx": {
+      "sha256": "15ecfc6a573db57ec90d637cd296db54bb0daac6b76323d63891902c4a2ca9ed",
       "mode": "100644"
     },
     "ui/src/pages/MyIssues.test.tsx": {
@@ -3866,7 +4062,7 @@
       "mode": "100644"
     },
     "ui/src/pages/Pipelines.tsx": {
-      "sha256": "eb7bc57b3cac1dd1c2b373ded0c75aa3f6389b5d22234578d8c4eb63ba2f5e42",
+      "sha256": "c674404e4804bea6898f26fa0af5854479565eff19256c9f364f5e37734069f9",
       "mode": "100644"
     },
     "ui/src/pages/PluginManager.tsx": {
@@ -3950,7 +4146,7 @@
       "mode": "100644"
     },
     "ui/src/pages/SkillStudio.tsx": {
-      "sha256": "106e7ffef3bae7d1dd308b837e4c8b2f701a0da01b318b403994f85bb1a25583",
+      "sha256": "237c11fb4b837feee184539f1afd6742a5b39ba894393a7d1f390cfa63011f55",
       "mode": "100644"
     },
     "ui/src/pages/StatusCards/ArchivedStatusCardRow.tsx": {
@@ -4057,12 +4253,20 @@
       "sha256": "02f2e8a164aa38ad12cdfa66b97ddba8fa39151d140f0ed1112b57a7c7167bfc",
       "mode": "100644"
     },
+    "ui/src/pages/apps/AggregatorAppManager.tsx": {
+      "sha256": "38ed85d85a26e04b5d98a7a7d41e12a0710245d473c4c439125a38f09340740b",
+      "mode": "100644"
+    },
+    "ui/src/pages/apps/AggregatorConnectDialog.tsx": {
+      "sha256": "3493174b90c4063e7a21a5227eaf65fedcb9200b4a1458b7ffbb915b25369cfc",
+      "mode": "100644"
+    },
     "ui/src/pages/apps/AppDetail.test.tsx": {
-      "sha256": "8fba56921df898872b393845efee7a2b0325320f6b840c2d89553a4ea9bb1b3a",
+      "sha256": "16aa794c1351650ce1e82c27f88ef85d70f70a04ffb7a904cbf199ac50f00746",
       "mode": "100644"
     },
     "ui/src/pages/apps/AppDetail.tsx": {
-      "sha256": "8085f3ec830b4c7701bdd76bce9dd99f5135637b9d4016a64e8ca620ddb7403d",
+      "sha256": "fdcbb9e8660dbb7f936740e1fc533a448c2a3183e089ec601742039642c66668",
       "mode": "100644"
     },
     "ui/src/pages/apps/AppLogo.tsx": {
@@ -4074,23 +4278,47 @@
       "mode": "100644"
     },
     "ui/src/pages/apps/AppsConnect.test.tsx": {
-      "sha256": "ce65e50c305ff981f3800e120cb823536976c31fbdf3a1a597907766451c6b4b",
+      "sha256": "ec40b04dcdd0d9364ba20da173aae7426f57e8e47b3a25cbec6e454886953ce3",
       "mode": "100644"
     },
     "ui/src/pages/apps/AppsConnect.tsx": {
-      "sha256": "0f728e8486266eaaebc2d82df3c7aacb9a83b106d4b36f035463ea274c40ac33",
+      "sha256": "83cb445a3dc8224b4915de221e109655560eef461371808fc32675481707f99f",
       "mode": "100644"
     },
     "ui/src/pages/apps/AppsReview.tsx": {
       "sha256": "22def90f629f5c19858b792ea796ca96a7d432c25644329b4f08d6656d8d1443",
       "mode": "100644"
     },
+    "ui/src/pages/apps/ArcadeDiscoverySetup.tsx": {
+      "sha256": "b2ebc3cc16c8764d22893d2a45cc41d36a2e997c5d9e23352ccd2c2929f335bd",
+      "mode": "100644"
+    },
+    "ui/src/pages/apps/AssistantConnection.test.tsx": {
+      "sha256": "ea9330b25df700dd4994caf4a9b8fd5d398be4bc15ebe66d9250148378f30dff",
+      "mode": "100644"
+    },
+    "ui/src/pages/apps/AssistantConnection.tsx": {
+      "sha256": "a9ebc63fc15d371066eda94fa5e7e3dd2b3e26f440df8ae951a1abaffc81a546",
+      "mode": "100644"
+    },
     "ui/src/pages/apps/Browse.test.tsx": {
-      "sha256": "d3506b4f3e0edd922b7843926e9fc4f17ad6a9e8c683805201a1c25e386faa30",
+      "sha256": "b6f77009d96faf7e87fdb1b5cd6dded518789c1fc85e07b974ab48cf1a7a2ab2",
       "mode": "100644"
     },
     "ui/src/pages/apps/Browse.tsx": {
-      "sha256": "071d9a064a5dbade9e5e5d7603a3c331d3572e783829d8b7fb2f00cc0b9a5631",
+      "sha256": "8b80aadd1aff06fdc8835ad40ca7a5923e4220578c00fc80f16b6788c5418f18",
+      "mode": "100644"
+    },
+    "ui/src/pages/apps/CatalogSourceFilters.tsx": {
+      "sha256": "cc5fd6a1d3728fda2ea4dead73a269f9898260109fa92fe3156b4938683d8e80",
+      "mode": "100644"
+    },
+    "ui/src/pages/apps/ComposioAppManager.tsx": {
+      "sha256": "9f2fd1b589afdb1eaed208671cc92a9c160b59b936d968200ff24412a34bc3de",
+      "mode": "100644"
+    },
+    "ui/src/pages/apps/ComposioAppSetup.tsx": {
+      "sha256": "753502699d66a81f22eb8421e8c2d10b150783ab16a0fcb089534ebd729e7dd6",
       "mode": "100644"
     },
     "ui/src/pages/apps/ConnectionProvenanceChip.tsx": {
@@ -4103,6 +4331,10 @@
     },
     "ui/src/pages/apps/Connections.tsx": {
       "sha256": "eb52581450d500ca0b4ededd35e8429a708b121107e0b97c889bfd18196ba212",
+      "mode": "100644"
+    },
+    "ui/src/pages/apps/ExecutorManagementSetup.tsx": {
+      "sha256": "6b8c4833945cf3b47b5448b59e6f6035284f6d0ddc8a89409c43051aa7aebfb4",
       "mode": "100644"
     },
     "ui/src/pages/apps/PaperclipCloudOAuthHandoff.test.tsx": {
@@ -4122,11 +4354,15 @@
       "mode": "100644"
     },
     "ui/src/pages/apps/agent-selector-contract.test.ts": {
-      "sha256": "4e1b4dfdcc1d93c23f354444c436962893f015b44c54a7ac1439cdb1716f66b4",
+      "sha256": "da44728c276caffb2514a1aa7291ee21ad9f5d7e557213b5ff660fbba7c8137d",
+      "mode": "100644"
+    },
+    "ui/src/pages/apps/aggregator-discovery-display.ts": {
+      "sha256": "7cf81d97941da51b82ba4955ca7f3a9c48aaa7f5c93a2b1918a17e86d3cdb549",
       "mode": "100644"
     },
     "ui/src/pages/apps/app-definition-copy.ts": {
-      "sha256": "d67f344fe73462354ae16ba86fec6dc9bf924394e3a94f4ecb8e4dd39a1cbe48",
+      "sha256": "d64326c1290508ede1c0916d79543f7d1cf4b8ecf349f9fa15a6ecd71492d1b7",
       "mode": "100644"
     },
     "ui/src/pages/apps/app-definition-custom-copy.test.ts": {
@@ -4138,11 +4374,15 @@
       "mode": "100644"
     },
     "ui/src/pages/apps/app-definition-display.ts": {
-      "sha256": "49bbc9905de3fa4cf516c8236502ceed8a68b55f69526af6772e87589e47d281",
+      "sha256": "dbd7a79c66c81d60706145b0f63280cce84d9398d943929881bc1a45e7a16b87",
       "mode": "100644"
     },
     "ui/src/pages/apps/app-definition-metadata-coverage.test.ts": {
-      "sha256": "c0c78470aead1da03509609af762d9991089342cbe3eed504c6f020e5e113655",
+      "sha256": "984d078809fd8ef9b0486f1148dc2eff9f49a12ce7688d12d5720a255151964f",
+      "mode": "100644"
+    },
+    "ui/src/pages/apps/app-detail/ActionTestDialog.tsx": {
+      "sha256": "302adc3f5bd9feeaa73cded2a2b64fa932e72e37acd459f2803eec868e70606a",
       "mode": "100644"
     },
     "ui/src/pages/apps/app-detail/ActivityPanel.tsx": {
@@ -4150,11 +4390,19 @@
       "mode": "100644"
     },
     "ui/src/pages/apps/app-detail/AdvancedPanel.tsx": {
-      "sha256": "d359874575169356b0a27c56af4fd51e615a57a0a7e11a3709ee5937a7582095",
+      "sha256": "7f48346326c925a037e96d3f020537023e9f57c52ceaa575b42b13c0d86e4435",
+      "mode": "100644"
+    },
+    "ui/src/pages/apps/app-detail/AgentConnectionAccess.tsx": {
+      "sha256": "e022de0e7a25dda7d606898ebb6b5f08b2bc37692501042235b58eff37c2f913",
       "mode": "100644"
     },
     "ui/src/pages/apps/app-detail/BrowserUseSettingsPanel.tsx": {
       "sha256": "955d00e927bc4d4d0c74609145ae232043169fccf9bbb513214bb1acd1a8cd25",
+      "mode": "100644"
+    },
+    "ui/src/pages/apps/app-detail/ConnectedAggregatorApps.tsx": {
+      "sha256": "0a33c60b296c9ca7aed902458262dad5b8964468eac62b5e25312642d8de89db",
       "mode": "100644"
     },
     "ui/src/pages/apps/app-detail/IdentitiesSection.tsx": {
@@ -4162,7 +4410,7 @@
       "mode": "100644"
     },
     "ui/src/pages/apps/app-detail/PermissionsPanel.tsx": {
-      "sha256": "fd1ac24c8cb016f144b0fb8f11b4fdfaaf6320ca6a67a23457227d107b4fcd2f",
+      "sha256": "0d52e00905d451f2380783bdef01356065c6b54fcfd52ffbe0b573a50888e679",
       "mode": "100644"
     },
     "ui/src/pages/apps/app-detail/RailwayAccessPanel.tsx": {
@@ -4177,16 +4425,16 @@
       "sha256": "d0cfc6d61398051aefb2900fdf450f114e286c6c2c6d60769ee2c65c87906329",
       "mode": "100644"
     },
-    "ui/src/pages/apps/app-detail/TestPanel.tsx": {
-      "sha256": "8a8e7f157d88e09eb579d46ad9131b002a9f17b5e59ad2a9acdfbb2d0b2b49de",
-      "mode": "100644"
-    },
     "ui/src/pages/apps/app-detail/action-permission-summary.ts": {
       "sha256": "cb25ba0b99345168a91031fb3d4c467fb12a029d31b73de1679a1812a310d593",
       "mode": "100644"
     },
     "ui/src/pages/apps/app-tabs.ts": {
       "sha256": "37613ad2bbff4d347d48f46a2465b6fabaea0ede97d9b73289d16b5a6d33e2e3",
+      "mode": "100644"
+    },
+    "ui/src/pages/apps/assistant-setup-display.ts": {
+      "sha256": "666dd461897b282bf5575818f524330d28d191418c19ec842e44c49c779bb523",
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/ChatCommunicationInstructions.tsx": {
@@ -4198,11 +4446,11 @@
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/ChatEndpointDetail.tsx": {
-      "sha256": "2439e5d4ab71d70f0841d5f1a5a6c9e133854b425ea941e1164595c06cdbb6c2",
+      "sha256": "7d5fd45e96abad339fccf37e9ce0e61590be4570b2b812a0bfc5cf8e8525a11d",
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/ChatEndpointSetup.tsx": {
-      "sha256": "e5ca1910c668895fe9e3412cc621af8e67108b78c785075ad0a4c4a04ebe1027",
+      "sha256": "287fd4afa14dce19162b865457d599c3c28fb934914420b7af0897a50121259b",
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/ChatIdentityConfirm.tsx": {
@@ -4210,11 +4458,11 @@
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/EmailEndpointSetup.tsx": {
-      "sha256": "8921a5e62dbb1fec593d65c0c784521662eff1c666bd1f9f417ea4a35da53938",
+      "sha256": "82d4ffc60dc48750a69d3e0f007609bab862775aa0951f44babcd44868b44015",
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/GitHubBotConfiguration.tsx": {
-      "sha256": "7c8ce6ba4f0763dd5e8f98a5e4e5bda2700962b852a46006fac9bfdee8be8743",
+      "sha256": "fd4f1e2f5cffffdcaa2debef5f58555edac4a7791296acfd4f3022b434736f95",
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/GitHubBotManagement.tsx": {
@@ -4225,16 +4473,16 @@
       "sha256": "9073e9aa06bfdd0af6dc4281d6eb94b79bfb5331a305dcd138ad10c29e3a1d40",
       "mode": "100644"
     },
+    "ui/src/pages/apps/chat/GitHubSetupPrompt.tsx": {
+      "sha256": "b08cdb0066f9d62a9b4dd0e4b353637749d3574cbe79437fe611531e0e18edd8",
+      "mode": "100644"
+    },
     "ui/src/pages/apps/chat/Photon.localization.test.tsx": {
       "sha256": "ba8770ed9005861c7433e9749b6b00f62be03f1eef2b28603cc86a4ba8986d16",
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/PhotonConnectStep.tsx": {
       "sha256": "4d6a00c61d187e77ce47913eb6c382db2b5a8e4f6d3871151a51e27075449e50",
-      "mode": "100644"
-    },
-    "ui/src/pages/apps/chat/SetupPrompt.tsx": {
-      "sha256": "1a5763c7f30797ad01258a2d6864c8bff471244497d9b3a05f56f828c5ef366e",
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/SlackAvatarStep.tsx": {
@@ -4246,7 +4494,11 @@
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/SlackSetupPrompt.test.tsx": {
-      "sha256": "cd5a865295e917cd27ef46c4aa9ed409c5036ce1f47b06187edc64ab3032e9e2",
+      "sha256": "20b04ee8c4fd55c1a2eb2138544400ce4c3c9f8b8a24e394a9b8ae7079d4abf7",
+      "mode": "100644"
+    },
+    "ui/src/pages/apps/chat/SlackSetupPrompt.tsx": {
+      "sha256": "24b62df88705e92806f05af4b79e82aadd894b1e085b090b75cc4f9cde6ac877",
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/SlackToolSettings.tsx": {
@@ -4281,6 +4533,10 @@
       "sha256": "5ce5f33b228dfe69f8c855e6aa0dda764234c834b48ce91c0b1379c7ee9e6a3d",
       "mode": "100644"
     },
+    "ui/src/pages/apps/chat/manifest-protocol.test.ts": {
+      "sha256": "d93588580b1992fd419ed24cb3ebbddbec9f0190338207a43482ba6e81e9fa2c",
+      "mode": "100644"
+    },
     "ui/src/pages/apps/chat/photon-copy.ts": {
       "sha256": "9c8cc689f3c6305fb13124dee129b7bee6fcd60d3431097d35fcdc9d8a631a49",
       "mode": "100644"
@@ -4290,7 +4546,7 @@
       "mode": "100644"
     },
     "ui/src/pages/apps/connection-owner.tsx": {
-      "sha256": "3f70e53d8b4ad8d0f0f9a5b4fceadc39fe3a2daf7dd3629a3f611a2fd6d9f58d",
+      "sha256": "64f3bbd9065285770ba79943285a4ecc08ee1c5eed52c73b78b8fe72f20001d8",
       "mode": "100644"
     },
     "ui/src/pages/apps/gateways/ConnectClientDialog.test.tsx": {
@@ -4359,6 +4615,10 @@
     },
     "ui/src/pages/apps/generic-mcp-connect.ts": {
       "sha256": "826ce0f8d0a859241bd4f10286a9753f221254deb09a5c454f6b3f1d573f6277",
+      "mode": "100644"
+    },
+    "ui/src/pages/apps/setup-display.test.ts": {
+      "sha256": "9689948e95d89c17398aae0b973a5bbac0413eaf6f8151138d564a5ad379c445",
       "mode": "100644"
     },
     "ui/src/pages/audit/AuditFeed.production.tsx": {
@@ -4446,11 +4706,11 @@
       "mode": "100644"
     },
     "ui/src/pages/skills/SkillPackagePreview.tsx": {
-      "sha256": "0c61ce194e826418ed1cebbee1cfbf5692754212b8c7131fd6e9b8932ed7291b",
+      "sha256": "f9d67550858d64cbd98427938d4d3b728c1fa80639d31e29fe67f176409775ab",
       "mode": "100644"
     },
     "ui/src/pages/skills/SkillSourceTree.tsx": {
-      "sha256": "0c80471b1f6a25f1a7fd338e0a6b9f6087c63a54f3a2d75fa4c351e1e590286f",
+      "sha256": "8221cba259bbdd9a36358cf8053afb5a0175f74a493f303515ed88e3f5398232",
       "mode": "100644"
     },
     "ui/src/pages/tools/AdvancedToolsRoute.tsx": {
@@ -4466,11 +4726,11 @@
       "mode": "100644"
     },
     "ui/src/pages/tools/McpConfigHelpDialog.test.tsx": {
-      "sha256": "c00fe9771740daa8bd3deeb323bc1e851a49f0a15de63214fc9fc7f00e84d2e8",
+      "sha256": "e57ce26073a101fd6e4b62fbe02b0a935ad2c4e32208195cea457151f3084146",
       "mode": "100644"
     },
     "ui/src/pages/tools/McpConfigHelpDialog.tsx": {
-      "sha256": "59a2a4af2a8cb3b001a74cf53bd6a123cc7704c569cfbd53c21865bea9287640",
+      "sha256": "5b67d688796957b2bd29bfa8ddb4c07c059622210d2f4b76028fe4536d5c72a4",
       "mode": "100644"
     },
     "ui/src/pages/tools/PasteConfigTab.tsx": {
@@ -4578,19 +4838,19 @@
       "mode": "100644"
     }
   },
-  "resultTree": "d294431440211375504c544c46dce5c43fb29ba0",
-  "sourceLockSha256": "0f8f416e46fedd67c37576fb87414207ecb8429121b6b2f35839c5caaadb952c",
-  "foundationSha256": "7e62cd33d5b1a8aea1d272201e498cd7840e4d651d7c7073ce135ca557c87037",
+  "resultTree": "76bad17ece16021f8070a9d2d6ae8229c2a43c90",
+  "sourceLockSha256": "73593c38fa861b46a4d3e74b0c26d7194259bedd80dbfd45dec4fbe32ce8cc6c",
+  "foundationSha256": "ffdde170f9610f12135a9dea0de638ea4ec13d2305e3c683f5c8ea659add0c11",
   "locales": [
     {
       "locale": "en",
-      "strings": 18799,
-      "sha256": "f2a46f69da73ae15c541e4fdc763d1237dfde7b678bf1901967854024b242bde"
+      "strings": 19302,
+      "sha256": "bc3a559e938b1655d1535be5a5a7e9cec52b47c8e1cb624b7493212d57ea2c39"
     },
     {
       "locale": "ru",
-      "strings": 19179,
-      "sha256": "02b4e3bf73d3150fe3af004d213dee660b322a642ee0666c9de2dd229d96e0b5"
+      "strings": 19682,
+      "sha256": "5fbad0861d271cab068c8c56b19cd712925e0bb3b340ae074bef5e062798a481"
     }
   ],
   "upstreamRepository": "https://github.com/paperclipai/paperclip",
