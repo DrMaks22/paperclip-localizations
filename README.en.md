@@ -2,9 +2,9 @@
 
 [Русский](README.md) · **English**
 
-> **Exact compatibility:** package `v2026.10.7.2` targets Paperclip `v2026.1005.0` at `467125fafb47a8520856504fecc48d6e32055db1`. Download the finalized package from its pinned tag, not a working branch. Do not apply an older patch to newer Paperclip source. See [checks and limitations](verification/v2026.10.7.2.md). Applying the patch does not deploy the application.
+> **Exact compatibility:** package `v2026.10.13.1` targets Paperclip `v2026.1012.0` at `bba6a45f0d364cfd962ac59b3bdf2426a8222adb`. Download the finalized package from its pinned tag, not a working branch. Do not apply an older patch to newer Paperclip source. See [checks and limitations](verification/v2026.10.13.1.md). Applying the patch does not deploy the application.
 
-[![Checks](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml/badge.svg)](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml) · [Stable](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.2) · [Beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1-beta.1) · [Channels and verification](docs/RELEASES.md)
+[![Checks](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml/badge.svg)](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml) · [Stable](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.13.1) · [Beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1-beta.1) · [Channels and verification](docs/RELEASES.md)
 
 ![Paperclip Localizations — community translations for Paperclip](assets/cover.png)
 
@@ -12,16 +12,16 @@ An independent community project for translating the [Paperclip](https://github.
 
 ## Choose a channel
 
-`v2026.10.7.2` restores the download link's accessible name to its visible “Download file” label, matching the original interface. The download URL and filename are unchanged. The previous `v2026.10.7.1` remains immutable; choose this corrected release for a new installation on the same base. Do not stack patches on an existing localized checkout: prepare a fresh build using the instructions below.
+`v2026.10.13.1` ports localization to official Paperclip `v2026.1012.0`, retaining the English and Russian interface and the “Download file” accessible-name correction. Prepare a fresh build using the instructions below when updating: do not stack the new patch on an existing localized checkout.
 
 | Localization channel | Compatible Paperclip version | Intended use |
 | --- | --- | --- |
-| [Stable — v2026.10.7.2](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.2) | Official stable release **v2026.1005.0**, commit `467125f` | For that stable version. English and Russian UI. |
+| [Stable — v2026.10.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.13.1) | Official stable release **v2026.1012.0**, commit `bba6a45` | For that stable version. English and Russian UI. |
 | [Beta — v2026.9.13.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1-beta.1) | Reviewed **master snapshot**, commit `04e3642` | Prerelease for testing development code and new language catalogs. |
 
 **Stable and beta are different patches for different source revisions.** Beta does not target the stable release and does not automatically follow master. GitHub Releases reserves `Latest` for stable. Localization version numbers are separate from Paperclip's version numbers.
 
-Published [stable v2026.9.17.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.17.1) remains available for Paperclip `v2026.916.0`, and [stable v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1) for `v2026.831.1`. Their tags and assets are unchanged. See the [v2026.10.7.2 report](verification/v2026.10.7.2.md) for the new package's verification results and limitations.
+Published [stable v2026.10.7.2](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.2) remains available for Paperclip `v2026.1005.0`, [stable v2026.9.17.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.17.1) for `v2026.916.0`, and [stable v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1) for `v2026.831.1`. Their tags and assets are unchanged. See the [v2026.10.13.1 report](verification/v2026.10.13.1.md) for the new package's verification results and limitations.
 
 The `main` branch contains beta development. Install a selected **release**, not the moving branch. See the [channel guide](docs/RELEASES.md) for full commits, differences, and verification; [`channels.json`](channels.json) is the machine-readable index.
 
@@ -31,10 +31,10 @@ Copy this task into **Codex, Claude Code, or OpenCode**. Replace the path with y
 
 ```text
 Install the Paperclip localization from DrMaks22/paperclip-localizations,
-stable release v2026.10.7.2 for Paperclip v2026.1005.0.
+stable release v2026.10.13.1 for Paperclip v2026.1012.0.
 My original Paperclip Git repository is at
 /absolute/path/to/paperclip. Read and follow this release's instructions:
-https://github.com/DrMaks22/paperclip-localizations/blob/v2026.10.7.2/docs/AGENT-INSTALL.md
+https://github.com/DrMaks22/paperclip-localizations/blob/v2026.10.13.1/docs/AGENT-INSTALL.md
 First review the source, manifest.json, checksums, and compatibility.
 Prepare a separate worktree at manifest.baseCommit, check and apply the patch,
 run the necessary build checks, and report the result.
@@ -53,6 +53,8 @@ node apply.mjs --repo /absolute/path/to/paperclip-localized --apply
 ```
 
 The target worktree must be clean and match the `baseCommit` in [`manifest.json`](manifest.json) exactly. The installer works offline: it checks and changes source files. Dependencies, the database, startup, and deployment remain part of your normal workflow.
+
+Paperclip `v2026.1012.0` has a known mismatch between its lockfile and server package manifests. The [report](verification/v2026.10.13.1.md) describes the verified isolated build conditions; the patch does not change dependencies or the lockfile. Do not bypass this error by forcing dependency installation in a running instance.
 
 A repeated forward application or `--check` after application will refuse to proceed. Use `--reverse --check` to verify the installed patch, and `--reverse --apply` to remove it. See the [guide](docs/INSTALL.en.md#updating-and-removing-the-patch) for details and the update sequence.
 
