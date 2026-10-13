@@ -1260,7 +1260,7 @@
       "alreadyArchived": "Already archived",
       "appearance": "Appearance",
       "archiveCompany": "Archive organization",
-      "archiveConfirm": "Archive organization {{name}}? It will be hidden from the sidebar.",
+      "archiveConfirm": "Archive organization \"{{name}}\"? It will be hidden from the sidebar.",
       "archiveDescription": "Archive this organization to hide it from the sidebar. This persists in the database.",
       "archiveFailed": "Failed to archive organization",
       "archiving": "Archiving...",

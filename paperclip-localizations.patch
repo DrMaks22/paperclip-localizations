@@ -3626,6 +3626,54 @@ index 6d7aa7e63eb53159226890685da5c7204839f321..36e6a1be5688d3cc2dcca77f626bc1b0
 +    {login && !login.preparing && (isolated || login.error) && <button type="button" className="underline underline-offset-4" onClick={login.retry}>{isolated ? t("sep13ProviderIntegration.restartLogin") : t("localizationApps.checkAgain342")}</button>}
    </div>;
  }
+diff --git a/ui/src/components/AgentActionButtons.test.tsx b/ui/src/components/AgentActionButtons.test.tsx
+index b90994ac9a4959091925476a3535a4ae2afb8814..2e9159174abe4cd829fa56a658a8549302516756 100644
+--- a/ui/src/components/AgentActionButtons.test.tsx
++++ b/ui/src/components/AgentActionButtons.test.tsx
+@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+ import type { Agent } from "@paperclipai/shared";
+ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+ import { AgentActionButtons } from "./AgentActionButtons";
++import { i18n } from "@/i18n";
+ 
+ const mockNavigate = vi.hoisted(() => vi.fn());
+ const mockOpenNewIssue = vi.hoisted(() => vi.fn());
+@@ -123,6 +124,7 @@ describe("AgentActionButtons", () => {
+     container.remove();
+     document.body.innerHTML = "";
+     vi.clearAllMocks();
++    await i18n.changeLanguage("en");
+   });
+ 
+   function render(agent: Agent, props: Partial<ComponentProps<typeof AgentActionButtons>> = {}) {
+@@ -134,6 +136,27 @@ describe("AgentActionButtons", () => {
+     );
+   }
+ 
++  it("supports the detail header's wrapping action row without changing its actions", async () => {
++    await i18n.changeLanguage("ru");
++    render(makeAgent(), {
++      className: "flex min-w-0 flex-wrap items-center gap-1 sm:gap-2",
++      canRunWithProviderTrace: true,
++    });
++    await flushReact();
++    const row = container.firstElementChild!;
++    expect(row.classList.contains("flex-wrap")).toBe(true);
++    expect(row.classList.contains("min-w-0")).toBe(true);
++    expect(row.classList.contains("shrink-0")).toBe(false);
++    expect(row.textContent).toContain("Приостановить");
++    const menu = row.querySelector<HTMLButtonElement>('[aria-label="Открыть действия для агента Alpha Agent"]');
++    expect(menu).not.toBeNull();
++    await act(async () => menu!.click());
++    await flushReact();
++    expect(document.body.textContent).toContain("Сбросить сеансы");
++    expect(mockAgentsApi.pause).not.toHaveBeenCalled();
++    expect(mockAgentsApi.invoke).not.toHaveBeenCalled();
++  });
++
+   it("replaces the pause slot with Clear error for error agents", async () => {
+     render(makeAgent({ status: "error" }));
+     await flushReact();
 diff --git a/ui/src/components/AgentActionButtons.tsx b/ui/src/components/AgentActionButtons.tsx
 index 6ed44aaeb1e100b34ac0662ffe680ccb48eb6431..04c7422323be2f581984d8d9e16d3512a33d4829 100644
 --- a/ui/src/components/AgentActionButtons.tsx
@@ -24988,10 +25036,18 @@ index 45cddff0377e9a6df528cdf168e48a9a00e3d594..d4d9c9ac9df78c94c9932d70a05a1023
                  ) : null}
                </div>
 diff --git a/ui/src/components/IssueProperties.test.tsx b/ui/src/components/IssueProperties.test.tsx
-index 4a6b329a045856b7ad9da47c8317c11a930a42a9..ca7c6d7fa3c3d26da7c13a311165495103e2c6a6 100644
+index 4a6b329a045856b7ad9da47c8317c11a930a42a9..7f915767599e1135f555a3468bbb99a18197ea35 100644
 --- a/ui/src/components/IssueProperties.test.tsx
 +++ b/ui/src/components/IssueProperties.test.tsx
-@@ -120,11 +120,11 @@ vi.mock("../lib/recent-assignees", () => ({
+@@ -17,6 +17,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+ import { getLastProjectId } from "../lib/recent-projects";
+ import { IssueProperties } from "./IssueProperties";
+ import { queryKeys } from "../lib/queryKeys";
++import { i18n } from "@/i18n";
+ 
+ const mockAgentsApi = vi.hoisted(() => ({
+   list: vi.fn(),
+@@ -120,11 +121,11 @@ vi.mock("../lib/recent-assignees", () => ({
  }));
  
  vi.mock("../lib/assignees", () => ({
@@ -25005,6 +25061,21 @@ index 4a6b329a045856b7ad9da47c8317c11a930a42a9..ca7c6d7fa3c3d26da7c13a3111654951
      if (!userId) return null;
      return userLabelMap?.get(userId) ?? "User";
    },
+@@ -2448,6 +2449,14 @@ describe("IssueProperties", () => {
+     });
+     await flush();
+ 
++    for (const locale of ["ru", "en"] as const) {
++      await act(async () => { await i18n.changeLanguage(locale); });
++      await flush();
++      expect(findRowTrigger(container, locale === "ru" ? "Родительская задача" : "Parent")).toBeDefined();
++      expect(container.textContent).not.toContain("Родительский материал");
++      expect(onUpdate).not.toHaveBeenCalled();
++    }
++
+     // Empty parent now uses the uniform muted "None" empty state (ux-spec §6).
+     const parentTrigger = findRowTrigger(container, "Parent");
+     expect(parentTrigger?.textContent).toContain("None");
 diff --git a/ui/src/components/IssueRecoveryActionCard.tsx b/ui/src/components/IssueRecoveryActionCard.tsx
 index beb84076e1b99f21f65fb61ee3aa51ef2216152d..8a42e10251c48bfb5a93fbba12e22eb8ac7b00a6 100644
 --- a/ui/src/components/IssueRecoveryActionCard.tsx
@@ -29329,7 +29400,7 @@ index fe721c04062e6b3037f86544a9e2d5bd97979f3f..8fe301a9f4f91897fd46f342d1e5fa0c
              </div>
            </dl>
 diff --git a/ui/src/components/IssuesList.test.tsx b/ui/src/components/IssuesList.test.tsx
-index 72cdcf23ecdbb75156cf7573f285d9a240e426cd..2bd0bcf09e5737d2aca2e99b3b59ef892b281349 100644
+index 72cdcf23ecdbb75156cf7573f285d9a240e426cd..a0bf9339319851dd52b8322e9adc28333b1006b9 100644
 --- a/ui/src/components/IssuesList.test.tsx
 +++ b/ui/src/components/IssuesList.test.tsx
 @@ -13,6 +13,7 @@ import {
@@ -29364,6 +29435,27 @@ index 72cdcf23ecdbb75156cf7573f285d9a240e426cd..2bd0bcf09e5737d2aca2e99b3b59ef89
 +    expect(container.textContent).toContain("Blocked issue");
 +    await act(async () => { await i18n.changeLanguage("en"); });
 +    expect(blocker.textContent).toBe("blocked by PAP-2 · step 2 ... and 2 more");
++
+     act(() => {
+       root.unmount();
+     });
+@@ -2190,6 +2201,20 @@ describe("IssuesList", () => {
+       ))).toBe(true);
+     });
+ 
++    for (const [locale, labels] of [
++      ["ru", ["Сегодня", "Ранее"]],
++      ["en", ["Today", "Earlier"]],
++    ] as const) {
++      await i18n.changeLanguage(locale);
++      await waitForAssertion(() => {
++        const separators = Array.from(container.querySelectorAll("[data-issues-date-separator]"));
++        expect(separators.map((el) => el.getAttribute("aria-label"))).toEqual(labels);
++        expect(separators.map((el) => el.querySelector("[data-date-group-label]")?.textContent)).toEqual(labels);
++        expect(container.textContent).toContain("Just updated");
++        expect(container.textContent).toContain("Over a week old");
++      });
++    }
 +
      act(() => {
        root.unmount();
@@ -54149,7 +54241,7 @@ index ec286dc6acd412cfac5d9f73ced89dc9a530f12e..f9e23e1ca221c9dcc2e7068cca843399
        />
      </div>
 diff --git a/ui/src/components/issue-properties/IssueProperties.tsx b/ui/src/components/issue-properties/IssueProperties.tsx
-index 640ae943bbca75ac181368e8fcd68241dce11e81..84f33ebdabc8364ea1b8f19820b78e067788eb5b 100644
+index 640ae943bbca75ac181368e8fcd68241dce11e81..7caeca1fc7962ec536b51fb653af37f54ad36216 100644
 --- a/ui/src/components/issue-properties/IssueProperties.tsx
 +++ b/ui/src/components/issue-properties/IssueProperties.tsx
 @@ -1,3 +1,4 @@
@@ -55277,7 +55369,7 @@ index 640ae943bbca75ac181368e8fcd68241dce11e81..84f33ebdabc8364ea1b8f19820b78e06
          <PropertyPicker
            inline={inline}
 -          label="Parent"
-+          label={t("pages.cases.parent")}
++          label={t("localizationIssuePanels.field_parentId")}
            open={parentOpen}
            onOpenChange={(open) => {
              setParentOpen(open);
@@ -62004,8 +62096,49 @@ index 5d4f1dbb0151c484f8534bd5507988cd815d6684..a7807c9e7392c5a1ee86b157fc6032f6
        </div>
      </div>
    );
+diff --git a/ui/src/components/task-chat/ComposerAddMenu.localization.test.tsx b/ui/src/components/task-chat/ComposerAddMenu.localization.test.tsx
+new file mode 100644
+index 0000000000000000000000000000000000000000..443c2d7e6d38877d2708e80f79a7e9e78110f14d
+--- /dev/null
++++ b/ui/src/components/task-chat/ComposerAddMenu.localization.test.tsx
+@@ -0,0 +1,35 @@
++// @vitest-environment jsdom
++import { act } from "react";
++import { createRoot } from "react-dom/client";
++import { afterEach, describe, expect, it, vi } from "vitest";
++import { i18n } from "@/i18n";
++import { ComposerModeChip } from "./ComposerAddMenu";
++
++(globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
++afterEach(async () => { await i18n.changeLanguage("en"); });
++
++describe("ComposerModeChip localization", () => {
++  it.each(["ask", "planning"] as const)("localizes removal for %s without changing mode or callback", async (mode) => {
++    const host = document.createElement("div");
++    const root = createRoot(host);
++    const onRemove = vi.fn();
++    try {
++      await act(async () => { root.render(<ComposerModeChip mode={mode} onRemove={onRemove} />); });
++      for (const locale of ["en", "ru", "en"] as const) {
++        await act(async () => { await i18n.changeLanguage(locale); });
++        const label = mode === "ask"
++          ? (locale === "ru" ? "Режим вопросов" : "Ask mode")
++          : (locale === "ru" ? "Режим планирования" : "Plan mode");
++        const button = host.querySelector("button")!;
++        expect(button.getAttribute("aria-label")).toBe(locale === "ru" ? `Удалить «${label}»` : `Remove ${label}`);
++        expect(button.textContent).toBe(label);
++        expect(button.dataset.pendingWorkMode).toBe(mode);
++        expect(onRemove).not.toHaveBeenCalled();
++      }
++      await act(async () => { host.querySelector("button")!.click(); });
++      expect(onRemove).toHaveBeenCalledOnce();
++    } finally {
++      await act(async () => root.unmount());
++    }
++  });
++});
 diff --git a/ui/src/components/task-chat/ComposerAddMenu.tsx b/ui/src/components/task-chat/ComposerAddMenu.tsx
-index a083b45d3d624de5ab23fa9a1cc5b51fb23af599..48336fd6eefedfe12b8e5ce24946cff15abd63b1 100644
+index a083b45d3d624de5ab23fa9a1cc5b51fb23af599..8023ebc2b739a5d35b2f893b90d5fa963bd32427 100644
 --- a/ui/src/components/task-chat/ComposerAddMenu.tsx
 +++ b/ui/src/components/task-chat/ComposerAddMenu.tsx
 @@ -1,3 +1,4 @@
@@ -62061,7 +62194,7 @@ index a083b45d3d624de5ab23fa9a1cc5b51fb23af599..48336fd6eefedfe12b8e5ce24946cff1
        {actions.map((action) => <DropdownMenuItem key={action.id} onSelect={action.select} disabled={action.disabled} data-testid={action.id}>
          {content(action)}
        </DropdownMenuItem>)}
-@@ -96,6 +98,7 @@ interface ComposerModeChipProps {
+@@ -96,11 +98,12 @@ interface ComposerModeChipProps {
  }
  
  export function ComposerModeChip({ mode, onRemove, disabled, testId, mobile = false }: ComposerModeChipProps) {
@@ -62069,6 +62202,12 @@ index a083b45d3d624de5ab23fa9a1cc5b51fb23af599..48336fd6eefedfe12b8e5ce24946cff1
    if (mode === "standard") return null;
    const meta = workModeMetaFor(mode);
    const Icon = meta.icon;
+   return <button type="button" onClick={onRemove} disabled={disabled || !onRemove}
+-    aria-label={`Remove ${meta.label}`} data-pending-work-mode={mode} data-testid={testId}
++    aria-label={t("oct6Beta.dynamic053", { v0: meta.label })} data-pending-work-mode={mode} data-testid={testId}
+     className={cn("inline-flex h-8 shrink-0 items-center rounded-full border text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50", mobile ? "gap-1 px-2" : "gap-1 px-2 sm:gap-1.5 sm:px-2.5", meta.classes.chip)}>
+     <Icon className="size-3.5" aria-hidden />
+     <span className={mobile ? "sr-only" : "max-sm:sr-only"}>{meta.label}</span>
 diff --git a/ui/src/components/task-chat/ComposerRunSettingsPicker.test.tsx b/ui/src/components/task-chat/ComposerRunSettingsPicker.test.tsx
 index 23efce4e86df51a05833c554d71af11f86e9399c..0c626b0ae83a317afb17e6dcb622673c2faa20e8 100644
 --- a/ui/src/components/task-chat/ComposerRunSettingsPicker.test.tsx
@@ -77622,7 +77761,7 @@ index 188ee2b117de953fa9177193d3b243db268f1751..324a905a2ff7d1a22754cf2fd72df08a
 -
 -export type SupportedLocale = keyof typeof localeMessages;
 diff --git a/ui/src/i18n/locales/en.json b/ui/src/i18n/locales/en.json
-index de0aba03a22585522d8a09e60bf575c50c7a41c6..66dc35905c6a7d2c28a8544dae10be5717a85324 100644
+index de0aba03a22585522d8a09e60bf575c50c7a41c6..42d3c0edaee5c67234aceaf259e273f7d9005aef 100644
 --- a/ui/src/i18n/locales/en.json
 +++ b/ui/src/i18n/locales/en.json
 @@ -1,9 +1,20118 @@
@@ -78888,7 +79027,7 @@ index de0aba03a22585522d8a09e60bf575c50c7a41c6..66dc35905c6a7d2c28a8544dae10be57
 +      "alreadyArchived": "Already archived",
 +      "appearance": "Appearance",
 +      "archiveCompany": "Archive organization",
-+      "archiveConfirm": "Archive organization {{name}}? It will be hidden from the sidebar.",
++      "archiveConfirm": "Archive organization \"{{name}}\"? It will be hidden from the sidebar.",
 +      "archiveDescription": "Archive this organization to hide it from the sidebar. This persists in the database.",
 +      "archiveFailed": "Failed to archive organization",
 +      "archiving": "Archiving...",
@@ -125014,6 +125153,63 @@ index 6b2177eada8bfc8e915a19dd0570639c76dadd6a..8a7b8bc43e7a9327f336910784d7df17
  const FALLBACK_TITLE = "System update";
  const DETAIL_MAX_CHARS = 80;
  
+diff --git a/ui/src/lib/task-date-groups.test.ts b/ui/src/lib/task-date-groups.test.ts
+index b200058ee6a368316c1f7ef743047e8138365e94..f548dd20a409d3c87858671c32925889947a2c89 100644
+--- a/ui/src/lib/task-date-groups.test.ts
++++ b/ui/src/lib/task-date-groups.test.ts
+@@ -1,9 +1,12 @@
+-import { describe, expect, it } from "vitest";
++import { afterEach, describe, expect, it } from "vitest";
++import { i18n } from "@/i18n";
+ import { taskDateGroup, taskDateGroupSeparator } from "./task-date-groups";
+ 
+ describe("task date groups", () => {
+   const now = new Date(2026, 7, 31, 9, 30);
+ 
++  afterEach(async () => { await i18n.changeLanguage("en"); });
++
+   it("uses local calendar boundaries instead of rolling 24-hour windows", () => {
+     expect(taskDateGroup(new Date(2026, 7, 31, 0, 1), now)).toBe("today");
+     expect(taskDateGroup(new Date(2026, 7, 30, 23, 59), now)).toBe("yesterday");
+@@ -17,4 +20,19 @@ describe("task date groups", () => {
+     expect(taskDateGroupSeparator("today", "yesterday")).toBe("Yesterday");
+     expect(taskDateGroupSeparator("yesterday", "earlier")).toBe("Earlier");
+   });
++
++  it("uses the selected locale without changing date groups or separator boundaries", async () => {
++    for (const [locale, labels] of [
++      ["ru", ["Сегодня", "Вчера", "Ранее"]],
++      ["en", ["Today", "Yesterday", "Earlier"]],
++    ] as const) {
++      await i18n.changeLanguage(locale);
++      expect(taskDateGroupSeparator(null, "today")).toBe(labels[0]);
++      expect(taskDateGroupSeparator("today", "yesterday")).toBe(labels[1]);
++      expect(taskDateGroupSeparator("yesterday", "earlier")).toBe(labels[2]);
++      expect(taskDateGroupSeparator(null, "earlier")).toBeNull();
++      expect(taskDateGroupSeparator("today", "today")).toBeNull();
++      expect(taskDateGroup(new Date(2026, 7, 30, 23, 59), now)).toBe("yesterday");
++    }
++  });
+ });
+diff --git a/ui/src/lib/task-date-groups.ts b/ui/src/lib/task-date-groups.ts
+index df3795befb95dec2a86808577b24f306f085b0ee..0f76f50c2f16290a75dac14f3a9f74a7eb6cb68e 100644
+--- a/ui/src/lib/task-date-groups.ts
++++ b/ui/src/lib/task-date-groups.ts
+@@ -1,9 +1,11 @@
++import { t } from "@/i18n";
++
+ export type TaskDateGroup = "today" | "yesterday" | "earlier";
+ 
+ export const taskDateGroupLabels: Record<TaskDateGroup, string> = {
+-  today: "Today",
+-  yesterday: "Yesterday",
+-  earlier: "Earlier",
++  get today() { return t("localizationActivityChrome.today"); },
++  get yesterday() { return t("localizationActivityChrome.yesterday"); },
++  get earlier() { return t("localizationActivityChrome.earlier"); },
+ };
+ 
+ function localCalendarOrdinal(date: Date): number {
 diff --git a/ui/src/lib/task-side-panel-state.test.ts b/ui/src/lib/task-side-panel-state.test.ts
 index 7cc2b4eb8ea0da1e9d1211580a98ee26e7bb9a8b..3e3fbccea656ee322ac6bd9cc94398fd2b8d76da 100644
 --- a/ui/src/lib/task-side-panel-state.test.ts
@@ -128892,7 +129088,7 @@ index 91efc76433d6f50fada0f604fbac1198c4d8a1bd..ed55835fd941220d0afe7ece4f78ddae
                  </div>
                </div>
 diff --git a/ui/src/pages/AgentDetail.tsx b/ui/src/pages/AgentDetail.tsx
-index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96a3eff7b8 100644
+index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..8724943beae6cdce12e814045e6002c54d864b7f 100644
 --- a/ui/src/pages/AgentDetail.tsx
 +++ b/ui/src/pages/AgentDetail.tsx
 @@ -1,3 +1,4 @@
@@ -129372,8 +129568,20 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
              <AgentCharacter agent={agent} state={characterStateForAgent(agent.status)} size={96} trackingScope="page" />
            </div>
            <div className="min-w-0 space-y-1">
-@@ -1273,12 +1274,12 @@ export function AgentDetail() {
+@@ -1257,7 +1258,7 @@ export function AgentDetail() {
+             </div>
+           </div>
+         </div>
+-        <div className="flex flex-wrap items-center gap-2">
++        <div className="flex min-w-0 flex-wrap items-center gap-2">
+           <StarToggle
+             size="button"
+             starred={agentStarred}
+@@ -1271,14 +1272,15 @@ export function AgentDetail() {
+             })}
+           />
            <AgentActionButtons
++            className="flex min-w-0 flex-wrap items-center gap-1 sm:gap-2"
              agent={agent}
              companyId={resolvedCompanyId}
 -            assignLabel="Assign Task"
@@ -129387,7 +129595,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
              hasPendingNavigationChanges={configDirty}
              onBeforeNavigate={prepareAgentNavigation}
              onActionError={setActionError}
-@@ -1287,12 +1288,10 @@ export function AgentDetail() {
+@@ -1287,12 +1289,10 @@ export function AgentDetail() {
              pauseConfirm={
                builtInState
                  ? {
@@ -129402,7 +129610,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                        </>
                      ),
                    }
-@@ -1308,7 +1307,7 @@ export function AgentDetail() {
+@@ -1308,7 +1308,7 @@ export function AgentDetail() {
                    <span className="animate-pulse absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
                    <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500" />
                  </span>
@@ -129411,7 +129619,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                </Link>
              )}
            </AgentActionButtons>
-@@ -1318,7 +1317,7 @@ export function AgentDetail() {
+@@ -1318,7 +1318,7 @@ export function AgentDetail() {
        {builtInState && (
          <InlineBanner
            tone="info"
@@ -129420,7 +129628,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
            actions={
              <Button
                variant="outline"
-@@ -1326,13 +1325,11 @@ export function AgentDetail() {
+@@ -1326,13 +1326,11 @@ export function AgentDetail() {
                onClick={() => resetBuiltIn.mutate()}
                disabled={resetBuiltIn.isPending}
              >
@@ -129436,7 +129644,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
          </InlineBanner>
        )}
  
-@@ -1367,7 +1364,7 @@ export function AgentDetail() {
+@@ -1367,7 +1365,7 @@ export function AgentDetail() {
        {actionError && <p className="text-sm text-destructive">{actionError}</p>}
        {isPendingApproval && (
          <div className="flex flex-wrap items-center gap-3 rounded-md border border-amber-300/60 bg-amber-50 px-3 py-2 text-sm text-amber-900 dark:border-amber-400/40 dark:bg-amber-950/30 dark:text-amber-200">
@@ -129445,7 +129653,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
            <Button
              variant="outline"
              size="sm"
-@@ -1375,12 +1372,12 @@ export function AgentDetail() {
+@@ -1375,12 +1373,12 @@ export function AgentDetail() {
              disabled={agentAction.isPending}
            >
              <CheckCircle2 className="h-3.5 w-3.5 sm:mr-1" />
@@ -129460,7 +129668,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
  
        {/* View content */}
        {activeView === "overview" && (
-@@ -1496,10 +1493,10 @@ export function AgentDetail() {
+@@ -1496,10 +1494,10 @@ export function AgentDetail() {
        )}
  
        {showConfigActionBar && <footer className="sticky bottom-0 z-10 flex flex-wrap items-center justify-between gap-3 border-t border-border bg-background py-4">
@@ -129474,15 +129682,23 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
          </div>
        </footer>}
  
-@@ -1510,6 +1507,7 @@ export function AgentDetail() {
+@@ -1509,11 +1507,12 @@ export function AgentDetail() {
+ 
  /* ---- Helper components ---- */
  
- function SummaryRow({ label, children }: { label: string; children: React.ReactNode }) {
+-function SummaryRow({ label, children }: { label: string; children: React.ReactNode }) {
++function SummaryRow({ label, children, wrap = false }: { label: string; children: React.ReactNode; wrap?: boolean }) {
 +  useTranslation();
    return (
-     <div className="flex items-center justify-between">
+-    <div className="flex items-center justify-between">
++    <div className={cn("flex items-center justify-between", wrap && "flex-wrap gap-x-3 gap-y-1")}>
        <span className="text-muted-foreground text-xs">{label}</span>
-@@ -1563,6 +1561,7 @@ function LatestRunCard({
+-      <div className="flex items-center gap-1">{children}</div>
++      <div className={cn("flex items-center gap-1", wrap && "min-w-0 max-w-full")}>{children}</div>
+     </div>
+   );
+ }
+@@ -1563,6 +1562,7 @@ function LatestRunCard({
    agentId: string;
    issuesById: Map<string, LatestRunIssue>;
  }) {
@@ -129490,7 +129706,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
    const sorted = useMemo(
      () =>
        [...runs].sort(
-@@ -1644,7 +1643,7 @@ function LatestRunCard({
+@@ -1644,7 +1644,7 @@ function LatestRunCard({
                  <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500" />
                </span>
              )}
@@ -129499,7 +129715,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
              <span className="font-mono text-xs font-normal text-muted-foreground">
                &middot; {run.id.slice(0, 8)}
              </span>
-@@ -1718,6 +1717,7 @@ export function AgentOverview({
+@@ -1718,6 +1718,7 @@ export function AgentOverview({
    skillNames: string[];
    agentRouteId: string;
  }) {
@@ -129507,7 +129723,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
    const issuesById = useMemo(() => {
      const map = new Map<string, (typeof assignedIssues)[number]>();
      for (const issue of assignedIssues) map.set(issue.id, issue);
-@@ -1726,7 +1726,7 @@ export function AgentOverview({
+@@ -1726,7 +1727,7 @@ export function AgentOverview({
    const configuredModel = asNonEmptyString(agent.adapterConfig?.model)
      ?? asNonEmptyString(agent.adapterConfig?.modelName)
      ?? asNonEmptyString(agent.runtimeConfig?.model)
@@ -129516,7 +129732,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
    const lastRun = runs[0] ?? null;
  
    return (
-@@ -1736,75 +1736,73 @@ export function AgentOverview({
+@@ -1736,75 +1737,73 @@ export function AgentOverview({
        <div className="grid gap-4 md:grid-cols-2">
          <section className="rounded-lg border border-border p-4" aria-labelledby="agent-identity-heading">
            <div className="mb-4 flex items-center justify-between gap-3">
@@ -129557,7 +129773,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
 -            <SummaryRow label="Last run">
 -              <span className="text-sm">{lastRun ? `${lastRun.status} · ${relativeTime(lastRun.createdAt)}` : "No runs"}</span>
 +            <SummaryRow label={t("localizationAgents.ui38_Adapter")}><span className="text-sm">{adapterLabels[agent.adapterType] ?? agent.adapterType}</span></SummaryRow>
-+            <SummaryRow label={t("localizationAgents.ui39_Model")}><span className="max-w-64 truncate text-sm font-mono">{configuredModel}</span></SummaryRow>
++            <SummaryRow label={t("localizationAgents.ui39_Model")} wrap><span className="min-w-0 max-w-full break-words text-sm font-mono">{configuredModel}</span></SummaryRow>
 +            <SummaryRow label={t("pages.agentDetail.session")}><span className="max-w-64 truncate text-sm font-mono">{runtimeState?.sessionDisplayId ?? runtimeState?.sessionId ?? t("localizationAgents.detail_No_session")}</span></SummaryRow>
 +            <SummaryRow label={t("localizationAgents.ui41_Last_run")}>
 +              <span className="text-sm">{lastRun ? `${t(`status.${lastRun.status}`, { defaultValue: lastRun.status })} · ${relativeTime(lastRun.createdAt)}` : t("localizationAgents.ui42_No_runs")}</span>
@@ -129614,7 +129830,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
          ) : (
            <div className="overflow-hidden rounded-lg border border-border">
              {assignedIssues.slice(0, 6).map((issue) => (
-@@ -1818,7 +1816,7 @@ export function AgentOverview({
+@@ -1818,7 +1817,7 @@ export function AgentOverview({
              ))}
              {assignedIssues.length > 6 && (
                <div className="border-t border-border px-3 py-2 text-center text-xs text-muted-foreground">
@@ -129623,16 +129839,31 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                </div>
              )}
            </div>
-@@ -1826,7 +1824,7 @@ export function AgentOverview({
+@@ -1826,15 +1825,20 @@ export function AgentOverview({
        </section>
  
        <section className="space-y-3" aria-labelledby="agent-audit-links-heading">
 -        <h3 id="agent-audit-links-heading" className="text-sm font-medium">Audit</h3>
 +        <h3 id="agent-audit-links-heading" className="text-sm font-medium">{t("pages.agentDetail.tabAudit")}</h3>
          <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
-           {(["activity", "runs", "costs", "budgets"] as const).map((section) => (
+-          {(["activity", "runs", "costs", "budgets"] as const).map((section) => (
++          {([
++            { section: "activity", label: t("nav.activity") },
++            { section: "runs", label: t("localizationAgents.ui6_Runs") },
++            { section: "costs", label: t("nav.costs") },
++            { section: "budgets", label: t("pages.costs.tabBudgets") },
++          ] as const).map(({ section, label }) => (
              <Link
-@@ -1875,6 +1873,7 @@ export function AgentRevisionsTab({
+               key={section}
+               to={agentScopedAuditHref(agent.id, section)}
+               className="rounded-lg border border-border px-3 py-2 text-sm font-medium capitalize hover:bg-accent"
+             >
+-              {section}
++              {label}
+             </Link>
+           ))}
+         </div>
+@@ -1875,6 +1879,7 @@ export function AgentRevisionsTab({
    agent: AgentDetailRecord;
    companyId?: string;
  }) {
@@ -129640,7 +129871,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
    const queryClient = useQueryClient();
    const navigate = useNavigate();
  
-@@ -1897,11 +1896,11 @@ export function AgentRevisionsTab({
+@@ -1897,11 +1902,11 @@ export function AgentRevisionsTab({
    return (
      <div className="max-w-3xl space-y-3">
        <div className="flex items-baseline justify-between gap-3">
@@ -129655,7 +129886,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
        ) : (
          <div className="space-y-2">
            {(configRevisions ?? []).map((revision) => (
-@@ -1919,12 +1918,9 @@ export function AgentRevisionsTab({
+@@ -1919,12 +1924,9 @@ export function AgentRevisionsTab({
                    variant="outline"
                    onClick={() => rollbackConfig.mutate(revision.id)}
                    disabled={rollbackConfig.isPending}
@@ -129670,7 +129901,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                </p>
              </div>
            ))}
-@@ -1961,6 +1957,7 @@ export function ConfigurationTab({
+@@ -1961,6 +1963,7 @@ export function ConfigurationTab({
    content?: "runtime" | "permissions" | "secrets";
    canConfigureProviderTrace?: boolean;
  }) {
@@ -129678,7 +129909,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
    const queryClient = useQueryClient();
    const navigate = useNavigate();
    const { tab: urlTab } = useParams<{ tab?: string }>();
-@@ -2006,7 +2003,7 @@ export function ConfigurationTab({
+@@ -2006,7 +2009,7 @@ export function ConfigurationTab({
        if (!syncAgentRouteAfterRename(queryClient, navigate, agent, updated, urlTab ?? content)) {
          queryClient.invalidateQueries({ queryKey: queryKeys.agents.detail(agent.urlKey) });
        }
@@ -129687,7 +129918,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
      },
      onError: (err) => {
        setAwaitingRefreshAfterSave(false);
-@@ -2015,8 +2012,8 @@ export function ConfigurationTab({
+@@ -2015,8 +2018,8 @@ export function ConfigurationTab({
            ? err.message
            : err instanceof Error
              ? err.message
@@ -129698,7 +129929,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
      },
    });
  
-@@ -2046,14 +2043,14 @@ export function ConfigurationTab({
+@@ -2046,14 +2049,14 @@ export function ConfigurationTab({
    const taskAssignLocked = agent.role === "ceo" || canCreateAgents;
    const taskAssignHint =
      taskAssignSource === "ceo_role"
@@ -129718,7 +129949,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
  
    return (
      <div className="agent-settings-form space-y-6">
-@@ -2074,7 +2071,7 @@ export function ConfigurationTab({
+@@ -2074,7 +2077,7 @@ export function ConfigurationTab({
          environmentVariablesPlacement="configuration"
          compactTestFeedback
          sectionOrder={["identity", "adapter", "configuration", "environment", "environment-variables", "run-policy"]}
@@ -129727,7 +129958,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
          canConfigureProviderTrace={canConfigureProviderTrace}
        /> : null}
  
-@@ -2103,14 +2100,12 @@ export function ConfigurationTab({
+@@ -2103,14 +2106,12 @@ export function ConfigurationTab({
        /> : null}
  
        {content === "permissions" ? <div>
@@ -129745,7 +129976,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
              </div>
              <ToggleSwitch
                checked={canCreateAgents}
-@@ -2126,10 +2121,8 @@ export function ConfigurationTab({
+@@ -2126,10 +2127,8 @@ export function ConfigurationTab({
            </div>
            <div className="flex items-center justify-between gap-4 text-sm">
              <div className="space-y-1">
@@ -129758,7 +129989,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
              </div>
              <ToggleSwitch
                checked={canCreateSkills}
-@@ -2145,7 +2138,7 @@ export function ConfigurationTab({
+@@ -2145,7 +2144,7 @@ export function ConfigurationTab({
            </div>
            <div className="flex items-center justify-between gap-4 text-sm">
              <div className="space-y-1">
@@ -129767,7 +129998,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                <p className="text-xs text-muted-foreground">
                  {taskAssignHint}
                </p>
-@@ -2187,6 +2180,7 @@ export function PromptsTab({
+@@ -2187,6 +2186,7 @@ export function PromptsTab({
    onCancelActionChange: (cancel: (() => void) | null) => void;
    onSavingChange: (saving: boolean) => void;
  }) {
@@ -129775,7 +130006,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
    const queryClient = useQueryClient();
    const { selectedCompanyId } = useCompany();
    const { isMobile } = useSidebar();
-@@ -2309,7 +2303,7 @@ export function PromptsTab({
+@@ -2309,7 +2309,7 @@ export function PromptsTab({
    const preservedCandidates = candidates.data?.filter((candidate) => candidate.contract !== "agent_files") ?? [];
    const loadCandidate = useMutation({
      mutationFn: async (candidate: AgentInstructionCandidate) => {
@@ -129784,7 +130015,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
        const file = await agentsApi.instructionsFile(agent.id, candidate.entryFile, companyId).catch((error) => {
          if (error instanceof ApiError && error.status === 404 && candidate.baseRevisionId === null) return null;
          throw error;
-@@ -2421,7 +2415,7 @@ export function PromptsTab({
+@@ -2421,7 +2421,7 @@ export function PromptsTab({
  
    const uploadMarkdownImage = useMutation({
      mutationFn: async ({ file, namespace }: { file: File; namespace: string }) => {
@@ -129793,7 +130024,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
        return assetsApi.uploadImage(selectedCompanyId, file, namespace);
      },
    });
-@@ -2632,9 +2626,7 @@ export function PromptsTab({
+@@ -2632,9 +2632,7 @@ export function PromptsTab({
    if (!isLocal) {
      return (
        <div className="max-w-3xl">
@@ -129804,7 +130035,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
        </div>
      );
    }
-@@ -2655,27 +2647,21 @@ export function PromptsTab({
+@@ -2655,27 +2653,21 @@ export function PromptsTab({
          </div>
        )}
        {showSaveNotice && <p className="text-xs text-muted-foreground">
@@ -129836,7 +130067,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                    </Tooltip>
                  </span>
                  <div className="flex gap-2">
-@@ -2699,9 +2685,7 @@ export function PromptsTab({
+@@ -2699,9 +2691,7 @@ export function PromptsTab({
                        });
                        setSelectedFile(nextEntryFile);
                      }}
@@ -129847,7 +130078,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                    <Button
                      type="button"
                      size="sm"
-@@ -2716,26 +2700,20 @@ export function PromptsTab({
+@@ -2716,26 +2706,20 @@ export function PromptsTab({
                        });
                        setSelectedFile(externalBundle?.selectedFile ?? nextEntryFile);
                      }}
@@ -129878,7 +130109,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                      {currentRootPath && (
                        <CopyText text={currentRootPath} className="shrink-0">
                          <Copy className="h-3.5 w-3.5" />
-@@ -2771,15 +2749,11 @@ export function PromptsTab({
+@@ -2771,15 +2755,11 @@ export function PromptsTab({
                  )}
                </label>
                <label className="space-y-1.5">
@@ -129896,7 +130127,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                    </Tooltip>
                  </span>
                  <Input
-@@ -2826,7 +2800,7 @@ export function PromptsTab({
+@@ -2826,7 +2806,7 @@ export function PromptsTab({
            isMobile && !showFilePanel && "hidden",
          )}>
            <div className="flex items-center justify-between">
@@ -129905,7 +130136,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
              <div className="flex items-center gap-1">
                {!showNewFileInput && (
                  <Button
-@@ -2834,7 +2808,7 @@ export function PromptsTab({
+@@ -2834,7 +2814,7 @@ export function PromptsTab({
                    size="icon"
                    variant="outline"
                    className="h-7 w-7"
@@ -129914,7 +130145,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                    onClick={() => setShowNewFileInput(true)}
                  >
                    +
-@@ -2884,9 +2858,7 @@ export function PromptsTab({
+@@ -2884,9 +2864,7 @@ export function PromptsTab({
                      setNewFilePath("");
                      setShowNewFileInput(false);
                    }}
@@ -129925,7 +130156,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                  <Button
                    type="button"
                    size="sm"
-@@ -2896,9 +2868,7 @@ export function PromptsTab({
+@@ -2896,9 +2874,7 @@ export function PromptsTab({
                      setShowNewFileInput(false);
                      setNewFilePath("");
                    }}
@@ -129936,7 +130167,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                </div>
              </div>
            )}
-@@ -2929,19 +2899,15 @@ export function PromptsTab({
+@@ -2929,19 +2905,15 @@ export function PromptsTab({
                  return (
                    <Tooltip>
                      <TooltipTrigger asChild>
@@ -129959,7 +130190,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                  </span>
                );
              }}
-@@ -2975,14 +2941,14 @@ export function PromptsTab({
+@@ -2975,14 +2947,14 @@ export function PromptsTab({
                  <p className="text-xs text-muted-foreground">
                    {selectedFileExists
                      ? selectedFileSummary?.deprecated
@@ -129978,7 +130209,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                  {(["read", "edit", "raw"] as const).map((mode) => (
                    <Button
                      key={mode}
-@@ -2993,16 +2959,16 @@ export function PromptsTab({
+@@ -2993,16 +2965,16 @@ export function PromptsTab({
                      aria-pressed={instructionMode === mode}
                      onClick={() => setInstructionMode(mode)}
                    >
@@ -129999,7 +130230,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                    className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-border text-muted-foreground hover:bg-accent hover:text-foreground"
                  >
                    <Copy className="h-3.5 w-3.5" />
-@@ -3014,7 +2980,7 @@ export function PromptsTab({
+@@ -3014,7 +2986,7 @@ export function PromptsTab({
                    size="sm"
                    variant="outline"
                    onClick={() => {
@@ -130008,7 +130239,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                        deleteFile.mutate(selectedOrEntryFile, {
                          onSuccess: () => {
                            setSelectedFile(currentEntryFile);
-@@ -3024,17 +2990,15 @@ export function PromptsTab({
+@@ -3024,17 +2996,15 @@ export function PromptsTab({
                      }
                    }}
                    disabled={deleteFile.isPending}
@@ -130029,7 +130260,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                {preservedCandidates.map((candidate) => (
                  <div key={candidate.runId} className="flex flex-wrap items-center gap-3">
                    <span className="font-mono text-xs text-muted-foreground">{candidate.runId.slice(0, 8)}</span>
-@@ -3048,15 +3012,15 @@ export function PromptsTab({
+@@ -3048,15 +3018,15 @@ export function PromptsTab({
                        } else {
                          loadCandidate.mutate(candidate);
                        }
@@ -130051,7 +130282,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                        </CopyText>
                        <pre className="overflow-x-auto whitespace-pre-wrap break-words rounded-md border border-border bg-muted p-3 font-mono text-sm">{candidate.content}</pre>
                      </div>
-@@ -3066,16 +3030,16 @@ export function PromptsTab({
+@@ -3066,16 +3036,16 @@ export function PromptsTab({
              </div>
            )}
            {candidateRunId && <div role="status" className="space-y-3">
@@ -130075,7 +130306,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
            {selectedFileDetail?.revision && currentMode === "managed" && bundle?.persistence !== "agent_files" && <InstructionHistory
              key={selectedOrEntryFile} agentId={agent.id} companyId={companyId} path={selectedOrEntryFile}
              currentRevisionId={selectedFileDetail.revision.id} disabled={isDirty || isSaving}
-@@ -3089,8 +3053,8 @@ export function PromptsTab({
+@@ -3089,8 +3059,8 @@ export function PromptsTab({
            />}
            {selectedFileDetail?.binary ? (
              <div className="space-y-3 rounded-md border border-border p-4">
@@ -130086,7 +130317,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
              </div>
            ) : selectedFileExists && fileLoading && !selectedFileDetail ? (
              <PromptEditorSkeleton />
-@@ -3105,7 +3069,7 @@ export function PromptsTab({
+@@ -3105,7 +3075,7 @@ export function PromptsTab({
                    <pre className="whitespace-pre-wrap break-words font-sans text-sm leading-7">{displayValue}</pre>
                  )
                ) : (
@@ -130095,7 +130326,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                )}
              </div>
            ) : instructionMode === "raw" ? (
-@@ -3133,7 +3097,7 @@ export function PromptsTab({
+@@ -3133,7 +3103,7 @@ export function PromptsTab({
                    if (draftBaseHashRef.current === undefined) draftBaseHashRef.current = selectedFileDetail?.contentHash ?? null;
                    setDraft(value ?? "");
                  }}
@@ -130104,7 +130335,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                  className="min-w-0 overflow-hidden"
                  contentClassName="min-h-(--sz-420px) max-w-full break-words text-sm leading-7"
                  imageUploadHandler={async (file) => {
-@@ -3145,7 +3109,7 @@ export function PromptsTab({
+@@ -3145,7 +3115,7 @@ export function PromptsTab({
              </div>
            ) : (
              <textarea
@@ -130113,7 +130344,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                value={displayValue}
                onChange={(event) => {
                  if (draftBaseRevisionRef.current === undefined) draftBaseRevisionRef.current = selectedFileDetail?.revision?.id ?? null;
-@@ -3153,7 +3117,7 @@ export function PromptsTab({
+@@ -3153,7 +3123,7 @@ export function PromptsTab({
                  setDraft(event.target.value);
                }}
                className="min-h-(--sz-420px) w-full min-w-0 rounded-md border border-border bg-transparent px-3 py-2 font-mono text-sm outline-none"
@@ -130122,7 +130353,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
              />
            )}
          </div>
-@@ -3164,6 +3128,7 @@ export function PromptsTab({
+@@ -3164,6 +3134,7 @@ export function PromptsTab({
  }
  
  function PromptsTabSkeleton() {
@@ -130130,7 +130361,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
    return (
      <div className="max-w-5xl space-y-4">
        <div className="rounded-lg border border-border p-4 space-y-4">
-@@ -3209,6 +3174,7 @@ function PromptsTabSkeleton() {
+@@ -3209,6 +3180,7 @@ function PromptsTabSkeleton() {
  }
  
  function PromptEditorSkeleton() {
@@ -130138,7 +130369,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
    return (
      <div className="space-y-3">
        <Skeleton className="h-10 w-full" />
-@@ -3220,6 +3186,7 @@ function PromptEditorSkeleton() {
+@@ -3220,6 +3192,7 @@ function PromptEditorSkeleton() {
  /* ---- Runs Tab ---- */
  
  function RunListItem({ run, isSelected, agentId }: { run: HeartbeatRun; isSelected: boolean; agentId: string }) {
@@ -130146,7 +130377,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
    const statusInfo = runStatusIcons[run.status] ?? { icon: Clock, color: "text-neutral-400" };
    const StatusIcon = statusInfo.icon;
    const metrics = runMetrics(run);
-@@ -3262,8 +3229,8 @@ function RunListItem({ run, isSelected, agentId }: { run: HeartbeatRun; isSelect
+@@ -3262,8 +3235,8 @@ function RunListItem({ run, isSelected, agentId }: { run: HeartbeatRun; isSelect
        )}
        {(metrics.totalTokens > 0 || metrics.cost > 0) && (
          <div className="flex items-center gap-2 pl-5.5 text-(length:--text-micro) text-muted-foreground tabular-nums">
@@ -130157,7 +130388,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
          </div>
        )}
      </Link>
-@@ -3287,10 +3254,11 @@ function RunsTab({
+@@ -3287,10 +3260,11 @@ function RunsTab({
    adapterType: string;
    adapterConfig: Record<string, unknown>;
  }) {
@@ -130170,7 +130401,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
    }
  
    // Sort by created descending
-@@ -3311,9 +3279,7 @@ function RunsTab({
+@@ -3311,9 +3285,7 @@ function RunsTab({
              to={`/agents/${agentRouteId}/runs`}
              className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors no-underline"
            >
@@ -130181,7 +130412,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
            <RunDetail key={selectedRun.id} run={selectedRun} agentRouteId={agentRouteId} adapterType={adapterType} adapterConfig={adapterConfig} />
          </div>
        );
-@@ -3355,6 +3321,7 @@ function RunsTab({
+@@ -3355,6 +3327,7 @@ function RunsTab({
  /* ---- Run Detail (expanded) ---- */
  
  export function AgentFileRunNotice({ resultJson }: { resultJson: HeartbeatRun["resultJson"] }) {
@@ -130189,7 +130420,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
    const save = asRecord(resultJson?.instructionSave);
    const storageWarning = asNonEmptyString(save?.storageWarning);
    const error = asNonEmptyString(save?.errorMessage);
-@@ -3363,12 +3330,13 @@ export function AgentFileRunNotice({ resultJson }: { resultJson: HeartbeatRun["r
+@@ -3363,12 +3336,13 @@ export function AgentFileRunNotice({ resultJson }: { resultJson: HeartbeatRun["r
    // I/O failure must stay visible even when storage was full at run start.
    const showSyncFailure = syncFailure && (!storageWarning || save?.errorCode !== "AGENT_FILES_LIMIT_EXCEEDED");
    return <>
@@ -130205,7 +130436,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
    const queryClient = useQueryClient();
    const navigate = useNavigate();
    const { data: hydratedRun } = useQuery({
-@@ -3458,7 +3426,7 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
+@@ -3458,7 +3432,7 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
          payload: resumePayload,
        }, run.companyId);
        if (!("id" in result)) {
@@ -130214,7 +130445,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
        }
        return result;
      },
-@@ -3504,7 +3472,7 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
+@@ -3504,7 +3478,7 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
          debug: { providerTrace: "raw" },
        }, run.companyId);
        if (!("id" in result)) {
@@ -130223,7 +130454,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
        }
        return result;
      },
-@@ -3561,8 +3529,8 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
+@@ -3561,8 +3535,8 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
    }, [isRunning, run.startedAt]);
  
    const timeFormat: Intl.DateTimeFormatOptions = { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false };
@@ -130234,7 +130465,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
    const durationSec = run.startedAt && run.finishedAt
      ? Math.round((new Date(run.finishedAt).getTime() - new Date(run.startedAt).getTime()) / 1000)
      : null;
-@@ -3600,7 +3568,7 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
+@@ -3600,7 +3574,7 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
                    onClick={() => cancelRun.mutate()}
                    disabled={cancelRun.isPending}
                  >
@@ -130243,7 +130474,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                  </Button>
                )}
                {canResumeLostRun && (
-@@ -3612,7 +3580,7 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
+@@ -3612,7 +3586,7 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
                    disabled={resumeRun.isPending}
                  >
                    <RotateCcw className="h-3.5 w-3.5 mr-1" />
@@ -130252,7 +130483,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                  </Button>
                )}
                {canRetryRun && !canResumeLostRun && (
-@@ -3624,7 +3592,7 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
+@@ -3624,7 +3598,7 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
                    disabled={retryRun.isPending}
                  >
                    <RotateCcw className="h-3.5 w-3.5 mr-1" />
@@ -130261,7 +130492,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                  </Button>
                )}
                <Button
-@@ -3633,9 +3601,7 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
+@@ -3633,9 +3607,7 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
                  className="text-xs h-6 px-2"
                  onClick={() => setInspectorOpen(true)}
                >
@@ -130272,7 +130503,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                <HoneycombRunLink
                  runId={run.id}
                  enabled={paperclipDeveloperMode && canUseProviderTrace}
-@@ -3649,7 +3615,7 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
+@@ -3649,7 +3621,7 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
                    disabled={rerunWithTrace.isPending}
                  >
                    <RotateCcw className="h-3.5 w-3.5 mr-1" />
@@ -130281,7 +130512,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                  </Button>
                ) : null}
              </div>
-@@ -3678,44 +3644,21 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
+@@ -3678,44 +3650,21 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
                <div
                  data-testid="run-detail-on-behalf-of"
                  className="text-xs text-muted-foreground"
@@ -130330,7 +130561,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                </div>
              )}
              {startTime && (
-@@ -3730,8 +3673,7 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
+@@ -3730,8 +3679,7 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
                    {run.finishedAt && <> &rarr; {relativeTime(run.finishedAt)}</>}
                  </div>
                  {displayDurationSec !== null && (
@@ -130340,7 +130571,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                    </div>
                  )}
                </div>
-@@ -3752,19 +3694,17 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
+@@ -3752,19 +3700,17 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
                    onClick={() => runClaudeLogin.mutate()}
                    disabled={runClaudeLogin.isPending}
                  >
@@ -130363,7 +130594,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                        href={claudeLoginResult.loginUrl}
                        className="text-blue-600 underline underline-offset-2 ml-1 break-all dark:text-blue-400"
                        target="_blank"
-@@ -3797,9 +3737,8 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
+@@ -3797,9 +3743,8 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
                />
              )}
              {hasNonZeroExit && (
@@ -130375,7 +130606,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                </div>
              )}
              <RunRetryDetails run={run} agentRouteId={agentRouteId} />
-@@ -3809,20 +3748,20 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
+@@ -3809,20 +3754,20 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
            {hasMetrics && (
              <div className="border-t sm:border-t-0 sm:border-l border-border p-4 grid grid-cols-2 gap-x-4 sm:gap-x-8 gap-y-3 content-center tabular-nums">
                <div>
@@ -130401,7 +130632,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                </div>
              </div>
            )}
-@@ -3835,21 +3774,19 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
+@@ -3835,21 +3780,19 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
                className="flex items-center gap-1.5 w-full px-4 py-2 text-xs text-muted-foreground hover:text-foreground transition-colors"
                onClick={() => setSessionOpen((v) => !v)}
              >
@@ -130426,7 +130657,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                      <CopyText text={run.sessionIdAfter} className="font-mono" />
                    </div>
                  )}
-@@ -3862,21 +3799,21 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
+@@ -3862,21 +3805,21 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
                        onClick={() => {
                          const issueCount = touchedIssueIds.length;
                          const confirmed = window.confirm(
@@ -130452,7 +130683,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                        </p>
                      )}
                    </div>
-@@ -3890,7 +3827,7 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
+@@ -3890,7 +3833,7 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
        {/* Issues touched by this run */}
        {touchedIssues && touchedIssues.length > 0 && (
          <div className="space-y-2">
@@ -130461,7 +130692,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
            <div className="border border-border rounded-lg divide-y divide-border">
              {touchedIssues.map((issue) => (
                <Link
-@@ -3912,7 +3849,7 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
+@@ -3912,7 +3855,7 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
        {/* stderr excerpt for failed runs */}
        {run.stderrExcerpt && (
          <div className="space-y-1">
@@ -130470,7 +130701,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
            <pre className="bg-neutral-100 dark:bg-neutral-950 rounded-md p-3 text-xs font-mono text-red-700 dark:text-red-300 overflow-x-auto whitespace-pre-wrap">{run.stderrExcerpt}</pre>
          </div>
        )}
-@@ -3920,7 +3857,7 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
+@@ -3920,7 +3863,7 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
        {/* stdout excerpt when no log is available */}
        {run.stdoutExcerpt && !run.logRef && (
          <div className="space-y-1">
@@ -130479,7 +130710,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
            <pre className="bg-neutral-100 dark:bg-neutral-950 rounded-md p-3 text-xs font-mono text-foreground overflow-x-auto whitespace-pre-wrap">{run.stdoutExcerpt}</pre>
          </div>
        )}
-@@ -3953,6 +3890,7 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
+@@ -3953,6 +3896,7 @@ function RunDetail({ run: initialRun, agentRouteId, adapterType, adapterConfig }
  /* ---- Log Viewer ---- */
  
  export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType: string }) {
@@ -130487,7 +130718,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
    const { visible } = usePageVisibility();
    const [events, setEvents] = useState<HeartbeatRunEvent[]>([]);
    const [logLines, setLogLines] = useState<RunLogChunk[]>([]);
-@@ -4165,7 +4103,7 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
+@@ -4165,7 +4109,7 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
              setLogLoading(false);
              return;
            }
@@ -130496,7 +130727,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
          }
        } finally {
          if (!cancelled) setLogLoading(false);
-@@ -4189,7 +4127,7 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
+@@ -4189,7 +4133,7 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
        setLogOffset(next);
        setHasMoreLog(result.nextOffset !== undefined);
      } catch (err) {
@@ -130505,7 +130736,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
      } finally {
        setLoadingMoreLog(false);
      }
-@@ -4419,11 +4357,11 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
+@@ -4419,11 +4363,11 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
    }, [run.id]);
  
    if (loading && logLoading) {
@@ -130519,7 +130750,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
    }
  
    const levelColors: Record<string, string> = {
-@@ -4450,7 +4388,7 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
+@@ -4450,7 +4394,7 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
  
        <div className="flex items-center justify-between">
          <span className="text-xs font-medium text-muted-foreground">
@@ -130528,7 +130759,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
          </span>
          <div className="flex items-center gap-2">
            <div className="inline-flex rounded-lg border border-border/70 bg-background/70 p-0.5">
-@@ -4466,7 +4404,7 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
+@@ -4466,7 +4410,7 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
                  )}
                  onClick={() => setTranscriptMode(mode)}
                >
@@ -130537,7 +130768,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                </button>
              ))}
            </div>
-@@ -4481,18 +4419,14 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
+@@ -4481,18 +4425,14 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
                  scrollToContainerBottom(container, "auto");
                  lastMetricsRef.current = readScrollMetrics(container);
                }}
@@ -130558,7 +130789,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
            )}
          </div>
        </div>
-@@ -4503,7 +4437,7 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
+@@ -4503,7 +4443,7 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
            mode={transcriptMode}
            streaming={isLive}
            limit={isLive ? LIVE_TRANSCRIPT_RENDER_LIMIT : undefined}
@@ -130567,7 +130798,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
          />
          {hasMoreLog && (
            <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-border/60 pt-3">
-@@ -4514,13 +4448,12 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
+@@ -4514,13 +4454,12 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
                onClick={loadMorePersistedLog}
                disabled={loadingMoreLog}
              >
@@ -130584,7 +130815,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
              </span>
            </div>
          )}
-@@ -4534,16 +4467,16 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
+@@ -4534,16 +4473,16 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
  
        {(run.status === "failed" || run.status === "timed_out") && (
          <div className="rounded-lg border border-red-300 dark:border-red-500/30 bg-red-50 dark:bg-red-950/20 p-3 space-y-2">
@@ -130604,7 +130835,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                <pre className="bg-red-50 dark:bg-neutral-950 rounded-md p-2 text-xs overflow-x-auto whitespace-pre-wrap text-red-800 dark:text-red-100">
                  {redactPathText(run.stderrExcerpt, censorUsernameInLogs)}
                </pre>
-@@ -4551,7 +4484,7 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
+@@ -4551,7 +4490,7 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
            )}
            {run.resultJson && (
              <div>
@@ -130613,7 +130844,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                <pre className="bg-red-50 dark:bg-neutral-950 rounded-md p-2 text-xs overflow-x-auto whitespace-pre-wrap text-red-800 dark:text-red-100">
                  {JSON.stringify(redactPathValue(run.resultJson, censorUsernameInLogs), null, 2)}
                </pre>
-@@ -4559,7 +4492,7 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
+@@ -4559,7 +4498,7 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
            )}
            {run.stdoutExcerpt && run.stdoutExcerpt.trim() && !run.resultJson && (
              <div>
@@ -130622,7 +130853,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                <pre className="bg-red-50 dark:bg-neutral-950 rounded-md p-2 text-xs overflow-x-auto whitespace-pre-wrap text-red-800 dark:text-red-100">
                  {redactPathText(run.stdoutExcerpt, censorUsernameInLogs)}
                </pre>
-@@ -4570,7 +4503,7 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
+@@ -4570,7 +4509,7 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
  
        {events.length > 0 && (
          <div>
@@ -130631,7 +130862,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
            <div className="bg-neutral-100 dark:bg-neutral-950 rounded-lg p-3 font-mono text-xs space-y-0.5">
              {events.map((evt) => {
                const color = evt.color
-@@ -4581,7 +4514,7 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
+@@ -4581,7 +4520,7 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
                return (
                  <div key={evt.id} className="flex gap-2">
                    <span className="text-neutral-400 dark:text-neutral-600 shrink-0 select-none w-16">
@@ -130640,7 +130871,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                    </span>
                    <span className={cn("shrink-0 w-14", evt.stream ? (streamColors[evt.stream] ?? "text-neutral-500") : "text-neutral-500")}>
                      {evt.stream ? `[${evt.stream}]` : ""}
-@@ -4606,6 +4539,7 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
+@@ -4606,6 +4545,7 @@ export function LogViewer({ run, adapterType }: { run: HeartbeatRun; adapterType
  /* ---- Keys Tab ---- */
  
  export function KeysTab({ agentId, companyId }: { agentId: string; companyId?: string }) {
@@ -130648,7 +130879,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
    const queryClient = useQueryClient();
    const { pushToast } = useToastActions();
    const [newKeyName, setNewKeyName] = useState("");
-@@ -4619,7 +4553,7 @@ export function KeysTab({ agentId, companyId }: { agentId: string; companyId?: s
+@@ -4619,7 +4559,7 @@ export function KeysTab({ agentId, companyId }: { agentId: string; companyId?: s
    });
  
    const createKey = useMutation({
@@ -130657,7 +130888,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
      onSuccess: (data) => {
        setNewToken(data.token);
        setTokenVisible(true);
-@@ -4643,7 +4577,7 @@ export function KeysTab({ agentId, companyId }: { agentId: string; companyId?: s
+@@ -4643,7 +4583,7 @@ export function KeysTab({ agentId, companyId }: { agentId: string; companyId?: s
          setTimeout(() => setCopied(false), 2000);
        })
        .catch(() => {
@@ -130666,7 +130897,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
        });
    }
  
-@@ -4655,9 +4589,7 @@ export function KeysTab({ agentId, companyId }: { agentId: string; companyId?: s
+@@ -4655,9 +4595,7 @@ export function KeysTab({ agentId, companyId }: { agentId: string; companyId?: s
        {/* New token banner */}
        {newToken && (
          <div className="border border-yellow-300 dark:border-yellow-600/40 bg-yellow-50 dark:bg-yellow-500/5 rounded-lg p-4 space-y-2">
@@ -130677,7 +130908,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
            <div className="flex items-center gap-2">
              <code className="flex-1 bg-neutral-100 dark:bg-neutral-950 rounded px-3 py-1.5 text-xs font-mono text-green-700 dark:text-green-300 truncate">
                {tokenVisible ? newToken : newToken.replace(/./g, "•")}
-@@ -4666,7 +4598,7 @@ export function KeysTab({ agentId, companyId }: { agentId: string; companyId?: s
+@@ -4666,7 +4604,7 @@ export function KeysTab({ agentId, companyId }: { agentId: string; companyId?: s
                variant="ghost"
                size="icon-sm"
                onClick={() => setTokenVisible((v) => !v)}
@@ -130686,7 +130917,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
              >
                {tokenVisible ? <EyeOff className="h-3.5 w-3.5" /> : <Eye className="h-3.5 w-3.5" />}
              </Button>
-@@ -4674,35 +4606,29 @@ export function KeysTab({ agentId, companyId }: { agentId: string; companyId?: s
+@@ -4674,35 +4612,29 @@ export function KeysTab({ agentId, companyId }: { agentId: string; companyId?: s
                variant="ghost"
                size="icon-sm"
                onClick={copyToken}
@@ -130728,7 +130959,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
              value={newKeyName}
              onChange={(e) => setNewKeyName(e.target.value)}
              className="h-8 text-sm"
-@@ -4715,31 +4641,26 @@ export function KeysTab({ agentId, companyId }: { agentId: string; companyId?: s
+@@ -4715,31 +4647,26 @@ export function KeysTab({ agentId, companyId }: { agentId: string; companyId?: s
              onClick={() => createKey.mutate()}
              disabled={createKey.isPending}
            >
@@ -130765,7 +130996,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                    </span>
                  </div>
                  <Button
-@@ -4748,9 +4669,7 @@ export function KeysTab({ agentId, companyId }: { agentId: string; companyId?: s
+@@ -4748,9 +4675,7 @@ export function KeysTab({ agentId, companyId }: { agentId: string; companyId?: s
                    className="text-destructive hover:text-destructive text-xs"
                    onClick={() => revokeKey.mutate(key.id)}
                    disabled={revokeKey.isPending}
@@ -130776,7 +131007,7 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                </div>
              ))}
            </div>
-@@ -4760,16 +4679,13 @@ export function KeysTab({ agentId, companyId }: { agentId: string; companyId?: s
+@@ -4760,16 +4685,13 @@ export function KeysTab({ agentId, companyId }: { agentId: string; companyId?: s
        {/* Revoked keys */}
        {revokedKeys.length > 0 && (
          <div>
@@ -130795,6 +131026,83 @@ index 84a616a77bef93bd22463dfa9bae6c0b9722c0a1..5b30e8bbe0fa7f8170423dae61353b96
                    </span>
                  </div>
                </div>
+diff --git a/ui/src/pages/AgentOverview.test.tsx b/ui/src/pages/AgentOverview.test.tsx
+index 7149a65788aaa558f1ddd84e3ba44620632aae00..055eb5eda23f8a1065e068e5d2e9a601735f85a0 100644
+--- a/ui/src/pages/AgentOverview.test.tsx
++++ b/ui/src/pages/AgentOverview.test.tsx
+@@ -3,7 +3,8 @@
+ import { renderToStaticMarkup } from "react-dom/server";
+ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+ import type { AgentDetail, AgentRuntimeState, HeartbeatRun, Issue } from "@paperclipai/shared";
+-import { describe, expect, it, vi } from "vitest";
++import { afterEach, describe, expect, it, vi } from "vitest";
++import { i18n } from "@/i18n";
+ import { AgentOverview } from "./AgentDetail";
+ 
+ vi.mock("@/lib/router", async () => {
+@@ -20,8 +21,10 @@ vi.mock("../components/MarkdownBody", () => ({
+   MarkdownBody: ({ children }: { children: string }) => <div>{children}</div>,
+ }));
+ 
++afterEach(async () => { await i18n.changeLanguage("en"); });
++
+ describe("AgentOverview", () => {
+-  it("prioritizes identity, capability, runtime, skills, tasks, and scoped Audit entry points", () => {
++  it("prioritizes identity, capability, runtime, skills, tasks, and scoped Audit entry points", async () => {
+     const agent = {
+       id: "agent-1",
+       companyId: "company-1",
+@@ -51,10 +54,10 @@ describe("AgentOverview", () => {
+       sessionDisplayId: "codex-session-42",
+     } as unknown as AgentRuntimeState;
+ 
+-    const markup = renderToStaticMarkup(
++    const render = (overviewAgent = agent) => renderToStaticMarkup(
+       <QueryClientProvider client={new QueryClient()}>
+         <AgentOverview
+-          agent={agent}
++          agent={overviewAgent}
+           runs={[] as HeartbeatRun[]}
+           assignedIssues={[issue]}
+           runtimeState={runtime}
+@@ -64,6 +67,7 @@ describe("AgentOverview", () => {
+         />
+       </QueryClientProvider>,
+     );
++    const markup = render();
+ 
+     expect(markup).toContain("Identity");
+     expect(markup).toContain("Capabilities");
+@@ -74,5 +78,29 @@ describe("AgentOverview", () => {
+     expect(markup).toContain('href="/activity/costs?agentId=agent-1"');
+     expect(markup).not.toContain("Run Activity");
+     expect(markup).not.toContain("Tasks by Status");
++    for (const locale of ["ru", "en"] as const) {
++      await i18n.changeLanguage(locale);
++      const host = document.createElement("div");
++      host.innerHTML = render();
++      const links = Array.from(host.querySelectorAll('[aria-labelledby="agent-audit-links-heading"] a'));
++      expect(links.map((link) => link.textContent)).toEqual(locale === "ru"
++        ? ["Активность", "Запуски", "Затраты", "Бюджеты"]
++        : ["Activity", "Runs", "Costs", "Budgets"]);
++      expect(links.map((link) => link.getAttribute("href"))).toEqual(
++        ["/activity?mode=agents&agentId=agent-1", "/activity/runs?agentId=agent-1", "/activity/costs?agentId=agent-1", "/activity/budgets?agentId=agent-1"],
++      );
++      expect(host.textContent).toContain("Simplify agent information architecture");
++      expect(host.textContent).toContain("Product engineer");
++      host.innerHTML = render({ ...agent, adapterConfig: {} });
++      const modelLabel = Array.from(host.querySelectorAll('[aria-labelledby="agent-runtime-heading"] span'))
++        .find((span) => span.textContent === (locale === "ru" ? "Модель" : "Model"));
++      const modelRow = modelLabel?.parentElement;
++      const modelValue = modelLabel?.nextElementSibling;
++      expect(modelRow?.classList.contains("flex-wrap")).toBe(true);
++      expect(modelValue?.classList.contains("min-w-0")).toBe(true);
++      expect(modelValue?.classList.contains("max-w-full")).toBe(true);
++      expect(modelValue?.querySelector(".truncate")).toBeNull();
++      expect(modelValue?.textContent).toBe(i18n.t("localizationAgents.detail_Adapter_default"));
++    }
+   });
+ });
 diff --git a/ui/src/pages/AgentToolsTab.test.tsx b/ui/src/pages/AgentToolsTab.test.tsx
 index 518d9dea88aefd0e5ad9c0e974d85280ef5e243d..89edf3d037954f8a898297a315dd0dd5ef3f58ae 100644
 --- a/ui/src/pages/AgentToolsTab.test.tsx
@@ -137708,7 +138016,7 @@ index f7f989c9ec33d36286a12970bd235b86851d5be6..758612014ea09b37e468ba873fc2c499
                <div className="flex-1 overflow-y-auto">
                  <FileTree
 diff --git a/ui/src/pages/CompanySettings.tsx b/ui/src/pages/CompanySettings.tsx
-index b095dc1c48231ed779f7be066e8384c125046ae0..340f8fd317064ae27b22aaede5edc31af2945990 100644
+index b095dc1c48231ed779f7be066e8384c125046ae0..ed62651c6d637ece10ae0f848ff9c436b72c655e 100644
 --- a/ui/src/pages/CompanySettings.tsx
 +++ b/ui/src/pages/CompanySettings.tsx
 @@ -29,8 +29,10 @@ import {
@@ -137941,7 +138249,7 @@ index b095dc1c48231ed779f7be066e8384c125046ae0..340f8fd317064ae27b22aaede5edc31a
                  if (!selectedCompanyId) return;
                  const confirmed = window.confirm(
 -                  `Archive organization "${selectedCompany.name}"? It will be hidden from the sidebar.`
-+                  t("pages.companySettings.archiveConfirm", { name: `"${selectedCompany.name}"` })
++                  t("pages.companySettings.archiveConfirm", { name: selectedCompany.name })
                  );
                  if (!confirmed) return;
                  archiveMutation.mutate({ companyId: selectedCompanyId });
@@ -137965,6 +138273,73 @@ index b095dc1c48231ed779f7be066e8384c125046ae0..340f8fd317064ae27b22aaede5edc31a
                </span>
              )}
            </div>
+diff --git a/ui/src/pages/CompanySettingsArchive.test.tsx b/ui/src/pages/CompanySettingsArchive.test.tsx
+index 3bac249fd7564eb4c0fa38a0b927b8e40b91adac..3c0f731c295347349816ceec02b7bfdaa2d4dc64 100644
+--- a/ui/src/pages/CompanySettingsArchive.test.tsx
++++ b/ui/src/pages/CompanySettingsArchive.test.tsx
+@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+ import { TooltipProvider } from "@/components/ui/tooltip";
+ import { queryKeys } from "@/lib/queryKeys";
++import { i18n } from "@/i18n";
+ import { CompanySettings } from "./CompanySettings";
+ 
+ const mockCompaniesApi = vi.hoisted(() => ({
+@@ -136,11 +137,12 @@ describe("CompanySettings archive departure", () => {
+     observedPath = "";
+   });
+ 
+-  afterEach(() => {
++  afterEach(async () => {
+     container.remove();
+     document.body.innerHTML = "";
+     vi.restoreAllMocks();
+     vi.clearAllMocks();
++    await i18n.changeLanguage("en");
+   });
+ 
+   function render(health: unknown) {
+@@ -166,9 +168,9 @@ describe("CompanySettings archive departure", () => {
+     return root;
+   }
+ 
+-  function clickArchive() {
++  function clickArchive(label = "Archive organization") {
+     const button = Array.from(container.querySelectorAll("button")).find(
+-      (element) => element.textContent?.trim() === "Archive organization",
++      (element) => element.textContent?.trim() === label,
+     );
+     expect(button).toBeDefined();
+     flushSync(() => {
+@@ -176,6 +178,28 @@ describe("CompanySettings archive departure", () => {
+     });
+   }
+ 
++  it("uses one locale-specific pair of quotes and preserves cancellation when switching languages", async () => {
++    companyState.companies = [ARCHIVING_COMPANY];
++    vi.mocked(window.confirm).mockReturnValue(false);
++    const root = render(SELF_HOSTED_HEALTH);
++    try {
++      for (const locale of ["en", "ru", "en"] as const) {
++        await i18n.changeLanguage(locale);
++        await flushReact();
++        clickArchive(locale === "ru" ? "Архивировать организацию" : "Archive organization");
++        expect(window.confirm).toHaveBeenLastCalledWith(locale === "ru"
++          ? "Архивировать организацию «Old Co»? Она будет скрыта из боковой панели."
++          : 'Archive organization "Old Co"? It will be hidden from the sidebar.');
++        expect(mockCompaniesApi.archive).not.toHaveBeenCalled();
++        expect(mockSetSelectedCompanyId).not.toHaveBeenCalled();
++        expect(mockNavigateTopLevel).not.toHaveBeenCalled();
++        expect(observedPath).toBe("/OLD/company/settings");
++      }
++    } finally {
++      flushSync(() => root.unmount());
++    }
++  });
++
+   it("switches to another active company with a toast", async () => {
+     companyState.companies = [ARCHIVING_COMPANY, SIBLING_COMPANY];
+     const root = render(SELF_HOSTED_HEALTH);
 diff --git a/ui/src/pages/CompanySettingsPluginPage.tsx b/ui/src/pages/CompanySettingsPluginPage.tsx
 index 091c7d68303577b6630ab4c4ab0ed0f572695813..9eb20dbb40234beebcec369f78f1e15b1288ff6a 100644
 --- a/ui/src/pages/CompanySettingsPluginPage.tsx
@@ -145088,8 +145463,74 @@ index e28cf08dd9a98771c4438313830421b33322d3fe..9f9c529eddcbebd1813a38743cb7f087
                        ) : (
                          financeData?.byBiller.map((row) => <FinanceBillerCard key={row.biller} row={row} />)
                        )}
+diff --git a/ui/src/pages/Dashboard.localization.test.tsx b/ui/src/pages/Dashboard.localization.test.tsx
+new file mode 100644
+index 0000000000000000000000000000000000000000..121874cdf24f090b3ff62fe284b8a51002d0bba1
+--- /dev/null
++++ b/ui/src/pages/Dashboard.localization.test.tsx
+@@ -0,0 +1,60 @@
++// @vitest-environment jsdom
++import { act, type ReactNode } from "react";
++import { createRoot } from "react-dom/client";
++import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
++import { afterEach, describe, expect, it, vi } from "vitest";
++import { i18n } from "@/i18n";
++import { queryKeys } from "@/lib/queryKeys";
++import { Dashboard } from "./Dashboard";
++
++const mocks = vi.hoisted(() => ({ breadcrumbs: vi.fn(), openOnboarding: vi.fn() }));
++vi.mock("../context/CompanyContext", () => ({ useCompany: () => ({ selectedCompanyId: "company-1", companies: [{ id: "company-1" }] }) }));
++vi.mock("../context/DialogContext", () => ({ useDialogActions: () => ({ openOnboarding: mocks.openOnboarding }) }));
++vi.mock("../context/BreadcrumbContext", () => ({ useBreadcrumbs: () => ({ setBreadcrumbs: mocks.breadcrumbs }) }));
++vi.mock("@/lib/router", () => ({
++  useLocation: () => ({ pathname: "/QA/dashboard" }),
++  Link: ({ to, children, ...props }: { to: string; children: ReactNode }) => <a href={to} {...props}>{children}</a>,
++}));
++vi.mock("../hooks/useSharedPolling", () => ({ useSharedPollingQuery: () => ({}), usePublishSharedQueryData: () => {} }));
++vi.mock("../components/ActiveAgentsPanel", () => ({ ActiveAgentsPanel: () => null }));
++vi.mock("../components/SmokeLabDashboardCard", () => ({ SmokeLabDashboardCard: () => null }));
++vi.mock("@/plugins/slots", () => ({ PluginSlotOutlet: () => null }));
++vi.mock("../components/ActivityCharts", () => ({
++  ChartCard: () => null, RunActivityChart: () => null, PriorityChart: () => null,
++  IssueStatusChart: () => null, SuccessRateChart: () => null,
++}));
++(globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
++afterEach(async () => { vi.clearAllMocks(); await i18n.changeLanguage("en"); });
++
++describe("Dashboard budget localization", () => {
++  it("switches a fractional percentage and currency without changing cached costs", async () => {
++    const costs = { monthSpendCents: 1250, monthBudgetCents: 10000, monthUtilizationPercent: 12.5 };
++    const client = new QueryClient({ defaultOptions: { queries: { retry: false, staleTime: Infinity } } });
++    client.setQueryData(queryKeys.agents.list("company-1"), [{ id: "agent-1", name: "Raw agent", status: "idle" }]);
++    client.setQueryData(queryKeys.dashboard("company-1"), {
++      agents: { active: 1, running: 0, paused: 0, error: 0 },
++      tasks: { inProgress: 0, open: 0, blocked: 0 }, costs, pendingApprovals: 0,
++      budgets: { activeIncidents: 0, pendingApprovals: 0 }, runActivity: [],
++    });
++    client.setQueryData([...queryKeys.activity("company-1"), { limit: 10 }], []);
++    client.setQueryData(queryKeys.issues.list("company-1"), []);
++    client.setQueryData(queryKeys.projects.list("company-1", { includeArchived: true }), []);
++    client.setQueryData(queryKeys.access.companyUserDirectory("company-1"), { users: [] });
++    const host = document.createElement("div");
++    const root = createRoot(host);
++    try {
++      await act(async () => { root.render(<QueryClientProvider client={client}><Dashboard /></QueryClientProvider>); });
++      for (const locale of ["en", "ru", "en"] as const) {
++        await act(async () => { await i18n.changeLanguage(locale); });
++        const description = host.querySelector('a[href="/costs"]')?.textContent?.replace(/\u00a0/g, " ");
++        expect(description).toContain(locale === "ru" ? "12,5% от бюджета 100,00 $" : "12.5% of $100.00 budget");
++        expect(description).toContain(locale === "ru" ? "12,50 $" : "$12.50");
++        expect(client.getQueryData<{ costs: typeof costs }>(queryKeys.dashboard("company-1"))?.costs).toEqual(costs);
++        expect(mocks.openOnboarding).not.toHaveBeenCalled();
++      }
++    } finally {
++      await act(async () => root.unmount());
++      client.clear();
++    }
++  });
++});
 diff --git a/ui/src/pages/Dashboard.tsx b/ui/src/pages/Dashboard.tsx
-index 38bf9e51efb202683655fe51f952dbcd83982778..710b6b478ecaaf93491b5ad78e917dddcd6ef397 100644
+index 38bf9e51efb202683655fe51f952dbcd83982778..20efbf31a4dc1812f8750c8a84f1a42e323f04cc 100644
 --- a/ui/src/pages/Dashboard.tsx
 +++ b/ui/src/pages/Dashboard.tsx
 @@ -6,6 +6,7 @@ import {
@@ -145100,6 +145541,15 @@ index 38bf9e51efb202683655fe51f952dbcd83982778..710b6b478ecaaf93491b5ad78e917ddd
  import { Link } from "@/lib/router";
  import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
  import { dashboardApi } from "../api/dashboard";
+@@ -26,7 +27,7 @@ import { usePublishSharedQueryData, useSharedPollingQuery } from "../hooks/useSh
+ 
+ import { ActivityRow } from "../components/ActivityRow";
+ import { timeAgo } from "../lib/timeAgo";
+-import { cn, formatCents } from "../lib/utils";
++import { cn, formatCents, formatNumber } from "../lib/utils";
+ import { SHOW_TASK_PRIORITY_UI } from "../lib/ui-flags";
+ import { Bot, CircleDot, DollarSign, ShieldCheck, LayoutDashboard, PauseCircle } from "lucide-react";
+ import { ActiveAgentsPanel } from "../components/ActiveAgentsPanel";
 @@ -71,6 +72,7 @@ export function derivePausedAgentBanner(agents: Agent[] | undefined): PausedAgen
  }
  
@@ -145269,7 +145719,7 @@ index 38bf9e51efb202683655fe51f952dbcd83982778..710b6b478ecaaf93491b5ad78e917ddd
 -                    ? `${data.costs.monthUtilizationPercent}% of ${formatCents(data.costs.monthBudgetCents)} budget`
 -                    : "Unlimited budget"}
 +                    ? t("pages.dashboard.percentOfBudget", {
-+                        utilization: data.costs.monthUtilizationPercent,
++                        utilization: formatNumber(data.costs.monthUtilizationPercent),
 +                        budget: formatCents(data.costs.monthBudgetCents),
 +                      })
 +                    : t("pages.dashboard.unlimitedBudget")}
@@ -149826,7 +150276,7 @@ index 4835a004174984668eec1be424c974134710cf16..ea5cf5de389287d34d1c93dfad9049da
                  )}
                </div>
 diff --git a/ui/src/pages/IssueDetail.test.tsx b/ui/src/pages/IssueDetail.test.tsx
-index 1055e4be7c033c0b014a534c68a262831894d919..2011da0f1beb7921aac07fb61feb7abee0c2ae29 100644
+index 1055e4be7c033c0b014a534c68a262831894d919..60a6a2b399c9806c0404c81a96d3e237b1d61b6d 100644
 --- a/ui/src/pages/IssueDetail.test.tsx
 +++ b/ui/src/pages/IssueDetail.test.tsx
 @@ -45,6 +45,7 @@ import { getRecentTasksStorageKey, readRecentTasks } from "../lib/recent-tasks";
@@ -149837,15 +150287,48 @@ index 1055e4be7c033c0b014a534c68a262831894d919..2011da0f1beb7921aac07fb61feb7abe
  
  const mockIssuesApi = vi.hoisted(() => ({
    get: vi.fn(),
-@@ -1430,6 +1431,7 @@ describe("IssueDetail", () => {
+@@ -1430,6 +1431,40 @@ describe("IssueDetail", () => {
      localStorage.clear();
      sessionStorage.clear();
      vi.restoreAllMocks();
 +    await i18n.changeLanguage("en");
++  });
++
++  it("updates the direct-entry task breadcrumb and document title across live locale switches", async () => {
++    const { BreadcrumbProvider, useBreadcrumbs } = await vi.importActual<typeof import("../context/BreadcrumbContext")>("../context/BreadcrumbContext");
++    const issue = createIssue({ title: "Raw task {{RAW}}" });
++    mockIssuesApi.get.mockResolvedValue(issue);
++    await i18n.changeLanguage("ru");
++    function BreadcrumbBridge() {
++      const { breadcrumbs, setBreadcrumbs } = useBreadcrumbs();
++      mockSetBreadcrumbs.mockImplementation(setBreadcrumbs);
++      return <div data-testid="actual-breadcrumbs">{breadcrumbs.map((crumb) => crumb.label).join(" / ")}</div>;
++    }
++    try {
++      await act(async () => root.render(
++        <QueryClientProvider client={queryClient}>
++          <BreadcrumbProvider companyName="Raw company">
++            <BreadcrumbBridge />
++            <IssueDetail />
++          </BreadcrumbProvider>
++        </QueryClientProvider>,
++      ));
++      for (const locale of ["ru", "en", "ru"] as const) {
++        await act(async () => { await i18n.changeLanguage(locale); });
++        await waitForAssertion(() => {
++          const taskLabel = locale === "ru" ? "Задачи" : "Tasks";
++          expect(container.querySelector('[data-testid="actual-breadcrumbs"]')?.textContent).toBe(`${taskLabel} / Raw task {{RAW}}`);
++          expect(document.title).toBe(`Raw task {{RAW}} • ${taskLabel} • Raw company • Paperclip`);
++        });
++      }
++      expect(mockLocation.state).toBeNull();
++    } finally {
++      mockSetBreadcrumbs.mockReset();
++    }
    });
  
    it.each(["new-project", null])("remembers project %s only after its task update succeeds", async (projectId) => {
-@@ -2697,7 +2699,7 @@ describe("IssueDetail", () => {
+@@ -2697,7 +2732,7 @@ describe("IssueDetail", () => {
      mockIssuesApi.resolveRecoveryAction.mockReset();
    });
  
@@ -149854,7 +150337,7 @@ index 1055e4be7c033c0b014a534c68a262831894d919..2011da0f1beb7921aac07fb61feb7abe
      const fail = outcome === "failure";
      const actionId = "recovery-action-inline";
      const snapshot: DispositionRecoverySnapshot = { kind: "disposition_repair_escalated", actionId, attemptCount: 2, maxAttempts: 2, reason: "unchanged_source_state_exhausted", assigneeAgentId: "agent-1" };
-@@ -2708,6 +2710,13 @@ describe("IssueDetail", () => {
+@@ -2708,6 +2743,13 @@ describe("IssueDetail", () => {
        attemptCount: 2, maxAttempts: 2, timeoutAt: null, lastAttemptAt: null, outcome: null, resolutionNote: null, resolvedAt: null, createdAt: new Date(), updatedAt: new Date(),
      } });
      mockIssuesApi.get.mockResolvedValue(issue);
@@ -149868,7 +150351,7 @@ index 1055e4be7c033c0b014a534c68a262831894d919..2011da0f1beb7921aac07fb61feb7abe
      mockIssuesApi.listComments.mockResolvedValue([{ id: "notice-inline", companyId: issue.companyId, issueId: issue.id, authorType: "system", body: "Unrelated prose", createdAt: new Date(), updatedAt: new Date(), metadata: { version: 1, sections: [], recovery: snapshot } }]);
      if (outcome === "pending question") mockIssuesApi.listInteractions.mockResolvedValue([{ id: "question-1", kind: "ask_user_questions", status: "pending", payload: { version: 1, questions: [] } }]);
      if (fail) mockIssuesApi.resolveRecoveryAction.mockRejectedValue(new Error("The task is now paused."));
-@@ -2716,6 +2725,25 @@ describe("IssueDetail", () => {
+@@ -2716,6 +2758,25 @@ describe("IssueDetail", () => {
      await flushReact(); await flushReact();
      const retry = Array.from(container.querySelectorAll("button")).find(b => b.textContent === "Retry agent");
      expect(retry).toBeDefined();
@@ -149894,7 +150377,7 @@ index 1055e4be7c033c0b014a534c68a262831894d919..2011da0f1beb7921aac07fb61feb7abe
      if (outcome === "pending question") {
        expect(retry!.disabled).toBe(true);
        expect(container.textContent).toContain("Respond to the pending question or confirmation before retrying.");
-@@ -4586,9 +4614,11 @@ describe("IssueDetail", () => {
+@@ -4586,9 +4647,11 @@ describe("IssueDetail", () => {
      ).toBe("blocked");
    });
  
@@ -149908,7 +150391,7 @@ index 1055e4be7c033c0b014a534c68a262831894d919..2011da0f1beb7921aac07fb61feb7abe
        const childIssue = createIssue({
          id: "child-1",
          parentId: "issue-1",
-@@ -4645,9 +4675,7 @@ describe("IssueDetail", () => {
+@@ -4645,9 +4708,7 @@ describe("IssueDetail", () => {
            ...releasedHold,
            ...(wakeFailed
              ? {
@@ -149919,7 +150402,7 @@ index 1055e4be7c033c0b014a534c68a262831894d919..2011da0f1beb7921aac07fb61feb7abe
                }
              : {}),
          });
-@@ -4720,11 +4748,17 @@ describe("IssueDetail", () => {
+@@ -4720,11 +4781,17 @@ describe("IssueDetail", () => {
        await waitForAssertion(() => {
          expect(container.textContent).not.toContain("Subtree is paused.");
        });
@@ -149942,7 +150425,7 @@ index 1055e4be7c033c0b014a534c68a262831894d919..2011da0f1beb7921aac07fb61feb7abe
      },
    );
  
-@@ -5485,15 +5519,30 @@ describe("IssueDetail", () => {
+@@ -5485,15 +5552,30 @@ describe("IssueDetail", () => {
      localStorage.removeItem("paperclip:issue-comment-draft:issue-1");
    });
  
@@ -149974,7 +150457,7 @@ index 1055e4be7c033c0b014a534c68a262831894d919..2011da0f1beb7921aac07fb61feb7abe
        mockSidebarState.isMobile = isMobile;
        mockIssuesApi.get.mockResolvedValue(createIssue());
        let resolve!: (value: Awaited<ReturnType<typeof issuesApi.getTreeControlState>>) => void;
-@@ -5525,12 +5574,16 @@ describe("IssueDetail", () => {
+@@ -5525,12 +5607,16 @@ describe("IssueDetail", () => {
        const response = await renderWithPendingTreeControl();
        expect(composerProps().composerDisabledReason).toBeNull();
        expect(composerProps().composerPause).toBeNull();
@@ -149991,7 +150474,7 @@ index 1055e4be7c033c0b014a534c68a262831894d919..2011da0f1beb7921aac07fb61feb7abe
        expect(queryClient.getQueryState(treeControlKey)?.status).toBe("pending");
  
        response.resolve({ activePauseHold: null });
-@@ -5546,10 +5599,12 @@ describe("IssueDetail", () => {
+@@ -5546,10 +5632,12 @@ describe("IssueDetail", () => {
        response.reject(new Error("tree control unavailable"));
        await waitForAssertion(() => {
          expect(queryClient.getQueryState(treeControlKey)?.status).toBe("error");
@@ -150007,7 +150490,7 @@ index 1055e4be7c033c0b014a534c68a262831894d919..2011da0f1beb7921aac07fb61feb7abe
      });
  
      it.each([true, false])("applies a late pause response (root=%s)", async (isRoot) => {
-@@ -5569,6 +5624,17 @@ describe("IssueDetail", () => {
+@@ -5569,6 +5657,17 @@ describe("IssueDetail", () => {
          expect(composerProps().composerPause?.scope).toBe(isRoot ? "leaf" : "subtree");
          expect(container.querySelector('[data-testid="paused-composer-takeover"]')).not.toBeNull();
        });
@@ -150026,7 +150509,7 @@ index 1055e4be7c033c0b014a534c68a262831894d919..2011da0f1beb7921aac07fb61feb7abe
    });
  
 diff --git a/ui/src/pages/IssueDetail.tsx b/ui/src/pages/IssueDetail.tsx
-index 07b3c07216e79f23552834024b5aa0088ed23fb3..664661418ddcca58be72d345093ae5c6c4bb78b0 100644
+index 07b3c07216e79f23552834024b5aa0088ed23fb3..d90125baba6f76d3df59b85b7c782a8579eb3b02 100644
 --- a/ui/src/pages/IssueDetail.tsx
 +++ b/ui/src/pages/IssueDetail.tsx
 @@ -15,6 +15,9 @@ import type { TaskComposerPause } from "../components/task-chat/TaskChatPausedTa
@@ -150736,7 +151219,7 @@ index 07b3c07216e79f23552834024b5aa0088ed23fb3..664661418ddcca58be72d345093ae5c6
      () =>
        readIssueDetailBreadcrumb(issueId, location.state, location.search) ?? {
 -        label: "Tasks",
-+        get label() { return t("nav.tasks"); },
++        label: t("nav.tasks"),
          href: "/issues",
        },
 -    [issueId, location.state, location.search],
@@ -151997,10 +152480,10 @@ index 07b3c07216e79f23552834024b5aa0088ed23fb3..664661418ddcca58be72d345093ae5c6
    useEffect(() => {
 diff --git a/ui/src/pages/Issues.localization.test.tsx b/ui/src/pages/Issues.localization.test.tsx
 new file mode 100644
-index 0000000000000000000000000000000000000000..4290d10dbf7daf910e396fb71c849022a4e67ee0
+index 0000000000000000000000000000000000000000..c565ea4f53519d802b793dfe39aee86c25746ad9
 --- /dev/null
 +++ b/ui/src/pages/Issues.localization.test.tsx
-@@ -0,0 +1,43 @@
+@@ -0,0 +1,46 @@
 +// @vitest-environment jsdom
 +import { act } from "react";
 +import { createRoot } from "react-dom/client";
@@ -152037,6 +152520,9 @@ index 0000000000000000000000000000000000000000..4290d10dbf7daf910e396fb71c849022
 +          ? (locale === "en" ? "Select an organization to view tasks." : "Выберите организацию, чтобы просмотреть задачи.")
 +          : (locale === "en" ? "Select a company to view tasks." : "Выберите организацию, чтобы просмотреть задачи.");
 +        expect(host.textContent).toBe(expected);
++        if (streamlined) {
++          expect(mocks.breadcrumbs).toHaveBeenLastCalledWith([{ label: locale === "en" ? "Tasks" : "Задачи" }]);
++        }
 +        expect(host.querySelector("[data-unexpected-issues-list]")).toBeNull();
 +        expect(client.getQueryCache().getAll().map((query) => query.queryKey)).toEqual(queryKeys);
 +        expect(mocks.read).not.toHaveBeenCalled(); expect(mocks.update).not.toHaveBeenCalled();
@@ -152045,7 +152531,7 @@ index 0000000000000000000000000000000000000000..4290d10dbf7daf910e396fb71c849022
 +  });
 +});
 diff --git a/ui/src/pages/Issues.tsx b/ui/src/pages/Issues.tsx
-index 0653d275848fefbffbc6af434371cd688b11e44d..6f1135f71c6c494988e0a7dbdf552828eefdf265 100644
+index 0653d275848fefbffbc6af434371cd688b11e44d..5fbff420c5e1e9f7382f00a0f627501b4ef7b199 100644
 --- a/ui/src/pages/Issues.tsx
 +++ b/ui/src/pages/Issues.tsx
 @@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
@@ -152097,7 +152583,7 @@ index 0653d275848fefbffbc6af434371cd688b11e44d..6f1135f71c6c494988e0a7dbdf552828
    const { enabled: streamlinedUiEnabled } = useStreamlinedUiEnabled();
    const issuesPresentation = resolveIssuesPresentation(streamlinedUiEnabled);
    const { selectedCompanyId } = useCompany();
-@@ -225,7 +229,7 @@ function OrganizationIssues({
+@@ -225,16 +229,16 @@ function OrganizationIssues({
    const issueLinkState = useMemo(
      () =>
        createIssueDetailLocationState(
@@ -152106,15 +152592,18 @@ index 0653d275848fefbffbc6af434371cd688b11e44d..6f1135f71c6c494988e0a7dbdf552828
          `${location.pathname}${location.search}${location.hash}`,
          "issues",
        ),
-@@ -233,7 +237,7 @@ function OrganizationIssues({
+-    [location.pathname, location.search, location.hash],
++    [location.pathname, location.search, location.hash, t],
    );
  
    useEffect(() => {
 -    setBreadcrumbs([{ label: "Tasks" }]);
+-  }, [setBreadcrumbs]);
 +    setBreadcrumbs([{ label: t("oct5Core.s0422") }]);
-   }, [setBreadcrumbs]);
++  }, [setBreadcrumbs, t]);
  
    const issuePageSize = workspaceIdFilter ? WORKSPACE_FILTER_ISSUE_LIMIT : ISSUES_PAGE_SIZE;
+ 
 @@ -298,8 +302,8 @@ function OrganizationIssues({
        <EmptyState
          icon={CircleDot}
