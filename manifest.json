@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "ready": true,
-  "kitVersion": "v2026.10.13.1",
+  "kitVersion": "v2026.10.19.1",
   "releaseChannel": "stable",
   "upstreamRef": "v2026.1012.0",
   "runtimeProfile": "pinned-en-ru",
   "baseCommit": "bba6a45f0d364cfd962ac59b3bdf2426a8222adb",
   "sourceCommit": "9cf846bbf6f174d0d394c4faf08c18d77f54bd38",
   "patchFile": "paperclip-localizations.patch",
-  "patchSha256": "ffdde170f9610f12135a9dea0de638ea4ec13d2305e3c683f5c8ea659add0c11",
+  "patchSha256": "23c581778af3a540757d5245bf4580548724cb3af6d7907a0cedb2b50b2ae556",
   "allowedPaths": [
     "scripts/locale-changes.d.mts",
     "scripts/locale-changes.mjs",
@@ -1910,11 +1910,11 @@
       "mode": "100644"
     },
     "ui/src/components/MarkdownEditor.test.tsx": {
-      "sha256": "a24c89a2c2b23f40c6f47c5da30c466f78227a9eca187b84633dfb5c4455fe7e",
+      "sha256": "0006998079e44a7ab8ded5422bc3b5a2ace71809f6e1b948be715682ee22efcb",
       "mode": "100644"
     },
     "ui/src/components/MarkdownEditor.tsx": {
-      "sha256": "26fdd0e3c486a388e52d98bce63318fbf940c76afc2f9138ca59e542487a744d",
+      "sha256": "6dc03c316c9828536e9526574b7b0cd525d2be59a3ca058c2f83feb6dbc61e52",
       "mode": "100644"
     },
     "ui/src/components/MemberMultiSelect.test.tsx": {
@@ -1946,11 +1946,11 @@
       "mode": "100644"
     },
     "ui/src/components/NewIssueDialog.test.tsx": {
-      "sha256": "30c747ea31a4c00c60f6c32056ddcf91ba4cb335108836053bfcff8ca1c88c31",
+      "sha256": "ce4ffd0491533afbaefb78ad6edf921ded7be79d66dbe46ed6a0f79fb497d860",
       "mode": "100644"
     },
     "ui/src/components/NewIssueDialog.tsx": {
-      "sha256": "365459e28610a5a5e1178bf38e05b5edd2e4645950f3a6c4c1c6766f677e186a",
+      "sha256": "ef62af0d17fe73ebe150d670f40bdfd50df9696c85b1378194665d1efbe69daa",
       "mode": "100644"
     },
     "ui/src/components/NewProjectDialog.tsx": {
@@ -4838,9 +4838,9 @@
       "mode": "100644"
     }
   },
-  "resultTree": "76bad17ece16021f8070a9d2d6ae8229c2a43c90",
-  "sourceLockSha256": "73593c38fa861b46a4d3e74b0c26d7194259bedd80dbfd45dec4fbe32ce8cc6c",
-  "foundationSha256": "ffdde170f9610f12135a9dea0de638ea4ec13d2305e3c683f5c8ea659add0c11",
+  "resultTree": "366989d6169cf33a8af06815c9e4023137bf34b5",
+  "sourceLockSha256": "5e6da68bb30959e55d29a0ca8e5783da5bf39eff05e7d96c7af65a6481d71d46",
+  "foundationSha256": "23c581778af3a540757d5245bf4580548724cb3af6d7907a0cedb2b50b2ae556",
   "locales": [
     {
       "locale": "en",
