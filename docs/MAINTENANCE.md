@@ -1,8 +1,8 @@
 # Maintenance and releases
 
-This maintenance branch prepares unpublished beta candidate `v2026.10.7.1-beta.1`, pinned to `c365a16e346dd7bee27709a3be92b965c3dd054d`. Its channel-index change is a proposal. Stable `v2026.10.13.1` for official Paperclip `v2026.1012.0` is already published; the published beta remains `v2026.9.13.1-beta.1` until separately approved publication. Never copy the stable payload into beta or promote this master snapshot to stable.
+This maintenance branch prepares unpublished beta candidate `v2026.10.19.1-beta.1`, pinned to `2f6ad2226aec330251438c47cbc45fd92e0d3132`. Its channel-index change is a proposal. Stable `v2026.10.13.1` for official Paperclip `v2026.1012.0` is already published; the published beta remains `v2026.9.13.1-beta.1` until separately approved publication. Never copy the stable payload into beta or promote this master snapshot to stable.
 
-**Historical October 12 review:** at the time of that review, stable still matched the latest official stable release. Master had advanced to `1b4c803816e82b0265c8422e1a804327a7ed8c54`; the existing beta candidate does **not** support it. Read the [drift audit, 87 source conflicts and outstanding integration checks](../verification/2026-10-12-upstream-review.md). This review does not advance any compatibility pin or publish a new patch.
+**Historical October 12 review:** at the time of that review, stable still matched the latest official stable release. Master had advanced to `1b4c803816e82b0265c8422e1a804327a7ed8c54`, which the then-current beta candidate did not support. The [historical drift audit](../verification/2026-10-12-upstream-review.md) remains unchanged. The October 19 candidate has its own pinned base and [verification report](../verification/v2026.10.19.1-beta.1.md); neither review publishes a patch.
 
 [Русская главная страница](../README.md) · [English overview](../README.en.md) · [Contributing](../CONTRIBUTING.md)
 

@@ -2,15 +2,15 @@
 
 [Русская главная](../README.md) · [English overview](../README.en.md)
 
-## Кандидат beta / Beta candidate — 2026-10-07
+## Кандидат beta / Beta candidate — 2026-10-19
 
-Эта ветка готовит **неопубликованный** `v2026.10.7.1-beta.1`: master `c365a16e346dd7bee27709a3be92b965c3dd054d`, профиль `community-json`. Она не меняет опубликованные теги и файлы. `channels.json` в этой ветке содержит предлагаемую запись beta; таблицы и команды ниже описывают действующие опубликованные выпуски. Не применяйте эти патчи к новой beta-базе. Stable `v2026.10.13.1` для официального `v2026.1012.0` опубликован отдельно и доступен для установки; опубликованная beta остаётся `v2026.9.13.1-beta.1`.
+Эта ветка готовит **неопубликованный** `v2026.10.19.1-beta.1`: master `2f6ad2226aec330251438c47cbc45fd92e0d3132`, профиль `community-json`. Она не меняет опубликованные теги и файлы. `channels.json` в этой ветке содержит предлагаемую запись beta; таблицы и команды ниже описывают действующие опубликованные выпуски. Не применяйте эти патчи к новой beta-базе. Stable `v2026.10.13.1` для официального `v2026.1012.0` опубликован отдельно и доступен для установки; опубликованная beta остаётся `v2026.9.13.1-beta.1`.
 
-This branch prepares **unpublished** `v2026.10.7.1-beta.1`, pinned to master `c365a16e346dd7bee27709a3be92b965c3dd054d` with `community-json`. Its proposed beta index does not publish a release or modify existing tags/assets. The tables and installation commands below describe the still-published releases, whose patches must not be applied to this new beta base. Stable `v2026.10.13.1` for official `v2026.1012.0` is separately published and available to install; the published beta remains `v2026.9.13.1-beta.1`.
+This branch prepares **unpublished** `v2026.10.19.1-beta.1`, pinned to master `2f6ad2226aec330251438c47cbc45fd92e0d3132` with `community-json`. Its proposed beta index does not publish a release or modify existing tags/assets. The tables and installation commands below describe the still-published releases, whose patches must not be applied to this new beta base. Stable `v2026.10.13.1` for official `v2026.1012.0` is separately published and available to install; the published beta remains `v2026.9.13.1-beta.1`.
 
 After completing the remaining release gate and obtaining approval, a beta release must use `-beta.N`, `prerelease: true`, and `Latest: false`. No release or deployment is authorized by this branch.
 
-[Проверки кандидата и ограничения / Candidate verification and limitations](../verification/v2026.10.7.1-beta.1.md).
+[Проверки кандидата и ограничения / Candidate verification and limitations](../verification/v2026.10.19.1-beta.1.md).
 
 > Опубликованный stable / Published stable: `v2026.10.13.1` для / for Paperclip `v2026.1012.0`. [Проверки и ограничения / Checks and limitations](../verification/v2026.10.13.1.md).
 

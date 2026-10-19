@@ -13,9 +13,9 @@ export const TEMPLATE_TARGETS = [
 export const EXACT_EDITS = [
   {
     path: "ui/src/components/task-chat/task-chat-display.ts",
-    sha256: "cc6259ab809692f01735820851703f29b49f24068b087b7eed59df96366d9838",
+    sha256: "864fe36ff159ce3b4bd8db24ba9f4f334729ed1d2bb54e0c9b3f9041b78a5402",
     replacements: [],
-    reason: "Preserve selected-locale formatting, exact English fallback and AI-account markers. October 7 adds exact generated model/connection notices, first-party feedback-tool captions gated by canonical operation identity, and full-match marker guards. Provider error prefixes, canonical models and unknown diagnostics remain raw.",
+    reason: "Preserve selected-locale formatting, exact English fallback, full-match marker guards and canonical AI-account markers. October 19 adds four finite display labels and two exact generated remedies; provider diagnostics, model values and retry-control markers stay raw.",
   },
   {
     path: "ui/src/components/task-chat/task-chat-phase-summary-display.ts",
@@ -24,12 +24,12 @@ export const EXACT_EDITS = [
     reason: "The source already translates generated grammar in all non-English languages. Its remaining Russian condition protects phrase casing and must not be replaced.",
   },
   ...[
-    ["ui/src/components/CodexSubscriptionPanel.tsx", "46be2e6d474b0e865f6997b735184e40d94e1818c84d6e5262a70257a8ff8727"],
-    ["ui/src/components/ClaudeSubscriptionPanel.tsx", "6fe04085c069637d3e682b65e9169cbc66738e70127805380f422b66cb1ca150"],
+    ["ui/src/components/CodexSubscriptionPanel.tsx", "5076c741299cc5e1751b8c45f6e580f6a504737fd7ebefe124f7b0d42a7f9d36"],
+    ["ui/src/components/ClaudeSubscriptionPanel.tsx", "0b176111d8761efe9b207dfbc0e66684ae7687e635ca231d08b291f720838bca"],
   ].map(([path, sha256]) => ({
     path, sha256,
     replacements: [],
-    reason: "Preserve the source's selected-language quota formatting and English numeric display.",
+    reason: "Preserve selected-language quota formatting and English numeric display. October 19 retains upstream safe unavailable-status messages instead of exposing raw provider errors, and localizes the revised quota descriptions.",
   })),
   {
     path: "ui/src/lib/attention.ts",
@@ -45,9 +45,9 @@ export const EXACT_EDITS = [
   },
   {
     path: "ui/src/pages/apps/connection-owner.tsx",
-    sha256: "64f3bbd9065285770ba79943285a4ecc08ee1c5eed52c73b78b8fe72f20001d8",
+    sha256: "f7c0fb89a682730279c569d98cea80d0fc5039b8727b0960eafeeb880b9f6a8f",
     replacements: [],
-    reason: "Preserve the source's English-only possessive punctuation and unmodified given names in other languages. October 7 separates canonical application identity from its translated display name; customized names, provider email addresses and tenant hostnames remain intact.",
+    reason: "Preserve English-only possessive punctuation and unmodified given names in other languages. October 19 applies the same display-only owner naming to assistant connections; OAuth client identity, customized names, provider emails and tenant hostnames remain intact.",
   },
   {
     path: "ui/src/i18n/locale-sync.test.ts",

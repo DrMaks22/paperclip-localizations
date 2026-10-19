@@ -2,9 +2,9 @@
 
 [Русский](README.md) · **English**
 
-> **Beta preparation branch, not a published release.** This branch prepares `v2026.10.7.1-beta.1` for the exact master snapshot `c365a16e346dd7bee27709a3be92b965c3dd054d`. Its beta entry in `channels.json` is proposed metadata, not an available download. Stable `v2026.10.13.1` for Paperclip `v2026.1012.0` at `bba6a45f0d364cfd962ac59b3bdf2426a8222adb` is published; the stable links and installation commands below are available. The published beta remains `v2026.9.13.1-beta.1`. Neither published patch supports the new beta base. Merging, publication and deployment require separate owner approval.
+> **Beta preparation branch, not a published release.** This branch prepares `v2026.10.19.1-beta.1` for the exact master snapshot `2f6ad2226aec330251438c47cbc45fd92e0d3132`. Its beta entry in `channels.json` is proposed metadata, not an available download. Stable `v2026.10.13.1` for Paperclip `v2026.1012.0` at `bba6a45f0d364cfd962ac59b3bdf2426a8222adb` is published; the stable links and installation commands below are available. The published beta remains `v2026.9.13.1-beta.1`. Neither published patch supports the new beta base. Merging, publication and deployment require separate owner approval.
 
-[New beta candidate verification and limitations](verification/v2026.10.7.1-beta.1.md).
+[New beta candidate verification and limitations](verification/v2026.10.19.1-beta.1.md).
 
 [![Checks](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml/badge.svg)](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml) · [Stable](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.13.1) · [Beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1-beta.1) · [Channels and verification](docs/RELEASES.md)
 

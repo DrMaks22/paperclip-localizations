@@ -2,9 +2,9 @@
 
 **Русский** · [English](README.en.md)
 
-> **Ветка подготовки beta, не опубликованный релиз.** Здесь готовится `v2026.10.7.1-beta.1` для точного снимка master `c365a16e346dd7bee27709a3be92b965c3dd054d`. Запись beta в `channels.json` — кандидат, а не доступный для скачивания выпуск. Stable `v2026.10.13.1` для Paperclip `v2026.1012.0` на коммите `bba6a45f0d364cfd962ac59b3bdf2426a8222adb` уже опубликован; ссылки и команды stable ниже доступны для установки. Опубликованная beta остаётся `v2026.9.13.1-beta.1`. Ни один из этих опубликованных патчей не подходит к новой beta-базе. Слияние, публикация и развёртывание требуют отдельного одобрения владельца.
+> **Ветка подготовки beta, не опубликованный релиз.** Здесь готовится `v2026.10.19.1-beta.1` для точного снимка master `2f6ad2226aec330251438c47cbc45fd92e0d3132`. Запись beta в `channels.json` — кандидат, а не доступный для скачивания выпуск. Stable `v2026.10.13.1` для Paperclip `v2026.1012.0` на коммите `bba6a45f0d364cfd962ac59b3bdf2426a8222adb` уже опубликован; ссылки и команды stable ниже доступны для установки. Опубликованная beta остаётся `v2026.9.13.1-beta.1`. Ни один из этих опубликованных патчей не подходит к новой beta-базе. Слияние, публикация и развёртывание требуют отдельного одобрения владельца.
 
-[Проверки и ограничения нового кандидата beta](verification/v2026.10.7.1-beta.1.md).
+[Проверки и ограничения нового кандидата beta](verification/v2026.10.19.1-beta.1.md).
 
 [![Проверки](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml/badge.svg)](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml) · [Stable](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.13.1) · [Beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1-beta.1) · [Каналы и проверки](docs/RELEASES.md)
 
