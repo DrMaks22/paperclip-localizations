@@ -2,11 +2,11 @@
 
 [Русский](README.md) · **English**
 
-> **Unpublished release candidate.** `v2026.10.19.1` fixes file handling in the Russian interface. Its tag links and commands become available only after separate approval and publication. The published Latest remains [v2026.10.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.13.1); its assets are unchanged.
+> **Unpublished release candidate.** `v2026.10.26.1` updates the Russian UI for Paperclip `v2026.1023.0`. Its tag links and commands become available only after separate approval and publication. The published Latest remains [v2026.10.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.13.1); its assets are unchanged.
 
-> **Exact compatibility:** package `v2026.10.19.1` targets Paperclip `v2026.1012.0` at `bba6a45f0d364cfd962ac59b3bdf2426a8222adb`. Download the finalized package from its pinned tag, not a working branch. Do not apply an older patch to newer Paperclip source. See [checks and limitations](verification/v2026.10.19.1.md). Applying the patch does not deploy the application.
+> **Exact compatibility:** package `v2026.10.26.1` targets Paperclip `v2026.1023.0` at `1b4c803816e82b0265c8422e1a804327a7ed8c54`. Download the finalized package from its pinned tag, not a working branch. Do not apply an older patch to newer Paperclip source. See [checks and limitations](verification/v2026.10.26.1.md). Applying the patch does not deploy the application.
 
-[![Checks](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml/badge.svg)](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml) · [Stable](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.19.1) · [Beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1-beta.1) · [Channels and verification](docs/RELEASES.md)
+[![Checks](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml/badge.svg)](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml) · [Stable](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.26.1) · [Beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1-beta.1) · [Channels and verification](docs/RELEASES.md)
 
 ![Paperclip Localizations — community translations for Paperclip](assets/cover.png)
 
@@ -14,16 +14,16 @@ An independent community project for translating the [Paperclip](https://github.
 
 ## Choose a channel
 
-`v2026.10.19.1` targets the same official Paperclip `v2026.1012.0` base. It fixes recognition of the browser's `Files` token during drag/drop and mixed file/text paste in the Russian interface; translation catalogs are unchanged. After publication, prepare a fresh build using the instructions below when updating: do not stack the new patch on an existing localized checkout.
+`v2026.10.26.1` updates the Russian UI for official Paperclip `v2026.1023.0`, including connection settings, GitHub and Slack, costs and dynamic labels. It preserves `pinned-en-ru` and the file-payload fix. After publication, prepare a fresh build: do not stack the patch on an already localized checkout.
 
 | Localization channel | Compatible Paperclip version | Intended use |
 | --- | --- | --- |
-| [Stable — v2026.10.19.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.19.1) | Official stable release **v2026.1012.0**, commit `bba6a45` | For that stable version. English and Russian UI. |
+| [Stable — v2026.10.26.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.26.1) | Official stable release **v2026.1023.0**, commit `1b4c803` | For that stable version. English and Russian UI. |
 | [Beta — v2026.9.13.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1-beta.1) | Reviewed **master snapshot**, commit `04e3642` | Prerelease for testing development code and new language catalogs. |
 
 **Stable and beta are different patches for different source revisions.** Beta does not target the stable release and does not automatically follow master. GitHub Releases reserves `Latest` for stable. Localization version numbers are separate from Paperclip's version numbers.
 
-Published [stable v2026.10.7.2](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.2) remains available for Paperclip `v2026.1005.0`, [stable v2026.9.17.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.17.1) for `v2026.916.0`, and [stable v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1) for `v2026.831.1`. Their tags and assets are unchanged. See the [v2026.10.19.1 report](verification/v2026.10.19.1.md) for the new package's verification results and limitations.
+Published [stable v2026.10.7.2](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.2) remains available for Paperclip `v2026.1005.0`, [stable v2026.9.17.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.17.1) for `v2026.916.0`, and [stable v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1) for `v2026.831.1`. Their tags and assets are unchanged. See the [v2026.10.26.1 report](verification/v2026.10.26.1.md) for the new package's verification results and limitations.
 
 The `main` branch contains beta development. Install a selected **release**, not the moving branch. See the [channel guide](docs/RELEASES.md) for full commits, differences, and verification; [`channels.json`](channels.json) is the machine-readable index.
 
@@ -33,10 +33,10 @@ Copy this task into **Codex, Claude Code, or OpenCode**. Replace the path with y
 
 ```text
 Install the Paperclip localization from DrMaks22/paperclip-localizations,
-stable release v2026.10.19.1 for Paperclip v2026.1012.0.
+stable release v2026.10.26.1 for Paperclip v2026.1023.0.
 My original Paperclip Git repository is at
 /absolute/path/to/paperclip. Read and follow this release's instructions:
-https://github.com/DrMaks22/paperclip-localizations/blob/v2026.10.19.1/docs/AGENT-INSTALL.md
+https://github.com/DrMaks22/paperclip-localizations/blob/v2026.10.26.1/docs/AGENT-INSTALL.md
 First review the source, manifest.json, checksums, and compatibility.
 Prepare a separate worktree at manifest.baseCommit, check and apply the patch,
 run the necessary build checks, and report the result.
@@ -56,7 +56,7 @@ node apply.mjs --repo /absolute/path/to/paperclip-localized --apply
 
 The target worktree must be clean and match the `baseCommit` in [`manifest.json`](manifest.json) exactly. The installer works offline: it checks and changes source files. Dependencies, the database, startup, and deployment remain part of your normal workflow.
 
-Paperclip `v2026.1012.0` has a known mismatch between its lockfile and server package manifests. The [report](verification/v2026.10.19.1.md) describes the verified isolated build conditions; the patch does not change dependencies or the lockfile. Do not bypass this error by forcing dependency installation in a running instance.
+This base passed frozen-lockfile installation with lifecycle scripts disabled, type checking, production UI build and UI tests in isolation. The patch does not change dependencies. See the [report](verification/v2026.10.26.1.md) for conditions and limits.
 
 A repeated forward application or `--check` after application will refuse to proceed. Use `--reverse --check` to verify the installed patch, and `--reverse --apply` to remove it. See the [guide](docs/INSTALL.en.md#updating-and-removing-the-patch) for details and the update sequence.
 
