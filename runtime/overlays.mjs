@@ -8,7 +8,7 @@ export const TEMPLATE_TARGETS = [
   { template: "locales.ts.template", path: "ui/src/i18n/locales.ts", sha256: "a20d86d14a6b584e0415631a9cde23e4a5df881a1525c8082dd58ce66c4b5400" },
   { template: "LocaleSwitcher.tsx", path: "ui/src/components/LocaleSwitcher.tsx", sha256: "76be368ee80382776c6ed2b0fc720bf0cfc93ebcc7028465a23ee6086ffb6a57" },
 ];
-// The reviewed source now includes the seven presentation adaptations. Keep
+// The reviewed source includes the presentation adaptations below. Keep
 // their hashes as preflight guards, with no repeated text transformations.
 export const EXACT_EDITS = [
   {
@@ -33,15 +33,9 @@ export const EXACT_EDITS = [
   })),
   {
     path: "ui/src/lib/attention.ts",
-    sha256: "674429ed083dcd66b216c0243939497aab055d1b92f1cff789cc05a83181c225",
+    sha256: "779298e7af4e04caea3cc78d5d518c34ebe7abfa859a518186c98f238b6ca872",
     replacements: [],
-    reason: "Preserve the source's selected-locale budget numbers and Russian-specific quotation conventions.",
-  },
-  {
-    path: "ui/src/lib/pipeline-breakdown.ts",
-    sha256: "8182a892b3edde95d2437ba0ac7dde67167a917488612e5f8c73626e1dadc0a9",
-    replacements: [],
-    reason: "Preserve the source's English-only plural suffix and unchanged custom nouns in other languages.",
+    reason: "Preserve selected-locale budget numbers and Russian-specific quotation conventions. October 26 adds the exact upstream search/filter implementation; its function body is unchanged from the pinned master and does not alter the existing presentation adaptations.",
   },
   {
     path: "ui/src/pages/apps/connection-owner.tsx",
