@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "ready": true,
-  "kitVersion": "v2026.10.26.1",
+  "kitVersion": "v2026.11.3.1",
   "releaseChannel": "stable",
   "upstreamRef": "v2026.1023.0",
   "runtimeProfile": "pinned-en-ru",
   "baseCommit": "1b4c803816e82b0265c8422e1a804327a7ed8c54",
   "sourceCommit": "9cf846bbf6f174d0d394c4faf08c18d77f54bd38",
   "patchFile": "paperclip-localizations.patch",
-  "patchSha256": "b30ee6fafc49fc2244c089540828e27687ffd5885b4bd95c59883fe850b6652a",
+  "patchSha256": "6bef50080d765533057769c96b4265d6adbaacf7192087bdb56803877b03434d",
   "allowedPaths": [
     "scripts/locale-changes.d.mts",
     "scripts/locale-changes.mjs",
@@ -1988,7 +1988,7 @@
       "mode": "100644"
     },
     "ui/src/components/LocaleSwitcher.tsx": {
-      "sha256": "76be368ee80382776c6ed2b0fc720bf0cfc93ebcc7028465a23ee6086ffb6a57",
+      "sha256": "8398c378dc7265553ab65b8b5b8ef5577310f45ef51dd95a374d2ef7410d858f",
       "mode": "100644"
     },
     "ui/src/components/LocalizationCountLabels.test.tsx": {
@@ -5048,9 +5048,9 @@
       "mode": "100644"
     }
   },
-  "resultTree": "8237581c92e690ee2b217fbba4865dbb2874f48c",
-  "sourceLockSha256": "61bc62b9778c46c3d41dfdb0b3374baef77fb7e6c6a0afcb3a000315bd80c5cc",
-  "foundationSha256": "b30ee6fafc49fc2244c089540828e27687ffd5885b4bd95c59883fe850b6652a",
+  "resultTree": "858b45ab72441ff8ae691d8252fd363317ae730a",
+  "sourceLockSha256": "eab4bdfe57db1d0978ad158bf8860277088562fdef25ee81ea1bfd896adb1403",
+  "foundationSha256": "6bef50080d765533057769c96b4265d6adbaacf7192087bdb56803877b03434d",
   "locales": [
     {
       "locale": "en",
