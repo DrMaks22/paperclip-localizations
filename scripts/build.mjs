@@ -5,6 +5,46 @@ import { assertSafePath, loadCatalogs } from "./catalogs.mjs";
 import { prepareLocales } from "./prepare-locales.mjs";
 import { ROOT, requireNode, readLock, parseUpstreamArgument, createScratchCheckout, git, hash, json, permitted, checksumText } from "./artifacts.mjs";
 
+/** Preflight all fixed outputs before opening or truncating any of them. */
+export async function writeBuildOutputs({ root = ROOT, patch, manifest, checksums = checksumText }) {
+  const entries = [["paperclip-localizations.patch", patch], ["manifest.json", manifest], ["SHA256SUMS", null]];
+  const targets = [];
+  for (const [name, bytes] of entries) {
+    const filename = path.join(root, name);
+    await assertSafePath(filename, { allowMissing: true, writable: true });
+    let stat;
+    try { stat = fs.lstatSync(filename); }
+    catch (error) { if (error.code !== "ENOENT") throw error; }
+    targets.push({ filename, name, bytes, stat });
+  }
+  const opened = [];
+  try {
+    for (const target of targets) {
+      const flags = fs.constants.O_WRONLY | fs.constants.O_NOFOLLOW
+        | (target.stat ? 0 : fs.constants.O_CREAT | fs.constants.O_EXCL);
+      const fd = fs.openSync(target.filename, flags, 0o644);
+      opened.push({ ...target, fd });
+      const stat = fs.fstatSync(fd);
+      if (!stat.isFile() || stat.nlink !== 1
+        || (target.stat && (stat.dev !== target.stat.dev || stat.ino !== target.stat.ino))) {
+        throw new Error(`Unsafe artifact output: ${target.name}`);
+      }
+    }
+    for (const target of opened) {
+      const stat = fs.fstatSync(target.fd);
+      const current = fs.lstatSync(target.filename);
+      if (!current.isFile() || stat.nlink !== 1 || current.dev !== stat.dev || current.ino !== stat.ino) {
+        throw new Error(`Artifact output changed during build: ${target.name}`);
+      }
+      const bytes = target.bytes ?? checksums();
+      fs.ftruncateSync(target.fd, 0);
+      fs.writeFileSync(target.fd, bytes);
+    }
+  } finally {
+    for (const { fd } of opened) fs.closeSync(fd);
+  }
+}
+
 /** Preserve the committed two-language runtime; replace only its catalog bytes. */
 export async function preparePinnedLocales({ target, root = ROOT }) {
   if (typeof target !== "string" || !path.isAbsolute(target) || typeof root !== "string" || !path.isAbsolute(root)) {
@@ -67,6 +107,12 @@ export async function buildArtifact({ upstream, check = false }) {
     if (new Set(foundationPaths).size !== foundationPaths.length || !foundationPaths.length) throw new Error("Invalid foundation path list.");
     git(checkout, ["apply", "--check", "--whitespace=nowarn", foundationFile]);
     git(checkout, ["apply", "--whitespace=nowarn", foundationFile]);
+    // Verify the exported integration before catalogs or runtime overlays can
+    // legitimately change its tree. Hash syntax alone does not prove provenance.
+    git(checkout, ["add", "--all"]);
+    const foundationChanges = git(checkout, ["diff", "--cached", "--no-renames", "--name-only", "-z", lock.upstreamCommit]).toString().split("\0").filter(Boolean);
+    if (foundationChanges.length !== lock.foundationFiles) throw new Error("Foundation changed file count does not match source-lock.");
+    if (git(checkout, ["write-tree"]).toString().trim() !== lock.integrationTree) throw new Error("Foundation integration tree does not match source-lock.");
     if (lock.runtimeProfile === "pinned-en-ru") await preparePinnedLocales({ target: checkout, root: ROOT });
     else await prepareLocales({ target: checkout, root: ROOT });
     git(checkout, ["add", "--all"]);
@@ -105,9 +151,9 @@ export async function buildArtifact({ upstream, check = false }) {
       const filename = path.join(ROOT, name);
       if (check) {
         if (!fs.readFileSync(filename).equals(bytes)) throw new Error(`${name} is not reproducible from current source-lock, foundation, runtime, and catalogs.`);
-      } else fs.writeFileSync(filename, bytes);
+      }
     }
-    if (!check) fs.writeFileSync(path.join(ROOT, "SHA256SUMS"), checksumText());
+    if (!check) await writeBuildOutputs({ patch, manifest: Buffer.from(json(manifest)) });
     return { baseCommit: lock.upstreamCommit, files: paths.length, patchSha256: manifest.patchSha256, locales: manifest.locales.map(({ locale, strings }) => ({ locale, strings })), reproducible: check };
   } finally {
     fs.rmSync(scratch, { recursive: true, force: false });

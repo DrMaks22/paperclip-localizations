@@ -150,6 +150,9 @@ test("audited overlays reject source drift and apply only explicitly counted sni
   assert.equal(applyExactOverlay(source, overlay), 'const chosen = "locale";\n// provider string stays intact\n');
   assert.throws(() => applyExactOverlay(source + "// drift\n", overlay), /source differs/);
   assert.throws(() => applyExactOverlay(source, { ...overlay, replacements: [{ ...overlay.replacements[0], count: 2 }] }), /expected 2 matches/);
+  const adopted = { ...overlay, replacements: [] };
+  assert.equal(applyExactOverlay(source, adopted), source);
+  assert.throws(() => applyExactOverlay(source + "// drift\n", adopted), /source differs/);
 });
 
 test("preparation preflight refuses unexpected or linked target files without mutation", async (t) => {
@@ -182,10 +185,12 @@ test("preparation on a reviewed source preserves unrelated files and scaffold ca
   for (const locale of ["en", "ru", "ar"]) await catalog(root, locale, messages(locale));
   const target = path.join(root, "checkout");
   await mkdir(target);
+  const sourceFiles = new Map();
   for (const overlay of [...TEMPLATE_TARGETS, ...EXACT_EDITS]) {
     const destination = path.join(target, overlay.path);
     await mkdir(path.dirname(destination), { recursive: true });
     await cp(path.join(process.env.PAPERCLIP_REVIEWED_SOURCE, overlay.path), destination);
+    sourceFiles.set(overlay.path, await readFile(destination, "utf8"));
   }
   await mkdir(path.join(target, "ui/src/i18n/locales"));
   const scaffold = path.join(target, "ui/src/i18n/locales/fr.json");
@@ -193,6 +198,30 @@ test("preparation on a reviewed source preserves unrelated files and scaffold ca
   await writeFile(scaffold, '{"draft":"unreviewed upstream scaffold"}\n');
   await writeFile(unrelated, "preserve me\n");
   const result = await prepareLocales({ root, target });
+  for (const overlay of EXACT_EDITS.filter(({ replacements }) => replacements.length === 0)) {
+    assert.equal(await readFile(path.join(target, overlay.path), "utf8"), sourceFiles.get(overlay.path),
+      `Preparation must preserve the source-adopted behavior in ${overlay.path}`);
+    assert.throws(() => applyExactOverlay(sourceFiles.get(overlay.path) + "// drift\n", overlay), /source differs/);
+  }
+  // Execute the prepared phase helper with synthetic translated labels. A stale
+  // replacement of its remaining Russian condition would lowercase Cyrillic in
+  // Bulgarian as well, even though the main language gate is already generalized.
+  const phaseSource = await readFile(path.join(target, "ui/src/components/task-chat/task-chat-phase-summary-display.ts"), "utf8");
+  const phaseRuntime = stripTypeScriptTypes(phaseSource.replace(/^import .+;\n/gm, "")
+    .replace("export function taskChatPhaseSummaryDisplay", "function taskChatPhaseSummaryDisplay"), { mode: "strip" });
+  const language = { resolvedLanguage: "en" };
+  const phaseDisplay = new Function("i18n", "t", "taskChatDisplayLabel", `${phaseRuntime}\nreturn taskChatPhaseSummaryDisplay;`)(
+    language, () => "Translated reasoning", (label) => label === "Read a file" ? "Действие" : "Команда");
+  const generated = "Read a file, ran a command";
+  assert.equal(phaseDisplay(generated), generated);
+  for (const locale of ["ru", "bg", "ar"]) {
+    language.resolvedLanguage = locale;
+    assert.equal(phaseDisplay("Reasoning"), "Translated reasoning");
+    assert.equal(phaseDisplay(generated), locale === "ru" ? "Действие, команда" : "Действие, Команда");
+    assert.equal(phaseDisplay(generated, "marker"), generated);
+    assert.equal(phaseDisplay("User/provider text: Команда"), "User/provider text: Команда");
+    assert.equal(phaseDisplay("Read a file, provider-specific continuation"), "Read a file, provider-specific continuation");
+  }
   assert.deepEqual(result.locales, ["en", "ar", "ru"]);
   assert.equal(await readFile(scaffold, "utf8"), '{"draft":"unreviewed upstream scaffold"}\n');
   assert.equal(await readFile(unrelated, "utf8"), "preserve me\n");

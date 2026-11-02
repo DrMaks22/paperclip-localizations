@@ -1,0 +1,1263 @@
+{
+  "reviewedAt": "2026-10-05",
+  "channel": "beta",
+  "baseCommit": "1c07b5903b1b11139b1e1ce052a3cd4885865d90",
+  "unchangedSince": "cbc5132e6c3925683c5fd720edf47c56b2998faf",
+  "status": "untranslated-preexisting-display-copy; not approved or included in this delta",
+  "scope": "Only unmapped display fields within the 52 changed built-in app definitions; not a full application inventory.",
+  "entryCount": 250,
+  "uniqueSourceCount": 172,
+  "slugCount": 48,
+  "entries": [
+    {
+      "slug": "airtable",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Airtable in the browser. An Airtable account; enterprise administrators may need to allowlist the client."
+    },
+    {
+      "slug": "api-key-generic",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Create a restricted API key and paste it here."
+    },
+    {
+      "slug": "asana",
+      "fieldPath": "methods.1.whenToUse",
+      "sourceText": "Register an OAuth app with Asana, then enter its client ID and secret."
+    },
+    {
+      "slug": "beehiiv",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect beehiiv in the browser. A beehiiv account; the subscription plan controls available write capabilities."
+    },
+    {
+      "slug": "bitly",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Bitly in the browser. A Bitly account with either browser authorization or an API token."
+    },
+    {
+      "slug": "bitly",
+      "fieldPath": "methods.1.guidanceMd",
+      "sourceText": "Use a customer-created Bitly key. A Bitly account with either browser authorization or an API token."
+    },
+    {
+      "slug": "brex",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Brex in the browser. Brex early access and an administrator enabling the integration; financial actions require explicit approval."
+    },
+    {
+      "slug": "candid",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Candid in the browser. A Candid account with access to the MCP connector."
+    },
+    {
+      "slug": "clickhouse",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect ClickHouse in the browser. A ClickHouse Cloud ClickStack service and its service ID."
+    },
+    {
+      "slug": "cloudflare",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Cloudflare in the browser. A Cloudflare account with access to the resources being connected."
+    },
+    {
+      "slug": "cloudflare",
+      "fieldPath": "methods.1.guidanceMd",
+      "sourceText": "Use a customer-created Cloudflare key. A Cloudflare account with access to the resources being connected."
+    },
+    {
+      "slug": "cloudinary",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Cloudinary in the browser. A Cloudinary account; authorization is limited by the signed-in user's roles."
+    },
+    {
+      "slug": "coda",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Coda in the browser. A Coda account; the hosted MCP service is currently beta."
+    },
+    {
+      "slug": "coda",
+      "fieldPath": "methods.1.guidanceMd",
+      "sourceText": "Use a customer-created Coda key. A Coda account; the hosted MCP service is currently beta."
+    },
+    {
+      "slug": "cognee",
+      "fieldPath": "description",
+      "sourceText": "Build and recall shared graph memory from documents and conversations."
+    },
+    {
+      "slug": "cognee",
+      "fieldPath": "setupPrerequisite.title",
+      "sourceText": "Cognee Cloud and a local runtime"
+    },
+    {
+      "slug": "cognee",
+      "fieldPath": "setupPrerequisite.description",
+      "sourceText": "Use your Cognee Cloud tenant API URL and key. Paperclip's runtime host needs uv installed to run the official Cognee MCP client. Public deployments require a trusted MCP runtime host."
+    },
+    {
+      "slug": "cognee",
+      "fieldPath": "methods.0.whenToUse",
+      "sourceText": "Connect your Cloud tenant through the official Cognee MCP client."
+    },
+    {
+      "slug": "cognee",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Copy the API Base URL and create an API key on Cognee's API Keys page. Use a Cloud workspace with an active subscription. Paperclip uses its bundled Cloud client; no extra runtime installation is required."
+    },
+    {
+      "slug": "cognee",
+      "fieldPath": "methods.0.label",
+      "sourceText": "Connect Cognee Cloud"
+    },
+    {
+      "slug": "cognee",
+      "fieldPath": "methods.0.credentialFields.0.label",
+      "sourceText": "API Base URL"
+    },
+    {
+      "slug": "cognee",
+      "fieldPath": "methods.0.credentialFields.1.label",
+      "sourceText": "Cognee API key"
+    },
+    {
+      "slug": "cognee",
+      "fieldPath": "methods.0.credentialFields.1.placeholder",
+      "sourceText": "Paste your Cognee API key"
+    },
+    {
+      "slug": "embat",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Embat in the browser. An Embat account; pilot the connection because provider setup documentation is sparse."
+    },
+    {
+      "slug": "fireflies",
+      "fieldPath": "description",
+      "sourceText": "Search meeting transcripts, read summaries and action items, and connect meeting-ready routines."
+    },
+    {
+      "slug": "fireflies",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Sign in to Fireflies to use meeting transcripts, summaries, and action items. Configure optional summary-ready webhooks separately in a routine's Triggers tab."
+    },
+    {
+      "slug": "fireflies",
+      "fieldPath": "methods.0.label",
+      "sourceText": "Sign in with Fireflies"
+    },
+    {
+      "slug": "fireflies",
+      "fieldPath": "methods.1.whenToUse",
+      "sourceText": "Use your Fireflies API key instead of browser sign-in."
+    },
+    {
+      "slug": "fireflies",
+      "fieldPath": "methods.1.guidanceMd",
+      "sourceText": "Open Fireflies Settings → Developer Settings, copy your API key, and paste it below. This key accesses your meeting data; routine webhooks use a separate signing secret."
+    },
+    {
+      "slug": "fireflies",
+      "fieldPath": "methods.1.credentialFields.0.label",
+      "sourceText": "Fireflies API key"
+    },
+    {
+      "slug": "fireflies",
+      "fieldPath": "methods.1.credentialFields.0.placeholder",
+      "sourceText": "Paste your Fireflies API key"
+    },
+    {
+      "slug": "github",
+      "fieldPath": "methods.0.whenToUse",
+      "sourceText": "Connect your GitHub account for durable MCP, shell Git, gh, and repository access."
+    },
+    {
+      "slug": "github",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Authorize Paperclip, then choose selected repositories in GitHub. You can edit repository access later from GitHub's installation settings."
+    },
+    {
+      "slug": "github",
+      "fieldPath": "methods.1.whenToUse",
+      "sourceText": "Use the provider-hosted connection for the quickest setup."
+    },
+    {
+      "slug": "github",
+      "fieldPath": "methods.1.guidanceMd",
+      "sourceText": "Create a fine-grained token limited to the repositories agents should use."
+    },
+    {
+      "slug": "google-calendar",
+      "fieldPath": "setupPrerequisite.title",
+      "sourceText": "Google Developer Preview access required"
+    },
+    {
+      "slug": "google-calendar",
+      "fieldPath": "setupPrerequisite.description",
+      "sourceText": "Google must register both the Workspace email used to authorize Paperclip and the Google Cloud project that owns the OAuth client. Registration is limited to those emails and projects; it does not enable unrelated Paperclip customers."
+    },
+    {
+      "slug": "google-calendar",
+      "fieldPath": "methods.0.whenToUse",
+      "sourceText": "Use Paperclip-managed OAuth for read-only Calendar access."
+    },
+    {
+      "slug": "google-calendar",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Google Calendar to read schedules and availability."
+    },
+    {
+      "slug": "google-calendar",
+      "fieldPath": "methods.1.whenToUse",
+      "sourceText": "Use a customer-owned OAuth client for read-only Calendar access."
+    },
+    {
+      "slug": "google-calendar",
+      "fieldPath": "methods.1.guidanceMd",
+      "sourceText": "Enable the Calendar and Calendar MCP APIs, then register Paperclip's callback URI."
+    },
+    {
+      "slug": "google-calendar",
+      "fieldPath": "methods.2.whenToUse",
+      "sourceText": "Use Paperclip-managed OAuth to read and manage Calendar events."
+    },
+    {
+      "slug": "google-calendar",
+      "fieldPath": "methods.2.guidanceMd",
+      "sourceText": "Connect Google Calendar to read and manage events."
+    },
+    {
+      "slug": "google-calendar",
+      "fieldPath": "methods.3.whenToUse",
+      "sourceText": "Use a customer-owned OAuth client to read and manage Calendar events."
+    },
+    {
+      "slug": "google-calendar",
+      "fieldPath": "methods.3.guidanceMd",
+      "sourceText": "Enable the Calendar and Calendar MCP APIs, then register Paperclip's callback URI."
+    },
+    {
+      "slug": "google-docs",
+      "fieldPath": "setupPrerequisite.title",
+      "sourceText": "Google Developer Preview access required"
+    },
+    {
+      "slug": "google-docs",
+      "fieldPath": "setupPrerequisite.description",
+      "sourceText": "Google must register both the Workspace email used to authorize Paperclip and the Google Cloud project that owns the OAuth client. Registration is limited to those emails and projects; it does not enable unrelated Paperclip customers."
+    },
+    {
+      "slug": "google-docs",
+      "fieldPath": "methods.0.whenToUse",
+      "sourceText": "Use Paperclip-managed OAuth for read-only Docs access."
+    },
+    {
+      "slug": "google-docs",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Google Docs to read documents."
+    },
+    {
+      "slug": "google-docs",
+      "fieldPath": "methods.1.whenToUse",
+      "sourceText": "Use a customer-owned OAuth client for read-only Docs access."
+    },
+    {
+      "slug": "google-docs",
+      "fieldPath": "methods.1.guidanceMd",
+      "sourceText": "Enable the Drive, Docs, and Docs MCP APIs, then register Paperclip's callback URI."
+    },
+    {
+      "slug": "google-docs",
+      "fieldPath": "methods.2.whenToUse",
+      "sourceText": "Use Paperclip-managed OAuth to read and update Docs."
+    },
+    {
+      "slug": "google-docs",
+      "fieldPath": "methods.2.guidanceMd",
+      "sourceText": "Connect Google Docs to read and update documents."
+    },
+    {
+      "slug": "google-docs",
+      "fieldPath": "methods.3.whenToUse",
+      "sourceText": "Use a customer-owned OAuth client to read and update Docs."
+    },
+    {
+      "slug": "google-docs",
+      "fieldPath": "methods.3.guidanceMd",
+      "sourceText": "Enable the Drive, Docs, and Docs MCP APIs, then register Paperclip's callback URI."
+    },
+    {
+      "slug": "google-sheets",
+      "fieldPath": "setupPrerequisite.title",
+      "sourceText": "Google Developer Preview access required"
+    },
+    {
+      "slug": "google-sheets",
+      "fieldPath": "setupPrerequisite.description",
+      "sourceText": "Google must register both the Workspace email used to authorize Paperclip and the Google Cloud project that owns the OAuth client. Registration is limited to those emails and projects; it does not enable unrelated Paperclip customers."
+    },
+    {
+      "slug": "google-sheets",
+      "fieldPath": "methods.0.whenToUse",
+      "sourceText": "Use Paperclip-managed OAuth for read-only Sheets access."
+    },
+    {
+      "slug": "google-sheets",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Google Sheets to read spreadsheets."
+    },
+    {
+      "slug": "google-sheets",
+      "fieldPath": "methods.1.whenToUse",
+      "sourceText": "Use a customer-owned OAuth client for read-only Sheets access."
+    },
+    {
+      "slug": "google-sheets",
+      "fieldPath": "methods.1.guidanceMd",
+      "sourceText": "Enable the Drive, Sheets, and Sheets MCP APIs, then register Paperclip's callback URI."
+    },
+    {
+      "slug": "google-sheets",
+      "fieldPath": "methods.2.whenToUse",
+      "sourceText": "Use Paperclip-managed OAuth to read and update Sheets."
+    },
+    {
+      "slug": "google-sheets",
+      "fieldPath": "methods.2.guidanceMd",
+      "sourceText": "Connect Google Sheets to read and update spreadsheets."
+    },
+    {
+      "slug": "google-sheets",
+      "fieldPath": "methods.3.whenToUse",
+      "sourceText": "Use a customer-owned OAuth client to read and update Sheets."
+    },
+    {
+      "slug": "google-sheets",
+      "fieldPath": "methods.3.guidanceMd",
+      "sourceText": "Enable the Drive, Sheets, and Sheets MCP APIs, then register Paperclip's callback URI."
+    },
+    {
+      "slug": "google-sheets",
+      "fieldPath": "methods.4.whenToUse",
+      "sourceText": "Share selected spreadsheets with the Paperclip robot account instead of connecting a Google identity."
+    },
+    {
+      "slug": "google-sheets",
+      "fieldPath": "methods.4.guidanceMd",
+      "sourceText": "Share each spreadsheet with the Paperclip robot email, then paste the sheet links."
+    },
+    {
+      "slug": "google-slides",
+      "fieldPath": "setupPrerequisite.title",
+      "sourceText": "Google Developer Preview access required"
+    },
+    {
+      "slug": "google-slides",
+      "fieldPath": "setupPrerequisite.description",
+      "sourceText": "Google must register both the Workspace email used to authorize Paperclip and the Google Cloud project that owns the OAuth client. Registration is limited to those emails and projects; it does not enable unrelated Paperclip customers."
+    },
+    {
+      "slug": "google-slides",
+      "fieldPath": "methods.0.whenToUse",
+      "sourceText": "Use Paperclip-managed OAuth for read-only Slides access."
+    },
+    {
+      "slug": "google-slides",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Google Slides to read presentations."
+    },
+    {
+      "slug": "google-slides",
+      "fieldPath": "methods.1.whenToUse",
+      "sourceText": "Use a customer-owned OAuth client for read-only Slides access."
+    },
+    {
+      "slug": "google-slides",
+      "fieldPath": "methods.1.guidanceMd",
+      "sourceText": "Enable the Drive, Slides, and Slides MCP APIs, then register Paperclip's callback URI."
+    },
+    {
+      "slug": "google-slides",
+      "fieldPath": "methods.2.whenToUse",
+      "sourceText": "Use Paperclip-managed OAuth to read and update Slides."
+    },
+    {
+      "slug": "google-slides",
+      "fieldPath": "methods.2.guidanceMd",
+      "sourceText": "Connect Google Slides to read and update presentations."
+    },
+    {
+      "slug": "google-slides",
+      "fieldPath": "methods.3.whenToUse",
+      "sourceText": "Use a customer-owned OAuth client to read and update Slides."
+    },
+    {
+      "slug": "google-slides",
+      "fieldPath": "methods.3.guidanceMd",
+      "sourceText": "Enable the Drive, Slides, and Slides MCP APIs, then register Paperclip's callback URI."
+    },
+    {
+      "slug": "honcho",
+      "fieldPath": "description",
+      "sourceText": "Remember conversations and retrieve context about peers."
+    },
+    {
+      "slug": "honcho",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Open the Honcho dashboard, create an API key for the account agents should use, and paste it below."
+    },
+    {
+      "slug": "honcho",
+      "fieldPath": "methods.0.credentialFields.0.label",
+      "sourceText": "Honcho API key"
+    },
+    {
+      "slug": "honcho",
+      "fieldPath": "methods.0.credentialFields.0.placeholder",
+      "sourceText": "Paste your Honcho API key"
+    },
+    {
+      "slug": "hugging-face",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Hugging Face in the browser. A Hugging Face account."
+    },
+    {
+      "slug": "kernel",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Kernel in the browser. A Kernel account with either browser authorization or an API key."
+    },
+    {
+      "slug": "kernel",
+      "fieldPath": "methods.1.guidanceMd",
+      "sourceText": "Use a customer-created Kernel key. A Kernel account with either browser authorization or an API key."
+    },
+    {
+      "slug": "linear",
+      "fieldPath": "methods.0.whenToUse",
+      "sourceText": "Use the provider-hosted connection for the quickest setup."
+    },
+    {
+      "slug": "local-falcon",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Local Falcon in the browser. A Local Falcon account with MCP access."
+    },
+    {
+      "slug": "manufact",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Manufact in the browser. A Manufact account with MCP access."
+    },
+    {
+      "slug": "mem0",
+      "fieldPath": "description",
+      "sourceText": "Remember preferences, conversations, events, and agent state."
+    },
+    {
+      "slug": "mem0",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Open the Mem0 dashboard, create an API key for the account agents should use, and paste it below."
+    },
+    {
+      "slug": "mem0",
+      "fieldPath": "methods.0.credentialFields.0.placeholder",
+      "sourceText": "Paste your Mem0 API key"
+    },
+    {
+      "slug": "miro",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Miro in the browser. A Miro account; enterprise administrators may restrict third-party MCP clients."
+    },
+    {
+      "slug": "mixpanel",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Mixpanel in the browser. A Mixpanel account; the hosted MCP server is currently beta."
+    },
+    {
+      "slug": "netlify",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Netlify in the browser. A Netlify account with access to the relevant team and sites."
+    },
+    {
+      "slug": "notion",
+      "fieldPath": "methods.0.whenToUse",
+      "sourceText": "Use the provider-hosted connection for the quickest setup."
+    },
+    {
+      "slug": "notion",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Notion for workspace content. Share only the pages and databases agents should use."
+    },
+    {
+      "slug": "oreilly",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect O'Reilly in the browser. An O'Reilly Learning subscription with MCP or API access."
+    },
+    {
+      "slug": "oreilly",
+      "fieldPath": "methods.1.guidanceMd",
+      "sourceText": "Use a customer-created O'Reilly key. An O'Reilly Learning subscription with MCP or API access."
+    },
+    {
+      "slug": "pagerduty",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Use a customer-created PagerDuty key. A PagerDuty API token; choose the regional endpoint that hosts the account."
+    },
+    {
+      "slug": "pagerduty",
+      "fieldPath": "methods.1.guidanceMd",
+      "sourceText": "Use a customer-created PagerDuty key. A PagerDuty API token; choose the regional endpoint that hosts the account."
+    },
+    {
+      "slug": "planetscale",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect PlanetScale in the browser. A PlanetScale account; database and branch access are chosen during authorization."
+    },
+    {
+      "slug": "planetscale",
+      "fieldPath": "methods.1.whenToUse",
+      "sourceText": "Use query insights and schema recommendations without query execution tools."
+    },
+    {
+      "slug": "planetscale",
+      "fieldPath": "methods.1.guidanceMd",
+      "sourceText": "Connect PlanetScale in the browser. A PlanetScale account; database and branch access are chosen during authorization."
+    },
+    {
+      "slug": "posthog",
+      "fieldPath": "methods.0.whenToUse",
+      "sourceText": "Sign in with PostHog in the browser. Recommended for hosted PostHog accounts."
+    },
+    {
+      "slug": "posthog",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect with PostHog's recommended defaults. Project pinning, read-only access, and catalog filters are optional advanced controls."
+    },
+    {
+      "slug": "posthog",
+      "fieldPath": "methods.1.whenToUse",
+      "sourceText": "Use a PostHog personal API key when browser sign-in is not suitable."
+    },
+    {
+      "slug": "posthog",
+      "fieldPath": "methods.1.guidanceMd",
+      "sourceText": "Connect with PostHog's recommended defaults. Project pinning, read-only access, and catalog filters are optional advanced controls."
+    },
+    {
+      "slug": "postman",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Postman in the browser. A Postman account; OAuth is available for US endpoints and API keys are required for EU endpoints."
+    },
+    {
+      "slug": "postman",
+      "fieldPath": "methods.1.guidanceMd",
+      "sourceText": "Connect Postman in the browser. A Postman account; OAuth is available for US endpoints and API keys are required for EU endpoints."
+    },
+    {
+      "slug": "postman",
+      "fieldPath": "methods.2.guidanceMd",
+      "sourceText": "Connect Postman in the browser. A Postman account; OAuth is available for US endpoints and API keys are required for EU endpoints."
+    },
+    {
+      "slug": "postman",
+      "fieldPath": "methods.3.guidanceMd",
+      "sourceText": "Use a customer-created Postman key. A Postman account; OAuth is available for US endpoints and API keys are required for EU endpoints."
+    },
+    {
+      "slug": "postman",
+      "fieldPath": "methods.4.guidanceMd",
+      "sourceText": "Use a customer-created Postman key. A Postman account; OAuth is available for US endpoints and API keys are required for EU endpoints."
+    },
+    {
+      "slug": "postman",
+      "fieldPath": "methods.5.guidanceMd",
+      "sourceText": "Use a customer-created Postman key. A Postman account; OAuth is available for US endpoints and API keys are required for EU endpoints."
+    },
+    {
+      "slug": "razorpay",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Razorpay in the browser. A Razorpay account; financial or destructive actions always require explicit approval."
+    },
+    {
+      "slug": "razorpay",
+      "fieldPath": "methods.1.guidanceMd",
+      "sourceText": "Use a customer-created Razorpay key. A Razorpay account; financial or destructive actions always require explicit approval."
+    },
+    {
+      "slug": "resend",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Resend in the browser. A Resend account with access to the relevant domains."
+    },
+    {
+      "slug": "sanity",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Sanity in the browser. A Sanity account with access to the relevant projects and datasets."
+    },
+    {
+      "slug": "sanity",
+      "fieldPath": "methods.1.guidanceMd",
+      "sourceText": "Use a customer-created Sanity key. A Sanity account with access to the relevant projects and datasets."
+    },
+    {
+      "slug": "sentry",
+      "fieldPath": "methods.0.whenToUse",
+      "sourceText": "Use the provider-hosted connection for the quickest setup."
+    },
+    {
+      "slug": "sentry",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect the Sentry organization and projects agents need for incident work."
+    },
+    {
+      "slug": "similarweb",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Use a customer-created Similarweb key. A Similarweb subscription with API access and an API key."
+    },
+    {
+      "slug": "slack",
+      "fieldPath": "description",
+      "sourceText": "Give agents Slack tools or let people start and continue Paperclip work from Slack."
+    },
+    {
+      "slug": "slack",
+      "fieldPath": "methods.0.whenToUse",
+      "sourceText": "Use the provider-hosted connection for the quickest setup."
+    },
+    {
+      "slug": "slack",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect a Slack workspace and limit access to the channels agents need."
+    },
+    {
+      "slug": "slack",
+      "fieldPath": "methods.1.whenToUse",
+      "sourceText": "Let people in Slack start and continue work with one Paperclip agent."
+    },
+    {
+      "slug": "slack",
+      "fieldPath": "methods.1.credentialFields.1.placeholder",
+      "sourceText": "Paste the Slack App signing secret"
+    },
+    {
+      "slug": "slack",
+      "fieldPath": "methods.1.guidanceMd",
+      "sourceText": "Create and install one Slack App for this agent. Paperclip receives verified Events API requests and interactive callbacks, acknowledges with reactions, responds in direct messages, and starts one Paperclip task per new mentioned channel thread."
+    },
+    {
+      "slug": "stripe",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Stripe in the browser. A Stripe account; the server is public preview and payment actions require explicit approval."
+    },
+    {
+      "slug": "stripe",
+      "fieldPath": "methods.1.guidanceMd",
+      "sourceText": "Use a customer-created Stripe key. A Stripe account; the server is public preview and payment actions require explicit approval."
+    },
+    {
+      "slug": "supabase",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Supabase in the browser and scope the connection to one development project. Write tools start enabled and remain governed by Paperclip's action policies."
+    },
+    {
+      "slug": "supabase",
+      "fieldPath": "methods.1.guidanceMd",
+      "sourceText": "Use a customer-created Supabase key scoped to one development project. Write tools start enabled and remain governed by Paperclip's action policies."
+    },
+    {
+      "slug": "ticktick",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect TickTick in the browser. A TickTick account with MCP access."
+    },
+    {
+      "slug": "todoist",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Todoist in the browser. A Todoist account."
+    },
+    {
+      "slug": "vercel",
+      "fieldPath": "methods.0.whenToUse",
+      "sourceText": "Use the provider-hosted connection for the quickest setup."
+    },
+    {
+      "slug": "vercel",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect the Vercel team and projects agents should operate."
+    },
+    {
+      "slug": "wix",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect Wix in the browser. A Wix account with access to the relevant sites."
+    },
+    {
+      "slug": "youcom",
+      "fieldPath": "description",
+      "sourceText": "Connect You.com's provider-hosted MCP server."
+    },
+    {
+      "slug": "youcom",
+      "fieldPath": "methods.0.guidanceMd",
+      "sourceText": "Connect You.com in the browser. A You.com account for browser sign-in, or a You.com API key from you.com/platform for higher rate limits; a keyless free profile is also available."
+    },
+    {
+      "slug": "youcom",
+      "fieldPath": "methods.0.label",
+      "sourceText": "Sign in with You.com"
+    },
+    {
+      "slug": "youcom",
+      "fieldPath": "methods.1.guidanceMd",
+      "sourceText": "Use a customer-created You.com key. A You.com account for browser sign-in, or a You.com API key from you.com/platform for higher rate limits; a keyless free profile is also available."
+    },
+    {
+      "slug": "youcom",
+      "fieldPath": "methods.1.credentialFields.0.label",
+      "sourceText": "You.com API key"
+    },
+    {
+      "slug": "youcom",
+      "fieldPath": "methods.1.credentialFields.0.placeholder",
+      "sourceText": "Paste your You.com API key"
+    },
+    {
+      "slug": "youcom",
+      "fieldPath": "methods.2.whenToUse",
+      "sourceText": "Connect without an account for limited, rate-capped web search."
+    },
+    {
+      "slug": "youcom",
+      "fieldPath": "methods.2.guidanceMd",
+      "sourceText": "Use the keyless free profile. You.com limits the free profile to a reduced read-only tool set."
+    },
+    {
+      "slug": "youcom",
+      "fieldPath": "methods.2.label",
+      "sourceText": "Use the free profile"
+    },
+    {
+      "slug": "airtable",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "An Airtable account; enterprise administrators may need to allowlist the client."
+    },
+    {
+      "slug": "beehiiv",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A beehiiv account; the subscription plan controls available write capabilities."
+    },
+    {
+      "slug": "bitly",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A Bitly account with either browser authorization or an API token."
+    },
+    {
+      "slug": "bitly",
+      "fieldPath": "methods.1.warnings.0",
+      "sourceText": "A Bitly account with either browser authorization or an API token."
+    },
+    {
+      "slug": "brex",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "Brex early access and an administrator enabling the integration; financial actions require explicit approval."
+    },
+    {
+      "slug": "brex",
+      "fieldPath": "methods.0.warnings.1",
+      "sourceText": "Financial or destructive actions must be explicitly approved before execution."
+    },
+    {
+      "slug": "candid",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A Candid account with access to the MCP connector."
+    },
+    {
+      "slug": "clickhouse",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A ClickHouse Cloud ClickStack service and its service ID."
+    },
+    {
+      "slug": "cloudflare",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A Cloudflare account with access to the resources being connected."
+    },
+    {
+      "slug": "cloudflare",
+      "fieldPath": "methods.1.warnings.0",
+      "sourceText": "A Cloudflare account with access to the resources being connected."
+    },
+    {
+      "slug": "cloudinary",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A Cloudinary account; authorization is limited by the signed-in user's roles."
+    },
+    {
+      "slug": "coda",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A Coda account; the hosted MCP service is currently beta."
+    },
+    {
+      "slug": "coda",
+      "fieldPath": "methods.0.warnings.1",
+      "sourceText": "This provider's hosted MCP server is currently beta or preview."
+    },
+    {
+      "slug": "coda",
+      "fieldPath": "methods.1.warnings.0",
+      "sourceText": "A Coda account; the hosted MCP service is currently beta."
+    },
+    {
+      "slug": "coda",
+      "fieldPath": "methods.1.warnings.1",
+      "sourceText": "This provider's hosted MCP server is currently beta or preview."
+    },
+    {
+      "slug": "cognee",
+      "fieldPath": "setupPrerequisite.actionLabel",
+      "sourceText": "Open Cognee API keys"
+    },
+    {
+      "slug": "cognee",
+      "fieldPath": "methods.0.credentialFields.0.helperMd",
+      "sourceText": "Copy API Base URL from Cognee's API Keys page."
+    },
+    {
+      "slug": "embat",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "An Embat account; pilot the connection because provider setup documentation is sparse."
+    },
+    {
+      "slug": "fireflies",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A Fireflies account with access to the meetings you want to use. API keys are available in Settings → Developer Settings."
+    },
+    {
+      "slug": "fireflies",
+      "fieldPath": "methods.1.warnings.0",
+      "sourceText": "A Fireflies account with access to the meetings you want to use. API keys are available in Settings → Developer Settings."
+    },
+    {
+      "slug": "github",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "Shell Git and gh receive this identity for the run and are not constrained by per-tool Ask-first controls."
+    },
+    {
+      "slug": "google-calendar",
+      "fieldPath": "setupPrerequisite.steps.0",
+      "sourceText": "Apply with the Workspace email that will sign in and the Google Cloud project that owns the OAuth client."
+    },
+    {
+      "slug": "google-calendar",
+      "fieldPath": "setupPrerequisite.steps.1",
+      "sourceText": "Wait for the Google Group notification and then Google's final project-registration email, usually within a couple of days."
+    },
+    {
+      "slug": "google-calendar",
+      "fieldPath": "setupPrerequisite.steps.2",
+      "sourceText": "Add every additional tester email or Cloud project through Google's member request forms before connecting."
+    },
+    {
+      "slug": "google-calendar",
+      "fieldPath": "setupPrerequisite.actionLabel",
+      "sourceText": "Apply or verify Developer Preview enrollment"
+    },
+    {
+      "slug": "google-calendar",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "Google Workspace MCP servers are in Developer Preview."
+    },
+    {
+      "slug": "google-calendar",
+      "fieldPath": "methods.1.warnings.0",
+      "sourceText": "Google Workspace MCP servers are in Developer Preview."
+    },
+    {
+      "slug": "google-calendar",
+      "fieldPath": "methods.2.warnings.0",
+      "sourceText": "All event mutations require approval."
+    },
+    {
+      "slug": "google-calendar",
+      "fieldPath": "methods.2.warnings.1",
+      "sourceText": "Google Workspace MCP servers are in Developer Preview."
+    },
+    {
+      "slug": "google-calendar",
+      "fieldPath": "methods.3.warnings.0",
+      "sourceText": "All event mutations require approval."
+    },
+    {
+      "slug": "google-calendar",
+      "fieldPath": "methods.3.warnings.1",
+      "sourceText": "Google Workspace MCP servers are in Developer Preview."
+    },
+    {
+      "slug": "google-docs",
+      "fieldPath": "setupPrerequisite.steps.0",
+      "sourceText": "Apply with the Workspace email that will sign in and the Google Cloud project that owns the OAuth client."
+    },
+    {
+      "slug": "google-docs",
+      "fieldPath": "setupPrerequisite.steps.1",
+      "sourceText": "Wait for the Google Group notification and then Google's final project-registration email, usually within a couple of days."
+    },
+    {
+      "slug": "google-docs",
+      "fieldPath": "setupPrerequisite.steps.2",
+      "sourceText": "Add every additional tester email or Cloud project through Google's member request forms before connecting."
+    },
+    {
+      "slug": "google-docs",
+      "fieldPath": "setupPrerequisite.actionLabel",
+      "sourceText": "Apply or verify Developer Preview enrollment"
+    },
+    {
+      "slug": "google-docs",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "Google Workspace MCP servers are in Developer Preview."
+    },
+    {
+      "slug": "google-docs",
+      "fieldPath": "methods.1.warnings.0",
+      "sourceText": "Google Workspace MCP servers are in Developer Preview."
+    },
+    {
+      "slug": "google-docs",
+      "fieldPath": "methods.2.warnings.0",
+      "sourceText": "Document updates require approval."
+    },
+    {
+      "slug": "google-docs",
+      "fieldPath": "methods.2.warnings.1",
+      "sourceText": "Google Workspace MCP servers are in Developer Preview."
+    },
+    {
+      "slug": "google-docs",
+      "fieldPath": "methods.3.warnings.0",
+      "sourceText": "Document updates require approval."
+    },
+    {
+      "slug": "google-docs",
+      "fieldPath": "methods.3.warnings.1",
+      "sourceText": "Google Workspace MCP servers are in Developer Preview."
+    },
+    {
+      "slug": "google-sheets",
+      "fieldPath": "setupPrerequisite.steps.0",
+      "sourceText": "Apply with the Workspace email that will sign in and the Google Cloud project that owns the OAuth client."
+    },
+    {
+      "slug": "google-sheets",
+      "fieldPath": "setupPrerequisite.steps.1",
+      "sourceText": "Wait for the Google Group notification and then Google's final project-registration email, usually within a couple of days."
+    },
+    {
+      "slug": "google-sheets",
+      "fieldPath": "setupPrerequisite.steps.2",
+      "sourceText": "Add every additional tester email or Cloud project through Google's member request forms before connecting."
+    },
+    {
+      "slug": "google-sheets",
+      "fieldPath": "setupPrerequisite.actionLabel",
+      "sourceText": "Apply or verify Developer Preview enrollment"
+    },
+    {
+      "slug": "google-sheets",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "Google Workspace MCP servers are in Developer Preview."
+    },
+    {
+      "slug": "google-sheets",
+      "fieldPath": "methods.1.warnings.0",
+      "sourceText": "Google Workspace MCP servers are in Developer Preview."
+    },
+    {
+      "slug": "google-sheets",
+      "fieldPath": "methods.2.warnings.0",
+      "sourceText": "Spreadsheet updates require approval."
+    },
+    {
+      "slug": "google-sheets",
+      "fieldPath": "methods.2.warnings.1",
+      "sourceText": "Google Workspace MCP servers are in Developer Preview."
+    },
+    {
+      "slug": "google-sheets",
+      "fieldPath": "methods.3.warnings.0",
+      "sourceText": "Spreadsheet updates require approval."
+    },
+    {
+      "slug": "google-sheets",
+      "fieldPath": "methods.3.warnings.1",
+      "sourceText": "Google Workspace MCP servers are in Developer Preview."
+    },
+    {
+      "slug": "google-slides",
+      "fieldPath": "setupPrerequisite.steps.0",
+      "sourceText": "Apply with the Workspace email that will sign in and the Google Cloud project that owns the OAuth client."
+    },
+    {
+      "slug": "google-slides",
+      "fieldPath": "setupPrerequisite.steps.1",
+      "sourceText": "Wait for the Google Group notification and then Google's final project-registration email, usually within a couple of days."
+    },
+    {
+      "slug": "google-slides",
+      "fieldPath": "setupPrerequisite.steps.2",
+      "sourceText": "Add every additional tester email or Cloud project through Google's member request forms before connecting."
+    },
+    {
+      "slug": "google-slides",
+      "fieldPath": "setupPrerequisite.actionLabel",
+      "sourceText": "Apply or verify Developer Preview enrollment"
+    },
+    {
+      "slug": "google-slides",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "Google Workspace MCP servers are in Developer Preview."
+    },
+    {
+      "slug": "google-slides",
+      "fieldPath": "methods.1.warnings.0",
+      "sourceText": "Google Workspace MCP servers are in Developer Preview."
+    },
+    {
+      "slug": "google-slides",
+      "fieldPath": "methods.2.warnings.0",
+      "sourceText": "Presentation updates require approval."
+    },
+    {
+      "slug": "google-slides",
+      "fieldPath": "methods.2.warnings.1",
+      "sourceText": "Google Workspace MCP servers are in Developer Preview."
+    },
+    {
+      "slug": "google-slides",
+      "fieldPath": "methods.3.warnings.0",
+      "sourceText": "Presentation updates require approval."
+    },
+    {
+      "slug": "google-slides",
+      "fieldPath": "methods.3.warnings.1",
+      "sourceText": "Google Workspace MCP servers are in Developer Preview."
+    },
+    {
+      "slug": "honcho",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "An API key from the Honcho dashboard. Memory is stored in your Honcho account; select workspace and peer identifiers when calling tools."
+    },
+    {
+      "slug": "hugging-face",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A Hugging Face account."
+    },
+    {
+      "slug": "kernel",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A Kernel account with either browser authorization or an API key."
+    },
+    {
+      "slug": "kernel",
+      "fieldPath": "methods.1.warnings.0",
+      "sourceText": "A Kernel account with either browser authorization or an API key."
+    },
+    {
+      "slug": "local-falcon",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A Local Falcon account with MCP access."
+    },
+    {
+      "slug": "manufact",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A Manufact account with MCP access."
+    },
+    {
+      "slug": "mem0",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A Mem0 API key; the live server currently requires the slash-normalized endpoint."
+    },
+    {
+      "slug": "miro",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A Miro account; enterprise administrators may restrict third-party MCP clients."
+    },
+    {
+      "slug": "mixpanel",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A Mixpanel account; the hosted MCP server is currently beta."
+    },
+    {
+      "slug": "mixpanel",
+      "fieldPath": "methods.0.warnings.1",
+      "sourceText": "This provider's hosted MCP server is currently beta or preview."
+    },
+    {
+      "slug": "netlify",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A Netlify account with access to the relevant team and sites."
+    },
+    {
+      "slug": "oreilly",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "An O'Reilly Learning subscription with MCP or API access."
+    },
+    {
+      "slug": "oreilly",
+      "fieldPath": "methods.1.warnings.0",
+      "sourceText": "An O'Reilly Learning subscription with MCP or API access."
+    },
+    {
+      "slug": "pagerduty",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A PagerDuty API token; choose the regional endpoint that hosts the account."
+    },
+    {
+      "slug": "pagerduty",
+      "fieldPath": "methods.1.warnings.0",
+      "sourceText": "A PagerDuty API token; choose the regional endpoint that hosts the account."
+    },
+    {
+      "slug": "planetscale",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A PlanetScale account; database and branch access are chosen during authorization."
+    },
+    {
+      "slug": "planetscale",
+      "fieldPath": "methods.1.warnings.0",
+      "sourceText": "A PlanetScale account; database and branch access are chosen during authorization."
+    },
+    {
+      "slug": "postman",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A Postman account; OAuth is available for US endpoints and API keys are required for EU endpoints."
+    },
+    {
+      "slug": "postman",
+      "fieldPath": "methods.1.warnings.0",
+      "sourceText": "A Postman account; OAuth is available for US endpoints and API keys are required for EU endpoints."
+    },
+    {
+      "slug": "postman",
+      "fieldPath": "methods.2.warnings.0",
+      "sourceText": "A Postman account; OAuth is available for US endpoints and API keys are required for EU endpoints."
+    },
+    {
+      "slug": "postman",
+      "fieldPath": "methods.3.warnings.0",
+      "sourceText": "A Postman account; OAuth is available for US endpoints and API keys are required for EU endpoints."
+    },
+    {
+      "slug": "postman",
+      "fieldPath": "methods.4.warnings.0",
+      "sourceText": "A Postman account; OAuth is available for US endpoints and API keys are required for EU endpoints."
+    },
+    {
+      "slug": "postman",
+      "fieldPath": "methods.5.warnings.0",
+      "sourceText": "A Postman account; OAuth is available for US endpoints and API keys are required for EU endpoints."
+    },
+    {
+      "slug": "razorpay",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A Razorpay account; financial or destructive actions always require explicit approval."
+    },
+    {
+      "slug": "razorpay",
+      "fieldPath": "methods.0.warnings.1",
+      "sourceText": "Financial or destructive actions must be explicitly approved before execution."
+    },
+    {
+      "slug": "razorpay",
+      "fieldPath": "methods.1.warnings.0",
+      "sourceText": "A Razorpay account; financial or destructive actions always require explicit approval."
+    },
+    {
+      "slug": "razorpay",
+      "fieldPath": "methods.1.warnings.1",
+      "sourceText": "Financial or destructive actions must be explicitly approved before execution."
+    },
+    {
+      "slug": "resend",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A Resend account with access to the relevant domains."
+    },
+    {
+      "slug": "sanity",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A Sanity account with access to the relevant projects and datasets."
+    },
+    {
+      "slug": "sanity",
+      "fieldPath": "methods.1.warnings.0",
+      "sourceText": "A Sanity account with access to the relevant projects and datasets."
+    },
+    {
+      "slug": "similarweb",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A Similarweb subscription with API access and an API key."
+    },
+    {
+      "slug": "stripe",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A Stripe account; the server is public preview and payment actions require explicit approval."
+    },
+    {
+      "slug": "stripe",
+      "fieldPath": "methods.0.warnings.1",
+      "sourceText": "Financial or destructive actions must be explicitly approved before execution."
+    },
+    {
+      "slug": "stripe",
+      "fieldPath": "methods.1.warnings.0",
+      "sourceText": "A Stripe account; the server is public preview and payment actions require explicit approval."
+    },
+    {
+      "slug": "stripe",
+      "fieldPath": "methods.1.warnings.1",
+      "sourceText": "Financial or destructive actions must be explicitly approved before execution."
+    },
+    {
+      "slug": "supabase",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A Supabase account; use a development project and review write actions before connecting production data."
+    },
+    {
+      "slug": "supabase",
+      "fieldPath": "methods.0.warnings.1",
+      "sourceText": "Do not connect production data unless you have reviewed Supabase's MCP security guidance."
+    },
+    {
+      "slug": "supabase",
+      "fieldPath": "methods.1.warnings.0",
+      "sourceText": "A Supabase account; use a development project and review write actions before connecting production data."
+    },
+    {
+      "slug": "supabase",
+      "fieldPath": "methods.1.warnings.1",
+      "sourceText": "Do not connect production data unless you have reviewed Supabase's MCP security guidance."
+    },
+    {
+      "slug": "ticktick",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A TickTick account with MCP access."
+    },
+    {
+      "slug": "todoist",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A Todoist account."
+    },
+    {
+      "slug": "wix",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A Wix account with access to the relevant sites."
+    },
+    {
+      "slug": "youcom",
+      "fieldPath": "methods.0.warnings.0",
+      "sourceText": "A You.com account for browser sign-in, or a You.com API key from you.com/platform for higher rate limits; a keyless free profile is also available."
+    },
+    {
+      "slug": "youcom",
+      "fieldPath": "methods.1.warnings.0",
+      "sourceText": "A You.com account for browser sign-in, or a You.com API key from you.com/platform for higher rate limits; a keyless free profile is also available."
+    },
+    {
+      "slug": "youcom",
+      "fieldPath": "methods.2.warnings.0",
+      "sourceText": "The free profile is keyless and exposes a reduced read-only tool set with You.com rate limits."
+    }
+  ]
+}

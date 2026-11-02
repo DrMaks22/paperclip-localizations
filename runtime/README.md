@@ -50,7 +50,6 @@ the end-user installer and not a transactional writer for a running instance.
 | `ui/src/components/CodexSubscriptionPanel.tsx` | Selected-language quota numbers |
 | `ui/src/components/ClaudeSubscriptionPanel.tsx` | Selected-language quota numbers |
 | `ui/src/lib/attention.ts` | Selected-language budget numbers |
-| `ui/src/lib/pipeline-breakdown.ts` | English plural suffix only for English user nouns |
 | `ui/src/pages/apps/connection-owner.tsx` | English possessive punctuation only for English |
 | `ui/src/i18n/locale-sync.test.ts` | Adapt fixed EN/RU and unsupported-language assumptions while retaining semantic/plural checks |
 | `ui/src/i18n/community-locales.test.tsx` | Native integration tests for every enabled language |
@@ -79,6 +78,11 @@ i18next tests for selection, fallback, RTL direction, stable unsent drafts and
 generated chat formatting. The fixture is removed afterward and never enters
 the distributed catalog directory. It is a functional test, not an Arabic
 translation or an RTL visual certification.
+
+The October 26 master snapshot removes the pipeline UI and its
+`ui/src/lib/pipeline-breakdown.ts` helper. The corresponding obsolete hash guard
+was removed after checking that exact upstream tree; the builder does not
+reintroduce the deleted feature. Guards for surviving files remain mandatory.
 
 The smoke check also runs the original synchronization suite with its reviewed
 test adaptation. The generated community suite embeds the exact validated

@@ -6,7 +6,7 @@ This document is a portable task specification for a coding agent with local Git
 
 По-русски: передайте агенту задание из [README.md](../README.md#установить-с-помощью-агента), указав путь к исходникам Paperclip. Агент должен использовать инструкцию закреплённого релиза, подготовить отдельную сборку и сообщить результаты проверок. Установка патча сама по себе не развёртывает эту сборку.
 
-Stable `v2026.10.13.1` targets only Paperclip `v2026.1012.0` at `bba6a45f0d364cfd962ac59b3bdf2426a8222adb`. For Paperclip `v2026.1005.0`, select the immutable `v2026.10.7.2` package and its own instructions. Beta remains `v2026.9.13.1-beta.1` at master snapshot `04e364236bd2f9787e4a5c581751e0b8c6c16383`.
+Stable `v2026.10.13.1` targets only Paperclip `v2026.1012.0` at `bba6a45f0d364cfd962ac59b3bdf2426a8222adb`. For Paperclip `v2026.1005.0`, select the immutable `v2026.10.7.2` package and its own instructions. Published beta remains `v2026.9.13.1-beta.1` at master snapshot `04e364236bd2f9787e4a5c581751e0b8c6c16383`.
 
 ## Agent procedure
 

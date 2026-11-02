@@ -247,6 +247,8 @@ test("export and build CLIs carry channel identity into reproducible manifests w
     assert.equal(result.status, 0, result.stderr);
     const exported = JSON.parse(fs.readFileSync(path.join(f.kit, "source-lock.json"), "utf8"));
     for (const [field, value] of Object.entries(metadata)) assert.equal(exported[field], value);
+    assert.equal(exported.foundationFiles, 3);
+    assert.equal(exported.integrationTree, git(f.source, ["rev-parse", "HEAD^{tree}"]).toString().trim());
     write(f.kit, "locales/ru.json", '{ "title" : "Проверенный перевод" }\n');
     result = cli(f.kit, "build.mjs", ["--upstream", f.source]);
     assert.equal(result.status, 0, result.stderr);
@@ -254,6 +256,7 @@ test("export and build CLIs carry channel identity into reproducible manifests w
     assert.equal(manifest.kitVersion, metadata.releaseTag);
     for (const field of ["releaseChannel", "upstreamRef", "runtimeProfile"]) assert.equal(manifest[field], metadata[field]);
     assert.equal(manifest.baseCommit, f.base);
+    assert.notEqual(manifest.resultTree, exported.integrationTree, "reviewed catalog replacement happens after foundation verification");
     assert.deepEqual(manifest.allowedPaths, ["ui/src/i18n/locales.ts", "ui/src/i18n/locales/en.json", "ui/src/i18n/locales/ru.json"]);
     assert.equal(manifest.afterFiles["ui/src/i18n/locales.ts"].sha256, hash(fs.readFileSync(path.join(f.source, "ui/src/i18n/locales.ts"))));
     assert.equal(manifest.afterFiles["ui/src/i18n/locales/ru.json"].sha256, hash(fs.readFileSync(path.join(f.kit, "locales/ru.json"))));
@@ -264,6 +267,29 @@ test("export and build CLIs carry channel identity into reproducible manifests w
     assert.deepEqual(snapshot(f.source), sourceBefore);
   }
 });
+
+for (const [field, value, error] of [
+  ["foundationFiles", 999999, /Foundation changed file count does not match source-lock/],
+  ["integrationTree", "f".repeat(40), /Foundation integration tree does not match source-lock/],
+]) {
+  test(`build rejects mismatched foundation ${field} before generating artifacts`, (t) => {
+    const f = releaseFixture(t);
+    const args = options(stable, f.source).map((arg, index) => index === 3 || index === 5 ? f.base : arg);
+    const exportResult = cli(f.kit, "export-foundation.mjs", args);
+    assert.equal(exportResult.status, 0, exportResult.stderr);
+    const lockFile = path.join(f.kit, "source-lock.json");
+    const exported = JSON.parse(fs.readFileSync(lockFile, "utf8"));
+    write(f.kit, "source-lock.json", JSON.stringify({ ...exported, [field]: value }, null, 2) + "\n");
+    const kitBefore = snapshot(f.kit), sourceBefore = snapshot(f.source);
+    for (const extra of [[], ["--check"]]) {
+      const result = cli(f.kit, "build.mjs", ["--upstream", f.source, ...extra]);
+      assert.equal(result.status, 1, result.stdout);
+      assert.match(result.stderr, error);
+      assert.deepEqual(snapshot(f.kit), kitBefore, "refusal must not write release artifacts");
+      assert.deepEqual(snapshot(f.source), sourceBefore, "refusal must preserve the source checkout");
+    }
+  });
+}
 
 test("community profile retains its overlay preflight and refuses incompatible historical sources", (t) => {
   const f = releaseFixture(t);
