@@ -1,6 +1,6 @@
 # Установка
 
-> **Кандидат ещё не опубликован.** Команды и ссылки для `v2026.10.26.1` ниже предназначены для будущего выпуска после отдельного одобрения. Текущий опубликованный Latest — [v2026.10.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.13.1). После публикации используйте готовый пакет по тегу `v2026.10.26.1` только для Paperclip `v2026.1023.0` на коммите `1b4c803816e82b0265c8422e1a804327a7ed8c54`. Сначала проверьте точный коммит и контрольные суммы. [Проверки и ограничения](../verification/v2026.10.26.1.md).
+> **Stable v2026.10.26.1** предназначен только для Paperclip `v2026.1023.0` на коммите `1b4c803816e82b0265c8422e1a804327a7ed8c54`. Сначала проверьте точный коммит и контрольные суммы. [Проверки и ограничения](../verification/v2026.10.26.1.md).
 
 [Главная](../README.md) · [English](INSTALL.en.md) · [Установка с агентом](AGENT-INSTALL.md)
 
@@ -8,7 +8,7 @@
 
 ## Получить и проверить релиз
 
-Сначала выберите [stable или beta](RELEASES.md). Клонируйте локализацию **за пределами** исходного репозитория Paperclip. В примере закреплён stable [v2026.10.26.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.26.1) для Paperclip `v2026.1023.0`. Для Paperclip `v2026.1005.0` используйте неизменяемый [v2026.10.7.2](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.2), а для `v2026.831.1` — [v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1), следуя инструкции соответствующего релиза. Для beta замените тег на `v2026.9.13.1-beta.1` и используйте её отдельный `manifest.json`:
+Сначала выберите [stable или beta](RELEASES.md). Клонируйте локализацию **за пределами** исходного репозитория Paperclip. В примере закреплён stable [v2026.10.26.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.26.1) для Paperclip `v2026.1023.0`. Для Paperclip `v2026.1005.0` используйте неизменяемый [v2026.10.7.2](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.2), а для `v2026.831.1` — [v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1), следуя инструкции соответствующего релиза. Для beta замените тег на `v2026.11.2.1-beta.1` и используйте её отдельный `manifest.json`:
 
 ```bash
 git clone --branch v2026.10.26.1 --depth 1 https://github.com/DrMaks22/paperclip-localizations.git
