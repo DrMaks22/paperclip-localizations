@@ -6,7 +6,7 @@ import { createHash } from "node:crypto";
 
 export const TEMPLATE_TARGETS = [
   { template: "locales.ts.template", path: "ui/src/i18n/locales.ts", sha256: "a20d86d14a6b584e0415631a9cde23e4a5df881a1525c8082dd58ce66c4b5400" },
-  { template: "LocaleSwitcher.tsx", path: "ui/src/components/LocaleSwitcher.tsx", sha256: "76be368ee80382776c6ed2b0fc720bf0cfc93ebcc7028465a23ee6086ffb6a57" },
+  { template: "LocaleSwitcher.tsx", path: "ui/src/components/LocaleSwitcher.tsx", sha256: "8398c378dc7265553ab65b8b5b8ef5577310f45ef51dd95a374d2ef7410d858f" },
 ];
 // The reviewed source includes the presentation adaptations below. Keep
 // their hashes as preflight guards, with no repeated text transformations.

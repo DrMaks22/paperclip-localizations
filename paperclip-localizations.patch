@@ -34665,11 +34665,11 @@ index 62852ff3b63c079120e9d30854f04bdf71e31ed1..be742f984390714f71f61c07b4931a89
                  </div>
 diff --git a/ui/src/components/LocaleSwitcher.tsx b/ui/src/components/LocaleSwitcher.tsx
 new file mode 100644
-index 0000000000000000000000000000000000000000..e85fb23ee036601abfd96b220ff9231d36502ee4
+index 0000000000000000000000000000000000000000..df9e3d2479653c0b3d44e5fca6645a2eb365adad
 --- /dev/null
 +++ b/ui/src/components/LocaleSwitcher.tsx
-@@ -0,0 +1,45 @@
-+import { Languages } from "lucide-react";
+@@ -0,0 +1,46 @@
++import { Check, Languages } from "lucide-react";
 +import { i18n, setLocale, supportedLocales, useTranslation } from "@/i18n";
 +import { localeAutonym } from "@/i18n/locales";
 +import { cn } from "@/lib/utils";
@@ -34679,14 +34679,14 @@ index 0000000000000000000000000000000000000000..e85fb23ee036601abfd96b220ff9231d
 +  const currentLocale = i18n.resolvedLanguage ?? i18n.language;
 +
 +  return (
-+    <div className="flex w-full flex-wrap items-center justify-between gap-3 rounded-xl px-3 py-2.5">
-+      <div className="flex items-center gap-3">
-+        <span className="mt-0.5 rounded-lg border border-border bg-background/70 p-2 text-muted-foreground">
-+          <Languages className="size-4" />
++    <div className="flex w-full min-w-0 flex-col gap-2 rounded-xl px-3 py-2.5">
++      <div className="flex min-w-0 items-center gap-3">
++        <span className="shrink-0 rounded-lg border border-border bg-background/70 p-2 text-muted-foreground">
++          <Languages className="size-4" aria-hidden="true" />
 +        </span>
-+        <span className="text-sm font-medium text-foreground">{t("common.language")}</span>
++        <span className="min-w-0 break-words text-sm font-medium text-foreground">{t("common.language")}</span>
 +      </div>
-+      <div className="flex min-w-0 max-w-full flex-wrap gap-0.5 rounded-lg border border-border p-0.5" role="group" aria-label={t("common.language")}>
++      <div className="flex max-h-60 min-w-0 flex-col gap-1 overflow-y-auto overscroll-contain rounded-lg border border-border p-1" role="group" aria-label={t("common.language")}>
 +        {supportedLocales.map((locale) => {
 +          // Retain the established English/Russian labels for existing users.
 +          // Every future language needs only its reviewed JSON catalog.
@@ -34697,7 +34697,7 @@ index 0000000000000000000000000000000000000000..e85fb23ee036601abfd96b220ff9231d
 +              key={locale}
 +              type="button"
 +              className={cn(
-+                "max-w-full break-words rounded-md px-2.5 py-1 text-xs font-medium transition-colors",
++                "flex min-h-11 w-full min-w-0 shrink-0 items-center gap-2 rounded-md px-2.5 py-2 text-start text-sm font-medium transition-colors",
 +                currentLocale === locale ? "bg-accent text-foreground" : "text-muted-foreground hover:text-foreground",
 +              )}
 +              aria-pressed={currentLocale === locale}
@@ -34706,7 +34706,8 @@ index 0000000000000000000000000000000000000000..e85fb23ee036601abfd96b220ff9231d
 +              dir={i18n.dir(locale)}
 +              onClick={() => setLocale(locale)}
 +            >
-+              {label}
++              <span className="min-w-0 flex-1 break-words">{label}</span>
++              <Check className={cn("size-4 shrink-0", currentLocale !== locale && "invisible")} aria-hidden="true" />
 +            </button>
 +          );
 +        })}
@@ -88633,10 +88634,10 @@ index 0000000000000000000000000000000000000000..04fe3aa3bab16276476b324407761f48
 +```
 diff --git a/ui/src/i18n/community-locales.test.tsx b/ui/src/i18n/community-locales.test.tsx
 new file mode 100644
-index 0000000000000000000000000000000000000000..2a0656b41cacbf0e901de660e98108579219c28d
+index 0000000000000000000000000000000000000000..f3a04df2e69c75e734391df8cd0e89dc23bcf44a
 --- /dev/null
 +++ b/ui/src/i18n/community-locales.test.tsx
-@@ -0,0 +1,124 @@
+@@ -0,0 +1,138 @@
 +// @vitest-environment jsdom
 +// Generated from the community distribution. Additional languages are tested
 +// only when explicitly enabled from catalogs; third-language fixtures are temporary.
@@ -88723,6 +88724,13 @@ index 0000000000000000000000000000000000000000..2a0656b41cacbf0e901de660e9810857
 +      const expectedLabel = locale === "en" ? i18n.t("common.english")
 +        : locale === "ru" ? i18n.t("common.russian") : localeAutonym(locale);
 +      expect(button.textContent).toBe(expectedLabel);
++      expect(button.getAttribute("aria-label")).toBe(expectedLabel);
++      // Native keyboard focus and text-only accessible labels must survive the
++      // vertical selector's decorative current-language check and rerender.
++      button.focus();
++      expect(document.activeElement).toBe(button);
++      const decoration = button.querySelector("svg");
++      expect(decoration?.getAttribute("aria-hidden")).toBe("true");
 +      await act(async () => button.click());
 +      expect(i18n.resolvedLanguage).toBe(locale);
 +      expect(document.documentElement.lang).toBe(locale);
@@ -88732,6 +88740,13 @@ index 0000000000000000000000000000000000000000..2a0656b41cacbf0e901de660e9810857
 +      expect(textarea.value).toBe("Unsent draft — keep it exactly");
 +      expect(host.querySelector("form")).toBe(form);
 +      expect(button.getAttribute("aria-pressed")).toBe("true");
++      expect(document.activeElement).toBe(button);
++      expect(host.querySelectorAll('button[aria-pressed="true"]')).toHaveLength(1);
++      expect(button.querySelector("svg")).toBe(decoration);
++      expect(decoration?.classList.contains("invisible")).toBe(false);
++      for (const other of host.querySelectorAll('button[aria-pressed="false"]')) {
++        expect(other.querySelector("svg")?.classList.contains("invisible")).toBe(true);
++      }
 +    }
 +    expect(submitted).not.toHaveBeenCalled();
 +    expect(host.querySelectorAll("button")).toHaveLength(supportedLocales.length);

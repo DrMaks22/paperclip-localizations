@@ -84,6 +84,13 @@ describe("community locale registration", () => {
       const expectedLabel = locale === "en" ? i18n.t("common.english")
         : locale === "ru" ? i18n.t("common.russian") : localeAutonym(locale);
       expect(button.textContent).toBe(expectedLabel);
+      expect(button.getAttribute("aria-label")).toBe(expectedLabel);
+      // Native keyboard focus and text-only accessible labels must survive the
+      // vertical selector's decorative current-language check and rerender.
+      button.focus();
+      expect(document.activeElement).toBe(button);
+      const decoration = button.querySelector("svg");
+      expect(decoration?.getAttribute("aria-hidden")).toBe("true");
       await act(async () => button.click());
       expect(i18n.resolvedLanguage).toBe(locale);
       expect(document.documentElement.lang).toBe(locale);
@@ -93,6 +100,13 @@ describe("community locale registration", () => {
       expect(textarea.value).toBe("Unsent draft — keep it exactly");
       expect(host.querySelector("form")).toBe(form);
       expect(button.getAttribute("aria-pressed")).toBe("true");
+      expect(document.activeElement).toBe(button);
+      expect(host.querySelectorAll('button[aria-pressed="true"]')).toHaveLength(1);
+      expect(button.querySelector("svg")).toBe(decoration);
+      expect(decoration?.classList.contains("invisible")).toBe(false);
+      for (const other of host.querySelectorAll('button[aria-pressed="false"]')) {
+        expect(other.querySelector("svg")?.classList.contains("invisible")).toBe(true);
+      }
     }
     expect(submitted).not.toHaveBeenCalled();
     expect(host.querySelectorAll("button")).toHaveLength(supportedLocales.length);
