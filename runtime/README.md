@@ -44,7 +44,7 @@ the end-user installer and not a transactional writer for a running instance.
 | Overlay | Purpose |
 | --- | --- |
 | `ui/src/i18n/locales.ts` | Explicit registration, autonyms, invariant plural expansion |
-| `ui/src/components/LocaleSwitcher.tsx` | JSON-driven selector, per-language direction, wrapping layout |
+| `ui/src/components/LocaleSwitcher.tsx` | JSON-driven selector, per-language direction, full-width vertical choices with wrapping labels and bounded scrolling |
 | `ui/src/components/task-chat/task-chat-display.ts` | Selected-language timestamps, tokens and durations |
 | `ui/src/components/task-chat/task-chat-phase-summary-display.ts` | Translate the existing finite generated summary grammar |
 | `ui/src/components/CodexSubscriptionPanel.tsx` | Selected-language quota numbers |

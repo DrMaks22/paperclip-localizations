@@ -2,11 +2,11 @@
 
 **Русский** · [English](README.en.md)
 
-> **Этот пакет — beta `v2026.11.2.1-beta.1`:** точный снимок master `8ea240218dc1d3a94afea1294b377021045dd9c9`, профиль `community-json`. [Проверки и ограничения](verification/v2026.11.2.1-beta.1.md). Для Paperclip v2026.1023.0 используйте отдельный stable v2026.10.26.1; задание агенту ниже выбирает stable.
+> **Этот пакет — beta `v2026.11.3.1-beta.1`:** точный снимок master `8ea240218dc1d3a94afea1294b377021045dd9c9`, профиль `community-json`. [Проверки и ограничения](verification/v2026.11.3.1-beta.1.md). Для Paperclip v2026.1023.0 используйте отдельный stable v2026.11.3.1; задание агенту ниже выбирает stable.
 
-> **Совместимость stable из примера установки:** пакет `v2026.10.26.1` предназначен для Paperclip `v2026.1023.0` на коммите `1b4c803816e82b0265c8422e1a804327a7ed8c54`. Скачивайте готовый пакет по закреплённому тегу, а не рабочую ветку. Не применяйте старый патч к новой версии Paperclip. [Проверки и ограничения](verification/v2026.10.26.1.md). Установка патча не развёртывает приложение автоматически.
+> **Совместимость stable из примера установки:** пакет `v2026.11.3.1` предназначен для Paperclip `v2026.1023.0` на коммите `1b4c803816e82b0265c8422e1a804327a7ed8c54`. Скачивайте готовый пакет по закреплённому тегу, а не рабочую ветку. Не применяйте старый патч к новой версии Paperclip. [Проверки и ограничения](verification/v2026.11.3.1.md). Установка патча не развёртывает приложение автоматически.
 
-[![Проверки](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml/badge.svg)](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml) · [Stable](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.26.1) · [Beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.2.1-beta.1) · [Каналы и проверки](docs/RELEASES.md)
+[![Проверки](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml/badge.svg)](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml) · [Stable](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.3.1) · [Beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.3.1-beta.1) · [Каналы и проверки](docs/RELEASES.md)
 
 ![Paperclip Localizations — переводы интерфейса Paperclip](assets/cover.png)
 
@@ -14,16 +14,16 @@
 
 ## Выбрать канал
 
-`v2026.10.26.1` переносит русскую локализацию на официальный Paperclip `v2026.1023.0`: новые настройки подключений, GitHub и Slack, расходы и динамические подписи. Сохранены профиль `pinned-en-ru` и исправление обработки файлов. Для обновления подготовьте свежую сборку: новый патч нельзя накладывать поверх уже установленного.
+`v2026.11.3.1` и `v2026.11.3.1-beta.1` размещают языки вертикально в меню аккаунта: кнопки занимают всю доступную ширину, длинные названия переносятся, выбранный язык отмечен галочкой. Основы Paperclip, каталоги и поведение переключения сохранены. Для обновления подготовьте свежую сборку: новый патч нельзя накладывать поверх уже установленного.
 
 | Канал локализации | Совместимая версия Paperclip | Когда выбирать |
 | --- | --- | --- |
-| [Stable — v2026.10.26.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.26.1) | Официальный стабильный выпуск **v2026.1023.0**, коммит `1b4c803` | Для этой стабильной версии. Английский и русский интерфейс. |
-| [Beta — v2026.11.2.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.2.1-beta.1) | Проверенный снимок **master**, коммит `8ea2402` | Для отдельной тестовой сборки на указанном коммите master и проверки новых языковых каталогов. |
+| [Stable — v2026.11.3.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.3.1) | Официальный стабильный выпуск **v2026.1023.0**, коммит `1b4c803` | Для этой стабильной версии. Английский и русский интерфейс. |
+| [Beta — v2026.11.3.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.3.1-beta.1) | Проверенный снимок **master**, коммит `8ea2402` | Для отдельной тестовой сборки на указанном коммите master и проверки новых языковых каталогов. |
 
 **Stable и beta — разные патчи для разных исходников.** Beta не подходит к стабильному выпуску и не обновляется автоматически вместе с master. `Latest` в GitHub Releases относится только к stable. Номер релиза локализации не совпадает с номером Paperclip.
 
-Предыдущий [stable v2026.10.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.13.1) доступен для Paperclip `v2026.1012.0`. Опубликованный [stable v2026.10.7.2](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.2) остаётся доступен для Paperclip `v2026.1005.0`, [stable v2026.9.17.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.17.1) — для `v2026.916.0`, а [stable v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1) — для `v2026.831.1`. Их теги и файлы неизменны. Результаты и ограничения проверок нового пакета приведены в [отчёте v2026.10.26.1](verification/v2026.10.26.1.md).
+Предыдущие stable `v2026.10.26.1` и beta `v2026.11.2.1-beta.1` на этих же основах остаются неизменными. [Stable v2026.10.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.13.1) доступен для Paperclip `v2026.1012.0`. Опубликованный [stable v2026.10.7.2](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.2) остаётся доступен для Paperclip `v2026.1005.0`, [stable v2026.9.17.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.17.1) — для `v2026.916.0`, а [stable v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1) — для `v2026.831.1`. Их теги и файлы неизменны. Результаты и ограничения проверок нового пакета приведены в [отчёте v2026.11.3.1](verification/v2026.11.3.1.md).
 
 В ветке `main` ведётся разработка beta. Для установки скачивайте выбранный **релиз**, а не текущую ветку. Полные коммиты, различия и результаты проверок приведены в [описании каналов](docs/RELEASES.md); сведения о каналах в формате JSON доступны в [`channels.json`](channels.json).
 
@@ -33,10 +33,10 @@
 
 ```text
 Установи локализацию Paperclip из DrMaks22/paperclip-localizations,
-стабильный релиз v2026.10.26.1 для Paperclip v2026.1023.0.
+стабильный релиз v2026.11.3.1 для Paperclip v2026.1023.0.
 Мой исходный Git-репозиторий Paperclip находится в
 /absolute/path/to/paperclip. Прочитай и выполни инструкции этого релиза:
-https://github.com/DrMaks22/paperclip-localizations/blob/v2026.10.26.1/docs/AGENT-INSTALL.md
+https://github.com/DrMaks22/paperclip-localizations/blob/v2026.11.3.1/docs/AGENT-INSTALL.md
 Сначала проверь исходники, manifest.json, контрольные суммы и совместимость.
 Подготовь отдельный worktree на manifest.baseCommit, проверь и примени патч,
 выполни необходимые проверки сборки и сообщи результат.
@@ -56,7 +56,7 @@ node apply.mjs --repo /absolute/path/to/paperclip-localized --apply
 
 Целевой worktree должен быть чистым и точно соответствовать `baseCommit` из [`manifest.json`](manifest.json). Установщик работает без сети: он проверяет и изменяет исходники. Установку зависимостей, работу с базой данных, запуск и развёртывание выполняйте в привычном порядке.
 
-Для указанной базы stable проверены установка зависимостей с неизменённым lockfile и отключёнными lifecycle-скриптами, типы, сборка и UI-тесты в изолированной среде. Патч не меняет зависимости. Условия и ограничения описаны в [отчёте](verification/v2026.10.26.1.md).
+Для указанной базы stable проверены установка зависимостей с неизменённым lockfile и отключёнными lifecycle-скриптами, типы, сборка и UI-тесты в изолированной среде. Патч не меняет зависимости. Условия и ограничения описаны в [отчёте](verification/v2026.11.3.1.md).
 
 Попытка повторно применить патч или выполнить `--check` после его применения завершится отказом. Для проверки установленного патча используйте `--reverse --check`; для снятия — `--reverse --apply`. Подробности и порядок обновления — в [инструкции](docs/INSTALL.ru.md#обновление-и-снятие-патча).
 

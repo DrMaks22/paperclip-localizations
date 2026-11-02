@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "ready": true,
-  "kitVersion": "v2026.11.2.1-beta.1",
+  "kitVersion": "v2026.11.3.1-beta.1",
   "releaseChannel": "beta",
   "upstreamRef": "master",
   "runtimeProfile": "community-json",
   "baseCommit": "8ea240218dc1d3a94afea1294b377021045dd9c9",
   "sourceCommit": "9cf846bbf6f174d0d394c4faf08c18d77f54bd38",
   "patchFile": "paperclip-localizations.patch",
-  "patchSha256": "d47a283b328f2d977d6d54b360a4606f0004b5f3ec5d8d38f9fc9d5932bc71c2",
+  "patchSha256": "3cb7b2140e28795274c70b989fff8d2e98aeea1e91d38afc3eaa51cb86945b42",
   "allowedPaths": [
     "scripts/locale-changes.d.mts",
     "scripts/locale-changes.mjs",
@@ -2222,7 +2222,7 @@
       "mode": "100644"
     },
     "ui/src/components/LocaleSwitcher.tsx": {
-      "sha256": "438556144c79ce9175206dfbf27d395a24708fccc55c087b88240ad991104af2",
+      "sha256": "da451ae44f1ee4e29c642d8db0abf863863d44b1c7673fcd293746f299c28d25",
       "mode": "100644"
     },
     "ui/src/components/LocalizationCountLabels.test.tsx": {
@@ -4130,7 +4130,7 @@
       "mode": "100644"
     },
     "ui/src/i18n/community-locales.test.tsx": {
-      "sha256": "cd2d4c599bd81705c17a76f1c2e90396808ee7aaeb2706295708148a5509dac3",
+      "sha256": "36c5ce2fba9efdf0063ec6a0900a27f4e1056f46cb894b8adec94a4ebdf9e7a8",
       "mode": "100644"
     },
     "ui/src/i18n/index.ts": {
@@ -5838,9 +5838,9 @@
       "mode": "100644"
     }
   },
-  "resultTree": "5f781dcfac045979f5bbabb0ac251d3ea7d15bc4",
-  "sourceLockSha256": "2dbd8c994c53e03cabf664012a800c3819b605163747cfd125d451e79384fd91",
-  "foundationSha256": "baea341aec0fab319b7921b0a0d6c3d4c886f860b58b82768b7395af75870b04",
+  "resultTree": "c0bb17cbe0ef3fbb4d7e021e450f9e47ee7428ea",
+  "sourceLockSha256": "b848569bb384dd3edbfdbea96db7af43aa2d1dcf425a186c1139f3208a07852f",
+  "foundationSha256": "28fa948778f5bc9116d2a6edf487215ffb721332c88a4cf6d899933816b5e6f3",
   "locales": [
     {
       "locale": "en",
