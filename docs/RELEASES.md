@@ -2,42 +2,34 @@
 
 [Русская главная](../README.md) · [English overview](../README.en.md)
 
-## Кандидат beta / Beta candidate — 2026-11-02
+> **Stable:** [v2026.10.26.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.26.1), Paperclip v2026.1023.0, Latest. **Beta:** [v2026.11.2.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.2.1-beta.1), проверенный снимок master / reviewed master snapshot, Pre-release.
 
-Эта ветка готовит **неопубликованный** `v2026.11.2.1-beta.1`: master `8ea240218dc1d3a94afea1294b377021045dd9c9`, профиль `community-json`. Она не меняет опубликованные теги и файлы. `channels.json` в этой ветке содержит предлагаемую запись beta; таблицы и команды ниже описывают действующие опубликованные выпуски. Не применяйте эти патчи к новой beta-базе. Stable `v2026.10.13.1` для официального `v2026.1012.0` опубликован отдельно и доступен для установки; опубликованная beta остаётся `v2026.9.13.1-beta.1`.
-
-This branch prepares **unpublished** `v2026.11.2.1-beta.1`, pinned to master `8ea240218dc1d3a94afea1294b377021045dd9c9` with `community-json`. Its proposed beta index does not publish a release or modify existing tags/assets. The tables and installation commands below describe the still-published releases, whose patches must not be applied to this new beta base. Stable `v2026.10.13.1` for official `v2026.1012.0` is separately published and available to install; the published beta remains `v2026.9.13.1-beta.1`.
-
-After completing the remaining release gate and obtaining approval, a beta release must use `-beta.N`, `prerelease: true`, and `Latest: false`. No release or deployment is authorized by this branch.
-
-Последний официальный stable — `v2026.1023.0`; его перевод готовится в [PR #10](https://github.com/DrMaks22/paperclip-localizations/pull/10) независимо от этой beta. Latest official stable is `v2026.1023.0`; [PR #10](https://github.com/DrMaks22/paperclip-localizations/pull/10) prepares its localization independently. No publication is implied.
-
-[Проверки кандидата и ограничения / Candidate verification and limitations](../verification/v2026.11.2.1-beta.1.md).
-
-> Опубликованный stable / Published stable: `v2026.10.13.1` для / for Paperclip `v2026.1012.0`. [Проверки и ограничения / Checks and limitations](../verification/v2026.10.13.1.md).
+> Пакет stable / Stable package: `v2026.10.26.1` для / for Paperclip `v2026.1023.0`. [Проверки и ограничения / Checks and limitations](../verification/v2026.10.26.1.md).
 
 Опубликованные теги и файлы, включая [v2026.9.17.1 для Paperclip v2026.916.0](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.17.1), сохраняются неизменными. Published tags and assets, including that previous stable, remain immutable. Рабочая ветка не заменяет релиз; её можно удалить только после разрешённой публикации и [проверки сохранности результата](MAINTENANCE.md#after-publication-close-completed-branches). A working branch is not a release; remove it only after an approved publication and those preservation checks.
 
 **Compare & pull request** — уведомление GitHub о недавних изменениях в ветке, не ошибка. Не объединяйте stable с `main` ради этой плашки. This GitHub banner indicates a recent branch push, not an error; never merge stable into `main` merely to remove it.
 
+Предыдущий stable [v2026.10.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.13.1) предназначен для Paperclip `v2026.1012.0`; его тег и файлы неизменны. The previous stable targets only that official version; its tag and assets are unchanged.
+
 ## Русский
 
-`v2026.10.13.1` переносит локализацию на официальный Paperclip `v2026.1012.0` и сохраняет профиль `pinned-en-ru`. Обновлены строки и интеграция интерфейса для этой базы; исправление доступного имени ссылки «Скачать файл» сохранено. Патчи не накладываются друг на друга: для обновления используйте свежую сборку или сначала корректно удалите прежний патч по его инструкции.
+`v2026.10.26.1` переносит перевод на официальный Paperclip `v2026.1023.0`, сохраняя профиль `pinned-en-ru` и исправление обработки файлов. Новые и изменённые сообщения прошли отдельную русскоязычную и двуязычную проверку. Патчи не накладываются друг на друга: используйте свежую сборку или корректно удалите прежний патч по его инструкции.
 
-У локализации два независимых канала. Номер нашего релиза обозначает выпуск пакета перевода, а не версию самого Paperclip. Stable `v2026.10.13.1` предназначен для официального выпуска Paperclip `v2026.1012.0`. Опубликованная beta остаётся без изменений.
+У локализации два независимых канала. Номер нашего релиза обозначает выпуск пакета перевода, а не версию самого Paperclip. Stable `v2026.10.26.1` предназначен для официального выпуска Paperclip `v2026.1023.0`. Beta `v2026.11.2.1-beta.1` обновлена для проверенного снимка master от 2 ноября 2026 года.
 
 | | Stable | Beta |
 | --- | --- | --- |
-| Релиз локализации | [v2026.10.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.13.1) | [v2026.9.13.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1-beta.1) |
-| Основа Paperclip | [Официальный стабильный v2026.1012.0](https://github.com/paperclipai/paperclip/releases/tag/v2026.1012.0) | Снимок master, проверенный 12 сентября 2026 года |
-| Точный коммит Paperclip | `bba6a45f0d364cfd962ac59b3bdf2426a8222adb` | `04e364236bd2f9787e4a5c581751e0b8c6c16383` |
+| Релиз локализации | [v2026.10.26.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.26.1) | [v2026.11.2.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.2.1-beta.1) |
+| Основа Paperclip | [Официальный стабильный v2026.1023.0](https://github.com/paperclipai/paperclip/releases/tag/v2026.1023.0) | Снимок master, проверенный 2 ноября 2026 года |
+| Точный коммит Paperclip | `1b4c803816e82b0265c8422e1a804327a7ed8c54` | `8ea240218dc1d3a94afea1294b377021045dd9c9` |
 | Метка GitHub | `Latest`, не предварительный выпуск | `Pre-release`, не `Latest` |
 | Языки | Английский и русский, профиль `pinned-en-ru` | Английский и русский; подключение новых проверенных JSON-каталогов |
-| Проверки | [Отчёт stable: результаты и ограничения](https://github.com/DrMaks22/paperclip-localizations/blob/v2026.10.13.1/verification/v2026.10.13.1.md) | [Отчёт beta](https://github.com/DrMaks22/paperclip-localizations/blob/v2026.9.13.1-beta.1/verification/v2026.9.13.1-beta.1.md) |
+| Проверки | [Отчёт stable: результаты и ограничения](https://github.com/DrMaks22/paperclip-localizations/blob/v2026.10.26.1/verification/v2026.10.26.1.md) | [Отчёт beta](https://github.com/DrMaks22/paperclip-localizations/blob/v2026.11.2.1-beta.1/verification/v2026.11.2.1-beta.1.md) |
 
-Для Paperclip `v2026.1012.0` выбирайте stable `v2026.10.13.1`. Для Paperclip `v2026.1005.0` остаётся доступен неизменяемый [stable v2026.10.7.2](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.2), а для `v2026.831.1` — [stable v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1). Для отдельной тестовой сборки на указанном в таблице коммите master выбирайте beta. Перед развёртыванием проверьте выбранный канал в своей среде: ошибки возможны в обоих. Обозначение beta связано с предварительной версией Paperclip и не означает, что русский перевод выполнен хуже.
+Для Paperclip `v2026.1023.0` выбирайте stable `v2026.10.26.1`. Для Paperclip `v2026.1005.0` остаётся доступен неизменяемый [stable v2026.10.7.2](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.2), а для `v2026.831.1` — [stable v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1). Для отдельной тестовой сборки на указанном в таблице коммите master выбирайте beta. Перед развёртыванием проверьте выбранный канал в своей среде: ошибки возможны в обоих. Обозначение beta связано с предварительной версией Paperclip и не означает, что русский перевод выполнен хуже.
 
-У официальной базы `v2026.1012.0` lockfile расходится с манифестами серверных пакетов. [Отчёт выпуска](../verification/v2026.10.13.1.md) описывает проверенную изолированную сборку и её ограничения. Патч не меняет зависимости; не исправляйте эту ошибку принудительной установкой в действующем экземпляре.
+У этой официальной базы проверена установка с неизменённым lockfile и отключёнными lifecycle-скриптами. [Отчёт](../verification/v2026.10.26.1.md) отдельно описывает результаты и ограничения локализации.
 
 Новый коммит master не становится поддерживаемым только потому, что появился на GitHub. Установщик принимает только исходники на коммите `baseCommit`, указанном в `manifest.json` выбранного релиза. Если текущий экземпляр новее или отличается от этой базы, не понижайте его версию ради локализации. Подготовьте совместимый выпуск или дождитесь его. Переход между каналами — отдельное обновление приложения с учётом базы данных, а не обычное переключение языка.
 
@@ -51,11 +43,11 @@ After completing the remaining release gate and obtaining approval, a beta relea
 
 ```text
 Подготовь отдельную тестовую сборку Paperclip с локализацией beta
-из DrMaks22/paperclip-localizations, релиз v2026.9.13.1-beta.1.
-Я выбираю предварительный канал на снимке master 04e364236bd2f9787e4a5c581751e0b8c6c16383.
+из DrMaks22/paperclip-localizations, релиз v2026.11.2.1-beta.1.
+Я выбираю предварительный канал на снимке master 8ea240218dc1d3a94afea1294b377021045dd9c9.
 Мой исходный Git-репозиторий: /absolute/path/to/paperclip.
 Прочитай инструкции закреплённого релиза:
-https://github.com/DrMaks22/paperclip-localizations/blob/v2026.9.13.1-beta.1/docs/AGENT-INSTALL.md
+https://github.com/DrMaks22/paperclip-localizations/blob/v2026.11.2.1-beta.1/docs/AGENT-INSTALL.md
 Проверь контрольные суммы, канал и точный baseCommit. Создай отдельный worktree,
 проверь и примени патч, выполни проверки сборки и интерфейса EN/RU.
 Не меняй действующий экземпляр, базу данных или выбранный канал.
@@ -78,16 +70,16 @@ Stable обновляется для официальных стабильных
 
 ## English
 
-`v2026.10.13.1` ports localization to official Paperclip `v2026.1012.0` and retains `pinned-en-ru`. Interface strings and integration are updated for this base; the “Download file” accessible-name correction is preserved. Do not stack patches: use a fresh build or first remove the old patch following its own instructions.
+`v2026.10.26.1` updates the localization to official Paperclip `v2026.1023.0`, retaining `pinned-en-ru` and the file-payload fix. Added and changed messages received separate Russian-only and bilingual agent review. Do not stack patches: use a fresh build or remove the old patch following its own instructions.
 
-The two channels target different Paperclip source revisions. Our release number identifies the localization package, not the Paperclip version. Stable `v2026.10.13.1` targets the official Paperclip `v2026.1012.0` release. The published beta is unchanged.
+The two channels target different Paperclip source revisions. Our release number identifies the localization package, not the Paperclip version. Stable `v2026.10.26.1` targets the official Paperclip `v2026.1023.0` release. Beta `v2026.11.2.1-beta.1` targets the master snapshot reviewed on November 2, 2026.
 
-- **[Stable `v2026.10.13.1`](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.13.1):** official Paperclip [`v2026.1012.0`](https://github.com/paperclipai/paperclip/releases/tag/v2026.1012.0), exact commit `bba6a45f0d364cfd962ac59b3bdf2426a8222adb`. GitHub `Latest`, not a prerelease. English/Russian UI with the `pinned-en-ru` profile. [Stable verification results and limitations](https://github.com/DrMaks22/paperclip-localizations/blob/v2026.10.13.1/verification/v2026.10.13.1.md).
-- **Beta `v2026.9.13.1-beta.1`:** master snapshot `04e364236bd2f9787e4a5c581751e0b8c6c16383`, reviewed on 2026-09-12. GitHub `Pre-release`, never `Latest`. English/Russian UI and registration of additional reviewed JSON catalogs. [Beta verification](https://github.com/DrMaks22/paperclip-localizations/blob/v2026.9.13.1-beta.1/verification/v2026.9.13.1-beta.1.md).
+- **[Stable `v2026.10.26.1`](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.26.1):** official Paperclip [`v2026.1023.0`](https://github.com/paperclipai/paperclip/releases/tag/v2026.1023.0), exact commit `1b4c803816e82b0265c8422e1a804327a7ed8c54`. GitHub `Latest`, not a prerelease. English/Russian UI with the `pinned-en-ru` profile. [Stable verification results and limitations](https://github.com/DrMaks22/paperclip-localizations/blob/v2026.10.26.1/verification/v2026.10.26.1.md).
+- **Beta `v2026.11.2.1-beta.1`:** master snapshot `8ea240218dc1d3a94afea1294b377021045dd9c9`, reviewed on 2026-11-02. GitHub `Pre-release`, never `Latest`. English/Russian UI and registration of additional reviewed JSON catalogs. [Beta verification](https://github.com/DrMaks22/paperclip-localizations/blob/v2026.11.2.1-beta.1/verification/v2026.11.2.1-beta.1.md).
 
-Choose stable `v2026.10.13.1` for Paperclip `v2026.1012.0`. The immutable [stable v2026.10.7.2](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.2) remains available for Paperclip `v2026.1005.0`, and [stable v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1) for `v2026.831.1`. Choose beta only for a separate test build of the pinned master snapshot. Both require validation in your deployment environment. Beta identifies the development channel, not automatically inferior translation quality. Neither channel guarantees defect-free operation or compatibility with a newer commit.
+Choose stable `v2026.10.26.1` for Paperclip `v2026.1023.0`. The immutable [stable v2026.10.7.2](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.2) remains available for Paperclip `v2026.1005.0`, and [stable v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1) for `v2026.831.1`. Choose beta only for a separate test build of the pinned master snapshot. Both require validation in your deployment environment. Beta identifies the development channel, not automatically inferior translation quality. Neither channel guarantees defect-free operation or compatibility with a newer commit.
 
-The official `v2026.1012.0` base has a mismatch between its lockfile and server package manifests. The [release report](../verification/v2026.10.13.1.md) describes the verified isolated build and its limitations. The patch does not change dependencies; do not bypass this error with forced installation in a running instance.
+The official base passed frozen-lockfile installation with lifecycle scripts disabled. The [report](../verification/v2026.10.26.1.md) records localization verification and its limits separately.
 
 The installer accepts only its own `manifest.baseCommit`. Never downgrade a running instance to fit a patch. Switching channels is an application upgrade decision, including database compatibility; it is not merely changing the UI language. Each archive contains its own manifest, patch, installer, catalogs and checksums. Do not mix channel files. `channels.json` is a release-selection index, not an override of the downloaded manifest.
 
@@ -101,11 +93,11 @@ Use the [README task](../README.en.md#install-with-an-agent) for stable. For bet
 
 ```text
 Prepare a separate Paperclip test build with beta localization
-from DrMaks22/paperclip-localizations, release v2026.9.13.1-beta.1.
-I choose the prerelease channel at master snapshot 04e364236bd2f9787e4a5c581751e0b8c6c16383.
+from DrMaks22/paperclip-localizations, release v2026.11.2.1-beta.1.
+I choose the prerelease channel at master snapshot 8ea240218dc1d3a94afea1294b377021045dd9c9.
 My original Git repository is at /absolute/path/to/paperclip.
 Read the pinned release instructions:
-https://github.com/DrMaks22/paperclip-localizations/blob/v2026.9.13.1-beta.1/docs/AGENT-INSTALL.md
+https://github.com/DrMaks22/paperclip-localizations/blob/v2026.11.2.1-beta.1/docs/AGENT-INSTALL.md
 Verify checksums, the channel and exact baseCommit. Create a separate worktree,
 check and apply the patch, then run build and EN/RU interface checks.
 Do not change the running instance, database or selected channel.
