@@ -13,9 +13,9 @@ export const TEMPLATE_TARGETS = [
 export const EXACT_EDITS = [
   {
     path: "ui/src/components/task-chat/task-chat-display.ts",
-    sha256: "864fe36ff159ce3b4bd8db24ba9f4f334729ed1d2bb54e0c9b3f9041b78a5402",
+    sha256: "a7c577e2eeaefe6a6e02c0d1545d041d63a5b4011f7cf1ec4618bab8c0be28da",
     replacements: [],
-    reason: "Preserve selected-locale formatting, exact English fallback, full-match marker guards and canonical AI-account markers. October 19 adds four finite display labels and two exact generated remedies; provider diagnostics, model values and retry-control markers stay raw.",
+    reason: "November 9 adds finite native-event metadata, exact generated tool captions and context-compaction formatting guarded by marker variant and full-string grammar. Canonical event models, provider titles, file paths, raw diagnostics and retry-control markers remain unchanged. Existing selected-locale formatting and English fallback are preserved.",
   },
   {
     path: "ui/src/components/task-chat/task-chat-phase-summary-display.ts",
