@@ -1,0 +1,493 @@
+{
+  "flavor": "stable",
+  "scope": "Isolated real source components with custom layout, fake public data and simulated handlers; not whole-app certification.",
+  "build": "Vite production build",
+  "browser": "Headless Google Chrome with isolated nonpersistent context",
+  "checks": [
+    {
+      "name": "selector layout 320px 100%",
+      "pass": true,
+      "geometry": {
+        "rootFont": "16px",
+        "viewport": 320,
+        "documentWidth": 320,
+        "hostWidth": 244,
+        "groupWidth": 216,
+        "groupScrollWidth": 216,
+        "buttons": [
+          {
+            "width": 208,
+            "height": 44,
+            "x": 30,
+            "y": 130,
+            "scrollWidth": 208,
+            "clientWidth": 208,
+            "pressed": "false",
+            "label": "Английский"
+          },
+          {
+            "width": 208,
+            "height": 44,
+            "x": 30,
+            "y": 178,
+            "scrollWidth": 208,
+            "clientWidth": 208,
+            "pressed": "true",
+            "label": "Русский"
+          }
+        ]
+      }
+    },
+    {
+      "name": "selector keyboard focus 320px 100%",
+      "pass": true,
+      "focus": {
+        "focused": true,
+        "focusVisible": true,
+        "outline": "auto",
+        "outlineWidth": "1px",
+        "boxShadow": "none"
+      }
+    },
+    {
+      "name": "selector EN→RU 320px 100%",
+      "pass": true,
+      "english": "Language\nEnglish\nRussian",
+      "russian": "Язык\nАнглийский\nРусский"
+    },
+    {
+      "name": "selector RU localStorage 320px 100%",
+      "pass": true
+    },
+    {
+      "name": "selector RU reload 320px 100%",
+      "pass": true
+    },
+    {
+      "name": "selector EN roundtrip 320px 100%",
+      "pass": true
+    },
+    {
+      "name": "selector EN reload 320px 100%",
+      "pass": true
+    },
+    {
+      "name": "selector layout 320px 200%",
+      "pass": true,
+      "geometry": {
+        "rootFont": "32px",
+        "viewport": 320,
+        "documentWidth": 320,
+        "hostWidth": 244,
+        "groupWidth": 192,
+        "groupScrollWidth": 192,
+        "buttons": [
+          {
+            "width": 176,
+            "height": 112,
+            "x": 46,
+            "y": 244,
+            "scrollWidth": 176,
+            "clientWidth": 176,
+            "pressed": "false",
+            "label": "Английский"
+          },
+          {
+            "width": 176,
+            "height": 112,
+            "x": 46,
+            "y": 364,
+            "scrollWidth": 176,
+            "clientWidth": 176,
+            "pressed": "true",
+            "label": "Русский"
+          }
+        ]
+      }
+    },
+    {
+      "name": "selector keyboard focus 320px 200%",
+      "pass": true,
+      "focus": {
+        "focused": true,
+        "focusVisible": true,
+        "outline": "auto",
+        "outlineWidth": "1px",
+        "boxShadow": "none"
+      }
+    },
+    {
+      "name": "selector EN→RU 320px 200%",
+      "pass": true,
+      "english": "Language\nEnglish\nRussian",
+      "russian": "Язык\nАнглийский\nРусский"
+    },
+    {
+      "name": "selector RU localStorage 320px 200%",
+      "pass": true
+    },
+    {
+      "name": "selector RU reload 320px 200%",
+      "pass": true
+    },
+    {
+      "name": "selector EN roundtrip 320px 200%",
+      "pass": true
+    },
+    {
+      "name": "selector EN reload 320px 200%",
+      "pass": true
+    },
+    {
+      "name": "selector layout 1280px 100%",
+      "pass": true,
+      "geometry": {
+        "rootFont": "16px",
+        "viewport": 1280,
+        "documentWidth": 1280,
+        "hostWidth": 244,
+        "groupWidth": 216,
+        "groupScrollWidth": 216,
+        "buttons": [
+          {
+            "width": 208,
+            "height": 44,
+            "x": 190,
+            "y": 106,
+            "scrollWidth": 208,
+            "clientWidth": 208,
+            "pressed": "false",
+            "label": "Английский"
+          },
+          {
+            "width": 208,
+            "height": 44,
+            "x": 190,
+            "y": 154,
+            "scrollWidth": 208,
+            "clientWidth": 208,
+            "pressed": "true",
+            "label": "Русский"
+          }
+        ]
+      }
+    },
+    {
+      "name": "selector keyboard focus 1280px 100%",
+      "pass": true,
+      "focus": {
+        "focused": true,
+        "focusVisible": true,
+        "outline": "auto",
+        "outlineWidth": "1px",
+        "boxShadow": "none"
+      }
+    },
+    {
+      "name": "selector EN→RU 1280px 100%",
+      "pass": true,
+      "english": "Language\nEnglish\nRussian",
+      "russian": "Язык\nАнглийский\nРусский"
+    },
+    {
+      "name": "selector RU localStorage 1280px 100%",
+      "pass": true
+    },
+    {
+      "name": "selector RU reload 1280px 100%",
+      "pass": true
+    },
+    {
+      "name": "selector EN roundtrip 1280px 100%",
+      "pass": true
+    },
+    {
+      "name": "selector EN reload 1280px 100%",
+      "pass": true
+    },
+    {
+      "name": "selector layout 1280px 200%",
+      "pass": true,
+      "geometry": {
+        "rootFont": "32px",
+        "viewport": 1280,
+        "documentWidth": 1280,
+        "hostWidth": 244,
+        "groupWidth": 192,
+        "groupScrollWidth": 192,
+        "buttons": [
+          {
+            "width": 176,
+            "height": 112,
+            "x": 206,
+            "y": 196,
+            "scrollWidth": 176,
+            "clientWidth": 176,
+            "pressed": "false",
+            "label": "Английский"
+          },
+          {
+            "width": 176,
+            "height": 112,
+            "x": 206,
+            "y": 316,
+            "scrollWidth": 176,
+            "clientWidth": 176,
+            "pressed": "true",
+            "label": "Русский"
+          }
+        ]
+      }
+    },
+    {
+      "name": "selector keyboard focus 1280px 200%",
+      "pass": true,
+      "focus": {
+        "focused": true,
+        "focusVisible": true,
+        "outline": "auto",
+        "outlineWidth": "1px",
+        "boxShadow": "none"
+      }
+    },
+    {
+      "name": "selector EN→RU 1280px 200%",
+      "pass": true,
+      "english": "Language\nEnglish\nRussian",
+      "russian": "Язык\nАнглийский\nРусский"
+    },
+    {
+      "name": "selector RU localStorage 1280px 200%",
+      "pass": true
+    },
+    {
+      "name": "selector RU reload 1280px 200%",
+      "pass": true
+    },
+    {
+      "name": "selector EN roundtrip 1280px 200%",
+      "pass": true
+    },
+    {
+      "name": "selector EN reload 1280px 200%",
+      "pass": true
+    },
+    {
+      "name": "No handler calls on mount",
+      "pass": true,
+      "stats": {
+        "connect": 0,
+        "exit": 0,
+        "lastAppId": null,
+        "lastPrivateKeyLength": 0
+      }
+    },
+    {
+      "name": "Reconnect simulated once",
+      "pass": true
+    },
+    {
+      "name": "RoutinesToolbar query/sort localize",
+      "pass": true,
+      "englishToolbar": {
+        "aria": "Routines controls",
+        "query": "Search routines",
+        "placeholder": "Search routines…",
+        "sort": "Sort"
+      },
+      "russianToolbar": {
+        "aria": "Управление регламентами",
+        "query": "Поиск регламентов",
+        "placeholder": "Поиск регламентов…",
+        "sort": "Сортировка"
+      },
+      "englishSort": "Updated\nDesc\nCreated\nLast run\nTitle",
+      "russianSort": "Дата изменения\nПо убыванию\nДата создания\nПоследний запуск\nНазвание"
+    },
+    {
+      "name": "RoutinesToolbar preserves typed query",
+      "pass": true
+    },
+    {
+      "name": "GitHub recovery form accessible names and descriptions",
+      "pass": true,
+      "inputs": [
+        {
+          "id": "github-app-id",
+          "type": "text",
+          "name": "App ID",
+          "description": "github-app-id-help",
+          "descriptionPresent": true,
+          "invalid": "false"
+        },
+        {
+          "id": "",
+          "type": "file",
+          "name": "Загрузить PEM-файл закрытого ключа",
+          "description": null,
+          "descriptionPresent": true,
+          "invalid": null
+        },
+        {
+          "id": "github-private-key",
+          "type": "password",
+          "name": "Закрытый ключ",
+          "description": "github-private-key-help",
+          "descriptionPresent": true,
+          "invalid": "true"
+        }
+      ]
+    },
+    {
+      "name": "GitHub recovery preserves app identity and drafts in RU",
+      "pass": true
+    },
+    {
+      "name": "Locale changes do not connect or exit",
+      "pass": true
+    },
+    {
+      "name": "GitHub EN roundtrip preserves drafts and handlers",
+      "pass": true
+    },
+    {
+      "name": "RoutinesToolbar EN roundtrip",
+      "pass": true
+    },
+    {
+      "name": "Explicit actions call simulated handlers only",
+      "pass": true,
+      "stats": {
+        "connect": 2,
+        "exit": 1,
+        "lastAppId": "987654",
+        "lastPrivateKeyLength": 45
+      }
+    },
+    {
+      "name": "No component console errors",
+      "pass": true,
+      "consoleErrors": []
+    },
+    {
+      "name": "No external/API requests",
+      "pass": true,
+      "blockedRequests": []
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "blockedRequests": [],
+  "screenshots": [
+    "stable-selector-320-200-ru.png",
+    "stable-components-ru.png"
+  ],
+  "passed": true,
+  "packagePatchSha256": "dbb5e1ba9312c06cb276e4b19a94760e88aee9dca10516ae33904d9d49e10547",
+  "sourceHashes": {
+    "ui/src/components/LocaleSwitcher.tsx": "8398c378dc7265553ab65b8b5b8ef5577310f45ef51dd95a374d2ef7410d858f",
+    "ui/src/components/RoutinesToolbar.tsx": "73b630912a5f664ca40717e63b0a1dbcbb6f4c52251d35f1ad36a09b06a1fb8a",
+    "ui/src/pages/apps/chat/GitHubConnectionRecovery.tsx": "5f6df5298681e2dea13da5aba88ef87e7131a1a3e73d1bc1bb296f1611ebe3de"
+  },
+  "buildWarnings": [
+    "4 CSS optimizer warnings for ::highlight pseudo-elements in upstream CSS",
+    "Production fixture chunk larger than 500 kB"
+  ],
+  "visualInspection": [
+    "stable-selector-320-200-ru.png",
+    "stable-components-ru.png"
+  ],
+  "limitations": [
+    "Custom isolated fixture layout, not full application certification.",
+    "Only selector layout was checked at 320/1280 px and 100/200% root-font size.",
+    "GitHub callbacks are simulated; no production service or database is contacted."
+  ],
+  "screenshotSettlingMs": 300,
+  "settledSelectorStyles": [
+    {
+      "width": 320,
+      "zoom": 1,
+      "buttons": [
+        {
+          "lang": "en",
+          "pressed": "false",
+          "background": "rgba(0, 0, 0, 0)",
+          "color": "oklch(0.145 0 0)",
+          "focusVisible": false
+        },
+        {
+          "lang": "ru",
+          "pressed": "true",
+          "background": "oklch(0.97 0 0)",
+          "color": "oklch(0.145 0 0)",
+          "focusVisible": true
+        }
+      ]
+    },
+    {
+      "width": 320,
+      "zoom": 2,
+      "buttons": [
+        {
+          "lang": "en",
+          "pressed": "false",
+          "background": "rgba(0, 0, 0, 0)",
+          "color": "oklch(0.145 0 0)",
+          "focusVisible": false
+        },
+        {
+          "lang": "ru",
+          "pressed": "true",
+          "background": "oklch(0.97 0 0)",
+          "color": "oklch(0.145 0 0)",
+          "focusVisible": true
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "zoom": 1,
+      "buttons": [
+        {
+          "lang": "en",
+          "pressed": "false",
+          "background": "rgba(0, 0, 0, 0)",
+          "color": "oklch(0.145 0 0)",
+          "focusVisible": false
+        },
+        {
+          "lang": "ru",
+          "pressed": "true",
+          "background": "oklch(0.97 0 0)",
+          "color": "oklch(0.145 0 0)",
+          "focusVisible": true
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "zoom": 2,
+      "buttons": [
+        {
+          "lang": "en",
+          "pressed": "false",
+          "background": "rgba(0, 0, 0, 0)",
+          "color": "oklch(0.145 0 0)",
+          "focusVisible": false
+        },
+        {
+          "lang": "ru",
+          "pressed": "true",
+          "background": "oklch(0.97 0 0)",
+          "color": "oklch(0.145 0 0)",
+          "focusVisible": true
+        }
+      ]
+    }
+  ],
+  "additionalScreenshotsGeneratedNotBundled": [
+    "stable-selector-320-100-ru.png",
+    "stable-selector-1280-100-ru.png",
+    "stable-selector-1280-200-ru.png"
+  ]
+}

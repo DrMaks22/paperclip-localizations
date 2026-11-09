@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "ready": true,
-  "kitVersion": "v2026.11.3.1",
+  "kitVersion": "v2026.11.9.1",
   "releaseChannel": "stable",
-  "upstreamRef": "v2026.1023.0",
+  "upstreamRef": "v2026.1106.0",
   "runtimeProfile": "pinned-en-ru",
-  "baseCommit": "1b4c803816e82b0265c8422e1a804327a7ed8c54",
+  "baseCommit": "d69631b01b9c658f80bf8bed389863dce82643e1",
   "sourceCommit": "9cf846bbf6f174d0d394c4faf08c18d77f54bd38",
   "patchFile": "paperclip-localizations.patch",
-  "patchSha256": "6bef50080d765533057769c96b4265d6adbaacf7192087bdb56803877b03434d",
+  "patchSha256": "dbb5e1ba9312c06cb276e4b19a94760e88aee9dca10516ae33904d9d49e10547",
   "allowedPaths": [
     "scripts/locale-changes.d.mts",
     "scripts/locale-changes.mjs",
@@ -42,6 +42,7 @@
     "ui/src/components/ActivityCharts.tsx",
     "ui/src/components/ActivityChromeLocalization.test.tsx",
     "ui/src/components/ActivityFeed.tsx",
+    "ui/src/components/ActivityList.tsx",
     "ui/src/components/ActivityRow.localization.test.tsx",
     "ui/src/components/ActivityRow.tsx",
     "ui/src/components/ActivityTailLocalization.test.tsx",
@@ -67,8 +68,10 @@
     "ui/src/components/AgentMultiSelect.test.tsx",
     "ui/src/components/AgentMultiSelect.tsx",
     "ui/src/components/AgentProperties.tsx",
+    "ui/src/components/AgentRunnerSelect.tsx",
     "ui/src/components/AgentSecretAccessEditor.tsx",
     "ui/src/components/AgentSetupPrompt.tsx",
+    "ui/src/components/AgentsToolbar.tsx",
     "ui/src/components/AnimatedPaperclipIcon.test.tsx",
     "ui/src/components/AnimatedPaperclipIcon.tsx",
     "ui/src/components/AnnouncementCard.test.tsx",
@@ -90,6 +93,7 @@
     "ui/src/components/BillerSpendCard.tsx",
     "ui/src/components/BlockedInboxView.tsx",
     "ui/src/components/BlockedReasonChip.tsx",
+    "ui/src/components/BoardDialogs.tsx",
     "ui/src/components/BootstrapPendingPage.test.tsx",
     "ui/src/components/BootstrapPendingPage.tsx",
     "ui/src/components/BreadcrumbBar.production.tsx",
@@ -145,6 +149,8 @@
     "ui/src/components/DecisionShelf.tsx",
     "ui/src/components/DecisionTriageStrip.tsx",
     "ui/src/components/DecisionsToolbar.tsx",
+    "ui/src/components/DeferredOverlay.test.tsx",
+    "ui/src/components/DeferredOverlay.tsx",
     "ui/src/components/DevRestartBanner.test.tsx",
     "ui/src/components/DevRestartBanner.tsx",
     "ui/src/components/DispositionRecoveryNotice.test.tsx",
@@ -187,6 +193,8 @@
     "ui/src/components/GitHubAgentTrustWarning.tsx",
     "ui/src/components/GoalProperties.tsx",
     "ui/src/components/GoalTree.tsx",
+    "ui/src/components/GrokBotConnection.tsx",
+    "ui/src/components/GrokBotWorkSummary.tsx",
     "ui/src/components/HoneycombRunLink.tsx",
     "ui/src/components/HtmlArtifactPreview.tsx",
     "ui/src/components/ImageGalleryModal.tsx",
@@ -216,6 +224,7 @@
     "ui/src/components/IssueDocumentAnnotations.tsx",
     "ui/src/components/IssueDocumentsSection.tsx",
     "ui/src/components/IssueFieldChangeReceipt.tsx",
+    "ui/src/components/IssueFilterPanel.tsx",
     "ui/src/components/IssueFiltersPopover.test.tsx",
     "ui/src/components/IssueFiltersPopover.tsx",
     "ui/src/components/IssueLinkQuicklook.test.tsx",
@@ -235,12 +244,12 @@
     "ui/src/components/IssueRunLedger.tsx",
     "ui/src/components/IssueScheduledRetryCard.test.tsx",
     "ui/src/components/IssueScheduledRetryCard.tsx",
+    "ui/src/components/IssueShareSheet.test.tsx",
     "ui/src/components/IssueShareSheet.tsx",
     "ui/src/components/IssueSiblingNavigation.tsx",
     "ui/src/components/IssueThreadInteractionCard.tsx",
     "ui/src/components/IssueWorkspaceCard.tsx",
     "ui/src/components/IssueWriteDenialNotice.tsx",
-    "ui/src/components/IssuesList.test.tsx",
     "ui/src/components/IssuesList.tsx",
     "ui/src/components/JsonSchemaForm.localization.test.tsx",
     "ui/src/components/JsonSchemaForm.tsx",
@@ -266,6 +275,7 @@
     "ui/src/components/MembershipAction.tsx",
     "ui/src/components/MissingPluginTabPlaceholder.tsx",
     "ui/src/components/MobileBottomNav.tsx",
+    "ui/src/components/MuseRunnerConnection.tsx",
     "ui/src/components/NewGoalDialog.tsx",
     "ui/src/components/NewIssueDialog.test.tsx",
     "ui/src/components/NewIssueDialog.tsx",
@@ -273,15 +283,11 @@
     "ui/src/components/OnboardingChat.tsx",
     "ui/src/components/OnboardingWizard.test.tsx",
     "ui/src/components/OnboardingWizard.tsx",
+    "ui/src/components/OnboardingWizardVariant.tsx",
     "ui/src/components/OutputFeedbackButtons.tsx",
     "ui/src/components/PageTabBar.test.tsx",
     "ui/src/components/PageTabBar.tsx",
     "ui/src/components/PathInstructionsModal.tsx",
-    "ui/src/components/PipelineHealthWarnings.tsx",
-    "ui/src/components/PipelineItemBodyDocument.tsx",
-    "ui/src/components/PipelineLivenessBanner.tsx",
-    "ui/src/components/PipelineStageHistoryPanel.tsx",
-    "ui/src/components/PipelineWorkReferences.tsx",
     "ui/src/components/PluginAppShellOverlays.tsx",
     "ui/src/components/PluginLocalization.test.tsx",
     "ui/src/components/PluginOrganizationSwitcher.tsx",
@@ -293,10 +299,12 @@
     "ui/src/components/ProjectRepositoryInput.tsx",
     "ui/src/components/ProjectWorkspaceSummaryCard.tsx",
     "ui/src/components/ProjectWorkspacesContent.tsx",
+    "ui/src/components/ProjectsToolbar.tsx",
     "ui/src/components/PropertiesPanel.tsx",
     "ui/src/components/ProviderQuotaCard.tsx",
     "ui/src/components/ProviderTraceStatusBadge.tsx",
     "ui/src/components/ReportsToPicker.tsx",
+    "ui/src/components/RepositoryBranchSelect.tsx",
     "ui/src/components/RepositoryEditor.localization.test.tsx",
     "ui/src/components/RepositoryEditor.tsx",
     "ui/src/components/ResourceStatusChip.tsx",
@@ -315,6 +323,7 @@
     "ui/src/components/RoutineSubSidebar.tsx",
     "ui/src/components/RoutineTriggerCard.tsx",
     "ui/src/components/RoutineVariablesEditor.tsx",
+    "ui/src/components/RoutinesToolbar.tsx",
     "ui/src/components/RunChatSurface.tsx",
     "ui/src/components/RunIdentityHistory.localization.test.tsx",
     "ui/src/components/RunIdentityHistory.tsx",
@@ -376,18 +385,26 @@
     "ui/src/components/SystemNotice.tsx",
     "ui/src/components/TaskChatThread.test.tsx",
     "ui/src/components/TaskChatThread.tsx",
+    "ui/src/components/TaskListColumns.tsx",
+    "ui/src/components/TaskListToolbar.tsx",
+    "ui/src/components/TaskSummaryList.tsx",
     "ui/src/components/TaskTreeControls.tsx",
     "ui/src/components/TaskViewsMenu.tsx",
     "ui/src/components/ThemeToggle.tsx",
     "ui/src/components/ToastViewport.tsx",
+    "ui/src/components/ToolbarSearch.tsx",
     "ui/src/components/TranscriptChromeLocalization.test.tsx",
     "ui/src/components/TrustPresetSection.test.tsx",
     "ui/src/components/TrustPresetSection.tsx",
     "ui/src/components/Workspace.localization.test.tsx",
     "ui/src/components/WorkspaceAccessCard.tsx",
+    "ui/src/components/WorkspaceBaseRefRecovery.tsx",
     "ui/src/components/WorkspaceBaseRefRecoveryNotice.tsx",
     "ui/src/components/WorkspaceExportRecovery.tsx",
     "ui/src/components/WorkspaceFileBrowser.tsx",
+    "ui/src/components/WorkspaceReconstructionRecovery.test.tsx",
+    "ui/src/components/WorkspaceReconstructionRecovery.tsx",
+    "ui/src/components/WorkspaceRetryButton.tsx",
     "ui/src/components/WorkspaceRuntimeControls.tsx",
     "ui/src/components/WorkspaceServiceControlBar.tsx",
     "ui/src/components/WorktreeBanner.tsx",
@@ -399,6 +416,8 @@
     "ui/src/components/actions/ActionCard.tsx",
     "ui/src/components/agent-config-primitives.tsx",
     "ui/src/components/agent-setup.localization.test.tsx",
+    "ui/src/components/agents/AgentBulkRoster.tsx",
+    "ui/src/components/agents/AgentBulkSettingsSheet.tsx",
     "ui/src/components/ai-connections/AiConnectionAccountControls.tsx",
     "ui/src/components/ai-connections/AiConnectionAuth.test.tsx",
     "ui/src/components/ai-connections/AiConnectionAuth.tsx",
@@ -423,12 +442,32 @@
     "ui/src/components/ai-connections/useLocalAiLogin.test.tsx",
     "ui/src/components/ai-connections/useLocalAiLogin.ts",
     "ui/src/components/artifacts/ArtifactCard.tsx",
+    "ui/src/components/artifacts/ArtifactDropzone.tsx",
     "ui/src/components/artifacts/ArtifactGroupCard.tsx",
     "ui/src/components/artifacts/ArtifactLocalization.test.tsx",
+    "ui/src/components/artifacts/ArtifactUploadArea.tsx",
+    "ui/src/components/artifacts/ArtifactUploadControls.tsx",
+    "ui/src/components/artifacts/ArtifactsToolbar.tsx",
     "ui/src/components/artifacts/IssueArtifactCard.tsx",
     "ui/src/components/artifacts/IssueArtifactFile.test.tsx",
     "ui/src/components/artifacts/MediaArtifactCard.tsx",
     "ui/src/components/artifacts/RichArtifactCards.tsx",
+    "ui/src/components/artifacts/v1/ArtifactFileRow.test.tsx",
+    "ui/src/components/artifacts/v1/ArtifactFileRow.tsx",
+    "ui/src/components/artifacts/v1/ArtifactRow.tsx",
+    "ui/src/components/artifacts/v1/ArtifactSheet.tsx",
+    "ui/src/components/artifacts/v1/ArtifactTile.tsx",
+    "ui/src/components/artifacts/v1/ArtifactsV1Filters.tsx",
+    "ui/src/components/artifacts/v1/WorkProductState.tsx",
+    "ui/src/components/artifacts/v1/adapters.ts",
+    "ui/src/components/artifacts/v1/kinds.ts",
+    "ui/src/components/artifacts/v1/when.ts",
+    "ui/src/components/cases/CaseDocumentPreview.tsx",
+    "ui/src/components/cases/CaseHandoffHistory.tsx",
+    "ui/src/components/cases/CaseListControls.tsx",
+    "ui/src/components/cases/CaseListRow.tsx",
+    "ui/src/components/cases/CaseStatus.tsx",
+    "ui/src/components/cases/CaseWorkSummary.tsx",
     "ui/src/components/chat/AgentChannelsPanel.tsx",
     "ui/src/components/chat/AgentWorkPanels.tsx",
     "ui/src/components/chat/ChatDetailSidebar.test.tsx",
@@ -469,8 +508,11 @@
     "ui/src/components/new-agent/ExternalAgentInviteContent.localization.test.tsx",
     "ui/src/components/new-agent/ExternalAgentInviteContent.tsx",
     "ui/src/components/new-agent/ExternalAgentInviteDialog.tsx",
+    "ui/src/components/new-agent/GrokBotSetup.render.test.tsx",
+    "ui/src/components/new-agent/GrokBotSetupContent.tsx",
     "ui/src/components/new-agent/NewAgentSetup.localization.test.tsx",
     "ui/src/components/new-agent/NewAgentSetup.tsx",
+    "ui/src/components/observability/AgentObservabilitySettings.tsx",
     "ui/src/components/onboarding/ConnectModelPreview.test.tsx",
     "ui/src/components/onboarding/ConnectModelPreview.tsx",
     "ui/src/components/onboarding/CredentialModeLink.tsx",
@@ -479,6 +521,7 @@
     "ui/src/components/onboarding/SavedProviderKeySelect.tsx",
     "ui/src/components/onboarding/Stepper.tsx",
     "ui/src/components/primary-agent/PrimaryAgentPresentation.tsx",
+    "ui/src/components/prompt-injection-prevention/PromptInjectionPreventionSettings.tsx",
     "ui/src/components/routine-sections/context.tsx",
     "ui/src/components/routine-sections/editable-sections.production.tsx",
     "ui/src/components/routine-sections/editable-sections.test.tsx",
@@ -510,9 +553,16 @@
     "ui/src/components/skill-studio/AgentsUsingSkillDialog.tsx",
     "ui/src/components/skill-studio/ForkSkillDialog.test.tsx",
     "ui/src/components/skill-studio/ForkSkillDialog.tsx",
+    "ui/src/components/skill-studio/ProjectSkillRepositoryRow.tsx",
     "ui/src/components/skill-studio/SkillPolicySurfaces.tsx",
     "ui/src/components/skill-studio/SkillProvenance.test.tsx",
     "ui/src/components/skill-studio/SkillProvenance.tsx",
+    "ui/src/components/skill-studio/SkillSourceBranchRepair.tsx",
+    "ui/src/components/skill-studio/SkillSourceBranchRepairDialog.tsx",
+    "ui/src/components/skill-studio/SkillSourceConnectionRepair.tsx",
+    "ui/src/components/skill-studio/SkillSourceSyncControls.tsx",
+    "ui/src/components/skill-studio/SkillsNavigationTabs.tsx",
+    "ui/src/components/skill-studio/SkillsToolbar.tsx",
     "ui/src/components/task-chat/ComposerAddMenu.localization.test.tsx",
     "ui/src/components/task-chat/ComposerAddMenu.tsx",
     "ui/src/components/task-chat/ComposerRunSettingsPicker.test.tsx",
@@ -551,6 +601,7 @@
     "ui/src/components/task-chat/TaskChatQueuedMessages.tsx",
     "ui/src/components/task-chat/TaskChatRichInput.tsx",
     "ui/src/components/task-chat/TaskChatRunnerActivityGroup.tsx",
+    "ui/src/components/task-chat/TaskChatRunnerTurn.test.tsx",
     "ui/src/components/task-chat/TaskChatRunnerTurn.tsx",
     "ui/src/components/task-chat/TaskChatSep12Localization.test.tsx",
     "ui/src/components/task-chat/TaskChatSkillCreatedCard.test.tsx",
@@ -582,6 +633,8 @@
     "ui/src/components/task-chat/task-chat-phase-summary-display.ts",
     "ui/src/components/task-chat/task-chat-states.ts",
     "ui/src/components/task-chat/task-protocol-surfaces.ts",
+    "ui/src/components/task-chat/transcript-adapter.ts",
+    "ui/src/components/task-chat/transcript-display-copy.ts",
     "ui/src/components/task-detail/IssueCreatedFromNote.tsx",
     "ui/src/components/task-detail/TaskDetailRelationsPanel.tsx",
     "ui/src/components/task-detail/TaskDetailTasksPanel.test.tsx",
@@ -600,11 +653,26 @@
     "ui/src/components/timeline/WorkTimelineChart.tsx",
     "ui/src/components/transcript/RunTranscriptView.tsx",
     "ui/src/components/transcript/TranscriptLocalization.test.tsx",
+    "ui/src/components/transcript/native-run-events.ts",
     "ui/src/components/ui/breadcrumb.tsx",
     "ui/src/components/ui/command.localization.test.tsx",
     "ui/src/components/ui/command.tsx",
     "ui/src/components/ui/dialog.tsx",
     "ui/src/components/ui/sheet.tsx",
+    "ui/src/components/voice/NativeVoiceConversation.tsx",
+    "ui/src/components/voice/SpekoCallHistory.tsx",
+    "ui/src/components/voice/SpekoIncomingCalls.test.tsx",
+    "ui/src/components/voice/SpekoIncomingCalls.tsx",
+    "ui/src/components/voice/SpekoPhoneCallback.tsx",
+    "ui/src/components/voice/SpekoPhoneLine.tsx",
+    "ui/src/components/voice/SpekoProviderSetup.tsx",
+    "ui/src/components/voice/TaskVoiceLauncher.tsx",
+    "ui/src/components/voice/VoiceCallProvider.tsx",
+    "ui/src/components/voice/VoiceControls.tsx",
+    "ui/src/components/voice/VoiceConversationPanel.tsx",
+    "ui/src/components/voice/VoiceTranscript.tsx",
+    "ui/src/components/voice/voice-display.ts",
+    "ui/src/components/workspace-recovery-copy.ts",
     "ui/src/context/LiveUpdatesProvider.localization.test.ts",
     "ui/src/context/LiveUpdatesProvider.tsx",
     "ui/src/context/PrimaryAgentProvider.tsx",
@@ -619,6 +687,7 @@
     "ui/src/features/connections/ConnectionIntentInteractionBody.tsx",
     "ui/src/features/connections/ConnectionSetupFlow.tsx",
     "ui/src/features/connections/ConnectionSetupHeader.tsx",
+    "ui/src/features/connections/GoogleWorkspaceServices.tsx",
     "ui/src/features/connections/HonchoWorkspaceSettings.tsx",
     "ui/src/features/connections/remote-mcp/RemoteMcpAccountChoice.tsx",
     "ui/src/features/connections/remote-mcp/RemoteMcpConnectionSetup.tsx",
@@ -668,6 +737,7 @@
     "ui/src/lib/company-export-selection.ts",
     "ui/src/lib/company-members.localization.test.ts",
     "ui/src/lib/company-members.ts",
+    "ui/src/lib/credential-access-notice.test.ts",
     "ui/src/lib/credential-access-notice.ts",
     "ui/src/lib/cron-readable.test.ts",
     "ui/src/lib/cron-readable.ts",
@@ -689,13 +759,11 @@
     "ui/src/lib/issue-timeline-events.ts",
     "ui/src/lib/issue-timeline-workspace-localization.test.ts",
     "ui/src/lib/issueDetailBreadcrumb.ts",
+    "ui/src/lib/localized-ui-error.ts",
     "ui/src/lib/managed-sandbox-environment.ts",
-    "ui/src/lib/pipeline-breakdown.ts",
-    "ui/src/lib/pipeline-item-detail.ts",
-    "ui/src/lib/pipeline-learnings.ts",
-    "ui/src/lib/pipeline-liveness.ts",
-    "ui/src/lib/pipeline-references.ts",
     "ui/src/lib/plugin-display.ts",
+    "ui/src/lib/qualify-claude-setup.test.ts",
+    "ui/src/lib/qualify-claude-setup.ts",
     "ui/src/lib/queued-message-display.test.ts",
     "ui/src/lib/queued-message-display.ts",
     "ui/src/lib/quota-refresh.ts",
@@ -707,11 +775,13 @@
     "ui/src/lib/routine-run-display.ts",
     "ui/src/lib/runRetryState.localization.test.ts",
     "ui/src/lib/runRetryState.ts",
+    "ui/src/lib/sandbox-provider-display.ts",
     "ui/src/lib/saved-provider-credentials.test.ts",
     "ui/src/lib/saved-provider-credentials.ts",
     "ui/src/lib/search-filters.ts",
     "ui/src/lib/search-query-parser.ts",
     "ui/src/lib/secret-delivery.ts",
+    "ui/src/lib/settings-localization.ts",
     "ui/src/lib/skill-policy-denial.test.ts",
     "ui/src/lib/skill-policy-denial.ts",
     "ui/src/lib/skill-studio.ts",
@@ -728,12 +798,16 @@
     "ui/src/lib/timeAgo.ts",
     "ui/src/lib/timeline/layout.ts",
     "ui/src/lib/tool-installs.ts",
+    "ui/src/lib/toolbar-localization.ts",
     "ui/src/lib/transcriptPresentation.ts",
     "ui/src/lib/trust-policy-ui.ts",
     "ui/src/lib/use-copy-action.test.tsx",
     "ui/src/lib/use-copy-action.ts",
     "ui/src/lib/utils-localization.test.ts",
     "ui/src/lib/utils.ts",
+    "ui/src/lib/vite-startup-localization.ts",
+    "ui/src/lib/voice-session-controller.ts",
+    "ui/src/lib/voice-transcript.ts",
     "ui/src/lib/work-mode-meta.ts",
     "ui/src/lib/workspace-access-state.ts",
     "ui/src/lib/workspace-restore-marker.test.ts",
@@ -746,6 +820,7 @@
     "ui/src/pages/AgentChats.tsx",
     "ui/src/pages/AgentDetail.production.tsx",
     "ui/src/pages/AgentDetail.tsx",
+    "ui/src/pages/AgentDetailPage.tsx",
     "ui/src/pages/AgentOverview.test.tsx",
     "ui/src/pages/AgentToolsTab.test.tsx",
     "ui/src/pages/AgentToolsTab.tsx",
@@ -755,6 +830,7 @@
     "ui/src/pages/ApprovalDetail.localization.test.tsx",
     "ui/src/pages/ApprovalDetail.tsx",
     "ui/src/pages/Approvals.tsx",
+    "ui/src/pages/Artifacts.test.tsx",
     "ui/src/pages/Artifacts.tsx",
     "ui/src/pages/Auth.tsx",
     "ui/src/pages/BoardChat.test.tsx",
@@ -814,9 +890,6 @@
     "ui/src/pages/OrgChart.production.tsx",
     "ui/src/pages/OrgChart.test.tsx",
     "ui/src/pages/OrgChart.tsx",
-    "ui/src/pages/PipelineSettings.tsx",
-    "ui/src/pages/Pipelines.localization.test.tsx",
-    "ui/src/pages/Pipelines.tsx",
     "ui/src/pages/PluginManager.tsx",
     "ui/src/pages/PluginPage.tsx",
     "ui/src/pages/PluginSettings.test.tsx",
@@ -884,6 +957,7 @@
     "ui/src/pages/apps/ConnectionProvenanceChip.tsx",
     "ui/src/pages/apps/Connections.test.tsx",
     "ui/src/pages/apps/Connections.tsx",
+    "ui/src/pages/apps/ConnectorsToolbar.tsx",
     "ui/src/pages/apps/ExecutorManagementSetup.tsx",
     "ui/src/pages/apps/PaperclipCloudOAuthHandoff.test.tsx",
     "ui/src/pages/apps/PaperclipCloudOAuthHandoff.tsx",
@@ -915,6 +989,7 @@
     "ui/src/pages/apps/chat/ChatEndpoint.clipboard.test.tsx",
     "ui/src/pages/apps/chat/ChatEndpointDetail.tsx",
     "ui/src/pages/apps/chat/ChatEndpointSetup.tsx",
+    "ui/src/pages/apps/chat/ChatExecutionDefaults.tsx",
     "ui/src/pages/apps/chat/ChatIdentityConfirm.tsx",
     "ui/src/pages/apps/chat/EmailEndpointSetup.tsx",
     "ui/src/pages/apps/chat/GitHubAppIdentity.tsx",
@@ -922,16 +997,17 @@
     "ui/src/pages/apps/chat/GitHubBotManagement.tsx",
     "ui/src/pages/apps/chat/GitHubChatSetup.tsx",
     "ui/src/pages/apps/chat/GitHubConnectionComplete.tsx",
+    "ui/src/pages/apps/chat/GitHubConnectionRecovery.tsx",
     "ui/src/pages/apps/chat/GitHubSetupPrompt.tsx",
     "ui/src/pages/apps/chat/Oct26Apps.localization.test.tsx",
     "ui/src/pages/apps/chat/Photon.localization.test.tsx",
     "ui/src/pages/apps/chat/PhotonConnectStep.tsx",
     "ui/src/pages/apps/chat/SlackAppDetails.tsx",
-    "ui/src/pages/apps/chat/SlackAutomaticSetup.tsx",
     "ui/src/pages/apps/chat/SlackAvatarStep.tsx",
     "ui/src/pages/apps/chat/SlackIdentityStep.tsx",
     "ui/src/pages/apps/chat/SlackSetupPrompt.test.tsx",
     "ui/src/pages/apps/chat/SlackSetupPrompt.tsx",
+    "ui/src/pages/apps/chat/SlackTestMessageButton.tsx",
     "ui/src/pages/apps/chat/SlackToolSettings.tsx",
     "ui/src/pages/apps/chat/chat-activity-copy.test.ts",
     "ui/src/pages/apps/chat/chat-activity-copy.ts",
@@ -943,6 +1019,10 @@
     "ui/src/pages/apps/chat/manifest-protocol.test.ts",
     "ui/src/pages/apps/chat/photon-copy.ts",
     "ui/src/pages/apps/chat/slack-registration-copy.ts",
+    "ui/src/pages/apps/chat/slack/ManagedSlackSetup.tsx",
+    "ui/src/pages/apps/chat/slack/OwnSlackAppSetup.tsx",
+    "ui/src/pages/apps/chat/slack/setup-state.test.ts",
+    "ui/src/pages/apps/chat/slack/setup-state.ts",
     "ui/src/pages/apps/connection-identity.ts",
     "ui/src/pages/apps/connection-owner.tsx",
     "ui/src/pages/apps/gateways/ConnectClientDialog.test.tsx",
@@ -963,14 +1043,16 @@
     "ui/src/pages/apps/gateways/panels/TokensPanel.tsx",
     "ui/src/pages/apps/generic-mcp-connect.ts",
     "ui/src/pages/apps/setup-display.test.ts",
+    "ui/src/pages/audit/AgentCommentary.test.tsx",
+    "ui/src/pages/audit/AgentCommentary.tsx",
     "ui/src/pages/audit/AuditFeed.production.tsx",
     "ui/src/pages/audit/AuditFeed.test.tsx",
     "ui/src/pages/audit/AuditFeed.tsx",
     "ui/src/pages/audit/AuditHub.tsx",
     "ui/src/pages/audit/AuditRuns.tsx",
-    "ui/src/pages/audit/CompanyActivity.production.tsx",
     "ui/src/pages/audit/CompanyActivity.tsx",
     "ui/src/pages/audit/RoutineAuditActivity.tsx",
+    "ui/src/pages/audit/audit-navigation.ts",
     "ui/src/pages/audit/localization.test.ts",
     "ui/src/pages/secrets/ImportFromVaultDialog.tsx",
     "ui/src/pages/secrets/MissingUserSecretsBanner.tsx",
@@ -984,6 +1066,7 @@
     "ui/src/pages/secrets/user-secret-presentation.tsx",
     "ui/src/pages/skills/ImportSkillsFromProjectDialog.tsx",
     "ui/src/pages/skills/SkillImportProgress.tsx",
+    "ui/src/pages/skills/SkillImportWarnings.tsx",
     "ui/src/pages/skills/SkillPackagePreview.tsx",
     "ui/src/pages/skills/SkillSourceTree.tsx",
     "ui/src/pages/tools/AdvancedToolsRoute.tsx",
@@ -994,6 +1077,7 @@
     "ui/src/pages/tools/PasteConfigTab.tsx",
     "ui/src/pages/tools/ProfilesTab.tsx",
     "ui/src/pages/tools/SmokeLabTab.tsx",
+    "ui/src/pages/tools/ToolRoleAccess.test.tsx",
     "ui/src/pages/tools/ToolsAccess.tsx",
     "ui/src/pages/tools/connection-dialogs.tsx",
     "ui/src/pages/tools/profiles/ProfileActionDialog.tsx",
@@ -1032,11 +1116,11 @@
       "mode": "100644"
     },
     "ui/src/App.tsx": {
-      "sha256": "a85a2e2a52f3f5f5d34000c37f0d1674dd551d44b12951c4731810b267817d8e",
+      "sha256": "1d315acb1db9cd383a60a367d08844b61d9f4dc45d1d957b7a77a40f4f75cb9e",
       "mode": "100644"
     },
     "ui/src/adapters/adapter-display-registry.ts": {
-      "sha256": "c939a856cfda1b1ef09a13363ceb53b484f91fe9d1fb8bd96a4dae4a4847e201",
+      "sha256": "2fadd4a7f1864c90e7854249decd11bb86d9c346b77e9c1f8b201c7c43e49562",
       "mode": "100644"
     },
     "ui/src/adapters/claude-local/config-fields.tsx": {
@@ -1048,11 +1132,11 @@
       "mode": "100644"
     },
     "ui/src/adapters/codex-local/config-fields.test.tsx": {
-      "sha256": "584a00d975b9265babe4501cd3d6585723d4dc0af0d507bd7610daf0363f5c17",
+      "sha256": "87a249aefaf82ef4ec4cef6434834d317ffeb0a103ced3e256355c2c1daab979",
       "mode": "100644"
     },
     "ui/src/adapters/codex-local/config-fields.tsx": {
-      "sha256": "437d84b6a122dac1cd2e59c162e78203ca93ca1e78249d9fefaf742bd8f7b543",
+      "sha256": "fff92c48368c2647bb5cd23e0eb3e8538f3f3b83e88391850ec1a3aff3d37e14",
       "mode": "100644"
     },
     "ui/src/adapters/cursor/config-fields.tsx": {
@@ -1112,7 +1196,7 @@
       "mode": "100644"
     },
     "ui/src/api/issues.ts": {
-      "sha256": "1410d949a7337b927a1e13b9264eadcb45ea23674defc90a7235eb8f95053279",
+      "sha256": "6f8e77dd806bc35d02621c48cc95980ebdc5b1a34d3daffcbf5e0ea1284e2c0a",
       "mode": "100644"
     },
     "ui/src/components/AccountQuotaPanels.tsx": {
@@ -1140,11 +1224,15 @@
       "mode": "100644"
     },
     "ui/src/components/ActivityChromeLocalization.test.tsx": {
-      "sha256": "f4a52d64a9ea887fa5b24df792eced6c20a7d83fb5fed117d43c89fb091d8f9e",
+      "sha256": "6ab42c36ccec52a53a05fbd7c6de8ccf59346fbe6181ecb0237a0524d5c1d8e6",
       "mode": "100644"
     },
     "ui/src/components/ActivityFeed.tsx": {
       "sha256": "bafa620afa01f56bba6f84947a39dabbfe9129d3bbd430968b9d9acf4b0e5f84",
+      "mode": "100644"
+    },
+    "ui/src/components/ActivityList.tsx": {
+      "sha256": "e2a81fd06e32015614b02440c6a0bfcacbc28d5efc4ef6cb1fc1904edd1cc76b",
       "mode": "100644"
     },
     "ui/src/components/ActivityRow.localization.test.tsx": {
@@ -1152,11 +1240,11 @@
       "mode": "100644"
     },
     "ui/src/components/ActivityRow.tsx": {
-      "sha256": "f86850dbfd34c9c0010de3710bfd35f0ad61cb860abcf38c5dc74240d50c9a0e",
+      "sha256": "aeaada6dc33438df965ea88efc271f6e1db3b4852ea82d3a53f4748a630bebaf",
       "mode": "100644"
     },
     "ui/src/components/ActivityTailLocalization.test.tsx": {
-      "sha256": "984b450acb686711f74d0d66153f2f92bc3ae230e5e24d793d62646dfe0bcae8",
+      "sha256": "c0babc9328e781bf088b75e3a808efad17db7834bf2a1af65a1a20ecc1d340c4",
       "mode": "100644"
     },
     "ui/src/components/AdapterLoginChrome.localization.test.tsx": {
@@ -1168,11 +1256,11 @@
       "mode": "100644"
     },
     "ui/src/components/AgentActionButtons.tsx": {
-      "sha256": "98e20df0e98aac61c6fbb16a2d04cfaf8d58ae40832327c1a1e1db508f178b2d",
+      "sha256": "3d590dde6a6f3058a32271dea611b399d856ad556a24e3185f99335e50713e8b",
       "mode": "100644"
     },
     "ui/src/components/AgentAvatar.tsx": {
-      "sha256": "9b1bb7e3649496f6f11d5b82f7139744e3cba096016ceb53d3e2041b3cac5a8b",
+      "sha256": "6e30439041edc9a6cd0d97396e6aabb5f4b3a4381e19542c8b54d7690633f3da",
       "mode": "100644"
     },
     "ui/src/components/AgentAvatarDownload.tsx": {
@@ -1204,15 +1292,15 @@
       "mode": "100644"
     },
     "ui/src/components/AgentConfigForm.render.test.tsx": {
-      "sha256": "c2b3fae596373ddca30e10d5ba519c7bbb7405c295721ad6af2fefdc84698825",
+      "sha256": "9aaa5990e7acfc4b3874e3fa8383a412b4e8b0bb54b29a0dce55ccc133847f89",
       "mode": "100644"
     },
     "ui/src/components/AgentConfigForm.tsx": {
-      "sha256": "8cf9181fd62bf60904df0060ed364b1c2d533094b8d19a4aa5bec8302ce84481",
+      "sha256": "1808aaf87611d5782251b11de78c1288f5f762fe142bca61450fb635d3889cc6",
       "mode": "100644"
     },
     "ui/src/components/AgentContextualSidebar.tsx": {
-      "sha256": "1ffdc831a44af077983fb3d41f33efd58b5681e28ea339983c6109d3fdb3077c",
+      "sha256": "f569d06664c0d35937405a1a5670242dba4763a1be33db0f471434df0dac2d51",
       "mode": "100644"
     },
     "ui/src/components/AgentConversationSidebar.localization.test.tsx": {
@@ -1232,7 +1320,7 @@
       "mode": "100644"
     },
     "ui/src/components/AgentLifecycleStatus.tsx": {
-      "sha256": "dff2837e74ca9cb280aac0440c63d7b0cb33b70ddd7591fe91e5e412d90b93f3",
+      "sha256": "80867300f43c4e0883a27def01080af4a5f5434aa5daebb1a8b34a28161a972f",
       "mode": "100644"
     },
     "ui/src/components/AgentMultiSelect.test.tsx": {
@@ -1244,7 +1332,11 @@
       "mode": "100644"
     },
     "ui/src/components/AgentProperties.tsx": {
-      "sha256": "1674bd8613b4d008cf348a0cb350c56970753fad0ff8ef3bcc6814401969e02d",
+      "sha256": "e155da1d0cafd5f2dfa2aef45d7054b13dc83a29833810361d0510ef79754093",
+      "mode": "100644"
+    },
+    "ui/src/components/AgentRunnerSelect.tsx": {
+      "sha256": "f3f0e85a07e659a7f8599d783d3e3c8f43bdef9551ec497d3da6e5c43960e851",
       "mode": "100644"
     },
     "ui/src/components/AgentSecretAccessEditor.tsx": {
@@ -1252,7 +1344,11 @@
       "mode": "100644"
     },
     "ui/src/components/AgentSetupPrompt.tsx": {
-      "sha256": "0342d3ce9aacd2f457de8d241a641cba7f289e60b0bc0c27e859b09763321311",
+      "sha256": "482d448d671b2d78be9a95884da75e34673381d40f7af6c369dd8179da93d9bc",
+      "mode": "100644"
+    },
+    "ui/src/components/AgentsToolbar.tsx": {
+      "sha256": "89e015f200a979e35b241127e6fb5159a9e734d7decfd549586d75e85f5ca92f",
       "mode": "100644"
     },
     "ui/src/components/AnimatedPaperclipIcon.test.tsx": {
@@ -1320,7 +1416,7 @@
       "mode": "100644"
     },
     "ui/src/components/AttentionLocalization.test.tsx": {
-      "sha256": "3e7213c03d772324475cb2d65d4903a22d6eb53c919235fa5584af54d4ac1be0",
+      "sha256": "5fe774804c23f4e58f8cd64c2a4ddcaaa9bca2392bd250f9786e92184658cde4",
       "mode": "100644"
     },
     "ui/src/components/AttentionQueueRow.tsx": {
@@ -1332,11 +1428,15 @@
       "mode": "100644"
     },
     "ui/src/components/BlockedInboxView.tsx": {
-      "sha256": "67a156de47e47f422675887b5fb746973c90bafb7991b5c1d47f7c005699d930",
+      "sha256": "859137bf0fd48fbfb4f54505b5e9940d135a71ff89a5e9f4f41b60915f955f91",
       "mode": "100644"
     },
     "ui/src/components/BlockedReasonChip.tsx": {
       "sha256": "0d870312e73be624a827ca7ddd3ba7899dd8c895cac31cfd3c220ae31d6090f7",
+      "mode": "100644"
+    },
+    "ui/src/components/BoardDialogs.tsx": {
+      "sha256": "599b52bf612ff15543a123b2b9353d146767d2a3e9711a38a497f722a120117e",
       "mode": "100644"
     },
     "ui/src/components/BootstrapPendingPage.test.tsx": {
@@ -1360,7 +1460,7 @@
       "mode": "100644"
     },
     "ui/src/components/BudgetIncidentCard.tsx": {
-      "sha256": "8d5981d5f0972605cd0732030e90cb74375daedab90c9fe6760d7de7bf4e019f",
+      "sha256": "cf322dd80ca2e1487f5f874bbb974caa2450e2121f1713ebb61a42409d664ee0",
       "mode": "100644"
     },
     "ui/src/components/BudgetPolicyCard.tsx": {
@@ -1388,7 +1488,7 @@
       "mode": "100644"
     },
     "ui/src/components/CaseActivityFeed.tsx": {
-      "sha256": "fe318b74e466789c34b9bccc2f9dd9a0cf6a1ff456b09931d0f81cb0b0301548",
+      "sha256": "6fafd386dc5f7714f00fc1e2d863be2b6504398834138971f0399aaf30a29ede",
       "mode": "100644"
     },
     "ui/src/components/CaseAttachmentsGallery.tsx": {
@@ -1400,7 +1500,7 @@
       "mode": "100644"
     },
     "ui/src/components/CaseFieldsPanel.tsx": {
-      "sha256": "dbeeecb196ae1f35be509e921b70ea7756b157b082a28453a9828ad03725a222",
+      "sha256": "8b0a662cf267d53a4f99df3936fd30bf67e3e77d48f36863342b5d381b9a8b5e",
       "mode": "100644"
     },
     "ui/src/components/CaseIdentifierKey.tsx": {
@@ -1412,7 +1512,7 @@
       "mode": "100644"
     },
     "ui/src/components/CaseRevisionRail.tsx": {
-      "sha256": "dd0f65ae7a61724dfe683f026cd3bec2654c3757ba224f50de20a04c44e75ef0",
+      "sha256": "2fc5282f49153be5836ef92270a62bae270bb015f3e0a3e6b8e10115eae416d0",
       "mode": "100644"
     },
     "ui/src/components/ChatComposer.test.tsx": {
@@ -1460,11 +1560,11 @@
       "mode": "100644"
     },
     "ui/src/components/CommentThread.test.tsx": {
-      "sha256": "5bc1c83e8f396c5757aa4ab31dfd4017e7f6f33e77c8076a521de7529e80499e",
+      "sha256": "b8786250025a37f4d1e3f64adcb054044ff3d19b64f05a6b991f5b3017eb9cfe",
       "mode": "100644"
     },
     "ui/src/components/CommentThread.tsx": {
-      "sha256": "ece3099072dc7ab20bacfffc81be33473bdecddfc812e249356c49113ac86aa1",
+      "sha256": "0dda5526e1d359db4b25f5392de3d4a01057afbb11de55b42061a31bf62643ec",
       "mode": "100644"
     },
     "ui/src/components/CompanyPatternIcon.tsx": {
@@ -1472,15 +1572,15 @@
       "mode": "100644"
     },
     "ui/src/components/CompanySettingsSidebar.production.tsx": {
-      "sha256": "a02fa6d5345f7cf2c02cd63d6cd02ba6ba09de5fc41b7fc4977a28a603424eb5",
+      "sha256": "5f25e999772990889b56e17e31c4fdda1a40aa9f65c981bc25fba46f5d317aef",
       "mode": "100644"
     },
     "ui/src/components/CompanySettingsSidebar.test.tsx": {
-      "sha256": "0fba4b4589550cf3fd3ec129a400b3f33f86d8fa39834e4d61bf3c3be0a5d2cf",
+      "sha256": "dccc653ac39cf68338647be9b89ef21fed67c5c5afe50f660565c8ca79c8a918",
       "mode": "100644"
     },
     "ui/src/components/CompanySettingsSidebar.tsx": {
-      "sha256": "df419651bcc65ffc8e42efbe609d3d0f88ab75a546b7c3454c42717cc0514f36",
+      "sha256": "558ab4ef0c4f29ab553c50d700c659aae050c77aa0e35b0e034d825fa3f809f4",
       "mode": "100644"
     },
     "ui/src/components/CompanySwitcher.tsx": {
@@ -1488,11 +1588,11 @@
       "mode": "100644"
     },
     "ui/src/components/ConfigureBuiltInAgentModal.test.tsx": {
-      "sha256": "cdf0f3d474716bf388bce20420f69b56e6486e8a07a48027c4d53a22116f5035",
+      "sha256": "8cf4f65cbffbe4d5937687baeb0f516f410e57d92dda57d6c309192d8c76ce82",
       "mode": "100644"
     },
     "ui/src/components/ConfigureBuiltInAgentModal.tsx": {
-      "sha256": "d86642587639c00e41aca76a7f63658deb1e36b0bfaa08761ad22a86a2e0f7bd",
+      "sha256": "16f56a3af6409e388f92bb9b9b62dcbd89c81c35d837fae6587ccfd8e9742e38",
       "mode": "100644"
     },
     "ui/src/components/ContextualSidebarFrame.tsx": {
@@ -1556,7 +1656,15 @@
       "mode": "100644"
     },
     "ui/src/components/DecisionsToolbar.tsx": {
-      "sha256": "7eebfbe7ba812b054e1281644d48c10f887b443b7696170fa764602c48815fc3",
+      "sha256": "f9425b13b232552b6b403d4ddf76f941da134fe2f0653c7721315dafb315cf6f",
+      "mode": "100644"
+    },
+    "ui/src/components/DeferredOverlay.test.tsx": {
+      "sha256": "533e6d1e76a058d7296aaf699c1d30a0cc09837e7878b17f8929477c77ad607f",
+      "mode": "100644"
+    },
+    "ui/src/components/DeferredOverlay.tsx": {
+      "sha256": "2d8c8f6dc7e5052dc3f16f426dcda866ae43c0651ace13529d2343fe8525d165",
       "mode": "100644"
     },
     "ui/src/components/DevRestartBanner.test.tsx": {
@@ -1628,11 +1736,11 @@
       "mode": "100644"
     },
     "ui/src/components/ExecutionBlockerNotice.test.tsx": {
-      "sha256": "38791740a81c17cae51bf568c1e4cae9c0a691275ab1b5c7876384d61d1ca40b",
+      "sha256": "069267d2d5ee6f6c2dc5ffeab720fc46ec35e16554c2ece594bfdad0ea1434aa",
       "mode": "100644"
     },
     "ui/src/components/ExecutionBlockerNotice.tsx": {
-      "sha256": "e2ac0ef7ae9f2188890c3ef059d49715d5074bb10f7b96258e495c51ee3a6cfb",
+      "sha256": "981fa19bb9c34acf2cd01cb36730b07f533cf8c72b0e3b6bee8a38cb0e61ef8e",
       "mode": "100644"
     },
     "ui/src/components/ExecutionParticipantPicker.tsx": {
@@ -1727,6 +1835,14 @@
       "sha256": "8c758ebf6b6b28ff73d980a218771c8635622c92fca3cf169f209a9a41652ef9",
       "mode": "100644"
     },
+    "ui/src/components/GrokBotConnection.tsx": {
+      "sha256": "bc8f1b6f4aa47469d81073c117c91d9461abab16a27bf7520e09e4fd17aacb47",
+      "mode": "100644"
+    },
+    "ui/src/components/GrokBotWorkSummary.tsx": {
+      "sha256": "7b44f1d32f13a9d496b3dd63fa8ca9bf5fc7812fa70fe014959404c070d4f739",
+      "mode": "100644"
+    },
     "ui/src/components/HoneycombRunLink.tsx": {
       "sha256": "3f8abce125d534e8c75f776a1c98c13001084e14c4c8a79dcc93b0b5ed9060a6",
       "mode": "100644"
@@ -1776,7 +1892,7 @@
       "mode": "100644"
     },
     "ui/src/components/IssueAttachmentsSection.test.tsx": {
-      "sha256": "afa9f33e0221d513fedb23f0125d3b210e1a419746acee41dfbaca7720fab127",
+      "sha256": "ab1fd4a083f6132b0eade107773a67ee5badf4cc41f2016b52c36caae82229a7",
       "mode": "100644"
     },
     "ui/src/components/IssueAttachmentsSection.tsx": {
@@ -1796,19 +1912,19 @@
       "mode": "100644"
     },
     "ui/src/components/IssueCasesPanel.tsx": {
-      "sha256": "e937a97d7816ee4c01136ace5021b081d0a6e4eb0f2233cdf4cb081c6878bf44",
+      "sha256": "5362aa0d8df9b753a90a62ec2ab0208adc9c6a38ee51ea22b2d4ab2aabd61d2f",
       "mode": "100644"
     },
     "ui/src/components/IssueChatThread.test.tsx": {
-      "sha256": "00726dcfccb2cbbb56898595aebd6e8ce035488742a57564e61711ada756f9b2",
+      "sha256": "67f507b1bf1b82f78341149df72d770dc1f05fef358186a5fce63defb40a0bdf",
       "mode": "100644"
     },
     "ui/src/components/IssueChatThread.tsx": {
-      "sha256": "28912a398cee1fb69f4698bdf50377c31d83e66a9c06d05bd1ffde910ba2e48f",
+      "sha256": "2f34ebb104dec7f034bc05d74416df152c3f1bee16bee03922d48953f11270c2",
       "mode": "100644"
     },
     "ui/src/components/IssueChatThreadSystemNotice.test.tsx": {
-      "sha256": "cb0b3f789fe00a44bfe2c7687181a27c78549d7c9e5f7904a738d6bdf0bbfff3",
+      "sha256": "7f2f401a5508474e51a67f2bd1ef2fb795133c4dc13302da35ed91c1dbaf6f4f",
       "mode": "100644"
     },
     "ui/src/components/IssueChromeLocalization.test.tsx": {
@@ -1843,12 +1959,16 @@
       "sha256": "77db09e3ceb36cd7112de80764489ab21ae26168548ae3359e72527f604d826b",
       "mode": "100644"
     },
+    "ui/src/components/IssueFilterPanel.tsx": {
+      "sha256": "6682ef2030231ed53898e8db377324aa1751ce5da523ff8b2f0868d2f2c7dd5c",
+      "mode": "100644"
+    },
     "ui/src/components/IssueFiltersPopover.test.tsx": {
-      "sha256": "343eef2ffd50d5fe9bd87f5018b9eec090902a07cd233854be2f4f9da51cf8ad",
+      "sha256": "26a226f633164e56119012b28040ca9499687300a9bac5be8288c58c08158a1c",
       "mode": "100644"
     },
     "ui/src/components/IssueFiltersPopover.tsx": {
-      "sha256": "769031b0fab3350195ee4ff381c13a26c050fa418330f2bc571713352abd4c99",
+      "sha256": "26d05f068567ccb0ee95a2f885f0548bd2eeea4c71b72458c0d0b5386afab0ba",
       "mode": "100644"
     },
     "ui/src/components/IssueLinkQuicklook.test.tsx": {
@@ -1856,7 +1976,7 @@
       "mode": "100644"
     },
     "ui/src/components/IssueLinkQuicklook.tsx": {
-      "sha256": "2d90beffe857d3e5558a30f8ccae181c06d253b1ea753b712f5ba7ce2c36bef4",
+      "sha256": "8efd002718506e1505045c5b49dae631621a93ca7ebda3e875418cf2abfbdf8d",
       "mode": "100644"
     },
     "ui/src/components/IssueMonitorBanner.test.tsx": {
@@ -1880,7 +2000,7 @@
       "mode": "100644"
     },
     "ui/src/components/IssueProperties.test.tsx": {
-      "sha256": "84f0b01481e02a6dca58924136661f48940bf5c0888c733e18c483257d5318e6",
+      "sha256": "9f0578caa199f49cdae1bbd52ce1d19e0050fb5a4032bb6a0ff24c7f2b2252c6",
       "mode": "100644"
     },
     "ui/src/components/IssuePullRequestLinks.tsx": {
@@ -1888,7 +2008,7 @@
       "mode": "100644"
     },
     "ui/src/components/IssueRecoveryActionCard.tsx": {
-      "sha256": "033390740e2ace3327e5c6525aabecd10595a864311fd26ca2ea25f18d9dc800",
+      "sha256": "e2fdfb4abe0f01061af01c8159012b0264bd6a97e99eb5bbe826129b9cb1848f",
       "mode": "100644"
     },
     "ui/src/components/IssueReferenceActivitySummary.tsx": {
@@ -1904,7 +2024,7 @@
       "mode": "100644"
     },
     "ui/src/components/IssueRow.tsx": {
-      "sha256": "f16669f0943f51e424bb54a42665ea051f6cf609d1c2e717b9a012ade7f2d424",
+      "sha256": "b7bd231871fb6be209d04def4d5eee69493c46365ec636cdb117eb6db08cda50",
       "mode": "100644"
     },
     "ui/src/components/IssueRunLedger.tsx": {
@@ -1917,6 +2037,10 @@
     },
     "ui/src/components/IssueScheduledRetryCard.tsx": {
       "sha256": "1a092ee41d9f91885f5788bded1db015cb9dbefcff640ac400748d37dcf76beb",
+      "mode": "100644"
+    },
+    "ui/src/components/IssueShareSheet.test.tsx": {
+      "sha256": "e2ece63336e4df749011e76a94e2b2118f004879a2389e30173ca76e86ee9815",
       "mode": "100644"
     },
     "ui/src/components/IssueShareSheet.tsx": {
@@ -1939,12 +2063,8 @@
       "sha256": "436926e07a20a958ff35f545ceef11159ea985a143649142b9bb79f714c2816a",
       "mode": "100644"
     },
-    "ui/src/components/IssuesList.test.tsx": {
-      "sha256": "17731071c73d5d1f955272e6083f138f79cf961531b86dde0538b8fb0d8dbd65",
-      "mode": "100644"
-    },
     "ui/src/components/IssuesList.tsx": {
-      "sha256": "71a55c19f57eb445bc961f01ced999044b8c0510a186062c102e3ece051dabf1",
+      "sha256": "1011d66586667c2ac80675958b467799daace34e33c87376e71a881cb1edc6a6",
       "mode": "100644"
     },
     "ui/src/components/JsonSchemaForm.localization.test.tsx": {
@@ -1956,7 +2076,7 @@
       "mode": "100644"
     },
     "ui/src/components/KanbanBoard.tsx": {
-      "sha256": "d5b959bf37412e5f3d738e91f01263bccb5f78616ed56d64637c54b5ace1465e",
+      "sha256": "131a05d577007247756ecea1e7c5a8f11e47700dc6207b02910d9fe84200580d",
       "mode": "100644"
     },
     "ui/src/components/KeyboardShortcutsCheatsheet.test.tsx": {
@@ -1968,15 +2088,15 @@
       "mode": "100644"
     },
     "ui/src/components/Layout.production.tsx": {
-      "sha256": "2ca922f79c7bd2400ceb8f9dee371780febdc924aa959b0603c2beabb64b35a8",
+      "sha256": "6abf4f1caad9bdd9b1136d6be6cba6f2ca29400ab7b48d3adcd1d1119487b85a",
       "mode": "100644"
     },
     "ui/src/components/Layout.tsx": {
-      "sha256": "97e204d0d420c0bd3f83b4169f7035d8079b51af98f7fd06be93559cd7a5d00f",
+      "sha256": "dce358c81546100b9364c1bf301cb63c50b2f09a3cebe71ecc8521be462afdd4",
       "mode": "100644"
     },
     "ui/src/components/LegacyIssuesList.tsx": {
-      "sha256": "3994d1bf97044964d7b368fb8a3dc754a9e746c3526446a5853495e81c22ff56",
+      "sha256": "437a7fcf06291077d5156da69741a10938fd2a4417e598537d55d38fce48a74f",
       "mode": "100644"
     },
     "ui/src/components/LegacyProjectRepository.tsx": {
@@ -1992,7 +2112,7 @@
       "mode": "100644"
     },
     "ui/src/components/LocalizationCountLabels.test.tsx": {
-      "sha256": "182b8c392d2acd895907d03d621586bc3bb0b6c07fe06abe71981e1a6319046b",
+      "sha256": "a99e3662974e29cbbc6c571c85ef58eead12a32e10921182e784546dece6be59",
       "mode": "100644"
     },
     "ui/src/components/LockedIssueChip.tsx": {
@@ -2008,15 +2128,15 @@
       "mode": "100644"
     },
     "ui/src/components/MarkdownBody.tsx": {
-      "sha256": "2cbc5414b9c16fd202aff4619a35f4e120c347d7188886119b9a40edea38f16f",
+      "sha256": "3a7e1b7e78e65ce0e7d4d746e875c5d91d42a496118acdf4f8e62ec73a0c64f7",
       "mode": "100644"
     },
     "ui/src/components/MarkdownEditor.test.tsx": {
-      "sha256": "9feed0ec0f59506ecba9abcef7d1fabf688b3e3efc808cf715afaa5d8fbf65b6",
+      "sha256": "941f2f05ed1f0d7c2fe7e33ee8cb71a7c98cefc9b8b34bc20b3897af1d75bdf0",
       "mode": "100644"
     },
     "ui/src/components/MarkdownEditor.tsx": {
-      "sha256": "1a6fddc049beead8bd79a0022812469aadb9e630865a1d8836654f8060d94136",
+      "sha256": "0201149b3e4b62657d57340c3ae3343edfc8244bad09824b9100dc9daf58c3bc",
       "mode": "100644"
     },
     "ui/src/components/MemberMultiSelect.test.tsx": {
@@ -2043,16 +2163,20 @@
       "sha256": "67d0c6477ac6b43ce7ea92c0c9c9a9ae98fbdd6de60bb9460c41dc6656a3a83c",
       "mode": "100644"
     },
+    "ui/src/components/MuseRunnerConnection.tsx": {
+      "sha256": "390a4a4dbd0436f4b0c3ff7f3e7fc936de1f6d9993409c47541d261ab7aebd91",
+      "mode": "100644"
+    },
     "ui/src/components/NewGoalDialog.tsx": {
       "sha256": "2fd2293f096ad915ddd2365f4a52b4173e47889df44178d5eb09f73867187cd7",
       "mode": "100644"
     },
     "ui/src/components/NewIssueDialog.test.tsx": {
-      "sha256": "f5b59e65474387c639e01acbdf804b349b3d5fb5fff3e56f46606dfc0990c161",
+      "sha256": "7ccc42bab973d5ed77fef7ef026e596e1dea320db06448bcae76f890e46b1921",
       "mode": "100644"
     },
     "ui/src/components/NewIssueDialog.tsx": {
-      "sha256": "755c8c57467afb37100cce70528f6b3a039ca0b8e296ae45bc47318a933c963c",
+      "sha256": "c7b3191b59510e772f87042745047826144d67116fc8cb24e9f90008656c059e",
       "mode": "100644"
     },
     "ui/src/components/NewProjectDialog.tsx": {
@@ -2064,11 +2188,15 @@
       "mode": "100644"
     },
     "ui/src/components/OnboardingWizard.test.tsx": {
-      "sha256": "38ce2876b5127ae8df136db2ee702327521575c7f823db8681a544fa55143945",
+      "sha256": "a4bfaf9d66cae0d95426e87c1347df567dbc9334874b92474c01b1771d16bc41",
       "mode": "100644"
     },
     "ui/src/components/OnboardingWizard.tsx": {
-      "sha256": "6de119d4aadc17edd16a2ec10415d1496941c7c2bdbf27d305baa67dca7adbbb",
+      "sha256": "2f02426933e4f292670a73c0a017b15ca0ef4c780e19ce5f810288e51cbaccf0",
+      "mode": "100644"
+    },
+    "ui/src/components/OnboardingWizardVariant.tsx": {
+      "sha256": "37638b8a9e3a037235ce302f59747967fe753d132d7ba4e8b87bc0e85af75348",
       "mode": "100644"
     },
     "ui/src/components/OutputFeedbackButtons.tsx": {
@@ -2080,31 +2208,11 @@
       "mode": "100644"
     },
     "ui/src/components/PageTabBar.tsx": {
-      "sha256": "a9760ba0f88504a8d0116ac951f1a43836ac18ad3c7a40e88cc0dbb3f46375c6",
+      "sha256": "7876879c9ccaabb257f3006fb55c49bacec9381dc96adc1e382ee8d4891b8048",
       "mode": "100644"
     },
     "ui/src/components/PathInstructionsModal.tsx": {
       "sha256": "94ef5543446f63f5ec9f45a8b5e9aac52ccb86f4782ce1a29a902b6d9102e8e2",
-      "mode": "100644"
-    },
-    "ui/src/components/PipelineHealthWarnings.tsx": {
-      "sha256": "8a25ff70a04f37ace6b2bbaff84812738dfbe0ab6486eb7762af1bf5a8111529",
-      "mode": "100644"
-    },
-    "ui/src/components/PipelineItemBodyDocument.tsx": {
-      "sha256": "6f9512f557fe49a8e303faafc3775d623422d84716f9f6d12c60c6e8bd440528",
-      "mode": "100644"
-    },
-    "ui/src/components/PipelineLivenessBanner.tsx": {
-      "sha256": "448aed3c8ce5c224c411b135d138958d7d847caf5e358c9b6673e58f492d6ed7",
-      "mode": "100644"
-    },
-    "ui/src/components/PipelineStageHistoryPanel.tsx": {
-      "sha256": "fbb44b8006606163a78eeab745f05a796a9a4b3e37f13064a3728557996584dc",
-      "mode": "100644"
-    },
-    "ui/src/components/PipelineWorkReferences.tsx": {
-      "sha256": "c9ff869855868b9acfa6029d656ae77010f5196f37dcbfa0f4ffca515e0dcaf2",
       "mode": "100644"
     },
     "ui/src/components/PluginAppShellOverlays.tsx": {
@@ -2132,7 +2240,7 @@
       "mode": "100644"
     },
     "ui/src/components/ProjectProperties.tsx": {
-      "sha256": "c05753304cea69314ddf1b4577b56f0dd63c66db6bdf869b005c18f4f77c4da0",
+      "sha256": "5aefbd4de5155ce57c74a87aa5dfc75917ef6138c77dde4e672ac4892a35b52c",
       "mode": "100644"
     },
     "ui/src/components/ProjectRepositories.tsx": {
@@ -2144,15 +2252,19 @@
       "mode": "100644"
     },
     "ui/src/components/ProjectWorkspaceSummaryCard.tsx": {
-      "sha256": "c79a40c646d98bdac355660d432ae51416d0452cda249c2d1746d52242b24554",
+      "sha256": "12aaa783e6b88679e94b50f17f8978e8872f726854a5d7ccb929f9574b49a62f",
       "mode": "100644"
     },
     "ui/src/components/ProjectWorkspacesContent.tsx": {
-      "sha256": "8f2a2558858d75f4378359abbfee781ad8e29f2c4d2c284f6d6e916d1476f91d",
+      "sha256": "c0be4d873969f55de5e3ea41f5a71b568aa19bb2bf0cee200f102e124dcb0b8f",
+      "mode": "100644"
+    },
+    "ui/src/components/ProjectsToolbar.tsx": {
+      "sha256": "72af08d3fabc10d4f72df37c2c0b77f94ccce2ae5d2029614222cfac09e90a8a",
       "mode": "100644"
     },
     "ui/src/components/PropertiesPanel.tsx": {
-      "sha256": "5b15977b946a779cfcb2809e762a7047a36e0e3c627ec5b6e5940eddde4ab2f7",
+      "sha256": "968043d4407edc64b92fb9b670ae93841facdf27f41b6fbe1d67e588b495cd72",
       "mode": "100644"
     },
     "ui/src/components/ProviderQuotaCard.tsx": {
@@ -2165,6 +2277,10 @@
     },
     "ui/src/components/ReportsToPicker.tsx": {
       "sha256": "faa7a94f11764edbf00ef1b0b80670a4133cbf7696f6a31c08b4cc013b842de3",
+      "mode": "100644"
+    },
+    "ui/src/components/RepositoryBranchSelect.tsx": {
+      "sha256": "23663287f490b892a24342781a0778e68d2bf9840830448973d821d665099353",
       "mode": "100644"
     },
     "ui/src/components/RepositoryEditor.localization.test.tsx": {
@@ -2184,7 +2300,7 @@
       "mode": "100644"
     },
     "ui/src/components/RouteErrorBoundary.tsx": {
-      "sha256": "ef2e7a4e379822c31b4bf1398da32e6c542dd4ad8bcff37e506f1135f35814de",
+      "sha256": "81bda5dd8b4f6e778ac6309598bf56ef10b842679e3c4fd5722a06be36e1d852",
       "mode": "100644"
     },
     "ui/src/components/RoutineActivityRow.tsx": {
@@ -2239,6 +2355,10 @@
       "sha256": "a82679f7d43529de0d4289a002add27d7361b2a209a3c5da9216ddbeb2e5513c",
       "mode": "100644"
     },
+    "ui/src/components/RoutinesToolbar.tsx": {
+      "sha256": "73b630912a5f664ca40717e63b0a1dbcbb6f4c52251d35f1ad36a09b06a1fb8a",
+      "mode": "100644"
+    },
     "ui/src/components/RunChatSurface.tsx": {
       "sha256": "464d816242e67b3f466218914c3c35ba9f22a992e0a3481b264108b8c0f9ee48",
       "mode": "100644"
@@ -2272,7 +2392,7 @@
       "mode": "100644"
     },
     "ui/src/components/RuntimeTestCard.tsx": {
-      "sha256": "048e20457a634fa582feada39a907d9cfb8aac149f237fc0f8e02f4760724479",
+      "sha256": "f9da48e90a6bc936c957bddc5792d2ab91f86f8ece454bdbdcce6009ab5ed110",
       "mode": "100644"
     },
     "ui/src/components/ScheduleEditor.test.tsx": {
@@ -2300,11 +2420,11 @@
       "mode": "100644"
     },
     "ui/src/components/Sidebar.production.tsx": {
-      "sha256": "14fe0053e7829cc10e9f75ab950d4d21791eeae32c23a149fc2b3f87fbf6ce10",
+      "sha256": "4793af9225865837007d0eaa460e18c024dc44d70d796f28ab90d1e294d4ed8c",
       "mode": "100644"
     },
     "ui/src/components/Sidebar.tsx": {
-      "sha256": "933f6f7d6c0432bc0900e63a21481815c1b29d0c72ab5b91877d918103d3bd50",
+      "sha256": "72ce89bd50cf3f17173684fb8536a1ba2d30cde2fe6f5781476ee84d64576577",
       "mode": "100644"
     },
     "ui/src/components/SidebarAccountMenu.production.tsx": {
@@ -2316,7 +2436,7 @@
       "mode": "100644"
     },
     "ui/src/components/SidebarAccountMenu.tsx": {
-      "sha256": "2ef169e1611376b775b26f8cd89dbe4da06c08ddf93835eb218ff325598c05db",
+      "sha256": "795de0ffd07663cd0498f17b96864cbbe2d0b3a66e35b96bacbb64e689f4fc20",
       "mode": "100644"
     },
     "ui/src/components/SidebarAgentChats.tsx": {
@@ -2336,7 +2456,7 @@
       "mode": "100644"
     },
     "ui/src/components/SidebarCompanyMenu.tsx": {
-      "sha256": "f37d68abf911f0d6bcddb5126e6f6c2acf93fd46e80b677d10a5a7ce0845dbe0",
+      "sha256": "246715fde68049d8d91875f10c095caf21a3d298567e52ebd36fe79f03c6a35c",
       "mode": "100644"
     },
     "ui/src/components/SidebarNavItem.production.tsx": {
@@ -2344,11 +2464,11 @@
       "mode": "100644"
     },
     "ui/src/components/SidebarNavItem.test.tsx": {
-      "sha256": "3c8859e1f6669520fe0949df2fe3af7f202ad9ad02936ac1dd655a5713da7203",
+      "sha256": "c8bd4e650b3dd80753405cc0289dd5dd6d78e61a6ddae7002d1f6f3cbadcfa7b",
       "mode": "100644"
     },
     "ui/src/components/SidebarNavItem.tsx": {
-      "sha256": "6e1d4d7aaf4cf1af3caae1d697efcea7c7940934bf0a805b50bc31b05425c714",
+      "sha256": "bef843826c6e1b870d16d8d5a0cd712d6a07bd454f37f12c27f92750d6672568",
       "mode": "100644"
     },
     "ui/src/components/SidebarProjects.tsx": {
@@ -2356,15 +2476,15 @@
       "mode": "100644"
     },
     "ui/src/components/SidebarRecentTasks.test.tsx": {
-      "sha256": "c56cc144068eb4ef64176a4f6a81110c28b36582fc18abdd1dbdcbe17d2a0476",
+      "sha256": "59e8b6fb0b1b54704fe621927f5495f2194bb2bb9ebe3792a86c8eb862b0d29a",
       "mode": "100644"
     },
     "ui/src/components/SidebarRecentTasks.tsx": {
-      "sha256": "5460e0aa700bc14a66fcf3193000897c94bbb50ba3e5906b80e6c923d2c1c258",
+      "sha256": "ce6115d80b866eedca6385fbae3054cd1284604e909edc6894927e8c79d40de1",
       "mode": "100644"
     },
     "ui/src/components/SidebarSection.tsx": {
-      "sha256": "a8fdc16128e5ab4ba79ca803fbe267e1508b6c41f6c672de7cb7af58b636c246",
+      "sha256": "5028933684a4788ca38fced470b2b381e705d9107bde6bc2cf915c57d212bf21",
       "mode": "100644"
     },
     "ui/src/components/SidebarServerInfo.tsx": {
@@ -2376,7 +2496,7 @@
       "mode": "100644"
     },
     "ui/src/components/SidebarShell.tsx": {
-      "sha256": "d0e602bce23a30b679d270e8f3f9d47c30acd87194b557cca48993493f640a8c",
+      "sha256": "d0915f40c6c7593c1d028cebd6c537cb18df0ec8282957dd5066af2df7a7818d",
       "mode": "100644"
     },
     "ui/src/components/SidebarStarredProjects.production.tsx": {
@@ -2444,7 +2564,7 @@
       "mode": "100644"
     },
     "ui/src/components/StatusBadge.tsx": {
-      "sha256": "d24ec258c4013e029c2671be3f6f3c8bc53414d8b76bae10d836ee15ac9699ee",
+      "sha256": "122bee15804579d85571997c9be119c0b265ce7442c105f511f3595ee9c54ad5",
       "mode": "100644"
     },
     "ui/src/components/StatusCardsExperimentalGate.tsx": {
@@ -2452,7 +2572,7 @@
       "mode": "100644"
     },
     "ui/src/components/StatusIcon.tsx": {
-      "sha256": "70ff2b6e3c371c299b1684084bc9f88717f2fa0c58614dc6fd9876710a93bb0f",
+      "sha256": "bd49260f439636036c9435ec63133687e693a3a5dbbdff6c7e94fa3799234077",
       "mode": "100644"
     },
     "ui/src/components/SubscriptionCostCard.tsx": {
@@ -2476,11 +2596,23 @@
       "mode": "100644"
     },
     "ui/src/components/TaskChatThread.test.tsx": {
-      "sha256": "f8baad26cb47c1bb840c8d32f13d48040c11cab3f05c8580fc3742accf0841a9",
+      "sha256": "71513184aa78266afbac50f624a1e6ce6493c69fdfef53bb813494abd8a964f8",
       "mode": "100644"
     },
     "ui/src/components/TaskChatThread.tsx": {
-      "sha256": "fc175585e1d159fa136ee3a754cddf579c741a7bf3bf4868d9679e5c4575503f",
+      "sha256": "4b1929453438697068b327a2816188586765cfbcfe58a5289eab41003e5af1f3",
+      "mode": "100644"
+    },
+    "ui/src/components/TaskListColumns.tsx": {
+      "sha256": "3cac4fe6af8c917d46ab4c0988ab6d75eb6dc6ae0738f6db5c8e402c469e92f0",
+      "mode": "100644"
+    },
+    "ui/src/components/TaskListToolbar.tsx": {
+      "sha256": "2e1abd5c948407d324f78b3079adf6f7f32df09a10f76c74d72d92105399fc0a",
+      "mode": "100644"
+    },
+    "ui/src/components/TaskSummaryList.tsx": {
+      "sha256": "a1c6ae7fce8a903e15a1e2863f5f85a57a474055b1f59ad6d124311cdc1721f8",
       "mode": "100644"
     },
     "ui/src/components/TaskTreeControls.tsx": {
@@ -2497,6 +2629,10 @@
     },
     "ui/src/components/ToastViewport.tsx": {
       "sha256": "f302f6b58e21490abc46b3501bdebc504b8089054b1d5ca98370ee2898fc1352",
+      "mode": "100644"
+    },
+    "ui/src/components/ToolbarSearch.tsx": {
+      "sha256": "299d902d93924a39b352774a8e62c3389cdece5d325a16c61695a6c40119569e",
       "mode": "100644"
     },
     "ui/src/components/TranscriptChromeLocalization.test.tsx": {
@@ -2519,20 +2655,36 @@
       "sha256": "812e617a3a2434700f07be0febaabd10547ec1ebe64f4161da900e9981ba4a16",
       "mode": "100644"
     },
+    "ui/src/components/WorkspaceBaseRefRecovery.tsx": {
+      "sha256": "3246414cc8a4a8f9e7e2e50682625e811f3ea436ad108eb4eb281d405ab200a8",
+      "mode": "100644"
+    },
     "ui/src/components/WorkspaceBaseRefRecoveryNotice.tsx": {
-      "sha256": "899530e8a6c1e735169c795150ea0bf838e4f337aa278eb4f8db0019b6197eb9",
+      "sha256": "abae18d0de3c02d6577bb77112d74eccbed98d36df478d1f50a87493ce20f3a8",
       "mode": "100644"
     },
     "ui/src/components/WorkspaceExportRecovery.tsx": {
-      "sha256": "763c5f7272f6267a9278728d9e060c4d7334d905b500c2981443d631b73a95f5",
+      "sha256": "054c476140fdc8b95d9a499f1ed0ef07d195ef1f381728814827c444a9da3970",
       "mode": "100644"
     },
     "ui/src/components/WorkspaceFileBrowser.tsx": {
       "sha256": "d66f568b008a9a76225fca9f1a69a8320b46f8418b0d76cb1826b9f6485de300",
       "mode": "100644"
     },
+    "ui/src/components/WorkspaceReconstructionRecovery.test.tsx": {
+      "sha256": "44672009959a503ac3012797621784d8a9cc1a5709a0908e51ddf619b6894703",
+      "mode": "100644"
+    },
+    "ui/src/components/WorkspaceReconstructionRecovery.tsx": {
+      "sha256": "99c644b8bc27244d5300babb36595b7beb6b4dc13ddbfa3a823cf56c0101c792",
+      "mode": "100644"
+    },
+    "ui/src/components/WorkspaceRetryButton.tsx": {
+      "sha256": "7697fa84c202353e7117fa04dd45c849272ef0a30fa6b654d8a60e70cca90cf6",
+      "mode": "100644"
+    },
     "ui/src/components/WorkspaceRuntimeControls.tsx": {
-      "sha256": "4b97d0ab4be837106d7ec425cda23a48e609184f7626150f173a1ab6b5cdb77c",
+      "sha256": "b5380b8f8c4b13afe6f3cc9285351033c5e0c30d1adf81c6e4e67b0d77607ec8",
       "mode": "100644"
     },
     "ui/src/components/WorkspaceServiceControlBar.tsx": {
@@ -2544,11 +2696,11 @@
       "mode": "100644"
     },
     "ui/src/components/access/CompanySettingsNav.test.tsx": {
-      "sha256": "984d0a4be36b9248e023cc64506535173b10b92142082204cb5364c6fa86b68b",
+      "sha256": "135b544a5aac578e030731fdd05ef2bc18ee369f227d7ad44bc3729b07f7c6e7",
       "mode": "100644"
     },
     "ui/src/components/access/CompanySettingsNav.tsx": {
-      "sha256": "e5bf132946b534ddcc4086a038f124d20e64be881c1b6b929b114b7a13bd3d43",
+      "sha256": "9f3cae54b30d8e8500de8c2d3760d10394570cf6cde9bb67d50ec70bccb5e25b",
       "mode": "100644"
     },
     "ui/src/components/access/InvitesSection.test.tsx": {
@@ -2575,6 +2727,14 @@
       "sha256": "28966613f95bc44a6512a80c74bcdf6cf5d3645b32516128262b6b8d338d2bc5",
       "mode": "100644"
     },
+    "ui/src/components/agents/AgentBulkRoster.tsx": {
+      "sha256": "c249e6ac1602311ab9eb21da7f98208d07ae806f598bfdb6d1698f8e89265ed1",
+      "mode": "100644"
+    },
+    "ui/src/components/agents/AgentBulkSettingsSheet.tsx": {
+      "sha256": "a3aa1eba4af880bae7e4815a83a9aa88a09671ff99a6de63190c4b4164fee09d",
+      "mode": "100644"
+    },
     "ui/src/components/ai-connections/AiConnectionAccountControls.tsx": {
       "sha256": "14071f40712583bbc0a7d7fb0bd1e01d735f67b551eef3c6379a9c5cee3029ed",
       "mode": "100644"
@@ -2592,7 +2752,7 @@
       "mode": "100644"
     },
     "ui/src/components/ai-connections/AiConnectionCredentialStep.tsx": {
-      "sha256": "937e5e70dc074c766bc6dfe1993f485bdc2acd29620f5ea35e0692355c888e5e",
+      "sha256": "e888109d4abd1c0d86bc75aa2aa6d5ef42983617aa3fc21e01f84e0c207de04e",
       "mode": "100644"
     },
     "ui/src/components/ai-connections/AiConnectionDesignExamples.tsx": {
@@ -2600,7 +2760,7 @@
       "mode": "100644"
     },
     "ui/src/components/ai-connections/AiConnectionField.tsx": {
-      "sha256": "5b5619b5f6741b3276e229d59439dceb34f746919c5ea810fde0c8399fb815de",
+      "sha256": "d90536ca2c626dd2fb651f434d66bb44a07c8033efdfb906e9b5fcb25fc8aeb9",
       "mode": "100644"
     },
     "ui/src/components/ai-connections/AiConnectionIdentity.tsx": {
@@ -2616,7 +2776,7 @@
       "mode": "100644"
     },
     "ui/src/components/ai-connections/AiConnectionPicker.tsx": {
-      "sha256": "48cad31d437dda191ee603988189c3eda1d6baadc76232db884645555d8f1e1b",
+      "sha256": "4de42b19d99ca41b6b7605989014a7772cf5d795c62d48cb2fb89588afa8fed1",
       "mode": "100644"
     },
     "ui/src/components/ai-connections/AiConnectionPoolConnector.localization.test.tsx": {
@@ -2632,7 +2792,7 @@
       "mode": "100644"
     },
     "ui/src/components/ai-connections/AiConnectionSelect.tsx": {
-      "sha256": "2de1ec6833201a705f2704c3a016b8f12829d527306c8e834ba3c181e0997786",
+      "sha256": "1240c84af13a4b4a11eb30eba189e819a787d664b550059f084dcb819e2119ef",
       "mode": "100644"
     },
     "ui/src/components/ai-connections/AiConnectionUsagePanel.test.tsx": {
@@ -2644,7 +2804,7 @@
       "mode": "100644"
     },
     "ui/src/components/ai-connections/AiProviderSetup.tsx": {
-      "sha256": "11719d2c196da6b4f46988aa2487e7b09e9277cb67064294bbb96837e1e1a334",
+      "sha256": "6f978122c19f8aadcc9c943f759ec84487d3706aba708186c4d37ea3e33140ff",
       "mode": "100644"
     },
     "ui/src/components/ai-connections/ManagedAiConnectionDetails.tsx": {
@@ -2656,7 +2816,7 @@
       "mode": "100644"
     },
     "ui/src/components/ai-connections/model.ts": {
-      "sha256": "d166fb7fc8feb576805bc00c3dd161e552dd5d27c7e1c759f61e086aa322e893",
+      "sha256": "7dec63fac2dac8bb3206d7a76eee275caf4ebbe509adab3420db15ae5f36b09e",
       "mode": "100644"
     },
     "ui/src/components/ai-connections/useLocalAiLogin.test.tsx": {
@@ -2671,12 +2831,28 @@
       "sha256": "42aed84ec92b6fc4d5b84098be7f6e5cd8a9c38e408b3d30154d9ec8228a8cf8",
       "mode": "100644"
     },
+    "ui/src/components/artifacts/ArtifactDropzone.tsx": {
+      "sha256": "4a84c3be79523b10f5bcfe8d0335523178b0c42e426eadfff2ce05449b61ae90",
+      "mode": "100644"
+    },
     "ui/src/components/artifacts/ArtifactGroupCard.tsx": {
       "sha256": "7b6ff84d2860bebe125f04523daa2da1807feea07b5c0b63f51da4d7fbbeb5ff",
       "mode": "100644"
     },
     "ui/src/components/artifacts/ArtifactLocalization.test.tsx": {
       "sha256": "abb002cbf03fe4c01f20702e508631539d09f84c3d090af7979792ad6c3f5a9b",
+      "mode": "100644"
+    },
+    "ui/src/components/artifacts/ArtifactUploadArea.tsx": {
+      "sha256": "e228f6dfeedd3b7450594cfdec4b4d196fa43e5da09136ab711b3eead5e723c0",
+      "mode": "100644"
+    },
+    "ui/src/components/artifacts/ArtifactUploadControls.tsx": {
+      "sha256": "afe702bc25d31c656d96b764ba48572e37bf4302437112be7c8f6cc2eb3c7257",
+      "mode": "100644"
+    },
+    "ui/src/components/artifacts/ArtifactsToolbar.tsx": {
+      "sha256": "ebd1bcff2823ac1c026a97a1adb2e4b2f2b30a1ca7b9fea58f40e58a1ddb9c69",
       "mode": "100644"
     },
     "ui/src/components/artifacts/IssueArtifactCard.tsx": {
@@ -2695,8 +2871,72 @@
       "sha256": "5aa3dcfa0ed7d7933745ce74c494bd68ab4ad9d0ee4d4a3342312aa477a7d966",
       "mode": "100644"
     },
+    "ui/src/components/artifacts/v1/ArtifactFileRow.test.tsx": {
+      "sha256": "31ee9844573607272997a2e8abc08f2469db090b8945ceeb6ced1572f0e2f25e",
+      "mode": "100644"
+    },
+    "ui/src/components/artifacts/v1/ArtifactFileRow.tsx": {
+      "sha256": "9efdff3aee1d6025ada3e5793f09c8579fe2fce2dd5afa82aac286dba33e4250",
+      "mode": "100644"
+    },
+    "ui/src/components/artifacts/v1/ArtifactRow.tsx": {
+      "sha256": "1518a75f390e5d7aed72569dd8260065e58f3fe28d445adfcde3c0af034e59ab",
+      "mode": "100644"
+    },
+    "ui/src/components/artifacts/v1/ArtifactSheet.tsx": {
+      "sha256": "54728ae02b5d45e4c6421e2ef52e97a462955c190cba6ae4ac5ad0c474da2be5",
+      "mode": "100644"
+    },
+    "ui/src/components/artifacts/v1/ArtifactTile.tsx": {
+      "sha256": "228613e8fcbbfc2db0ed40e3502c231eb1882caae9917334c57da03526504161",
+      "mode": "100644"
+    },
+    "ui/src/components/artifacts/v1/ArtifactsV1Filters.tsx": {
+      "sha256": "4e9bb8e26837f57860cd614933648b04efd28c299beb44b0db9c8198b1960464",
+      "mode": "100644"
+    },
+    "ui/src/components/artifacts/v1/WorkProductState.tsx": {
+      "sha256": "93b645b2748afd1de53e594be1bc8c7f6d362ba4fc80a097b6baa45e405214f0",
+      "mode": "100644"
+    },
+    "ui/src/components/artifacts/v1/adapters.ts": {
+      "sha256": "392eaae947e4862f3bff4d6594c37131a4abb3c6a9848d465d846b7776bbaada",
+      "mode": "100644"
+    },
+    "ui/src/components/artifacts/v1/kinds.ts": {
+      "sha256": "3ebcc609401c95841f4c6496bda9470ccdb9c3ca1500930d16845167ce955cd2",
+      "mode": "100644"
+    },
+    "ui/src/components/artifacts/v1/when.ts": {
+      "sha256": "07672c21a023ae6aae8e34c57e9fed1eca06421c1aad4e42bf687f2fb7696915",
+      "mode": "100644"
+    },
+    "ui/src/components/cases/CaseDocumentPreview.tsx": {
+      "sha256": "4ea77149793206cd4747db3fe2b226cd373f530d216c940849aa0f9a67cd3fe9",
+      "mode": "100644"
+    },
+    "ui/src/components/cases/CaseHandoffHistory.tsx": {
+      "sha256": "6e848753961e46ef9a0730f7925ca8eeb2640f0400e739a5014820fa2f31f2fd",
+      "mode": "100644"
+    },
+    "ui/src/components/cases/CaseListControls.tsx": {
+      "sha256": "34b827ec903cc65e6609c609e58203554ae595e82c26873308966081458043f8",
+      "mode": "100644"
+    },
+    "ui/src/components/cases/CaseListRow.tsx": {
+      "sha256": "ad3796a09eadf14265feb55eb0d9e5d0c6a0dcc13d514bf892702e3ae94b09d9",
+      "mode": "100644"
+    },
+    "ui/src/components/cases/CaseStatus.tsx": {
+      "sha256": "bdcf70942e563fe03aa19113eea17d63b34eee187683349d4f1e62ca36790bf3",
+      "mode": "100644"
+    },
+    "ui/src/components/cases/CaseWorkSummary.tsx": {
+      "sha256": "a998f0bd9cf6f80c2409643ff95cc85623a18fd3f57c9a8a5838f48934414788",
+      "mode": "100644"
+    },
     "ui/src/components/chat/AgentChannelsPanel.tsx": {
-      "sha256": "fbe105a8952110bc842b7726d61a1502360facee3eb61af1bfc3a16ef4b74edd",
+      "sha256": "e3bea242cd876d3e46eefefa23d75c7cce5e242e2783cfb5482127f9166a41fd",
       "mode": "100644"
     },
     "ui/src/components/chat/AgentWorkPanels.tsx": {
@@ -2720,11 +2960,11 @@
       "mode": "100644"
     },
     "ui/src/components/chat/ExternallyConnectedTaskBanner.tsx": {
-      "sha256": "de339f64518d16a83a77a5a83a72e855c06b09f23e805abc0813ec7a17c0c3c1",
+      "sha256": "2e583d83fc8cc524c3099354cb912ccd8440d9afa4375244fa2adf9ef7921329",
       "mode": "100644"
     },
     "ui/src/components/decision-models/DecisionHistory.tsx": {
-      "sha256": "ffcab74e1ee55335285700accc77d4b3ad7bd996a5a77a6391492aa1cdce9cf7",
+      "sha256": "513e2a1422b3f8a631180708bb914df7ce2e169026525e64393b53f70e2bf52e",
       "mode": "100644"
     },
     "ui/src/components/decision-models/DecisionModelSettings.tsx": {
@@ -2736,7 +2976,7 @@
       "mode": "100644"
     },
     "ui/src/components/environment-variables-editor/EnvironmentVariablesEditor.test.tsx": {
-      "sha256": "5f1d6bb2cd21130cf25a705f8ee6aaf41b40668d901bd628e60294c0f90f2b4f",
+      "sha256": "1f56376a6bf0357c14aa52774a27a0f67c9b01ebd3c6a665275d6d3b0d46fdbf",
       "mode": "100644"
     },
     "ui/src/components/environment-variables-editor/Row.tsx": {
@@ -2756,7 +2996,7 @@
       "mode": "100644"
     },
     "ui/src/components/fast-responses/FastResponseHistory.tsx": {
-      "sha256": "8211ae62c1ddc8696069c2697889b8e09d3d2d3f54997701ee0e6f0738b508dc",
+      "sha256": "d66b3fd3946311a177daadd80c3cdfe28ff8f349eb595dacf9b1ef980066242f",
       "mode": "100644"
     },
     "ui/src/components/fast-responses/FastResponseSettings.tsx": {
@@ -2804,15 +3044,15 @@
       "mode": "100644"
     },
     "ui/src/components/issue-properties/IssueProperties.tsx": {
-      "sha256": "59ef53e0a1e352d4b3f495b96bf98f970c9c39be76c0ac18753675c5e6c17cf9",
+      "sha256": "b48b6347c802583e0a585061be76d4c7d77cbffd2d76c52e9e2d7317d626501a",
       "mode": "100644"
     },
     "ui/src/components/issue-properties/IssuePropertiesArtifactsTab.tsx": {
-      "sha256": "30b06a69de1ec812d6b4d946ced6c2f3db74d4542f0482dfbe54091f043eea78",
+      "sha256": "d9b72df62105f3a5200db7010bd5742cc0d83e7f8e976d0c10a7024870dcff8f",
       "mode": "100644"
     },
     "ui/src/components/issue-properties/IssuePropertiesMarkdownWorkProduct.test.tsx": {
-      "sha256": "b53289ba5c2e1f8984ddbdd5a16837fbbb80e5333520145bb6fa1c641fcf68c1",
+      "sha256": "0b263258ad9a2741c61944b3e24ef185ef643d0b3e64a1c8a22d8e10d85fe968",
       "mode": "100644"
     },
     "ui/src/components/issue-properties/IssuePropertiesPlansTab.tsx": {
@@ -2832,7 +3072,7 @@
       "mode": "100644"
     },
     "ui/src/components/new-agent/AgentBasicsDialog.tsx": {
-      "sha256": "e2149fed7c4c98f9041fc23d4ab69cbe7b7de46e525b515c09e9e73f1ae205e1",
+      "sha256": "dfa1f1cf5568979a107bd6f427083e4f639042f7e3f73fc4e3a61c5e0e8bc19f",
       "mode": "100644"
     },
     "ui/src/components/new-agent/AgentProviderConnection.test.tsx": {
@@ -2848,19 +3088,31 @@
       "mode": "100644"
     },
     "ui/src/components/new-agent/ExternalAgentInviteContent.tsx": {
-      "sha256": "4cadaed7b8f9d6f19973c5ea0743a027bb8aed8fb5827f840d44b2f869a35a22",
+      "sha256": "b8cd20b83c03474371fe59d668bb547b3184f1f35615f6281c6b1af2bd12e6fc",
       "mode": "100644"
     },
     "ui/src/components/new-agent/ExternalAgentInviteDialog.tsx": {
-      "sha256": "689747e27ea194ea11e3b23adfe031907245c6169ed8582bc14e132a474aac59",
+      "sha256": "4fff89382f1b0cfc88eb19072955f7287961b4b9d90d4deb0db2976f07f3789d",
+      "mode": "100644"
+    },
+    "ui/src/components/new-agent/GrokBotSetup.render.test.tsx": {
+      "sha256": "d03b1f08349c78932a5286e200f46e15344f4befe20ca27b987b6a0bb8c93b42",
+      "mode": "100644"
+    },
+    "ui/src/components/new-agent/GrokBotSetupContent.tsx": {
+      "sha256": "47566878b5b938c549ef85f330c2ac4b65cee319d9148d3ca61708fb93865301",
       "mode": "100644"
     },
     "ui/src/components/new-agent/NewAgentSetup.localization.test.tsx": {
-      "sha256": "4c1e81fb9ebccd99f9af12ab47b72afcd4e2806b8868fce25daaa3a773674e84",
+      "sha256": "3c57e538e1c4324515fddf08feff63e52ef500601ffc9efc0b92d191e42ade20",
       "mode": "100644"
     },
     "ui/src/components/new-agent/NewAgentSetup.tsx": {
-      "sha256": "dca7321598f02374118b9a322e08f21cfae21cf1744d9eddf20f67a62e885bc5",
+      "sha256": "912692e708269960b73d2e91738fdb9d7688e5c5a76df099ed8ebb98c151b19c",
+      "mode": "100644"
+    },
+    "ui/src/components/observability/AgentObservabilitySettings.tsx": {
+      "sha256": "522d2052c579a174cfffd30dde37721a9f3bd41e3c480b011160ffefdf2dc76c",
       "mode": "100644"
     },
     "ui/src/components/onboarding/ConnectModelPreview.test.tsx": {
@@ -2893,6 +3145,10 @@
     },
     "ui/src/components/primary-agent/PrimaryAgentPresentation.tsx": {
       "sha256": "9488903654cf967afc8820e98db2197a6a7f46d7b76f846c75d261730a5d6aed",
+      "mode": "100644"
+    },
+    "ui/src/components/prompt-injection-prevention/PromptInjectionPreventionSettings.tsx": {
+      "sha256": "652ed164fe01f622950c3f663bddecdfb99b95e9b8070a7796f56d9b7d43e97a",
       "mode": "100644"
     },
     "ui/src/components/routine-sections/context.tsx": {
@@ -2936,7 +3192,7 @@
       "mode": "100644"
     },
     "ui/src/components/search/LocalizationRuntime.test.tsx": {
-      "sha256": "0f9a50f2fd749c02efc3ca09de01c9c8ca54bf55d2a1db21641509a4f6dabff0",
+      "sha256": "2ae65893c7d13ad2171b79773154a981753994e16239d57ecfbf6b2dcb49c941",
       "mode": "100644"
     },
     "ui/src/components/search/MatchSourceChip.tsx": {
@@ -2976,7 +3232,7 @@
       "mode": "100644"
     },
     "ui/src/components/side-panel/SidePanelFrame.tsx": {
-      "sha256": "118078fd1cfe3e908b0091b9afc19f05a0f5669e659033c9a60b3a3ab4c4f050",
+      "sha256": "71b05909a21e45cdba93c171090b2e9d637fa8ed36f27df5ac4020815f1c5cee",
       "mode": "100644"
     },
     "ui/src/components/side-panel/SidePanelLauncher.test.tsx": {
@@ -2996,11 +3252,11 @@
       "mode": "100644"
     },
     "ui/src/components/side-panel/SidePanelTab.tsx": {
-      "sha256": "1bdb1cd56623a3cba57ab693d6c35b447a1d3e1f6e8ac8bfbf5ac0ec842c81d0",
+      "sha256": "ba4fd08782d4f6b6782e6553a9b69d55bed2fc8bc4204a53359e1446ab3e5977",
       "mode": "100644"
     },
     "ui/src/components/side-panel/SidePanelTabs.test.tsx": {
-      "sha256": "acfa4bbd5b8d7a086b008b4808f98065a70aa2f37dc5c9b4f310779a6a95dd63",
+      "sha256": "1172f784efe26067b18a0b7b4842e658d64ad7c3389952c5f4f614ff215a2c58",
       "mode": "100644"
     },
     "ui/src/components/skill-studio/AgentsUsingSkillDialog.test.tsx": {
@@ -3019,6 +3275,10 @@
       "sha256": "4d1979d4725ea92887f8496c3c2d7fdcd3220e085ad128d423faf0a4b56960aa",
       "mode": "100644"
     },
+    "ui/src/components/skill-studio/ProjectSkillRepositoryRow.tsx": {
+      "sha256": "56748c4ac27f348575ce845a150f3529f975b4ba3537e1ca19ac51ca9699febc",
+      "mode": "100644"
+    },
     "ui/src/components/skill-studio/SkillPolicySurfaces.tsx": {
       "sha256": "31dc0cf56139256f4af232685b47c779cd02025aadb80794b41e9cd9292271d9",
       "mode": "100644"
@@ -3031,6 +3291,30 @@
       "sha256": "45a2c55e068fb10c1b743327066f48c4488de77fad91ab387e05c545d1c03db0",
       "mode": "100644"
     },
+    "ui/src/components/skill-studio/SkillSourceBranchRepair.tsx": {
+      "sha256": "789070ba334af720ba67610887cdd5fa06830d7429b866dcefe56715d809bb30",
+      "mode": "100644"
+    },
+    "ui/src/components/skill-studio/SkillSourceBranchRepairDialog.tsx": {
+      "sha256": "f74190f206097e5883ccbb5cd8f692e4e90d099390a1d015302529a3b5b596a1",
+      "mode": "100644"
+    },
+    "ui/src/components/skill-studio/SkillSourceConnectionRepair.tsx": {
+      "sha256": "7eed0cd8c23faf7251353f7cb9e5dac2d77e71ffa17da809730bd3f7bb6a2e01",
+      "mode": "100644"
+    },
+    "ui/src/components/skill-studio/SkillSourceSyncControls.tsx": {
+      "sha256": "a656007a08d1c6aa5bb1702064bff8ca2aca58265cca8543a080b9a61e9b8ec8",
+      "mode": "100644"
+    },
+    "ui/src/components/skill-studio/SkillsNavigationTabs.tsx": {
+      "sha256": "8d641bfc88d28e721308f2ddabadfe9c907951da9023e0378e0d2e259b8ddf70",
+      "mode": "100644"
+    },
+    "ui/src/components/skill-studio/SkillsToolbar.tsx": {
+      "sha256": "195ab6f656c61c263208cc70707b0cdd8d99bd8c5d686ab89aaf4ab5513d40fe",
+      "mode": "100644"
+    },
     "ui/src/components/task-chat/ComposerAddMenu.localization.test.tsx": {
       "sha256": "3524c2ca45fa2eddc802af475d4eb5829e61c218d74a0ad0df29fc7800aa20b0",
       "mode": "100644"
@@ -3040,11 +3324,11 @@
       "mode": "100644"
     },
     "ui/src/components/task-chat/ComposerRunSettingsPicker.test.tsx": {
-      "sha256": "c791a3585046b521521e7d32ff928e460fe015338a28feac2672289aedce1eea",
+      "sha256": "b38671269284364b54ac660640d21d33822c6505c133ddfefe890962079926b3",
       "mode": "100644"
     },
     "ui/src/components/task-chat/ComposerRunSettingsPicker.tsx": {
-      "sha256": "7a069acc5fb4d5976fd24e24a2c30fcf076e45343df5f9c58bb00f3e14e0ea30",
+      "sha256": "341a20147f9462d627c32ebb5668c03111a941a2ce8cdf8460e6ab119700f3bc",
       "mode": "100644"
     },
     "ui/src/components/task-chat/ComposerWorktreePicker.localization.test.tsx": {
@@ -3052,7 +3336,7 @@
       "mode": "100644"
     },
     "ui/src/components/task-chat/ComposerWorktreePicker.tsx": {
-      "sha256": "be8c9ccdee5613898f52c538594680e73625f3555858a6cae105726c37029771",
+      "sha256": "6825c427605ff3c518d8f78174163e7be40ab2fbb02ddb49efbb9ace36484ad2",
       "mode": "100644"
     },
     "ui/src/components/task-chat/McpIcon.tsx": {
@@ -3076,7 +3360,7 @@
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatActivityPhase.tsx": {
-      "sha256": "7de3bf875b498c8a8f6b0a87131b055ceaf71954ce2ebbe4548a78c3658643c6",
+      "sha256": "04defc1bb25a859f1d3df2176b690143424ac2466a3c7a0f64e12885b80efd69",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatBlockerLinks.tsx": {
@@ -3088,7 +3372,7 @@
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatBubble.tsx": {
-      "sha256": "047514d82156617c701c385cb2989fa5edc6ae9cf0cd0900d59ef7546b66e12f",
+      "sha256": "eda56dd3647859c8558542265a2ca822f6d8a125990c48e1fca6b0467f1d4b13",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatBubbleActions.tsx": {
@@ -3100,11 +3384,11 @@
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatComposer.test.tsx": {
-      "sha256": "d24255d44480c510329c3379575eb29efbb6f3c25582733114c0d90b0186c728",
+      "sha256": "3f11a4b5d31016c30b5321850295533210d149b066d536852d15919cf8536434",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatComposer.tsx": {
-      "sha256": "bf07270141eb9a96e3720d3c46474c29b0df8ca357e77327d3f8fd77a670927c",
+      "sha256": "a3c7b58ab945fce1700c609e1cf0251e7f68ab3e165c8ad8b08921afec4a5829",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatDescriptionBubble.tsx": {
@@ -3112,11 +3396,11 @@
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatInteractionCard.tsx": {
-      "sha256": "6008f96e0a617a32ecff3d9c099976192903144301a3f8433e982d3484a7e4b4",
+      "sha256": "bf901404f3aa93956c91ac210041db627294c670d8ee1ad8aaedc7a10d487bf7",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatLiveRunPill.tsx": {
-      "sha256": "f5d59ba880deb90240d7253a3bca235d4f9d9e427b0f7ba6ac5af986f5b58f61",
+      "sha256": "1e400d6ce6fd4997f11f01a6b8a9a15dedaa8ac874a80d5cad1a5ab8ad4480a1",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatLiveTail.test.tsx": {
@@ -3124,7 +3408,7 @@
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatLiveTail.tsx": {
-      "sha256": "e311a5b73ce2635a9a2e25526847734ead8bdd143f896656e3315ad8becf2e91",
+      "sha256": "dc319fd098e807156703d32fece742a6bed3cd7727b934d34b76937c92872272",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatMarker.localization.test.tsx": {
@@ -3132,7 +3416,7 @@
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatMarker.tsx": {
-      "sha256": "6a8bc38df85015917b7a1f0f1cfd9c04e1941daf64e1b68c1a81afdd054eee41",
+      "sha256": "68f49ced2fc86de565dff0e83ca5ea18d42800d0cd0acccd46677e0c9ff2a5c9",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatPausedTakeover.tsx": {
@@ -3144,7 +3428,7 @@
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatPlanPreviewCard.tsx": {
-      "sha256": "a7518f48ee3d07f12d9a035b97ca62d9b2c4e3c869ff8d55baabab7e657475d8",
+      "sha256": "9d864be472decc14499c8a4bd4321c057cf3b23ed29889a8a9ab8ec96d6add52",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatPlanView.tsx": {
@@ -3156,23 +3440,23 @@
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatProtocolActivityRow.tsx": {
-      "sha256": "18b6c6341347d1f2caf634f1e27a74fe64ca1b1f8f9a5761ad89454c90c7ac87",
+      "sha256": "1b6e4fc3e3961d6ac6f9b4a712c45ddaae78e84edf36a17958671779d241e85d",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatProtocolCard.test.tsx": {
-      "sha256": "b845f341ed51664cfabce6c66c84d16e2fb80324844c29603e11db5e86347e75",
+      "sha256": "50f95ae1890e4b5ca6b72ed3b6838a0955c71498c86a0d17c5a236306ce1abde",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatProtocolCard.tsx": {
-      "sha256": "ad7f61be80cfee54dd3f226ef485e30f408555771a04743166978c5447c1315e",
+      "sha256": "c8e29036d6c9fb0b8da342f860317733e15614ebe33b88a358f385b399442190",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatQueuedMessages.test.tsx": {
-      "sha256": "4d8cac9ba092e4344d739029fe33e84bb8a458daee7d692ed6494d7a3bd94505",
+      "sha256": "084fa4b097ec1ef27014ee7d26bcde63a0461d97112ac070a1fa9a6a23c2c497",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatQueuedMessages.tsx": {
-      "sha256": "ddd1512d2692a1d3b33f07bdc7a3b84895797af2deaeff5efdb00412c0c59879",
+      "sha256": "490cb4d7c66e3c98eb6683bfe08cec6ffec30aa7fb3b69b64ffa9d8fd70c0bca",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatRichInput.tsx": {
@@ -3180,11 +3464,15 @@
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatRunnerActivityGroup.tsx": {
-      "sha256": "6d89bd4dbb636b35a9e8649a36b27a4e4317efa627139fb017b016def7cd047e",
+      "sha256": "484c663aefe5ad06af52d0c479dace4fe7b9b8e5d928e205fdb322014877cfc3",
+      "mode": "100644"
+    },
+    "ui/src/components/task-chat/TaskChatRunnerTurn.test.tsx": {
+      "sha256": "b2c9a1295fe7ad9f13e7023a76d30e277f19c1b8152f78b7f365dc803e8a2ffc",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatRunnerTurn.tsx": {
-      "sha256": "f3503a5ed21ae8243310dcfccc7e5fbbae57e00af59bc4d66ed2c7816f4bcd50",
+      "sha256": "bc6d02ec16640d1572b8e5f4ee93e776de54aa93625f222810085d7618e958a6",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatSep12Localization.test.tsx": {
@@ -3200,27 +3488,27 @@
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatStatusPill.tsx": {
-      "sha256": "f35cba639863a136103ac4718ce5d5635f8393f0565b9a6bde5bb3c515a7028c",
+      "sha256": "f8ab065e3e1ff56fc8948a309eef45f07ebc2e7e5660f4cbd425ec28da36078b",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatSystemNotice.test.tsx": {
-      "sha256": "b078c05c3dd75f2edfd1c010ea7def3938b8ea991d2b9f6ffa02982ef91ecd67",
+      "sha256": "0974b913dd4f84367639ac1bf490769980b6a9f57b8b5c4b33fa63a67c12c5d9",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatSystemNotice.tsx": {
-      "sha256": "9c481a0571edfbc8a9ecb6979cea288556696c0311308c75ead04e175de3d5cc",
+      "sha256": "a81a06abb0eefb5fe861197edeb2aafa4a6ba095c190a3269c33ac28bf943f67",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatThinking.tsx": {
-      "sha256": "ec194b0ecf524fe7dcbf9dbf007e7a16abbdb84dcb5624055400dc0fe5656047",
+      "sha256": "e2ef3b7f40b296ccc5bf76285708c133cb8b42efd639582e8c15db6e49771b0b",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatThreadView.tsx": {
-      "sha256": "4344a47da56f7fc12cb7303831629e68161838084cebaaf5d0a658f9f3abe45b",
+      "sha256": "00ba2981f941304af5c9b823bf465ccc96d66bf10c32ee039231396adf8266d6",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatToolCard.tsx": {
-      "sha256": "4050ac3610d44bca6c3333ee233770fc537b1e54ccda4a78ef118051a2919972",
+      "sha256": "df953d734abfb1a9649c9b57759f9a7426144af97af133a98bd92064f7a481f2",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatTurn.tsx": {
@@ -3232,11 +3520,11 @@
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskChatUsageReadout.tsx": {
-      "sha256": "9fc16b4851c2b2b659383d2391732c5f01d62a3e67072f54215f84bd2edf8a10",
+      "sha256": "7346e6f3d89bdeb3187e90e985c1868fad632422490d91fad2f31b0af572f81f",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskMessageScroller.tsx": {
-      "sha256": "f1ae507c7dc452025f167ba1b8c4bb8ed0cd2c9da7a26b778bd39d306427347c",
+      "sha256": "96fdbea39bd23db2a355fbb8626375d52212a568867f9ab80a3190ca46f684a3",
       "mode": "100644"
     },
     "ui/src/components/task-chat/TaskRuntimeLocalization.test.tsx": {
@@ -3256,7 +3544,7 @@
       "mode": "100644"
     },
     "ui/src/components/task-chat/composer-run-settings.ts": {
-      "sha256": "1f2bc35de8f20bed596e57a58e080866414dc582e7d74d56fb4ef72fb580981e",
+      "sha256": "3e0d15c40c0f35e0c8094dc45f0c3b83766aa9c7ee857594490fa89acc89c97b",
       "mode": "100644"
     },
     "ui/src/components/task-chat/presentation-mode.tsx": {
@@ -3264,7 +3552,7 @@
       "mode": "100644"
     },
     "ui/src/components/task-chat/task-chat-activity-presentation.ts": {
-      "sha256": "9176218e4cbfd799e009923bb83db4acd070f26cb5c6adc2c500389a46f5e17f",
+      "sha256": "430952f3f597ec3e4b2685cdada2bf198ea2ac79f1b8b7fdfa8aa23d90f0b10d",
       "mode": "100644"
     },
     "ui/src/components/task-chat/task-chat-adapter.test.ts": {
@@ -3288,11 +3576,11 @@
       "mode": "100644"
     },
     "ui/src/components/task-chat/task-chat-display.ts": {
-      "sha256": "8e7393ddf03e3f8818fc457e117fba8dd08ed39c4639dc4baa4e27139ceb849a",
+      "sha256": "864fe36ff159ce3b4bd8db24ba9f4f334729ed1d2bb54e0c9b3f9041b78a5402",
       "mode": "100644"
     },
     "ui/src/components/task-chat/task-chat-model.ts": {
-      "sha256": "74ff82283306ff2626b167ce59d5cd32e25adedc28c8c25bbbe646a61b091c91",
+      "sha256": "29b850ec131ea7704ee802f036ec8f17fffe5d9eb5ee49ca5f2da38699df78a7",
       "mode": "100644"
     },
     "ui/src/components/task-chat/task-chat-phase-summary-display.ts": {
@@ -3304,7 +3592,15 @@
       "mode": "100644"
     },
     "ui/src/components/task-chat/task-protocol-surfaces.ts": {
-      "sha256": "94793dee02422ff5d61d49af7b091d1c742b5ffee2d494661dff8c4f0354c3fa",
+      "sha256": "8b88b64d38ba013dc1967413ed256758c91cdab05e71ce635a215f2a54ccb892",
+      "mode": "100644"
+    },
+    "ui/src/components/task-chat/transcript-adapter.ts": {
+      "sha256": "fb36c3bf195c754a87fe432e349c46b63359ed9568b078091c5fe636f6e77d1c",
+      "mode": "100644"
+    },
+    "ui/src/components/task-chat/transcript-display-copy.ts": {
+      "sha256": "40c5e0c172e767735534f41357af32ee94c34007206615356fe7759baf8cc280",
       "mode": "100644"
     },
     "ui/src/components/task-detail/IssueCreatedFromNote.tsx": {
@@ -3348,11 +3644,11 @@
       "mode": "100644"
     },
     "ui/src/components/task-side-panel/TaskSidePanel.test.tsx": {
-      "sha256": "51727e35b01d7eaaa60946bfafeca3604515d0de99de96b158c5b38067c9b368",
+      "sha256": "4fd2270e4e7e4c1493880e3d3c6d71cec8e343ff4171962c4f581cbc0c4fb63f",
       "mode": "100644"
     },
     "ui/src/components/task-side-panel/TaskSidePanel.tsx": {
-      "sha256": "0578a9907a9ba40dc6f200e86b614aecd1116738f5c6328d26bb64e62fe4b0d2",
+      "sha256": "06d9c55356cefe803e3105a2eefe7980f730a3979cf6268d241a3612f34cc957",
       "mode": "100644"
     },
     "ui/src/components/task-side-panel/TaskSkillPanel.test.tsx": {
@@ -3379,6 +3675,10 @@
       "sha256": "1098eb41903d80f0e4ba82af7c37c3020719338c36aadd95f745222fb9fcba31",
       "mode": "100644"
     },
+    "ui/src/components/transcript/native-run-events.ts": {
+      "sha256": "800b9bc57141cb8cb59d3302feb9c162dbb9215b6c26b73f43e4b67780f9127b",
+      "mode": "100644"
+    },
     "ui/src/components/ui/breadcrumb.tsx": {
       "sha256": "aadc13b456a25b45a089449965fb0577f625b6baaf2dd841bf7d92e7e7cf925b",
       "mode": "100644"
@@ -3399,12 +3699,68 @@
       "sha256": "bbf46ad816642f957238984aeb60e6960cc9ff6d40fdf017bcdcdbb96e7825c9",
       "mode": "100644"
     },
+    "ui/src/components/voice/NativeVoiceConversation.tsx": {
+      "sha256": "2ea5a61f767d985b244bda79fc760b6c55d4f6e1e3b0e61b6933db630c93f4e3",
+      "mode": "100644"
+    },
+    "ui/src/components/voice/SpekoCallHistory.tsx": {
+      "sha256": "09f3cfc50224511a60acc5ea6625d7630855ec773f071c0876e63746bf9185a4",
+      "mode": "100644"
+    },
+    "ui/src/components/voice/SpekoIncomingCalls.test.tsx": {
+      "sha256": "787d07dd494d461968d3e7404179a64b56e7055edfa305f0e4507d69916b6d13",
+      "mode": "100644"
+    },
+    "ui/src/components/voice/SpekoIncomingCalls.tsx": {
+      "sha256": "49bd49fdac8f0cd658f57811d2a2785d45e88c10a34d7fddbfd1e76239ac2488",
+      "mode": "100644"
+    },
+    "ui/src/components/voice/SpekoPhoneCallback.tsx": {
+      "sha256": "01fa7e9e90e9eedc0fd7dac67a5ca61eec5e6722920e1eb55381b0ebdcf027bc",
+      "mode": "100644"
+    },
+    "ui/src/components/voice/SpekoPhoneLine.tsx": {
+      "sha256": "e495413d4be270a431488e62a5c1b646e811ddfa4bd6ff71039cfdcb6f904839",
+      "mode": "100644"
+    },
+    "ui/src/components/voice/SpekoProviderSetup.tsx": {
+      "sha256": "f25887fde4af0c552ae92fb81fee715946b7bfb5b0b85f52e994a5dd8231aaef",
+      "mode": "100644"
+    },
+    "ui/src/components/voice/TaskVoiceLauncher.tsx": {
+      "sha256": "71db9e4f4f4f130ef386f46ebe96c3e08d6336ac843006dd205c527b2a8518a4",
+      "mode": "100644"
+    },
+    "ui/src/components/voice/VoiceCallProvider.tsx": {
+      "sha256": "52250755483a77a9e05a8cb0c274718a516ec279982c5b15b97624b6a61dcd56",
+      "mode": "100644"
+    },
+    "ui/src/components/voice/VoiceControls.tsx": {
+      "sha256": "c8aeb1fe38a2657b18cb0332ab269ce7b4e1dafce835ed645b5a26cd51275074",
+      "mode": "100644"
+    },
+    "ui/src/components/voice/VoiceConversationPanel.tsx": {
+      "sha256": "c92cdb4a9316443295835e994e883a63d10751e0c9cea59b5721104aeca54e7e",
+      "mode": "100644"
+    },
+    "ui/src/components/voice/VoiceTranscript.tsx": {
+      "sha256": "30bb195d9f23824bb49017d7d4b98e0f799ccc968a1a51c58166d18fd1e0a082",
+      "mode": "100644"
+    },
+    "ui/src/components/voice/voice-display.ts": {
+      "sha256": "9dc8c1cbe7a5c622a51f72eefe4e6f3b06422b879b1778bc23f0fdbc04dcda39",
+      "mode": "100644"
+    },
+    "ui/src/components/workspace-recovery-copy.ts": {
+      "sha256": "d697aa473e6276eaa446836375ee63008bbda395f2239264834c546628d58fa5",
+      "mode": "100644"
+    },
     "ui/src/context/LiveUpdatesProvider.localization.test.ts": {
       "sha256": "42691dd9b7a8bc4a8493c23238ae2282a598141e1cfe00e04110570384d6fb89",
       "mode": "100644"
     },
     "ui/src/context/LiveUpdatesProvider.tsx": {
-      "sha256": "886ae173e6071c81277cd0625bacc9a9af8b49087be6ea36e95392b16fbc42dc",
+      "sha256": "86efb5c5dd7196b0999cfc48371605d803dfd794ec7020b8b3860f62428ae429",
       "mode": "100644"
     },
     "ui/src/context/PrimaryAgentProvider.tsx": {
@@ -3432,7 +3788,7 @@
       "mode": "100644"
     },
     "ui/src/features/connections/ConnectionChoiceList.tsx": {
-      "sha256": "f61470a5d8715578d8dc65b9d255416117e3f8345bf6559009c8a8f33bf31da9",
+      "sha256": "8c211f1f9673f19378f72b6ce8f880f9e368ca4b7cc640286773711933832128",
       "mode": "100644"
     },
     "ui/src/features/connections/ConnectionInstructions.tsx": {
@@ -3440,19 +3796,23 @@
       "mode": "100644"
     },
     "ui/src/features/connections/ConnectionIntentInteractionBody.test.tsx": {
-      "sha256": "f85a525f1009d055a8e3829ef2ad40297ff72f25cefaa188772c83f5e3d3305f",
+      "sha256": "62ea7d074ff920ed675b71d6dbd083c448a5322d4ab8c91c97aedc3be81aefff",
       "mode": "100644"
     },
     "ui/src/features/connections/ConnectionIntentInteractionBody.tsx": {
-      "sha256": "0ba3bb4ca5d7f6ada2aecc7d1e19d8954cd1ef0e18972edd4d799c2546634dc8",
+      "sha256": "b2421ddeb06244a74b5d26218798d400f3bd2382fa1ba40497833a1192aef8a5",
       "mode": "100644"
     },
     "ui/src/features/connections/ConnectionSetupFlow.tsx": {
-      "sha256": "208067ce37ed1adcd7e23893c90a7676b33656b090c6e7eb7c7265ec7870066c",
+      "sha256": "1eb43dca2f8ac92ddac73896d02bcaadfa33ed04418c0ebb369b4ceb18a5cf75",
       "mode": "100644"
     },
     "ui/src/features/connections/ConnectionSetupHeader.tsx": {
       "sha256": "70ad054f1d5c43d74ae999ea009a87bcf208bcfed1edc9f3c35839e4f580697a",
+      "mode": "100644"
+    },
+    "ui/src/features/connections/GoogleWorkspaceServices.tsx": {
+      "sha256": "0a77d2a0c9b2cbe14b3f95d6146c8aea7bf84ab162c931de420245bdfa5f0720",
       "mode": "100644"
     },
     "ui/src/features/connections/HonchoWorkspaceSettings.tsx": {
@@ -3524,7 +3884,7 @@
       "mode": "100644"
     },
     "ui/src/i18n/locale-interpolation-usage.test.ts": {
-      "sha256": "da55f63458972f5044d16406e83c343a374248ae315a742e6b04c7092e9becf9",
+      "sha256": "8a20f82e344f3e4c8d6f0293a83a0e11e6265bcf30ddc0ff14bbb5b787cbd32f",
       "mode": "100644"
     },
     "ui/src/i18n/locale-structure.ts": {
@@ -3548,11 +3908,11 @@
       "mode": "100644"
     },
     "ui/src/i18n/locales/en.json": {
-      "sha256": "f84800f67dcaad25bb0677ade94aa4f07e910676a0e3f0973c8bb06baa600808",
+      "sha256": "2df1308aa3a23856ea85b85d5b8893380131cbfe3230df9fb1169fbaabefbaf0",
       "mode": "100644"
     },
     "ui/src/i18n/locales/ru.json": {
-      "sha256": "9463b14d7a0d7362a3bfc62bcbddd75152d487f2043c4840f33073a09257adec",
+      "sha256": "6fa561a245070183690e7b1091ad35a8a9c593b4f40096bfa4a10d9d62381c72",
       "mode": "100644"
     },
     "ui/src/i18n/ui-source-changes.test.ts": {
@@ -3564,7 +3924,7 @@
       "mode": "100644"
     },
     "ui/src/lib/activity-format.events.test.ts": {
-      "sha256": "cc21709416edc90e2cd3cd154fcd472573a76fd171df152330fc59f3a847b815",
+      "sha256": "adbbc381d8b728e0820481944c9d9484baa10a188588cd2399c11e8cfc1039c0",
       "mode": "100644"
     },
     "ui/src/lib/activity-format.plurals.test.ts": {
@@ -3572,7 +3932,7 @@
       "mode": "100644"
     },
     "ui/src/lib/activity-format.ts": {
-      "sha256": "cb01b64e5489d5060035283d1e66c1dc5ddba6ac4a3decfeb9ddd9b6f788c924",
+      "sha256": "d2cb6134dc5e5f50da7b4ee5bb2eaabea58a5fc17568d569963fda60351954ca",
       "mode": "100644"
     },
     "ui/src/lib/adapter-environment-check-display.test.ts": {
@@ -3596,7 +3956,7 @@
       "mode": "100644"
     },
     "ui/src/lib/app-gallery-copy.ts": {
-      "sha256": "ad6a1e6fdfa4a10467bafa63d716232429a3c56bcc1717a3766a0c914c1c33a6",
+      "sha256": "932fbb6f56983b63ab16983fca4c2072eb2a9fd6fcd8e9e69603914296382e24",
       "mode": "100644"
     },
     "ui/src/lib/artifact-card-data.ts": {
@@ -3608,11 +3968,11 @@
       "mode": "100644"
     },
     "ui/src/lib/assignees.ts": {
-      "sha256": "2b9e7553666f69fa7314cb97159755fc8b681defde0631d1b38d8a89c87bbf82",
+      "sha256": "1039d775bc30614741169c62be033a02f7bdf346b1814011846d02b1a5ff2a7f",
       "mode": "100644"
     },
     "ui/src/lib/attention.ts": {
-      "sha256": "674429ed083dcd66b216c0243939497aab055d1b92f1cff789cc05a83181c225",
+      "sha256": "779298e7af4e04caea3cc78d5d518c34ebe7abfa859a518186c98f238b6ca872",
       "mode": "100644"
     },
     "ui/src/lib/blockedInbox.ts": {
@@ -3648,7 +4008,11 @@
       "mode": "100644"
     },
     "ui/src/lib/company-members.ts": {
-      "sha256": "00bd622dd3e502a2511c2e5f9e988aaf55d90c6428983eb1b121b19abc136954",
+      "sha256": "462bb6b70b0fef71dc137ad836fa845742be2300dee1d6710df6d9e48ec39b8e",
+      "mode": "100644"
+    },
+    "ui/src/lib/credential-access-notice.test.ts": {
+      "sha256": "3117ab0c1f643325a2512c0f2a2ec1daaedd6a4f68bd524f3901a5ec9c67f8a9",
       "mode": "100644"
     },
     "ui/src/lib/credential-access-notice.ts": {
@@ -3688,7 +4052,7 @@
       "mode": "100644"
     },
     "ui/src/lib/inbox.ts": {
-      "sha256": "99eaebda29e1b9795fc324c646282dfcf03116f1a185f0c58afccaa175fb7c83",
+      "sha256": "43d18efc6bbd7a656a97b06b9811207bacfeca6c6f79b2c95528b4d9760654b6",
       "mode": "100644"
     },
     "ui/src/lib/interaction-audience.ts": {
@@ -3712,7 +4076,7 @@
       "mode": "100644"
     },
     "ui/src/lib/issue-filters.ts": {
-      "sha256": "34c68ac3167c945654e1317a181149fabff9ee8db37b6a000924cc27d7d81c5e",
+      "sha256": "deb1a3397518192e3d3cc7efb0dc3752dc1ad70ffe667fdc5c9d964948054cb5",
       "mode": "100644"
     },
     "ui/src/lib/issue-monitor.ts": {
@@ -3720,7 +4084,7 @@
       "mode": "100644"
     },
     "ui/src/lib/issue-thread-interactions.ts": {
-      "sha256": "9783679c50ce08a518ea31919736b6d4cb705f4b994db15191e713f130f6ac1d",
+      "sha256": "0cd5b7cfd8d0fa911b5b05980caf7381c01e9311b0ae1aeb722390b90607251b",
       "mode": "100644"
     },
     "ui/src/lib/issue-timeline-events.ts": {
@@ -3735,32 +4099,24 @@
       "sha256": "8b2e42f09a297b1d1ddac165a1b6977070d829a3bf633c35db798d897569f852",
       "mode": "100644"
     },
+    "ui/src/lib/localized-ui-error.ts": {
+      "sha256": "7f55087c7839a60c6b6773cd37541df740cbc7839d5e8f169c4ef58878faea6a",
+      "mode": "100644"
+    },
     "ui/src/lib/managed-sandbox-environment.ts": {
       "sha256": "291cc78a04c5a8d49a87c58b6e394057dbd1f3b56cf41e2315220e0c71a53c18",
       "mode": "100644"
     },
-    "ui/src/lib/pipeline-breakdown.ts": {
-      "sha256": "8182a892b3edde95d2437ba0ac7dde67167a917488612e5f8c73626e1dadc0a9",
-      "mode": "100644"
-    },
-    "ui/src/lib/pipeline-item-detail.ts": {
-      "sha256": "a8ca330397751e341d90235f057d83a13c58947f55047118ae4e5832610abbf5",
-      "mode": "100644"
-    },
-    "ui/src/lib/pipeline-learnings.ts": {
-      "sha256": "c8aa7ef90414a6e1eb52c99ad07c80297154c98864d71c40e093f4c33c270515",
-      "mode": "100644"
-    },
-    "ui/src/lib/pipeline-liveness.ts": {
-      "sha256": "fe5fb820844c66de681a3472bc5091816ba431c20a83211b7a4efce6b48ce045",
-      "mode": "100644"
-    },
-    "ui/src/lib/pipeline-references.ts": {
-      "sha256": "b493793f6982fb5e7ce5c5ab0d06447b85a3db8cfe4644a2b8d7e84e7d378efe",
-      "mode": "100644"
-    },
     "ui/src/lib/plugin-display.ts": {
       "sha256": "c188d46dced117a71bdab34f3c5e2ea54e3ad8ffd76837d9ee9fa65d6a802328",
+      "mode": "100644"
+    },
+    "ui/src/lib/qualify-claude-setup.test.ts": {
+      "sha256": "2fdc6832f1605c57f9cac5114ab1b6fcc623d00a3060119da7820bda58c5db4c",
+      "mode": "100644"
+    },
+    "ui/src/lib/qualify-claude-setup.ts": {
+      "sha256": "bec893dcddde183c6d694c19aba2735761539fe21e72fc68f6b9e516af4bed4a",
       "mode": "100644"
     },
     "ui/src/lib/queued-message-display.test.ts": {
@@ -3768,7 +4124,7 @@
       "mode": "100644"
     },
     "ui/src/lib/queued-message-display.ts": {
-      "sha256": "c385b6bd2bbb1d25809577e67b6fb220a726c6defdf271e1d1dc10923549b4b8",
+      "sha256": "74fd6a4d09545a2f310389c012c4fffa92c689932202d738dd12d1bfd9b91507",
       "mode": "100644"
     },
     "ui/src/lib/quota-refresh.ts": {
@@ -3776,7 +4132,7 @@
       "mode": "100644"
     },
     "ui/src/lib/recovery-display.ts": {
-      "sha256": "366543af33c8a3fdbf4823d3001a342834eb16c29795e4ac02cb6bafb2db4333",
+      "sha256": "5d1ddaa3abf8dac567efe660bf444c9a157db74b89c9216a388a0f6b15fbea34",
       "mode": "100644"
     },
     "ui/src/lib/recovery-lineage.ts": {
@@ -3807,6 +4163,10 @@
       "sha256": "622d0c14cef85b6bb2aefae0f81ca12975768467a9d33c25b20c230563a3faf4",
       "mode": "100644"
     },
+    "ui/src/lib/sandbox-provider-display.ts": {
+      "sha256": "eb7596f7de0acd68c3b4b6ba3a6461f3c176419637e5adedc93160f80568e51d",
+      "mode": "100644"
+    },
     "ui/src/lib/saved-provider-credentials.test.ts": {
       "sha256": "b0043fb6b7fb0bb40c427384489dbbc21a62f690129c57ab2ba5ba4ef097cfea",
       "mode": "100644"
@@ -3825,6 +4185,10 @@
     },
     "ui/src/lib/secret-delivery.ts": {
       "sha256": "f7867cb7751adc274dc174cac4d62440505f6dcd69c358953ada030b353a9e3b",
+      "mode": "100644"
+    },
+    "ui/src/lib/settings-localization.ts": {
+      "sha256": "61d2d2f335fca3b11b6f1ab14b3d4c44c1d9e3f34ac656f2fb9e98311a09ac00",
       "mode": "100644"
     },
     "ui/src/lib/skill-policy-denial.test.ts": {
@@ -3891,6 +4255,10 @@
       "sha256": "ddfae87017a05bae1c9f4e7cea9e8a7dca0fe0f8ed9c202af6034cf9ed7c5d5e",
       "mode": "100644"
     },
+    "ui/src/lib/toolbar-localization.ts": {
+      "sha256": "960a7e5e25504843b0188d4c1bb5a50d91b218ac4b8ab3391fd47777f01e3b4c",
+      "mode": "100644"
+    },
     "ui/src/lib/transcriptPresentation.ts": {
       "sha256": "56554f47bfaa6f1200cf43c5d1bfad271444d4c20eef58b0767d590587d1bc49",
       "mode": "100644"
@@ -3912,7 +4280,19 @@
       "mode": "100644"
     },
     "ui/src/lib/utils.ts": {
-      "sha256": "6778db7963bec48a88d10141fa4f2ddc44f579c0b881da9aae63172e2d6db912",
+      "sha256": "9131eafce53e3c9034f37176ccff711f32acac5cbdac38bb7271d1e9d41c755b",
+      "mode": "100644"
+    },
+    "ui/src/lib/vite-startup-localization.ts": {
+      "sha256": "4bdfa7fb0369d47936176b75099290c1391ec9a19c12a73e53522aef87d3976f",
+      "mode": "100644"
+    },
+    "ui/src/lib/voice-session-controller.ts": {
+      "sha256": "0b61fe8a1db80d4c47f1366e6e38cbae4d43049ac576d2e5c6a153038c0498fb",
+      "mode": "100644"
+    },
+    "ui/src/lib/voice-transcript.ts": {
+      "sha256": "1b365b972cfb8d4830f5312d7dd5883e620c35080d85f32b38c82d0cd53ae764",
       "mode": "100644"
     },
     "ui/src/lib/work-mode-meta.ts": {
@@ -3956,15 +4336,19 @@
       "mode": "100644"
     },
     "ui/src/pages/AgentDetail.production.tsx": {
-      "sha256": "f9b0f98cfeffc180abdc06786ce7550f4bd010c091c8ad380be6f1ac79728365",
+      "sha256": "1adaf6b0d3f6f2fc72be2fe4bcb37db322479e9383b7aa56637aa55e7322e40c",
       "mode": "100644"
     },
     "ui/src/pages/AgentDetail.tsx": {
-      "sha256": "e6e588baf3718ed5539193d5e1893aaca6287598f75000d6712769a2d45b7a87",
+      "sha256": "4d2d76b10a3e5e6af1b3a22cf1b42713bf46bd7fb26508f2a2f3c382a87f13b0",
+      "mode": "100644"
+    },
+    "ui/src/pages/AgentDetailPage.tsx": {
+      "sha256": "c2c5c587607fb49e49f56c46610dd338ff8c9599092ddf94bf3347af1407e3b3",
       "mode": "100644"
     },
     "ui/src/pages/AgentOverview.test.tsx": {
-      "sha256": "fe707e4e1ce83c3a62ccfa5125493ceaa3a1415ea82ead0fafa3ee91baf2d58d",
+      "sha256": "43b8bb6902fcba9e0bf63541dcd759966c0169ebe60b232549313b1f7df0ae9f",
       "mode": "100644"
     },
     "ui/src/pages/AgentToolsTab.test.tsx": {
@@ -3976,15 +4360,15 @@
       "mode": "100644"
     },
     "ui/src/pages/Agents.production.tsx": {
-      "sha256": "c6e98c8ea7cf2850b1f286dc5798b8fc98877723ffe877d0abf5ec792b1bd5c8",
+      "sha256": "1b8793f6916a0128185409378bcc71e8a10fc4305140a37aca8db5e1a9a7f8dc",
       "mode": "100644"
     },
     "ui/src/pages/Agents.test.tsx": {
-      "sha256": "838e9652aff90f2f8ebe0fd0bb97fdd2e3735d8e7e20f5e4ae89fe39cbe642c2",
+      "sha256": "22bd5e0a38d1d839fa9340ec3f8ef64bc2b5a15338b1aaf5fb2adbbdafa41dfa",
       "mode": "100644"
     },
     "ui/src/pages/Agents.tsx": {
-      "sha256": "15072461b92368b8e79fd4f06dbcade37f1dcfbd8b9533621bfb85157737d146",
+      "sha256": "5cbdf063558f737ab7bacb3e4c4fe5cf029312f1608c85b21128a75b1e60ef95",
       "mode": "100644"
     },
     "ui/src/pages/ApprovalDetail.localization.test.tsx": {
@@ -3999,8 +4383,12 @@
       "sha256": "509114b34eb53f51ac261e9289d6be4014c8640ec238bb179f2c881d7935a004",
       "mode": "100644"
     },
+    "ui/src/pages/Artifacts.test.tsx": {
+      "sha256": "725b537dcb55f689a1318004381fded78cfd9d5bc900e737ba2c169044b8a5fa",
+      "mode": "100644"
+    },
     "ui/src/pages/Artifacts.tsx": {
-      "sha256": "cdead904fc75cf5e746be9949fc01ae3d625c7276ac648a168ad738c266c042a",
+      "sha256": "7b0fd795f2d90007b0a4865d67118e3da81be9e4c997ce8bd0c9287cfabb3361",
       "mode": "100644"
     },
     "ui/src/pages/Auth.tsx": {
@@ -4020,15 +4408,15 @@
       "mode": "100644"
     },
     "ui/src/pages/CaseDetail.tsx": {
-      "sha256": "cb66283d1564c51b9fa69e6668586e30e18b6723537223cf347d925a7aef0578",
+      "sha256": "431e0cf7999e6c5a06219680e0c82617af3641a4f2e69d1b49436185bc988251",
       "mode": "100644"
     },
     "ui/src/pages/Cases.tsx": {
-      "sha256": "cfb4dc90741d108a759e0ffd35f9ee33852fbf110123c466538982ad4745f0ec",
+      "sha256": "126dee0db73ed4d4f4130e1c7e0046b34a4c97f5b134197734c9d722a3f75419",
       "mode": "100644"
     },
     "ui/src/pages/CliAuth.tsx": {
-      "sha256": "5bf5a8767922047a81f572f51136de85693adaaa9c4138e1108eca180514f112",
+      "sha256": "2f0a3be3b29aa9143feb4a189088bfeb8c0813ccc6f6ddf3e9ca0389d1e0032d",
       "mode": "100644"
     },
     "ui/src/pages/Companies.test.tsx": {
@@ -4044,19 +4432,19 @@
       "mode": "100644"
     },
     "ui/src/pages/CompanyConnections.tsx": {
-      "sha256": "c688517fceca7a3f283426e00b709ea85ea494c430d05de66b63a480432c1620",
+      "sha256": "408b433c1fecf03ce4f3beb72e604ebb206d1dde9a9b9bee724a64f07fce59b1",
       "mode": "100644"
     },
     "ui/src/pages/CompanyEnvironments.test.tsx": {
-      "sha256": "51e9ac5cf6912b9b75ec4d53cce0067ae207307888a7c09cb7734ff534c01e76",
+      "sha256": "98c4cb932261635a520f255559a030f0f0ee7fb9db26457f3cd80a1687162515",
       "mode": "100644"
     },
     "ui/src/pages/CompanyEnvironments.tsx": {
-      "sha256": "77a943925d8f4e4ff923c3687de971d627663693a10d9d490c88fda4be3f68a1",
+      "sha256": "7a368873ccb37349c4ce0ab30a3eb87beaf3bed60b9e435f447ca4698985a9b7",
       "mode": "100644"
     },
     "ui/src/pages/CompanyExport.test.tsx": {
-      "sha256": "96dee97d5c313d4a0166a114c18093768e1596bdd2dbfe992d89632e7e43a13b",
+      "sha256": "17561165f3eb48a94d2bed8718382af7832cfc085fe071d998131b72e2c7a78a",
       "mode": "100644"
     },
     "ui/src/pages/CompanyExport.tsx": {
@@ -4064,11 +4452,11 @@
       "mode": "100644"
     },
     "ui/src/pages/CompanyImport.tsx": {
-      "sha256": "0856d4820228aff2e1005c8dc08d338787a7ef36b06c01c158c6d5cba7b187e4",
+      "sha256": "bfafb4993dac00ee935dc509e4c4dcf0591acd2a38b98077f2d770c8e06c5fad",
       "mode": "100644"
     },
     "ui/src/pages/CompanySettings.tsx": {
-      "sha256": "c995de2ed7030a6f2dd533c4b71ab35fcab901965f1d58050d6f1f5bf4746f92",
+      "sha256": "6b1f620df991cb732939b3b1adc7e501ef1017b96a03542058501b367d2dcc4a",
       "mode": "100644"
     },
     "ui/src/pages/CompanySettingsArchive.test.tsx": {
@@ -4080,7 +4468,7 @@
       "mode": "100644"
     },
     "ui/src/pages/CompanySettingsRenameHint.test.tsx": {
-      "sha256": "0709b868678686fb6b545cf70cbc29e689067fbe25d68ea61412e184bfb3c81f",
+      "sha256": "c8d1c88b6d99fd4675aef3a41862495c9185d5de2c52f258751b6272f9f1f8dd",
       "mode": "100644"
     },
     "ui/src/pages/CompanySkills.production.tsx": {
@@ -4088,19 +4476,19 @@
       "mode": "100644"
     },
     "ui/src/pages/CompanySkills.test.tsx": {
-      "sha256": "c9d52541cd4b1fee83394d27480d55bed786170f4adf2ba76db7d16ab2ae77c9",
+      "sha256": "6d826545d54f6d2613620c1764e2af37c30b2cba1e384aa6271604d341d985b5",
       "mode": "100644"
     },
     "ui/src/pages/CompanySkills.tsx": {
-      "sha256": "f4b679eef7d239567221908fac3acc18c8da98f475ef5053ee0a8e679637776c",
+      "sha256": "6f4b03bb03073bcffe31717b402ad55849f49ca6e039884380f87b168bd5ba89",
       "mode": "100644"
     },
     "ui/src/pages/Costs.test.tsx": {
-      "sha256": "436c038b7fc61d806509fb95bf164f4f04563279897a243eec385b8d5fa9b166",
+      "sha256": "f60b08e23da81a705ed32fca67ceacba1e2e966990ad28f9a9ebc107949475ca",
       "mode": "100644"
     },
     "ui/src/pages/Costs.tsx": {
-      "sha256": "65f3c7a1e4bd99cee00970dbc06c79fd1f15b4123225ffcb3294730b34d05d74",
+      "sha256": "7051254ab2de60278b472bb2fac90c2a1bfd4e7560fa7f2984553436220e7425",
       "mode": "100644"
     },
     "ui/src/pages/Dashboard.localization.test.tsx": {
@@ -4108,7 +4496,7 @@
       "mode": "100644"
     },
     "ui/src/pages/Dashboard.tsx": {
-      "sha256": "fb11bc176dfefa797bcf8ef2a71eb8732118e1ac874bf1172fe0980ffe48fc53",
+      "sha256": "b5738c469f9d4dd846d5321c4d84a8cd7621f109155174b4a80c9b5519004e93",
       "mode": "100644"
     },
     "ui/src/pages/DashboardLive.tsx": {
@@ -4116,15 +4504,15 @@
       "mode": "100644"
     },
     "ui/src/pages/DecisionQueuePage.tsx": {
-      "sha256": "4273c7f68590e5cd5ef669d5fc5dc3aba18f08a82b91fed72d41b13ba8023462",
+      "sha256": "5b97bd1aadaaf13c932bfe297bcaea71274644bef2dc8940f79ae1caf61cc556",
       "mode": "100644"
     },
     "ui/src/pages/DesignGuide.tsx": {
-      "sha256": "65bb4c398bef0f5f646639a8f46fa7dcc1a6b6c52bebe6743a15670818a24624",
+      "sha256": "80b5d1c3eb1424721079c9b8640975586b00dbcd803b7a4f17c876f296e6941c",
       "mode": "100644"
     },
     "ui/src/pages/ExecutionWorkspaceDetail.tsx": {
-      "sha256": "b3f48a9ce05ff173c870c6f9c4ffff5a7a1799f63dd3d9fc82b56e543a64b7c5",
+      "sha256": "64bfdb3ecd1c7d092408db8efba63321fd80d2eaffffc84ad47469e92e8a56bc",
       "mode": "100644"
     },
     "ui/src/pages/GoalDetail.tsx": {
@@ -4136,11 +4524,11 @@
       "mode": "100644"
     },
     "ui/src/pages/Inbox.test.tsx": {
-      "sha256": "9c290f02be36b69a7dec4e6df77c1be953744076b46da77b22c014c5d15d7d73",
+      "sha256": "3ed177a9f3c4a1b62a79b13e141b033a372e183717accfacaf11be55e5050f77",
       "mode": "100644"
     },
     "ui/src/pages/Inbox.tsx": {
-      "sha256": "fb9999cc11197092615c39e073d01adf68f1e26f8914afda88d45e2f11d74b49",
+      "sha256": "14217340a396143f1c2a5d7f141c9f31ff390b49a56ceb9729e453687be20b4a",
       "mode": "100644"
     },
     "ui/src/pages/InstanceAccess.test.tsx": {
@@ -4152,11 +4540,11 @@
       "mode": "100644"
     },
     "ui/src/pages/InstanceExperimentalSettings.test.tsx": {
-      "sha256": "94b149828e7747ded4bd4cbdc553c081265f3b657abca54d2bdbf0e69abe71fb",
+      "sha256": "dd974db1492d86b0594216c106387e30f4ee915c9554f64311e0e33b01748858",
       "mode": "100644"
     },
     "ui/src/pages/InstanceExperimentalSettings.tsx": {
-      "sha256": "1630f902be6141d7fbf51d4d38cd1fafea47bfc796711f3b4d1f2ffe85270071",
+      "sha256": "abfeb96d89acd872e7edc6c958e7003bf6ec6add9153b70742764cce0b35e7ae",
       "mode": "100644"
     },
     "ui/src/pages/InstanceGeneralSettings.tsx": {
@@ -4164,7 +4552,7 @@
       "mode": "100644"
     },
     "ui/src/pages/InviteLanding.test.tsx": {
-      "sha256": "d7fdb2bc362f728cfd84fcf0046c2ddceb4b70ab555d4444637e5082bb54e82b",
+      "sha256": "80dd9f1ea621a02c81eb7d3b825f86a1b6c7214867e8803a33aa42387c607f21",
       "mode": "100644"
     },
     "ui/src/pages/InviteLanding.tsx": {
@@ -4172,11 +4560,11 @@
       "mode": "100644"
     },
     "ui/src/pages/IssueDetail.test.tsx": {
-      "sha256": "79b3cfbf9a68cf89c790d55653ecccc5a7b591b037b0d3b57dafb5ff05667897",
+      "sha256": "9bf9e98d6b039879682af639a428e7ccd565d1d6759a67a55700ce16e73d2c9e",
       "mode": "100644"
     },
     "ui/src/pages/IssueDetail.tsx": {
-      "sha256": "0bd8637435ea0bd7612dff4fea5c1bb7fed1e7dd6fb2e1750a8010824c9cf576",
+      "sha256": "bb0e5b4180d16003a738d89486602c7112cc257b1d80a3f8c0e08985f62aa62c",
       "mode": "100644"
     },
     "ui/src/pages/Issues.localization.test.tsx": {
@@ -4184,7 +4572,7 @@
       "mode": "100644"
     },
     "ui/src/pages/Issues.tsx": {
-      "sha256": "df635188d2873d251f68f04738044c615941f665d530e79db61438c4305be13f",
+      "sha256": "0d7516fa81656c558ead241f14c900683a7bf716fd605963cf5988135cea59a3",
       "mode": "100644"
     },
     "ui/src/pages/JoinRequestQueue.tsx": {
@@ -4192,11 +4580,11 @@
       "mode": "100644"
     },
     "ui/src/pages/LegacyInbox.tsx": {
-      "sha256": "bcec48ce37a46df5780e3d8248223b412787dd71eb5bd76acd525ef5338a5f0a",
+      "sha256": "ad48be418a9f28c442b1ee6f861af5d15757a8ca2a164adbc85f6d9c41b036f8",
       "mode": "100644"
     },
     "ui/src/pages/McpConnect.tsx": {
-      "sha256": "a4e67647d1c135f7e61bf88e2f82c7f2e595625327c421fbd235252f2f83818e",
+      "sha256": "e05cc3cb204cdc84edee4f0c1546dd393ee580a6f9984d71177c4e79ab4a6d6c",
       "mode": "100644"
     },
     "ui/src/pages/MyIssues.test.tsx": {
@@ -4216,7 +4604,7 @@
       "mode": "100644"
     },
     "ui/src/pages/Operations.localization.test.tsx": {
-      "sha256": "ccd65dc6727f8edace4e1c03fbf4b73da201d762b0a668aa13eacc6e399d302d",
+      "sha256": "e435c3d1c9871715c4e208275b8be782abacfc352794e7387c14298393c0acd4",
       "mode": "100644"
     },
     "ui/src/pages/Org.tsx": {
@@ -4232,19 +4620,7 @@
       "mode": "100644"
     },
     "ui/src/pages/OrgChart.tsx": {
-      "sha256": "04a1361f46769b4adcb336151d5fd47b322aa96b9b0e423c5e5e9d0b2ca9e455",
-      "mode": "100644"
-    },
-    "ui/src/pages/PipelineSettings.tsx": {
-      "sha256": "3f8645493518926d9acf8d61fca773645b19b0252031cc98e797cc06a711592c",
-      "mode": "100644"
-    },
-    "ui/src/pages/Pipelines.localization.test.tsx": {
-      "sha256": "2cefe375c45a81682ac794da9be595fcdeadbf3f14b46ef2b345b43a9c86357d",
-      "mode": "100644"
-    },
-    "ui/src/pages/Pipelines.tsx": {
-      "sha256": "c674404e4804bea6898f26fa0af5854479565eff19256c9f364f5e37734069f9",
+      "sha256": "dc0adeca724310f5bf5ab5fea1681828e20255f776044e6725a7fa1f1bf310e4",
       "mode": "100644"
     },
     "ui/src/pages/PluginManager.tsx": {
@@ -4260,7 +4636,7 @@
       "mode": "100644"
     },
     "ui/src/pages/PluginSettings.tsx": {
-      "sha256": "492abe6c89848604accbe36ab745761f6c8b89f0a5cdb9740357700104d3ca65",
+      "sha256": "944d70b7d7c25a6b501f3b23e361734c0b569204e6ca318be1110e96a9847b98",
       "mode": "100644"
     },
     "ui/src/pages/ProfileSettings.test.tsx": {
@@ -4272,7 +4648,7 @@
       "mode": "100644"
     },
     "ui/src/pages/ProjectDetail.tsx": {
-      "sha256": "5d00f9525dd601fdb8f5525c2a5bb3383270f69c4898336613a194e47759a932",
+      "sha256": "597560c4475d0008a45dc9fb4d482a4592e54ad580f25639a930f0458b3a4183",
       "mode": "100644"
     },
     "ui/src/pages/ProjectWorkspaceDetail.tsx": {
@@ -4280,7 +4656,7 @@
       "mode": "100644"
     },
     "ui/src/pages/Projects.tsx": {
-      "sha256": "10eb2a6ed6363781512235aca7ddd0cedc81f1d9d1180a01f88197744d0fbd2a",
+      "sha256": "56f48362d5d5212e5fef37782b560092f8678029600c85992a648e28a2383c54",
       "mode": "100644"
     },
     "ui/src/pages/RoutineDetail.production.tsx": {
@@ -4296,11 +4672,11 @@
       "mode": "100644"
     },
     "ui/src/pages/Routines.test.tsx": {
-      "sha256": "31e79c2fa2059469b9b20199a00a2e6aa6e1632d64e8e5206da9020335d9523f",
+      "sha256": "fb074fc5b3ab7b5c544a629719494f85d4a2dacecbf9a4053c4df7841c5b7460",
       "mode": "100644"
     },
     "ui/src/pages/Routines.tsx": {
-      "sha256": "59d2680b282ac4f7689b2105379b40b21712d6ae64ac2467856ac0b5fba91847",
+      "sha256": "ccb7a6a8cb2d33fd666c2982048b7cd9d51b0713df99f137450e0072d06aca0d",
       "mode": "100644"
     },
     "ui/src/pages/Search.test.tsx": {
@@ -4312,7 +4688,7 @@
       "mode": "100644"
     },
     "ui/src/pages/Secrets.render.test.tsx": {
-      "sha256": "a6a061038bc7854ca0c34791beb4fcc4840bead2822cb4e5bddb59cc800dcfbd",
+      "sha256": "db5e0ede0cc0fade817928caf005ee6b9603e334c2ba47f7f11ccb59061b7814",
       "mode": "100644"
     },
     "ui/src/pages/Secrets.test.ts": {
@@ -4324,11 +4700,11 @@
       "mode": "100644"
     },
     "ui/src/pages/SkillSources.tsx": {
-      "sha256": "24061fca2b7ce1903fda8062d67c91b4154e48047ffcf74f786bf2cf7290c295",
+      "sha256": "3e399f80d0e5d8235b8417ab4d3817b5f3081cbae559794846de73df5c46ad1a",
       "mode": "100644"
     },
     "ui/src/pages/SkillStudio.tsx": {
-      "sha256": "237c11fb4b837feee184539f1afd6742a5b39ba894393a7d1f390cfa63011f55",
+      "sha256": "162e23e8fb2fcb6a1518a5f46f860a9341945217788890e9e9da50dc838c68a5",
       "mode": "100644"
     },
     "ui/src/pages/StatusCards/ArchivedStatusCardRow.tsx": {
@@ -4380,7 +4756,7 @@
       "mode": "100644"
     },
     "ui/src/pages/TeamCatalog.tsx": {
-      "sha256": "22434d5ef949f6332f7cc653798b8a2dd2f601e26bdefe73891239aa3381006b",
+      "sha256": "81cd5f6ed9f6ffe3d38c17afa33e202dd95c500c56752ad513cb8efce87b4cf6",
       "mode": "100644"
     },
     "ui/src/pages/Timeline.tsx": {
@@ -4392,11 +4768,11 @@
       "mode": "100644"
     },
     "ui/src/pages/WhatNeedsMe.tsx": {
-      "sha256": "5d48eccc35719090d857177587ea27756a698ae4bb607a2f4a7858f9d5d837d4",
+      "sha256": "acf84e56e74043971c6267e75a8b07bdcd14391759aac36c58eb286aaefc5123",
       "mode": "100644"
     },
     "ui/src/pages/Workspaces.tsx": {
-      "sha256": "71da3d4882b7c509948771e6c9391365cc0489ff90cf434f2aabaff38344e6e0",
+      "sha256": "080f2c965c6033df6697f6bb384561034aba55564086afad249e90e982e6c334",
       "mode": "100644"
     },
     "ui/src/pages/agent-detail-navigation.ts": {
@@ -4444,7 +4820,7 @@
       "mode": "100644"
     },
     "ui/src/pages/apps/AppDetail.test.tsx": {
-      "sha256": "16aa794c1351650ce1e82c27f88ef85d70f70a04ffb7a904cbf199ac50f00746",
+      "sha256": "9d1ab1368715bd491611b1b587051fd91795b2aa657d27a1a1d89af3de7c10cc",
       "mode": "100644"
     },
     "ui/src/pages/apps/AppDetail.tsx": {
@@ -4460,7 +4836,7 @@
       "mode": "100644"
     },
     "ui/src/pages/apps/AppsConnect.test.tsx": {
-      "sha256": "12a8d0adc70d2994ca65ef2375b67c9d48936c5a276c0c123c8f7d2119a7cf10",
+      "sha256": "c647946d3a8726bb84e988952a8aafccd89109e5dc069b3e16436600b25108f0",
       "mode": "100644"
     },
     "ui/src/pages/apps/AppsConnect.tsx": {
@@ -4484,15 +4860,15 @@
       "mode": "100644"
     },
     "ui/src/pages/apps/Browse.test.tsx": {
-      "sha256": "91f05ab4b3db18c326e748d727506a6f4a59a5ca7700cb4837c91f07db34c68e",
+      "sha256": "242999da3d4789c1522acbc7d34c634dfc0ceef4f81fd9e71a05c20b701ab85b",
       "mode": "100644"
     },
     "ui/src/pages/apps/Browse.tsx": {
-      "sha256": "c8fe3f2afaf3fd4dbf4bca93da89e5ce7025336d379e2a14cfd80dd297e5e49a",
+      "sha256": "41ca261560d1fbbaaa529adb9f1bf1fa95dfe4d35456471b646e121a116b0b67",
       "mode": "100644"
     },
     "ui/src/pages/apps/CatalogSourceFilters.tsx": {
-      "sha256": "e7ab3229c8a9442871135fb2b634cad4397b126f8c3015246f1e5d92ac2fab14",
+      "sha256": "2dac9113ec583efc11cb2793b3ee79fb12875ca98456b9367d0e26e8372598b2",
       "mode": "100644"
     },
     "ui/src/pages/apps/ComposioAppManager.tsx": {
@@ -4513,6 +4889,10 @@
     },
     "ui/src/pages/apps/Connections.tsx": {
       "sha256": "eb52581450d500ca0b4ededd35e8429a708b121107e0b97c889bfd18196ba212",
+      "mode": "100644"
+    },
+    "ui/src/pages/apps/ConnectorsToolbar.tsx": {
+      "sha256": "4cc0ad883bcf19fbd053d497d0f1ed12f76b3d1cb40a07367106ffd0a004e971",
       "mode": "100644"
     },
     "ui/src/pages/apps/ExecutorManagementSetup.tsx": {
@@ -4544,7 +4924,7 @@
       "mode": "100644"
     },
     "ui/src/pages/apps/app-definition-copy.ts": {
-      "sha256": "b159b7472afd7fab9cf30e0c02215c0c178b70a6168c9ef1cb5a49d64d2ec3d0",
+      "sha256": "fb1b7c121e8a389debe2c30baa36c054cd88cbd8b61d20330a761f71ad0bfa62",
       "mode": "100644"
     },
     "ui/src/pages/apps/app-definition-custom-copy.test.ts": {
@@ -4560,7 +4940,7 @@
       "mode": "100644"
     },
     "ui/src/pages/apps/app-definition-metadata-coverage.test.ts": {
-      "sha256": "6c0b0366e99ea3a0d783a222377509f34ea64bce5840a1eb62913a91d661f351",
+      "sha256": "c56030dcbb445666f4de6ae83412bae48f3f458b9d861aa3b3b390445db5364c",
       "mode": "100644"
     },
     "ui/src/pages/apps/app-detail/ActionTestDialog.tsx": {
@@ -4572,7 +4952,7 @@
       "mode": "100644"
     },
     "ui/src/pages/apps/app-detail/AdvancedPanel.tsx": {
-      "sha256": "d359874575169356b0a27c56af4fd51e615a57a0a7e11a3709ee5937a7582095",
+      "sha256": "2b771dbf8fd58225dd9f32ce7971d16317bacffd69fdbb1bcf67cdeead46ddd0",
       "mode": "100644"
     },
     "ui/src/pages/apps/app-detail/AgentConnectionAccess.tsx": {
@@ -4624,19 +5004,23 @@
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/ChatConversationList.tsx": {
-      "sha256": "ab4d0741d78d2a875b7043574758693de9756d67ffc47e57a1030e8c14aa66a1",
+      "sha256": "38bf8193ce0ba4faa1a73ae98795963117286bdbe112497645fd1ad928ddd333",
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/ChatEndpoint.clipboard.test.tsx": {
-      "sha256": "f781cac092454941a2e793ab556fcf27c3d93a315eb825c1d66797bea614fc11",
+      "sha256": "994c2e30ee44e2e0a70f8fdf74d87cf60b40ea2ca9e4237bccfcffd8b0b0806c",
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/ChatEndpointDetail.tsx": {
-      "sha256": "e3e8f3b0e79615a38f83f20b37ef41ef05416fe401da22ee7cbf3e136e4b2d59",
+      "sha256": "bb312a025e428f6060827f3c23008298b140aa7db0f91f3ecf1db14a72d0fb5a",
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/ChatEndpointSetup.tsx": {
-      "sha256": "86d8e95669b0f2f4e93a5ee0624a554bfa05bf033141f0daebd03425f7c6f12c",
+      "sha256": "655999164043661a36030f8544dcfffe42976c4abecb3ae5a0a092269d1f7858",
+      "mode": "100644"
+    },
+    "ui/src/pages/apps/chat/ChatExecutionDefaults.tsx": {
+      "sha256": "7d3ade32efc0e9803a4338ff409dd1254e61c74e017442d2dc4cadce4cb46fe2",
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/ChatIdentityConfirm.tsx": {
@@ -4656,15 +5040,19 @@
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/GitHubBotManagement.tsx": {
-      "sha256": "d8c52213021d3150cbbf1fab4f645600a4be0dd95845a68e98ce305b9243f915",
+      "sha256": "8fbd81cd02aee7c260e1950e98dc348a5dfa15bcd1614c0e83d0f3ed2ba93f77",
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/GitHubChatSetup.tsx": {
-      "sha256": "c0777ec6e76094a020cad1daa2eded13dc74ee8e9fe22b4c1652811b96cfb97d",
+      "sha256": "6ac1a2b8961288a32623c1157042a33cea415ce5fb14c3b950640355d34a1f9c",
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/GitHubConnectionComplete.tsx": {
       "sha256": "15fa58f3a1920167df11251eb027956fd7dc7666c9e8b09207d5a2f763ca12a0",
+      "mode": "100644"
+    },
+    "ui/src/pages/apps/chat/GitHubConnectionRecovery.tsx": {
+      "sha256": "5f6df5298681e2dea13da5aba88ef87e7131a1a3e73d1bc1bb296f1611ebe3de",
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/GitHubSetupPrompt.tsx": {
@@ -4687,10 +5075,6 @@
       "sha256": "af53b801e1a4092f4d477068a6ec1b8c98745e4010959af6201540a3d586feae",
       "mode": "100644"
     },
-    "ui/src/pages/apps/chat/SlackAutomaticSetup.tsx": {
-      "sha256": "5b8be17eb94aba5b6b6d3fa06dbd8acfda44381441dc13c686fe3d109ff7bd80",
-      "mode": "100644"
-    },
     "ui/src/pages/apps/chat/SlackAvatarStep.tsx": {
       "sha256": "3b4d2766d17a3ce1a8ece973dc52edc897f0d93d1327658e9f60e9052f931365",
       "mode": "100644"
@@ -4704,11 +5088,15 @@
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/SlackSetupPrompt.tsx": {
-      "sha256": "04730b7ca024d72784b084e13c009042b720648751a646512d67f655ce4e2c17",
+      "sha256": "14b69892e110f0c61d506545ad628290df12c44bfe51d7651551de44719a10a5",
+      "mode": "100644"
+    },
+    "ui/src/pages/apps/chat/SlackTestMessageButton.tsx": {
+      "sha256": "2cec5246afc8c53b330975b711fcfb2925a5ef90ee0db020d7b4fbe719b860dc",
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/SlackToolSettings.tsx": {
-      "sha256": "793f9dd966fd18f27aeff599e4ae043988724c3e4cdd7bbd402f897254c6534f",
+      "sha256": "c197bb0480f52306d5dd0bd5a8372c4ded5a6b4fe74778805740eaf3efb177f6",
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/chat-activity-copy.test.ts": {
@@ -4720,7 +5108,7 @@
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/chat-activity-guidance.test.ts": {
-      "sha256": "0846aa54ba4ce0f2e2ef75ae78197abdc322fcac0ac63c450c358045e977038b",
+      "sha256": "02d2b371e2a7691ba837374a5308d63f28cf94884b1ddd7f9bca46816ea9b99b",
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/chat-activity-guidance.ts": {
@@ -4732,7 +5120,7 @@
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/chat-ui-contract.test.ts": {
-      "sha256": "4ac0d16d5cd13fd5517ad975d98d3df618c101a9f7502eb8e5cab06d7a4f6a15",
+      "sha256": "ddd3c572bcfdf77aa9d86dfb541c95320cce073d85f2af44b1670315ffe45f6e",
       "mode": "100644"
     },
     "ui/src/pages/apps/chat/github-private-key-file.ts": {
@@ -4749,6 +5137,22 @@
     },
     "ui/src/pages/apps/chat/slack-registration-copy.ts": {
       "sha256": "425e7929da10023ab4c6929af296bd92f3db2d9cc59a0337a59f87907a2a473d",
+      "mode": "100644"
+    },
+    "ui/src/pages/apps/chat/slack/ManagedSlackSetup.tsx": {
+      "sha256": "302ac439e3940b360194bb9473ebf0db5d0ae8eee70fe1481e61ebf286d9fd44",
+      "mode": "100644"
+    },
+    "ui/src/pages/apps/chat/slack/OwnSlackAppSetup.tsx": {
+      "sha256": "44f6ef0ca7425ff9f23a184b453bb8647518268ddbf38075832bae5cde3fa9d2",
+      "mode": "100644"
+    },
+    "ui/src/pages/apps/chat/slack/setup-state.test.ts": {
+      "sha256": "946148409cf954221f6a0e7694b9d48e17cd100cecae9ba1bbb5de5f99544ec1",
+      "mode": "100644"
+    },
+    "ui/src/pages/apps/chat/slack/setup-state.ts": {
+      "sha256": "769b090b1c77069bd21436d5ec39d91eae38440369db00debfbf0597a337c2fa",
       "mode": "100644"
     },
     "ui/src/pages/apps/connection-identity.ts": {
@@ -4831,36 +5235,44 @@
       "sha256": "9689948e95d89c17398aae0b973a5bbac0413eaf6f8151138d564a5ad379c445",
       "mode": "100644"
     },
+    "ui/src/pages/audit/AgentCommentary.test.tsx": {
+      "sha256": "43e361975fa1344ae0d91b63aae4c206d7cd7027ab9f7ab1a75a500557262d5b",
+      "mode": "100644"
+    },
+    "ui/src/pages/audit/AgentCommentary.tsx": {
+      "sha256": "623f614dbebc86ad38dffbd3ba76146735db720596d9a7a08416477d9eadf8e9",
+      "mode": "100644"
+    },
     "ui/src/pages/audit/AuditFeed.production.tsx": {
       "sha256": "e4b489a59bbfd238e2d873e1ee82212b94c808291add72b956054a8e51cae3ed",
       "mode": "100644"
     },
     "ui/src/pages/audit/AuditFeed.test.tsx": {
-      "sha256": "c874cfc105be9e42394cd0566301a243e5e6f9733454f134b7c84eb80829d3d3",
+      "sha256": "9e2073d6fa5c38412b50c0edf635981b0555e1da996e494db80f73b38f5474ee",
       "mode": "100644"
     },
     "ui/src/pages/audit/AuditFeed.tsx": {
-      "sha256": "f51785e72ab19c0946d91e3b0d45d62f7358e16a9ddf3638be8167fc5fa50df5",
+      "sha256": "6ef27d3ddfa0159d190e42f8501e23fb6d3d364ecb65a305d0f9c90b0907824c",
       "mode": "100644"
     },
     "ui/src/pages/audit/AuditHub.tsx": {
-      "sha256": "c343ed364400a83801f27baced20899299ea170156b583e6c1de8c66b08e4601",
+      "sha256": "bd890a333d8d45bed4beb6dc67564de4e7d1b52abeb8df0b557d69ad143a3271",
       "mode": "100644"
     },
     "ui/src/pages/audit/AuditRuns.tsx": {
       "sha256": "31f4291e19e8fbc8449255fd01b9445755ffa814c054b3ad2dc2c724303cbe23",
       "mode": "100644"
     },
-    "ui/src/pages/audit/CompanyActivity.production.tsx": {
-      "sha256": "6c7033bce522f3a3028f1a2f7de6c961c0097b9c90462e4f8fe243eaa4cad61f",
-      "mode": "100644"
-    },
     "ui/src/pages/audit/CompanyActivity.tsx": {
-      "sha256": "440cbfc59fb606f5c379513947d70a005ff0fbb5bc9edada8b3fe1db27feb0ca",
+      "sha256": "d4fa0960906d0ad16a0e798b899cc9cdd61d27f95fa1278fe34afa782d8f6268",
       "mode": "100644"
     },
     "ui/src/pages/audit/RoutineAuditActivity.tsx": {
       "sha256": "ce5c111ff682e52a168763161f699b4bf9e48003b456c3f336175e50697fb7ce",
+      "mode": "100644"
+    },
+    "ui/src/pages/audit/audit-navigation.ts": {
+      "sha256": "9dcc881b3f19a9d37e84aa6ca84cb0bc6c77dc2d62c3d70fa19725c593276b47",
       "mode": "100644"
     },
     "ui/src/pages/audit/localization.test.ts": {
@@ -4915,12 +5327,16 @@
       "sha256": "8f51897c5174703005a4cd33facd03f5229a3400751fe53cae184818e2f19da2",
       "mode": "100644"
     },
+    "ui/src/pages/skills/SkillImportWarnings.tsx": {
+      "sha256": "616dadf64050d9faf9ccbee1c955c4c861bdd5063ff9d0fa0f1f594c23f6edcc",
+      "mode": "100644"
+    },
     "ui/src/pages/skills/SkillPackagePreview.tsx": {
-      "sha256": "f9d67550858d64cbd98427938d4d3b728c1fa80639d31e29fe67f176409775ab",
+      "sha256": "64c4cb362fd051a7ed8b8dd9709e4bc257c9fde75371288aef72b0a3b0fa9541",
       "mode": "100644"
     },
     "ui/src/pages/skills/SkillSourceTree.tsx": {
-      "sha256": "8221cba259bbdd9a36358cf8053afb5a0175f74a493f303515ed88e3f5398232",
+      "sha256": "3c0d9824e381e855261e07bb0c5c175a98acfca82001e9d37374e3978008a04f",
       "mode": "100644"
     },
     "ui/src/pages/tools/AdvancedToolsRoute.tsx": {
@@ -4953,6 +5369,10 @@
     },
     "ui/src/pages/tools/SmokeLabTab.tsx": {
       "sha256": "096dd4c2ed79d0d9ae4bddb81c0d623351c3640d0d45f37980446d80a32e3b35",
+      "mode": "100644"
+    },
+    "ui/src/pages/tools/ToolRoleAccess.test.tsx": {
+      "sha256": "f6e534ba87953d83d7b973c24a947eb875087b6f153f6182e717ea69151d08d5",
       "mode": "100644"
     },
     "ui/src/pages/tools/ToolsAccess.tsx": {
@@ -5048,19 +5468,19 @@
       "mode": "100644"
     }
   },
-  "resultTree": "858b45ab72441ff8ae691d8252fd363317ae730a",
-  "sourceLockSha256": "eab4bdfe57db1d0978ad158bf8860277088562fdef25ee81ea1bfd896adb1403",
-  "foundationSha256": "6bef50080d765533057769c96b4265d6adbaacf7192087bdb56803877b03434d",
+  "resultTree": "aafba2e496d0eafb2a70e55b58ad5cd7749815b9",
+  "sourceLockSha256": "539157faf0ade46221f7fa9efefa96cc6d0ab617dbcd5330dcc7981cad137a03",
+  "foundationSha256": "dbb5e1ba9312c06cb276e4b19a94760e88aee9dca10516ae33904d9d49e10547",
   "locales": [
     {
       "locale": "en",
-      "strings": 20580,
-      "sha256": "f84800f67dcaad25bb0677ade94aa4f07e910676a0e3f0973c8bb06baa600808"
+      "strings": 22207,
+      "sha256": "2df1308aa3a23856ea85b85d5b8893380131cbfe3230df9fb1169fbaabefbaf0"
     },
     {
       "locale": "ru",
-      "strings": 20974,
-      "sha256": "9463b14d7a0d7362a3bfc62bcbddd75152d487f2043c4840f33073a09257adec"
+      "strings": 22635,
+      "sha256": "6fa561a245070183690e7b1091ad35a8a9c593b4f40096bfa4a10d9d62381c72"
     }
   ],
   "upstreamRepository": "https://github.com/paperclipai/paperclip",
