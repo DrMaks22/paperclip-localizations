@@ -2,11 +2,9 @@
 
 **Русский** · [English](README.en.md)
 
-> **Кандидат stable для Paperclip v2026.1106.0:** `v2026.11.9.1` ещё не опубликован. [Ссылка будущего релиза](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.9.1) и команды ниже предназначены для использования после публикации. Для проверенного снимка master доступен отдельный [выпуск beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.3.1-beta.1).
+> **Совместимость stable из примера установки:** пакет `v2026.11.9.1` предназначен для Paperclip `v2026.1106.0` на коммите `d69631b01b9c658f80bf8bed389863dce82643e1`. Скачивайте готовый пакет по закреплённому тегу, а не рабочую ветку. Не применяйте старый патч к новой версии Paperclip. [Проверки и ограничения](verification/v2026.11.9.1.md). Установка патча не развёртывает приложение автоматически.
 
-> **Точная совместимость:** кандидат `v2026.11.9.1` предназначен для Paperclip `v2026.1106.0` на коммите `d69631b01b9c658f80bf8bed389863dce82643e1`. После публикации скачивайте пакет по закреплённому тегу. Не применяйте старый патч к новой версии Paperclip. [Проверки и ограничения кандидата](verification/v2026.11.9.1.md). Установка патча не развёртывает приложение автоматически.
-
-[![Проверки](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml/badge.svg)](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml) · [Кандидат stable](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.9.1) · [Beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.3.1-beta.1) · [Каналы и проверки](docs/RELEASES.md)
+[![Проверки](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml/badge.svg)](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml) · [Stable](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.9.1) · [Beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.16.1-beta.1) · [Каналы и проверки](docs/RELEASES.md)
 
 ![Paperclip Localizations — переводы интерфейса Paperclip](assets/cover.png)
 
@@ -14,27 +12,26 @@
 
 ## Выбрать канал
 
-Кандидат `v2026.11.9.1` переносит перевод на официальный Paperclip `v2026.1106.0`, добавляет перевод новых строк интерфейса и динамических подписей. Профиль `pinned-en-ru` и вертикальный переключатель языков сохранены. Для обновления подготовьте свежую сборку: новый патч нельзя накладывать поверх уже установленного.
+`v2026.11.9.1` обновляет перевод для официального Paperclip v2026.1106.0. `v2026.11.16.1-beta.1` поддерживает отдельный снимок master от 16 ноября 2026 года. В обоих каналах сохранён вертикальный выбор языка. Подготовьте свежую сборку: новый патч нельзя накладывать поверх уже установленного.
 
 | Канал локализации | Совместимая версия Paperclip | Когда выбирать |
 | --- | --- | --- |
-| [Кандидат stable — v2026.11.9.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.9.1) | Официальный стабильный выпуск **v2026.1106.0**, коммит `d69631b` | Ещё не опубликован. Английский и русский интерфейс для этой базы. |
-| [Beta — v2026.11.3.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.3.1-beta.1) | Проверенный снимок **master**, коммит `8ea2402` | Для отдельной тестовой сборки на указанном коммите master и проверки новых языковых каталогов. |
+| [Stable — v2026.11.9.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.9.1) | Официальный стабильный выпуск **v2026.1106.0**, коммит `d69631b` | Для этой стабильной версии. Английский и русский интерфейс. |
+| [Beta — v2026.11.16.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.16.1-beta.1) | Проверенный снимок **master**, коммит `94cb7ad` | Для отдельной тестовой сборки на указанном коммите master и проверки новых языковых каталогов. |
 
 **Stable и beta — разные патчи для разных исходников.** Beta не подходит к стабильному выпуску и не обновляется автоматически вместе с master. `Latest` в GitHub Releases относится только к stable. Номер релиза локализации не совпадает с номером Paperclip.
 
-Опубликованный [stable v2026.11.3.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.3.1) остаётся доступен для Paperclip `v2026.1023.0`, [stable v2026.10.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.13.1) — для `v2026.1012.0`, [stable v2026.10.7.2](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.2) — для `v2026.1005.0`, [stable v2026.9.17.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.17.1) — для `v2026.916.0`, а [stable v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1) — для `v2026.831.1`. Их теги и файлы неизменны. Результаты и ограничения кандидата приведены в [отчёте v2026.11.9.1](verification/v2026.11.9.1.md).
+Для Paperclip `v2026.1023.0` остаётся доступен [stable v2026.11.3.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.3.1). Предыдущий [beta v2026.11.3.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.3.1-beta.1) сохраняет свою основу master `8ea2402`. Эти и более ранние выпуски неизменны. [Stable v2026.10.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.13.1) доступен для Paperclip `v2026.1012.0`. Опубликованный [stable v2026.10.7.2](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.2) остаётся доступен для Paperclip `v2026.1005.0`, [stable v2026.9.17.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.17.1) — для `v2026.916.0`, а [stable v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1) — для `v2026.831.1`. Их теги и файлы неизменны. Результаты и ограничения проверок нового пакета приведены в [отчёте v2026.11.9.1](verification/v2026.11.9.1.md).
 
 В ветке `main` ведётся разработка beta. Для установки скачивайте выбранный **релиз**, а не текущую ветку. Полные коммиты, различия и результаты проверок приведены в [описании каналов](docs/RELEASES.md); сведения о каналах в формате JSON доступны в [`channels.json`](channels.json).
 
 ## Установить с помощью агента
 
-После публикации кандидата скопируйте задание в **Codex, Claude Code или OpenCode**. Замените путь на свой; остальные условия установки описаны в документации указанного релиза.
+Скопируйте задание в **Codex, Claude Code или OpenCode**. Замените путь на свой; остальные условия установки описаны в документации указанного релиза.
 
 ```text
 Установи локализацию Paperclip из DrMaks22/paperclip-localizations,
 стабильный релиз v2026.11.9.1 для Paperclip v2026.1106.0.
-Сначала убедись, что кандидат опубликован; если нет, остановись.
 Мой исходный Git-репозиторий Paperclip находится в
 /absolute/path/to/paperclip. Прочитай и выполни инструкции этого релиза:
 https://github.com/DrMaks22/paperclip-localizations/blob/v2026.11.9.1/docs/AGENT-INSTALL.md
@@ -57,7 +54,7 @@ node apply.mjs --repo /absolute/path/to/paperclip-localized --apply
 
 Целевой worktree должен быть чистым и точно соответствовать `baseCommit` из [`manifest.json`](manifest.json). Установщик работает без сети: он проверяет и изменяет исходники. Установку зависимостей, работу с базой данных, запуск и развёртывание выполняйте в привычном порядке.
 
-Для этой базы проверены установка зависимостей с неизменённым lockfile и отключёнными lifecycle-скриптами, типы, сборка и UI-тесты в изолированной среде. Патч не меняет зависимости. Выполненные и оставшиеся проверки кандидата описаны в [отчёте](verification/v2026.11.9.1.md).
+Для указанной базы stable проверены установка зависимостей с неизменённым lockfile и отключёнными lifecycle-скриптами, типы, сборка и UI-тесты в изолированной среде. Патч не меняет зависимости. Условия и ограничения описаны в [отчёте](verification/v2026.11.9.1.md).
 
 Попытка повторно применить патч или выполнить `--check` после его применения завершится отказом. Для проверки установленного патча используйте `--reverse --check`; для снятия — `--reverse --apply`. Подробности и порядок обновления — в [инструкции](docs/INSTALL.ru.md#обновление-и-снятие-патча).
 
@@ -100,3 +97,5 @@ npm run validate
 - [Правила для участников и агентов](AGENTS.md)
 
 - [Подготовка релиза и повторные проверки упаковки](verification/2026-11-03-release-preparation.md)
+
+[Подготовка публикации 16 ноября: проверки и ограничения / November 16 publication checks and limitations](verification/2026-11-16-release-preparation.md). Отчёты кандидатов сохраняют исторические формулировки этапа проверки; факт публикации проверяйте в GitHub Releases. Candidate reports retain their dated prepublication wording; GitHub Releases records publication.
