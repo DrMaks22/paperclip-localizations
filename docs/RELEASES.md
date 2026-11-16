@@ -2,7 +2,7 @@
 
 [Русская главная](../README.md) · [English overview](../README.en.md)
 
-> **Кандидат / Candidate, 2026-11-09:** эта ветка готовит `v2026.11.9.1-beta.1` для master `9046884811a7b06131ec60ce9c9f0255c8e84465`. This branch prepares that exact beta snapshot; it has not been published. The beta entry in `channels.json` describes the candidate; the published releases below remain immutable. Публикация требует отдельного разрешения, статуса prerelease и запрета Latest. [Проверки / Verification](../verification/v2026.11.9.1-beta.1.md).
+> **Кандидат / Candidate, 2026-11-16:** эта ветка готовит `v2026.11.16.1-beta.1` для master `94cb7ad3596e0a73ee6c2ba3276efb12a7139a72`. This branch prepares that exact beta snapshot; it has not been published. The beta entry in `channels.json` describes the candidate; the published releases below remain immutable. Публикация требует отдельного разрешения, статуса prerelease и запрета Latest. [Проверки / Verification](../verification/v2026.11.16.1-beta.1.md).
 
 > **Stable:** [v2026.11.3.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.3.1), Paperclip v2026.1023.0, Latest. **Beta:** [v2026.11.3.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.3.1-beta.1), проверенный снимок master / reviewed master snapshot, Pre-release.
 

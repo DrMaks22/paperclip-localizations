@@ -2,7 +2,7 @@
 
 [Русский](README.md) · **English**
 
-> **This branch prepares beta candidate `v2026.11.9.1-beta.1`:** master snapshot `9046884811a7b06131ec60ce9c9f0255c8e84465`, profile `community-json`. It is not published and must not automatically update a running instance. [Candidate checks and limitations](verification/v2026.11.9.1-beta.1.md). The links and installation examples below refer to already published releases; stable support for Paperclip v2026.1106.0 is being prepared separately.
+> **This branch prepares beta candidate `v2026.11.16.1-beta.1`:** master snapshot `94cb7ad3596e0a73ee6c2ba3276efb12a7139a72`, profile `community-json`. It is not published and must not automatically update a running instance. [Candidate checks and limitations](verification/v2026.11.16.1-beta.1.md). The links and installation examples below refer to already published releases; stable support for Paperclip v2026.1106.0 is being prepared separately in [PR #14](https://github.com/DrMaks22/paperclip-localizations/pull/14).
 
 > **Compatibility of the stable installation example:** package `v2026.11.3.1` targets Paperclip `v2026.1023.0` at `1b4c803816e82b0265c8422e1a804327a7ed8c54`. Download the finalized package from its pinned tag, not a working branch. Do not apply an older patch to newer Paperclip source. See [checks and limitations](verification/v2026.11.3.1.md). Applying the patch does not deploy the application.
 

@@ -4,6 +4,54 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { ROOT, requireNode, git, hash, json, permitted, validateSourceLock } from "./artifacts.mjs";
 import { validateReleaseChannel } from "./release-channel.mjs";
+import { assertSafePath } from "./catalogs.mjs";
+
+/** Preflight every fixed destination before creating directories or outputs. */
+export async function writeFoundationOutputs({ root = ROOT, english, russian, patch, sourceLock }) {
+  await assertSafePath(root, { directory: true });
+  const entries = [["locales/en.json", english], ["locales/ru.json", russian],
+    ["patches/foundation.patch", patch], ["source-lock.json", sourceLock]];
+  const targets = [];
+  for (const [name, bytes] of entries) {
+    const filename = path.join(root, name);
+    await assertSafePath(filename, { allowMissing: true, writable: true });
+    let stat;
+    try { stat = fs.lstatSync(filename); }
+    catch (error) { if (error.code !== "ENOENT") throw error; }
+    targets.push({ filename, name, bytes, stat });
+  }
+  const opened = [];
+  try {
+    for (const target of targets) {
+      fs.mkdirSync(path.dirname(target.filename), { recursive: true });
+      const flags = fs.constants.O_WRONLY | fs.constants.O_NOFOLLOW
+        | (target.stat ? 0 : fs.constants.O_CREAT | fs.constants.O_EXCL);
+      const fd = fs.openSync(target.filename, flags, 0o644);
+      opened.push({ ...target, fd });
+      const stat = fs.fstatSync(fd);
+      if (!stat.isFile() || stat.nlink !== 1
+        || (target.stat && (stat.dev !== target.stat.dev || stat.ino !== target.stat.ino))) {
+        throw new Error(`Unsafe foundation output: ${target.name}`);
+      }
+    }
+    // Recheck all opened identities before the first truncation. Like the
+    // builder, this maintainer helper requires an idle, disposable checkout.
+    for (const target of opened) {
+      await assertSafePath(target.filename, { writable: true });
+      const stat = fs.fstatSync(target.fd);
+      const current = fs.lstatSync(target.filename);
+      if (!current.isFile() || stat.nlink !== 1 || current.dev !== stat.dev || current.ino !== stat.ino) {
+        throw new Error(`Foundation output changed during export: ${target.name}`);
+      }
+    }
+    for (const { fd, bytes } of opened) {
+      fs.ftruncateSync(fd, 0);
+      fs.writeFileSync(fd, bytes);
+    }
+  } finally {
+    for (const { fd } of opened) fs.closeSync(fd);
+  }
+}
 
 export function parseExportArguments(args = process.argv.slice(2)) {
   const usage = "Usage: node scripts/export-foundation.mjs --source /absolute/reviewed-integration --base UPSTREAM_SHA --inherited PUBLIC_LOCALIZATION_SHA --tag vYYYY.M.D.N[-beta.N] --channel stable|beta --upstream-ref OFFICIAL_VERSION_TAG|master --runtime-profile pinned-en-ru|community-json";
@@ -25,7 +73,7 @@ export function parseExportArguments(args = process.argv.slice(2)) {
   return options;
 }
 
-export function exportFoundation(args = process.argv.slice(2)) {
+export async function exportFoundation(args = process.argv.slice(2)) {
   requireNode();
   const options = parseExportArguments(args);
   const { base, inherited, releaseTag, releaseChannel, upstreamRef, runtimeProfile } = options;
@@ -54,14 +102,11 @@ export function exportFoundation(args = process.argv.slice(2)) {
     foundationSha256: hash(patch), foundationFiles: paths.length,
     provenance: "The inherited localization commit is public; the integration commit is a local provenance identifier. The complete integration is distributable and reproducible from the public pinned upstream revision and patches/foundation.patch; no local commit object is required to build.",
   });
-  for (const { locale, bytes } of catalogs) fs.writeFileSync(path.join(ROOT, "locales", `${locale}.json`), bytes);
-  fs.mkdirSync(path.join(ROOT, "patches"), { recursive: true });
-  fs.writeFileSync(path.join(ROOT, "patches", "foundation.patch"), patch);
-  fs.writeFileSync(path.join(ROOT, "source-lock.json"), json(lock));
+  await writeFoundationOutputs({ english: catalogs[0].bytes, russian: catalogs[1].bytes, patch, sourceLock: json(lock) });
   return lock;
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  try { console.log(json(exportFoundation())); }
+  try { console.log(json(await exportFoundation())); }
   catch (error) { console.error(error.message); process.exitCode = 1; }
 }

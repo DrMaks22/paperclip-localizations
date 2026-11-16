@@ -13,9 +13,9 @@ export const TEMPLATE_TARGETS = [
 export const EXACT_EDITS = [
   {
     path: "ui/src/components/task-chat/task-chat-display.ts",
-    sha256: "a7c577e2eeaefe6a6e02c0d1545d041d63a5b4011f7cf1ec4618bab8c0be28da",
+    sha256: "a5341a5629ab0454cecc371bb911ade31c04945bba626617a93f39e038ac13bf",
     replacements: [],
-    reason: "November 9 adds finite native-event metadata, exact generated tool captions and context-compaction formatting guarded by marker variant and full-string grammar. Canonical event models, provider titles, file paths, raw diagnostics and retry-control markers remain unchanged. Existing selected-locale formatting and English fallback are preserved.",
+    reason: "November 16 adds only the exact built-in Waiting to start label to the November 9 display adapter. Selected-locale formatting and English fallback remain intact. Canonical event models, provider titles, file paths, raw diagnostics and retry-control markers stay unchanged; retry eligibility is tested across locale changes.",
   },
   {
     path: "ui/src/components/task-chat/task-chat-phase-summary-display.ts",
@@ -33,9 +33,9 @@ export const EXACT_EDITS = [
   })),
   {
     path: "ui/src/lib/attention.ts",
-    sha256: "779298e7af4e04caea3cc78d5d518c34ebe7abfa859a518186c98f238b6ca872",
+    sha256: "5d050f260f55d872ff6ab18ad0122c50841d9e4f455ed2679310615902d87613",
     replacements: [],
-    reason: "Preserve selected-locale budget numbers and Russian-specific quotation conventions. October 26 adds the exact upstream search/filter implementation; its function body is unchanged from the pinned master and does not alter the existing presentation adaptations.",
+    reason: "November 16 preserves upstream inline failed-run/budget actions and badge semantics. Budget amounts are cents: the display adapter now uses the same formatCents conversion as upstream, with a full localized sentence and no duplicate dollar decoration. EN/RU currency tests cover 12345 cents as 123.45 dollars. Search/filter logic and Russian-specific quotation conventions are preserved.",
   },
   {
     path: "ui/src/pages/apps/connection-owner.tsx",
