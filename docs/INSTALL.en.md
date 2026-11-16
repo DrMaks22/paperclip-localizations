@@ -1,6 +1,6 @@
 # Installation
 
-> **Stable v2026.11.3.1** targets only Paperclip `v2026.1023.0` at `1b4c803816e82b0265c8422e1a804327a7ed8c54`. Verify the exact commit and checksums first. See [checks and limitations](../verification/v2026.11.3.1.md).
+> **Stable candidate v2026.11.9.1 is unpublished.** It targets only Paperclip `v2026.1106.0` at `d69631b01b9c658f80bf8bed389863dce82643e1`. Run the release download commands below after publication. Verify the exact commit and checksums first. See [checks and limitations](../verification/v2026.11.9.1.md).
 
 [Overview](../README.en.md) · [Русский](INSTALL.ru.md) · [Install with an agent](AGENT-INSTALL.md)
 
@@ -8,10 +8,10 @@ The patch applies to the source of one specific Paperclip revision. The selected
 
 ## Obtain and review the release
 
-First choose [stable or beta](RELEASES.md). Clone the localization repository **outside** the original Paperclip repository. This example pins stable [v2026.11.3.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.3.1) for Paperclip `v2026.1023.0`. For Paperclip `v2026.1005.0`, use the immutable [v2026.10.7.2](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.2); for `v2026.831.1`, use [v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1). Follow the respective release's instructions. For beta, replace the tag with `v2026.11.3.1-beta.1` and use its separate `manifest.json`:
+First choose [stable or beta](RELEASES.md). Clone the localization repository **outside** the original Paperclip repository. This example pins future stable [v2026.11.9.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.9.1) for Paperclip `v2026.1106.0`. The immutable [v2026.11.3.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.3.1) remains available for Paperclip `v2026.1023.0`, [v2026.10.7.2](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.2) for `v2026.1005.0`, and [v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1) for `v2026.831.1`. Follow the respective release's instructions. For beta, replace the tag with `v2026.11.3.1-beta.1` and use its separate `manifest.json`:
 
 ```bash
-git clone --branch v2026.11.3.1 --depth 1 https://github.com/DrMaks22/paperclip-localizations.git
+git clone --branch v2026.11.9.1 --depth 1 https://github.com/DrMaks22/paperclip-localizations.git
 cd paperclip-localizations
 node --version
 shasum -a 256 -c SHA256SUMS
@@ -34,7 +34,7 @@ The installer requires an exact commit match and a clean working tree. Unsupport
 
 The installer works offline and does not install dependencies, access the database, or deploy anything. After applying the patch, install dependencies and run tests, type checking, and a production build according to the **pinned Paperclip revision's** instructions. These separate steps may require network access. Review the main screens in the selected language using test data. Deploy the verified build through your existing procedure.
 
-Official Paperclip `v2026.1023.0` passed frozen-lockfile installation with lifecycle scripts disabled, UI type checking, build and tests in isolation. No dependency or lockfile changes are shipped. Follow the pinned upstream instructions and the [verification report](../verification/v2026.11.3.1.md).
+Dependencies for official Paperclip `v2026.1106.0` were installed with a frozen lockfile and lifecycle scripts disabled; the localization integration passed UI type checking, build and tests in isolation. No dependency or lockfile changes are shipped. The [verification report](../verification/v2026.11.9.1.md) lists completed and outstanding candidate checks.
 
 ## Select Russian
 
