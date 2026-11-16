@@ -1,0 +1,444 @@
+{
+  "date": "2026-11-16",
+  "channel": "beta",
+  "candidate": "v2026.11.16.1-beta.1",
+  "baseCommit": "94cb7ad3596e0a73ee6c2ba3276efb12a7139a72",
+  "patchSha256": "5758974be0969534f5a00cd10450d5fb1e192349428e7c7620c26c47b8dd9c72",
+  "scope": "Production-built real installed components in a synthetic public-data fixture; not whole-app or production certification. The fixture uses a 240 px selector container.",
+  "browser": "Isolated headless Google Chrome, Playwright CLI",
+  "checks": [
+    {
+      "name": "English control receives focus",
+      "passed": true
+    },
+    {
+      "name": "Enter selects English",
+      "passed": true
+    },
+    {
+      "name": "English queue",
+      "passed": true
+    },
+    {
+      "name": "English budget converts cents",
+      "passed": true
+    },
+    {
+      "name": "English connector metadata",
+      "passed": true
+    },
+    {
+      "name": "Draft survives RU to EN",
+      "passed": true
+    },
+    {
+      "name": "Tab reaches Russian control",
+      "passed": true
+    },
+    {
+      "name": "Space selects Russian",
+      "passed": true
+    },
+    {
+      "name": "Russian queue and unchanged agent name",
+      "passed": true
+    },
+    {
+      "name": "Russian queue position",
+      "passed": true
+    },
+    {
+      "name": "Russian budget converts cents",
+      "passed": true
+    },
+    {
+      "name": "Russian connector metadata",
+      "passed": true
+    },
+    {
+      "name": "Draft survives EN to RU",
+      "passed": true
+    },
+    {
+      "name": "Russian locale persisted",
+      "passed": true
+    },
+    {
+      "name": "Canonical local connection filter selected",
+      "passed": true
+    },
+    {
+      "name": "Escape dismisses filter dialog",
+      "passed": true
+    },
+    {
+      "name": "Filter state survives language change to English",
+      "passed": true
+    },
+    {
+      "name": "Local connection option translates in English",
+      "passed": true
+    },
+    {
+      "name": "Canonical filter value remains selected in English",
+      "passed": true
+    },
+    {
+      "name": "Filter state survives return to Russian",
+      "passed": true
+    },
+    {
+      "name": "Draft survives filter and locale interactions",
+      "passed": true
+    },
+    {
+      "name": "Vertical selector fits 320px, 100% text, en",
+      "passed": true
+    },
+    {
+      "name": "Vertical selector fits 320px, 100% text, ru",
+      "passed": true
+    },
+    {
+      "name": "Vertical selector fits 320px, 200% text, en",
+      "passed": true
+    },
+    {
+      "name": "Vertical selector fits 320px, 200% text, ru",
+      "passed": true
+    },
+    {
+      "name": "Vertical selector fits 1280px, 100% text, en",
+      "passed": true
+    },
+    {
+      "name": "Vertical selector fits 1280px, 100% text, ru",
+      "passed": true
+    },
+    {
+      "name": "Vertical selector fits 1280px, 200% text, en",
+      "passed": true
+    },
+    {
+      "name": "Vertical selector fits 1280px, 200% text, ru",
+      "passed": true
+    },
+    {
+      "name": "Russian locale survives reload",
+      "passed": true
+    },
+    {
+      "name": "Document direction is ltr",
+      "passed": true
+    },
+    {
+      "name": "No page or console errors in phase 2",
+      "passed": true
+    },
+    {
+      "name": "No external requests in phase 2",
+      "passed": true
+    },
+    {
+      "name": "No API requests in phase 2",
+      "passed": true
+    }
+  ],
+  "selectorMatrix": [
+    {
+      "viewportWidth": 320,
+      "textScale": 1,
+      "locale": "en",
+      "x": 16,
+      "right": 256,
+      "width": 240,
+      "clientWidth": 238,
+      "scrollWidth": 238,
+      "controls": [
+        {
+          "x": 34,
+          "right": 238,
+          "top": 146,
+          "bottom": 190,
+          "width": 204,
+          "height": 44,
+          "clientWidth": 204,
+          "scrollWidth": 204,
+          "text": "English"
+        },
+        {
+          "x": 34,
+          "right": 238,
+          "top": 194,
+          "bottom": 238,
+          "width": 204,
+          "height": 44,
+          "clientWidth": 204,
+          "scrollWidth": 204,
+          "text": "Russian"
+        }
+      ]
+    },
+    {
+      "viewportWidth": 320,
+      "textScale": 1,
+      "locale": "ru",
+      "x": 16,
+      "right": 256,
+      "width": 240,
+      "clientWidth": 238,
+      "scrollWidth": 238,
+      "controls": [
+        {
+          "x": 34,
+          "right": 238,
+          "top": 146,
+          "bottom": 190,
+          "width": 204,
+          "height": 44,
+          "clientWidth": 204,
+          "scrollWidth": 204,
+          "text": "Английский"
+        },
+        {
+          "x": 34,
+          "right": 238,
+          "top": 194,
+          "bottom": 238,
+          "width": 204,
+          "height": 44,
+          "clientWidth": 204,
+          "scrollWidth": 204,
+          "text": "Русский"
+        }
+      ]
+    },
+    {
+      "viewportWidth": 320,
+      "textScale": 2,
+      "locale": "en",
+      "x": 16,
+      "right": 256,
+      "width": 240,
+      "clientWidth": 238,
+      "scrollWidth": 238,
+      "controls": [
+        {
+          "x": 50,
+          "right": 222,
+          "top": 382,
+          "bottom": 494,
+          "width": 172,
+          "height": 112,
+          "clientWidth": 172,
+          "scrollWidth": 172,
+          "text": "English"
+        },
+        {
+          "x": 50,
+          "right": 222,
+          "top": 502,
+          "bottom": 614,
+          "width": 172,
+          "height": 112,
+          "clientWidth": 172,
+          "scrollWidth": 172,
+          "text": "Russian"
+        }
+      ]
+    },
+    {
+      "viewportWidth": 320,
+      "textScale": 2,
+      "locale": "ru",
+      "x": 16,
+      "right": 256,
+      "width": 240,
+      "clientWidth": 238,
+      "scrollWidth": 238,
+      "controls": [
+        {
+          "x": 50,
+          "right": 222,
+          "top": 368,
+          "bottom": 480,
+          "width": 172,
+          "height": 112,
+          "clientWidth": 172,
+          "scrollWidth": 172,
+          "text": "Английский"
+        },
+        {
+          "x": 50,
+          "right": 222,
+          "top": 488,
+          "bottom": 600,
+          "width": 172,
+          "height": 112,
+          "clientWidth": 172,
+          "scrollWidth": 172,
+          "text": "Русский"
+        }
+      ]
+    },
+    {
+      "viewportWidth": 1280,
+      "textScale": 1,
+      "locale": "en",
+      "x": 206,
+      "right": 446,
+      "width": 240,
+      "clientWidth": 238,
+      "scrollWidth": 238,
+      "controls": [
+        {
+          "x": 224,
+          "right": 428,
+          "top": 122,
+          "bottom": 166,
+          "width": 204,
+          "height": 44,
+          "clientWidth": 204,
+          "scrollWidth": 204,
+          "text": "English"
+        },
+        {
+          "x": 224,
+          "right": 428,
+          "top": 170,
+          "bottom": 214,
+          "width": 204,
+          "height": 44,
+          "clientWidth": 204,
+          "scrollWidth": 204,
+          "text": "Russian"
+        }
+      ]
+    },
+    {
+      "viewportWidth": 1280,
+      "textScale": 1,
+      "locale": "ru",
+      "x": 206,
+      "right": 446,
+      "width": 240,
+      "clientWidth": 238,
+      "scrollWidth": 238,
+      "controls": [
+        {
+          "x": 224,
+          "right": 428,
+          "top": 122,
+          "bottom": 166,
+          "width": 204,
+          "height": 44,
+          "clientWidth": 204,
+          "scrollWidth": 204,
+          "text": "Английский"
+        },
+        {
+          "x": 224,
+          "right": 428,
+          "top": 170,
+          "bottom": 214,
+          "width": 204,
+          "height": 44,
+          "clientWidth": 204,
+          "scrollWidth": 204,
+          "text": "Русский"
+        }
+      ]
+    },
+    {
+      "viewportWidth": 1280,
+      "textScale": 2,
+      "locale": "en",
+      "x": 206,
+      "right": 446,
+      "width": 240,
+      "clientWidth": 238,
+      "scrollWidth": 238,
+      "controls": [
+        {
+          "x": 240,
+          "right": 412,
+          "top": 238,
+          "bottom": 350,
+          "width": 172,
+          "height": 112,
+          "clientWidth": 172,
+          "scrollWidth": 172,
+          "text": "English"
+        },
+        {
+          "x": 240,
+          "right": 412,
+          "top": 358,
+          "bottom": 470,
+          "width": 172,
+          "height": 112,
+          "clientWidth": 172,
+          "scrollWidth": 172,
+          "text": "Russian"
+        }
+      ]
+    },
+    {
+      "viewportWidth": 1280,
+      "textScale": 2,
+      "locale": "ru",
+      "x": 206,
+      "right": 446,
+      "width": 240,
+      "clientWidth": 238,
+      "scrollWidth": 238,
+      "controls": [
+        {
+          "x": 240,
+          "right": 412,
+          "top": 224,
+          "bottom": 336,
+          "width": 172,
+          "height": 112,
+          "clientWidth": 172,
+          "scrollWidth": 172,
+          "text": "Английский"
+        },
+        {
+          "x": 240,
+          "right": 412,
+          "top": 344,
+          "bottom": 456,
+          "width": 172,
+          "height": 112,
+          "clientWidth": 172,
+          "scrollWidth": 172,
+          "text": "Русский"
+        }
+      ]
+    }
+  ],
+  "phase2ConsoleErrors": [],
+  "phase2ExternalRequests": [],
+  "phase2ApiRequests": [],
+  "wholeSessionConsole": {
+    "messages": 0,
+    "errors": 0,
+    "warnings": 0
+  },
+  "limits": [
+    "100% and 200% root font size, not browser zoom certification.",
+    "Draft and canonical filter state tested across language changes; only locale persistence tested across reload.",
+    "Filter popover verified at 1280 px and 100% text; selector alone checked across the full matrix.",
+    "No authenticated server, live provider, production data, or additional language was exercised.",
+    "Synthetic draft, identity, connection-state outputs and fixture heading are intentionally untranslated."
+  ],
+  "screenshots": {
+    "selector-ru-320-text200.png": {
+      "sha256": "71174779faf2c77f3a036395680a69024faa8ef33ae823d12729f255780fa32d"
+    },
+    "components-ru-1280.png": {
+      "sha256": "3de835a655378227c133b08deaf20b5db8b13854d8cc61717c2bfd84f23fd9e9"
+    }
+  }
+}
