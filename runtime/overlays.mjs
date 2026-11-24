@@ -13,9 +13,9 @@ export const TEMPLATE_TARGETS = [
 export const EXACT_EDITS = [
   {
     path: "ui/src/components/task-chat/task-chat-display.ts",
-    sha256: "a5341a5629ab0454cecc371bb911ade31c04945bba626617a93f39e038ac13bf",
+    sha256: "f39dc9053e362132c655a571a6849600d337c088d1737ca9266b8f3c31a122fd",
     replacements: [],
-    reason: "November 16 adds only the exact built-in Waiting to start label to the November 9 display adapter. Selected-locale formatting and English fallback remain intact. Canonical event models, provider titles, file paths, raw diagnostics and retry-control markers stay unchanged; retry eligibility is tested across locale changes.",
+    reason: "The November 24 source maps the exact built-in Disk full label and disk-space recovery message at the task thread display boundary. Unknown details continue to pass through. The other mappings and event data paths retain the November 16 behavior.",
   },
   {
     path: "ui/src/components/task-chat/task-chat-phase-summary-display.ts",

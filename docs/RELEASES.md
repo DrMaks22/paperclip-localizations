@@ -2,6 +2,8 @@
 
 [Русская главная](../README.md) · [English overview](../README.en.md)
 
+The November 24 beta candidate targets master `71ff1c8600858233c2840a908f9244fe547af99c`. Its channel index, package metadata and patch apply to this exact revision. The published releases are listed below. [Candidate verification](../verification/v2026.11.24.1-beta.1.md)
+
 > **Stable:** [v2026.11.9.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.9.1), Paperclip v2026.1106.0, Latest. **Beta:** [v2026.11.16.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.16.1-beta.1), проверенный снимок master / reviewed master snapshot, Pre-release.
 
 > Пакет stable / Stable package: `v2026.11.9.1` для / for Paperclip `v2026.1106.0`. [Проверки и ограничения / Checks and limitations](../verification/v2026.11.9.1.md).

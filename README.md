@@ -2,6 +2,8 @@
 
 **Русский** · [English](README.en.md)
 
+В этой ветке подготовлен кандидат beta `v2026.11.24.1-beta.1` для Paperclip master `71ff1c8600858233c2840a908f9244fe547af99c`. Опубликованный beta-пакет от 16 ноября по-прежнему доступен по ссылке ниже. [Проверка кандидата](verification/v2026.11.24.1-beta.1.md)
+
 > **Совместимость stable из примера установки:** пакет `v2026.11.9.1` предназначен для Paperclip `v2026.1106.0` на коммите `d69631b01b9c658f80bf8bed389863dce82643e1`. Скачивайте готовый пакет по закреплённому тегу, а не рабочую ветку. Не применяйте старый патч к новой версии Paperclip. [Проверки и ограничения](verification/v2026.11.9.1.md). Установка патча не развёртывает приложение автоматически.
 
 [![Проверки](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml/badge.svg)](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml) · [Stable](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.9.1) · [Beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.16.1-beta.1) · [Каналы и проверки](docs/RELEASES.md)

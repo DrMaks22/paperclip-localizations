@@ -2,6 +2,8 @@
 
 [Русский](README.md) · **English**
 
+This branch prepares beta candidate `v2026.11.24.1-beta.1` for Paperclip master `71ff1c8600858233c2840a908f9244fe547af99c`. The published November 16 beta remains available below. [Candidate verification](verification/v2026.11.24.1-beta.1.md)
+
 > **Compatibility of the stable installation example:** package `v2026.11.9.1` targets Paperclip `v2026.1106.0` at `d69631b01b9c658f80bf8bed389863dce82643e1`. Download the finalized package from its pinned tag, not a working branch. Do not apply an older patch to newer Paperclip source. See [checks and limitations](verification/v2026.11.9.1.md). Applying the patch does not deploy the application.
 
 [![Checks](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml/badge.svg)](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml) · [Stable](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.9.1) · [Beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.16.1-beta.1) · [Channels and verification](docs/RELEASES.md)
