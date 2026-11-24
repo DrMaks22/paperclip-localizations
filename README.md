@@ -2,11 +2,9 @@
 
 **Русский** · [English](README.en.md)
 
-> **Кандидат v2026.11.23.1 проходит проверку.** Команды скачивания станут доступны после публикации. Для Paperclip `v2026.1106.0` доступен [опубликованный stable v2026.11.9.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.9.1).
-
 > **Совместимость stable из примера установки:** пакет `v2026.11.23.1` предназначен для Paperclip `v2026.1117.0` на коммите `c0f132898d2a2677312d8c72096187b27a3d9a38`. Скачивайте готовый пакет по закреплённому тегу, а не рабочую ветку. Не применяйте старый патч к новой версии Paperclip. [Проверки и ограничения](verification/v2026.11.23.1.md). Установка патча не развёртывает приложение автоматически.
 
-[![Проверки](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml/badge.svg)](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml) · [Stable](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.23.1) · [Beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.16.1-beta.1) · [Каналы и проверки](docs/RELEASES.md)
+[![Проверки](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml/badge.svg)](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml) · [Stable](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.23.1) · [Beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.24.1-beta.1) · [Каналы и проверки](docs/RELEASES.md)
 
 ![Paperclip Localizations — переводы интерфейса Paperclip](assets/cover.png)
 
@@ -14,12 +12,12 @@
 
 ## Выбрать канал
 
-`v2026.11.23.1` обновляет перевод для официального Paperclip v2026.1117.0. `v2026.11.16.1-beta.1` поддерживает отдельный снимок master от 16 ноября 2026 года. В обоих каналах сохранён вертикальный выбор языка. Подготовьте свежую сборку: новый патч нельзя накладывать поверх уже установленного.
+`v2026.11.23.1` обновляет перевод для официального Paperclip v2026.1117.0. `v2026.11.24.1-beta.1` поддерживает отдельный снимок master от 24 ноября 2026 года. В обоих каналах сохранён вертикальный выбор языка. Подготовьте свежую сборку: новый патч нельзя накладывать поверх уже установленного.
 
 | Канал локализации | Совместимая версия Paperclip | Когда выбирать |
 | --- | --- | --- |
 | [Stable — v2026.11.23.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.23.1) | Официальный стабильный выпуск **v2026.1117.0**, коммит `c0f1328` | Для этой стабильной версии. Английский и русский интерфейс. |
-| [Beta — v2026.11.16.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.16.1-beta.1) | Проверенный снимок **master**, коммит `94cb7ad` | Для отдельной тестовой сборки на указанном коммите master и проверки новых языковых каталогов. |
+| [Beta — v2026.11.24.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.24.1-beta.1) | Проверенный снимок **master**, коммит `71ff1c8` | Для отдельной тестовой сборки на указанном коммите master и проверки новых языковых каталогов. |
 
 **Stable и beta — разные патчи для разных исходников.** Beta не подходит к стабильному выпуску и не обновляется автоматически вместе с master. `Latest` в GitHub Releases относится только к stable. Номер релиза локализации не совпадает с номером Paperclip.
 

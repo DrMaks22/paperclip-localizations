@@ -2,11 +2,9 @@
 
 [Русский](README.md) · **English**
 
-> **v2026.11.23.1 is under review.** Download commands become available after publication. For Paperclip `v2026.1106.0`, use [published stable v2026.11.9.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.9.1).
-
 > **Compatibility of the stable installation example:** package `v2026.11.23.1` targets Paperclip `v2026.1117.0` at `c0f132898d2a2677312d8c72096187b27a3d9a38`. Download the finalized package from its pinned tag, not a working branch. Do not apply an older patch to newer Paperclip source. See [checks and limitations](verification/v2026.11.23.1.md). Applying the patch does not deploy the application.
 
-[![Checks](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml/badge.svg)](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml) · [Stable](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.23.1) · [Beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.16.1-beta.1) · [Channels and verification](docs/RELEASES.md)
+[![Checks](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml/badge.svg)](https://github.com/DrMaks22/paperclip-localizations/actions/workflows/ci.yml) · [Stable](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.23.1) · [Beta](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.24.1-beta.1) · [Channels and verification](docs/RELEASES.md)
 
 ![Paperclip Localizations — community translations for Paperclip](assets/cover.png)
 
@@ -14,12 +12,12 @@ An independent community project for translating the [Paperclip](https://github.
 
 ## Choose a channel
 
-`v2026.11.23.1` updates localization for official Paperclip v2026.1117.0. `v2026.11.16.1-beta.1` supports the separate master snapshot reviewed on November 16, 2026. Both retain the vertical language selector. Prepare a fresh build; do not stack the new patch on an already localized checkout.
+`v2026.11.23.1` updates localization for official Paperclip v2026.1117.0. `v2026.11.24.1-beta.1` supports the separate master snapshot reviewed on November 24, 2026. Both retain the vertical language selector. Prepare a fresh build; do not stack the new patch on an already localized checkout.
 
 | Localization channel | Compatible Paperclip version | Intended use |
 | --- | --- | --- |
 | [Stable — v2026.11.23.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.23.1) | Official stable release **v2026.1117.0**, commit `c0f1328` | For that stable version. English and Russian UI. |
-| [Beta — v2026.11.16.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.16.1-beta.1) | Reviewed **master snapshot**, commit `94cb7ad` | Prerelease for testing development code and new language catalogs. |
+| [Beta — v2026.11.24.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.24.1-beta.1) | Reviewed **master snapshot**, commit `71ff1c8` | Prerelease for testing development code and new language catalogs. |
 
 **Stable and beta are different patches for different source revisions.** Beta does not target the stable release and does not automatically follow master. GitHub Releases reserves `Latest` for stable. Localization version numbers are separate from Paperclip's version numbers.
 
@@ -56,7 +54,7 @@ node apply.mjs --repo /absolute/path/to/paperclip-localized --apply
 
 The target worktree must be clean and match the `baseCommit` in [`manifest.json`](manifest.json) exactly. The installer works offline: it checks and changes source files. Dependencies, the database, startup, and deployment remain part of your normal workflow.
 
-The [verification report](verification/v2026.11.23.1.md) identifies the isolated build and the checks completed for this candidate.
+The [verification report](verification/v2026.11.23.1.md) identifies the isolated build and the checks completed for this release.
 
 A repeated forward application or `--check` after application will refuse to proceed. Use `--reverse --check` to verify the installed patch, and `--reverse --apply` to remove it. See the [guide](docs/INSTALL.en.md#updating-and-removing-the-patch) for details and the update sequence.
 
