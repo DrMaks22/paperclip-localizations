@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "stable": {
     "releaseChannel": "stable",
-    "releaseTag": "v2026.11.9.1",
-    "upstreamRef": "v2026.1106.0",
-    "baseCommit": "d69631b01b9c658f80bf8bed389863dce82643e1",
+    "releaseTag": "v2026.11.23.1",
+    "upstreamRef": "v2026.1117.0",
+    "baseCommit": "c0f132898d2a2677312d8c72096187b27a3d9a38",
     "runtimeProfile": "pinned-en-ru"
   },
   "beta": {

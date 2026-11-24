@@ -2,11 +2,9 @@
 
 [Русская главная](../README.md) · [English overview](../README.en.md)
 
-The November 24 beta candidate targets master `71ff1c8600858233c2840a908f9244fe547af99c`. Its channel index, package metadata and patch apply to this exact revision. The published releases are listed below. [Candidate verification](../verification/v2026.11.24.1-beta.1.md)
+> **Stable:** [v2026.11.23.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.23.1), Paperclip v2026.1117.0, Latest. **Beta:** [v2026.11.24.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.24.1-beta.1), проверенный снимок master / reviewed master snapshot, Pre-release.
 
-> **Stable:** [v2026.11.9.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.9.1), Paperclip v2026.1106.0, Latest. **Beta:** [v2026.11.16.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.16.1-beta.1), проверенный снимок master / reviewed master snapshot, Pre-release.
-
-> Пакет stable / Stable package: `v2026.11.9.1` для / for Paperclip `v2026.1106.0`. [Проверки и ограничения / Checks and limitations](../verification/v2026.11.9.1.md).
+> Пакет stable / Stable package: `v2026.11.23.1` для / for Paperclip `v2026.1117.0`. [Проверки и ограничения / Checks and limitations](../verification/v2026.11.23.1.md).
 
 Опубликованные теги и файлы, включая [v2026.9.17.1 для Paperclip v2026.916.0](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.17.1), сохраняются неизменными. Published tags and assets, including that previous stable, remain immutable. Рабочая ветка не заменяет релиз; её можно удалить только после разрешённой публикации и [проверки сохранности результата](MAINTENANCE.md#after-publication-close-completed-branches). A working branch is not a release; remove it only after an approved publication and those preservation checks.
 
@@ -16,22 +14,22 @@ The November 24 beta candidate targets master `71ff1c8600858233c2840a908f9244fe5
 
 ## Русский
 
-`v2026.11.9.1` обновляет русскую локализацию для официального Paperclip v2026.1106.0; `v2026.11.16.1-beta.1` — для отдельного проверенного снимка master. Вертикальный переключатель сохранён. Предыдущий stable [v2026.11.3.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.3.1) остаётся доступен для Paperclip v2026.1023.0; предыдущий beta [v2026.11.3.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.3.1-beta.1) — для своей основы master. Их теги и файлы неизменны. Патчи не накладываются друг на друга.
+`v2026.11.23.1` обновляет русскую локализацию для официального Paperclip v2026.1117.0; `v2026.11.24.1-beta.1` — для отдельного проверенного снимка master. Вертикальный переключатель сохранён. Предыдущий stable [v2026.11.3.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.3.1) остаётся доступен для Paperclip v2026.1023.0; предыдущий beta [v2026.11.3.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.3.1-beta.1) — для своей основы master. Их теги и файлы неизменны. Патчи не накладываются друг на друга.
 
-У локализации два независимых канала. Номер нашего релиза обозначает выпуск пакета перевода, а не версию самого Paperclip. Stable `v2026.11.9.1` предназначен для официального выпуска Paperclip `v2026.1106.0`. Beta `v2026.11.16.1-beta.1` обновлена для проверенного снимка master от 16 ноября 2026 года.
+У локализации два независимых канала. Номер нашего релиза обозначает выпуск пакета перевода, а не версию самого Paperclip. Stable `v2026.11.23.1` предназначен для официального выпуска Paperclip `v2026.1117.0`. Beta `v2026.11.24.1-beta.1` обновлена для проверенного снимка master от 24 ноября 2026 года.
 
 | | Stable | Beta |
 | --- | --- | --- |
-| Релиз локализации | [v2026.11.9.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.9.1) | [v2026.11.16.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.16.1-beta.1) |
-| Основа Paperclip | [Официальный стабильный v2026.1106.0](https://github.com/paperclipai/paperclip/releases/tag/v2026.1106.0) | Снимок master, проверенный 16 ноября 2026 года |
-| Точный коммит Paperclip | `d69631b01b9c658f80bf8bed389863dce82643e1` | `94cb7ad3596e0a73ee6c2ba3276efb12a7139a72` |
-| Метка GitHub | `Latest`, не предварительный выпуск | `Pre-release`, не `Latest` |
+| Релиз локализации | [v2026.11.23.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.23.1) | [v2026.11.24.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.24.1-beta.1) |
+| Основа Paperclip | [Официальный стабильный v2026.1117.0](https://github.com/paperclipai/paperclip/releases/tag/v2026.1117.0) | Снимок master, проверенный 24 ноября 2026 года |
+| Точный коммит Paperclip | `c0f132898d2a2677312d8c72096187b27a3d9a38` | `71ff1c8600858233c2840a908f9244fe547af99c` |
+| Метка GitHub | `Latest` | `Pre-release`, не `Latest` |
 | Языки | Английский и русский, профиль `pinned-en-ru` | Английский и русский; подключение новых проверенных JSON-каталогов |
-| Проверки | [Отчёт stable: результаты и ограничения](https://github.com/DrMaks22/paperclip-localizations/blob/v2026.11.9.1/verification/v2026.11.9.1.md) | [Отчёт beta](https://github.com/DrMaks22/paperclip-localizations/blob/v2026.11.16.1-beta.1/verification/v2026.11.16.1-beta.1.md) |
+| Проверки | [Отчёт stable: результаты и ограничения](https://github.com/DrMaks22/paperclip-localizations/blob/v2026.11.23.1/verification/v2026.11.23.1.md) | [Отчёт beta](https://github.com/DrMaks22/paperclip-localizations/blob/v2026.11.24.1-beta.1/verification/v2026.11.24.1-beta.1.md) |
 
-Для Paperclip `v2026.1106.0` выбирайте stable `v2026.11.9.1`. Для Paperclip `v2026.1005.0` остаётся доступен неизменяемый [stable v2026.10.7.2](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.2), а для `v2026.831.1` — [stable v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1). Для отдельной тестовой сборки на указанном в таблице коммите master выбирайте beta. Перед развёртыванием проверьте выбранный канал в своей среде: ошибки возможны в обоих. Обозначение beta связано с предварительной версией Paperclip и не означает, что русский перевод выполнен хуже.
+Для Paperclip `v2026.1117.0` выбирайте stable `v2026.11.23.1`. Для Paperclip `v2026.1005.0` остаётся доступен неизменяемый [stable v2026.10.7.2](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.2), а для `v2026.831.1` — [stable v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1). Для отдельной тестовой сборки на указанном в таблице коммите master выбирайте beta. Перед развёртыванием проверьте выбранный канал в своей среде: ошибки возможны в обоих. Обозначение beta связано с предварительной версией Paperclip и не означает, что русский перевод выполнен хуже.
 
-У этой официальной базы проверена установка с неизменённым lockfile и отключёнными lifecycle-скриптами. [Отчёт](../verification/v2026.11.9.1.md) отдельно описывает результаты и ограничения локализации.
+У этой официальной базы проверена установка с неизменённым lockfile и отключёнными lifecycle-скриптами. [Отчёт](../verification/v2026.11.23.1.md) отдельно описывает результаты и ограничения локализации.
 
 Новый коммит master не становится поддерживаемым только потому, что появился на GitHub. Установщик принимает только исходники на коммите `baseCommit`, указанном в `manifest.json` выбранного релиза. Если текущий экземпляр новее или отличается от этой базы, не понижайте его версию ради локализации. Подготовьте совместимый выпуск или дождитесь его. Переход между каналами — отдельное обновление приложения с учётом базы данных, а не обычное переключение языка.
 
@@ -45,11 +43,11 @@ The November 24 beta candidate targets master `71ff1c8600858233c2840a908f9244fe5
 
 ```text
 Подготовь отдельную тестовую сборку Paperclip с локализацией beta
-из DrMaks22/paperclip-localizations, релиз v2026.11.16.1-beta.1.
-Я выбираю предварительный канал на снимке master 94cb7ad3596e0a73ee6c2ba3276efb12a7139a72.
+из DrMaks22/paperclip-localizations, релиз v2026.11.24.1-beta.1.
+Я выбираю предварительный канал на снимке master 71ff1c8600858233c2840a908f9244fe547af99c.
 Мой исходный Git-репозиторий: /absolute/path/to/paperclip.
 Прочитай инструкции закреплённого релиза:
-https://github.com/DrMaks22/paperclip-localizations/blob/v2026.11.16.1-beta.1/docs/AGENT-INSTALL.md
+https://github.com/DrMaks22/paperclip-localizations/blob/v2026.11.24.1-beta.1/docs/AGENT-INSTALL.md
 Проверь контрольные суммы, канал и точный baseCommit. Создай отдельный worktree,
 проверь и примени патч, выполни проверки сборки и интерфейса EN/RU.
 Не меняй действующий экземпляр, базу данных или выбранный канал.
@@ -72,16 +70,16 @@ Stable обновляется для официальных стабильных
 
 ## English
 
-`v2026.11.9.1` updates Russian localization for official Paperclip v2026.1106.0; `v2026.11.16.1-beta.1` targets a separately reviewed master snapshot. The vertical selector is retained. Previous [stable v2026.11.3.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.3.1) remains available for Paperclip v2026.1023.0; previous [beta v2026.11.3.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.3.1-beta.1) retains its own master base. Their tags and assets remain immutable. Do not stack patches.
+`v2026.11.23.1` updates Russian localization for official Paperclip v2026.1117.0; `v2026.11.24.1-beta.1` targets a separately reviewed master snapshot. The vertical selector is retained. Previous [stable v2026.11.3.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.3.1) remains available for Paperclip v2026.1023.0; previous [beta v2026.11.3.1-beta.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.3.1-beta.1) retains its own master base. Their tags and assets remain immutable. Do not stack patches.
 
-The two channels target different Paperclip source revisions. Our release number identifies the localization package, not the Paperclip version. Stable `v2026.11.9.1` targets the official Paperclip `v2026.1106.0` release. Beta `v2026.11.16.1-beta.1` targets the master snapshot reviewed on November 16, 2026.
+The two channels target different Paperclip source revisions. Our release number identifies the localization package, not the Paperclip version. Stable `v2026.11.23.1` targets the official Paperclip `v2026.1117.0` release. Beta `v2026.11.24.1-beta.1` targets the master snapshot reviewed on November 24, 2026.
 
-- **[Stable `v2026.11.9.1`](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.9.1):** official Paperclip [`v2026.1106.0`](https://github.com/paperclipai/paperclip/releases/tag/v2026.1106.0), exact commit `d69631b01b9c658f80bf8bed389863dce82643e1`. GitHub `Latest`, not a prerelease. English/Russian UI with the `pinned-en-ru` profile. [Stable verification results and limitations](https://github.com/DrMaks22/paperclip-localizations/blob/v2026.11.9.1/verification/v2026.11.9.1.md).
-- **Beta `v2026.11.16.1-beta.1`:** master snapshot `94cb7ad3596e0a73ee6c2ba3276efb12a7139a72`, reviewed on 2026-11-16. GitHub `Pre-release`, never `Latest`. English/Russian UI and registration of additional reviewed JSON catalogs. [Beta verification](https://github.com/DrMaks22/paperclip-localizations/blob/v2026.11.16.1-beta.1/verification/v2026.11.16.1-beta.1.md).
+- **[Stable `v2026.11.23.1`](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.11.23.1):** official Paperclip [`v2026.1117.0`](https://github.com/paperclipai/paperclip/releases/tag/v2026.1117.0), exact commit `c0f132898d2a2677312d8c72096187b27a3d9a38`. GitHub marks this release as Latest. English/Russian UI with the `pinned-en-ru` profile. [Stable verification results and limitations](https://github.com/DrMaks22/paperclip-localizations/blob/v2026.11.23.1/verification/v2026.11.23.1.md).
+- **Beta `v2026.11.24.1-beta.1`:** master snapshot `71ff1c8600858233c2840a908f9244fe547af99c`, reviewed on 2026-11-24. GitHub `Pre-release`, never `Latest`. English/Russian UI and registration of additional reviewed JSON catalogs. [Beta verification](https://github.com/DrMaks22/paperclip-localizations/blob/v2026.11.24.1-beta.1/verification/v2026.11.24.1-beta.1.md).
 
-Choose stable `v2026.11.9.1` for Paperclip `v2026.1106.0`. The immutable [stable v2026.10.7.2](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.2) remains available for Paperclip `v2026.1005.0`, and [stable v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1) for `v2026.831.1`. Choose beta only for a separate test build of the pinned master snapshot. Both require validation in your deployment environment. Beta identifies the development channel, not automatically inferior translation quality. Neither channel guarantees defect-free operation or compatibility with a newer commit.
+Choose stable `v2026.11.23.1` for Paperclip `v2026.1117.0`. The immutable [stable v2026.10.7.2](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.10.7.2) remains available for Paperclip `v2026.1005.0`, and [stable v2026.9.13.1](https://github.com/DrMaks22/paperclip-localizations/releases/tag/v2026.9.13.1) for `v2026.831.1`. Choose beta only for a separate test build of the pinned master snapshot. Both require validation in your deployment environment. Beta identifies the development channel, not automatically inferior translation quality. Neither channel guarantees defect-free operation or compatibility with a newer commit.
 
-The official base passed frozen-lockfile installation with lifecycle scripts disabled. The [report](../verification/v2026.11.9.1.md) records localization verification and its limits separately.
+The official base passed frozen-lockfile installation with lifecycle scripts disabled. The [report](../verification/v2026.11.23.1.md) records localization verification and its limits separately.
 
 The installer accepts only its own `manifest.baseCommit`. Never downgrade a running instance to fit a patch. Switching channels is an application upgrade decision, including database compatibility; it is not merely changing the UI language. Each archive contains its own manifest, patch, installer, catalogs and checksums. Do not mix channel files. `channels.json` is a release-selection index, not an override of the downloaded manifest.
 
@@ -95,11 +93,11 @@ Use the [README task](../README.en.md#install-with-an-agent) for stable. For bet
 
 ```text
 Prepare a separate Paperclip test build with beta localization
-from DrMaks22/paperclip-localizations, release v2026.11.16.1-beta.1.
-I choose the prerelease channel at master snapshot 94cb7ad3596e0a73ee6c2ba3276efb12a7139a72.
+from DrMaks22/paperclip-localizations, release v2026.11.24.1-beta.1.
+I choose the prerelease channel at master snapshot 71ff1c8600858233c2840a908f9244fe547af99c.
 My original Git repository is at /absolute/path/to/paperclip.
 Read the pinned release instructions:
-https://github.com/DrMaks22/paperclip-localizations/blob/v2026.11.16.1-beta.1/docs/AGENT-INSTALL.md
+https://github.com/DrMaks22/paperclip-localizations/blob/v2026.11.24.1-beta.1/docs/AGENT-INSTALL.md
 Verify checksums, the channel and exact baseCommit. Create a separate worktree,
 check and apply the patch, then run build and EN/RU interface checks.
 Do not change the running instance, database or selected channel.
